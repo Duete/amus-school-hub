@@ -1,0 +1,7 @@
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { PageIntro } from '@/components/school-layout';
+import { Button } from '@/components/ui/button';
+import { schoolHead } from '@/lib/school';
+import schoolLife from '@/assets/school-life.jpg';
+export const Route = createFileRoute('/about')({ head: () => schoolHead('Our school', 'Discover the values and community at Greenwood College.'), component: About });
+function About() { return <><PageIntro eyebrow="OUR SCHOOL" title="Knowledge opens doors. Character leads the way.">Greenwood is a school built around a simple belief: every young person deserves the opportunity to thrive.</PageIntro><section className="site-width grid items-center gap-12 py-16 md:grid-cols-2"><img src={schoolLife} alt="Greenwood students together" width={1920} height={1024} loading="lazy" className="aspect-[4/3] w-full rounded-md object-cover" /><div><h2 className="text-3xl">One community, a shared purpose.</h2><p className="mt-5 leading-7 text-muted-foreground">Across our City and Hillside campuses, learning is rooted in curiosity, care, and a sense of responsibility. We bring students together through academic life, creative expression, teamwork, and service.</p><p className="mt-4 leading-7 text-muted-foreground">Our vision is an education that helps young people think independently, act with integrity, and make a positive contribution to their communities.</p><Button asChild className="mt-6"><Link to="/campuses">Meet our two campuses</Link></Button></div></section></>; }
