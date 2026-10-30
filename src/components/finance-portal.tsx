@@ -9,6 +9,7 @@ import {
   WalletCards,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { isApiConfigured, submitPayment } from "@/lib/api";
 import { queueNotification, type NotificationRecord } from "@/lib/notifications";
 
 type PaymentState = "idle" | "review" | "success";
@@ -39,6 +40,7 @@ export function FinancePortal() {
   const [method, setMethod] = useState("Mobile money");
   const [paymentState, setPaymentState] = useState<PaymentState>("idle");
   const [notification, setNotification] = useState<NotificationRecord | null>(null);
+  const [paymentError, setPaymentError] = useState("");
 
   function handleLookup(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -51,15 +53,41 @@ export function FinancePortal() {
     setPaymentState("review");
   }
 
-  function confirmPayment() {
+  async function confirmPayment() {
     const reference = `MPS-PAY-${Date.now().toString().slice(-6)}`;
-    setPaymentState("success");
-    void queueNotification("finance.payment_submitted", {
-      recipient: account.guardianEmail,
-      learnerName: account.learner,
-      reference,
-      amount: formatAmount(Number(amount) || 0),
-    }).then(setNotification);
+    setPaymentError("");
+    try {
+      if (isApiConfigured()) {
+        const result = await submitPayment({
+          studentId: studentId || account.studentId,
+          amount: Number(amount),
+          method: method === "Mobile money" ? "mobile_money" : "card",
+          payerEmail: account.guardianEmail,
+          idempotencyKey: crypto.randomUUID(),
+        });
+        setNotification({
+          id: result.reference,
+          event: "finance.payment_submitted",
+          recipient: account.guardianEmail,
+          subject: `Fee payment request received · ${result.reference}`,
+          body: "",
+          createdAt: new Date().toISOString(),
+          status: "queued",
+        });
+      } else {
+        await queueNotification("finance.payment_submitted", {
+          recipient: account.guardianEmail,
+          learnerName: account.learner,
+          reference,
+          amount: formatAmount(Number(amount) || 0),
+        }).then(setNotification);
+      }
+      setPaymentState("success");
+    } catch (error) {
+      setPaymentError(
+        error instanceof Error ? error.message : "Unable to create the payment request.",
+      );
+    }
   }
 
   const balance = account.total - account.paid;
@@ -226,6 +254,11 @@ export function FinancePortal() {
                       Edit payment
                     </Button>
                   </div>
+                  {paymentError && (
+                    <p role="alert" className="mt-4 text-sm text-destructive">
+                      {paymentError}
+                    </p>
+                  )}
                 </div>
               ) : (
                 <form onSubmit={handlePayment} className="mt-6 space-y-5">

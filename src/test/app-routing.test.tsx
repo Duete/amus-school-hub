@@ -24,7 +24,8 @@ describe("App routing", () => {
     ["/admissions/apply", "/admissions/apply"],
     ["/login", "/login"],
     ["/performance", "/performance"],
-    ["/portal", "/portal"],
+    ["/contact", "/contact"],
+    ["/database", "/database"],
     ["/faculty", "/faculty"],
   ])("matches the %s page", (_label, path) => {
     const matches = createTestRouter().matchRoutes(path);

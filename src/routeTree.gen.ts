@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AcademicsRouteImport } from './routes/academics'
 import { Route as AdmissionsRouteImport } from './routes/admissions'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DatabaseRouteImport } from './routes/database'
 import { Route as FacultyRouteImport } from './routes/faculty'
 import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as LoginRouteImport } from './routes/login'
@@ -48,6 +49,11 @@ const AdmissionsRoute = AdmissionsRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DatabaseRoute = DatabaseRouteImport.update({
+  id: '/database',
+  path: '/database',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FacultyRoute = FacultyRouteImport.update({
@@ -107,6 +113,7 @@ export interface FileRoutesByFullPath {
   '/academics': typeof AcademicsRoute
   '/admissions': typeof AdmissionsRouteWithChildren
   '/contact': typeof ContactRoute
+  '/database': typeof DatabaseRoute
   '/faculty': typeof FacultyRoute
   '/finance': typeof FinanceRoute
   '/login': typeof LoginRoute
@@ -123,6 +130,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/academics': typeof AcademicsRoute
   '/contact': typeof ContactRoute
+  '/database': typeof DatabaseRoute
   '/faculty': typeof FacultyRoute
   '/finance': typeof FinanceRoute
   '/login': typeof LoginRoute
@@ -141,6 +149,7 @@ export interface FileRoutesById {
   '/academics': typeof AcademicsRoute
   '/admissions': typeof AdmissionsRouteWithChildren
   '/contact': typeof ContactRoute
+  '/database': typeof DatabaseRoute
   '/faculty': typeof FacultyRoute
   '/finance': typeof FinanceRoute
   '/login': typeof LoginRoute
@@ -160,6 +169,7 @@ export interface FileRouteTypes {
     | '/academics'
     | '/admissions'
     | '/contact'
+    | '/database'
     | '/faculty'
     | '/finance'
     | '/login'
@@ -176,6 +186,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/academics'
     | '/contact'
+    | '/database'
     | '/faculty'
     | '/finance'
     | '/login'
@@ -193,6 +204,7 @@ export interface FileRouteTypes {
     | '/academics'
     | '/admissions'
     | '/contact'
+    | '/database'
     | '/faculty'
     | '/finance'
     | '/login'
@@ -211,6 +223,7 @@ export interface RootRouteChildren {
   AcademicsRoute: typeof AcademicsRoute
   AdmissionsRoute: typeof AdmissionsRouteWithChildren
   ContactRoute: typeof ContactRoute
+  DatabaseRoute: typeof DatabaseRoute
   FacultyRoute: typeof FacultyRoute
   FinanceRoute: typeof FinanceRoute
   LoginRoute: typeof LoginRoute
@@ -256,6 +269,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/database': {
+      id: '/database'
+      path: '/database'
+      fullPath: '/database'
+      preLoaderRoute: typeof DatabaseRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faculty': {
@@ -351,6 +371,7 @@ const rootRouteChildren: RootRouteChildren = {
   AcademicsRoute: AcademicsRoute,
   AdmissionsRoute: AdmissionsRouteWithChildren,
   ContactRoute: ContactRoute,
+  DatabaseRoute: DatabaseRoute,
   FacultyRoute: FacultyRoute,
   FinanceRoute: FinanceRoute,
   LoginRoute: LoginRoute,

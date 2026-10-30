@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight, CheckCircle2, FileText, ShieldCheck } from "luci
 import { useState, type FormEvent } from "react";
 import { PageIntro } from "@/components/school-layout";
 import { Button } from "@/components/ui/button";
+import { isApiConfigured, submitApplication } from "@/lib/api";
 import { queueNotification, type NotificationRecord } from "@/lib/notifications";
 import { schoolHead } from "@/lib/school";
 
@@ -18,17 +19,48 @@ export const Route = createFileRoute("/admissions/apply")({
 function ApplyForAdmission() {
   const [submitted, setSubmitted] = useState(false);
   const [notification, setNotification] = useState<NotificationRecord | null>(null);
+  const [submissionError, setSubmissionError] = useState("");
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const reference = `MPS-APP-${Date.now().toString().slice(-6)}`;
-    setSubmitted(true);
-    void queueNotification("admissions.application_submitted", {
-      recipient: String(formData.get("email") ?? "admissions@mbaleprogressive.sc.ug"),
-      learnerName: String(formData.get("studentName") ?? "the learner"),
-      reference,
-    }).then(setNotification);
+    setSubmissionError("");
+    try {
+      if (isApiConfigured()) {
+        const result = await submitApplication({
+          studentName: String(formData.get("studentName") ?? ""),
+          dateOfBirth: String(formData.get("dateOfBirth") ?? ""),
+          entryLevel: String(formData.get("entryLevel") ?? ""),
+          campus: String(formData.get("campus") ?? ""),
+          guardianName: String(formData.get("guardianName") ?? ""),
+          phone: String(formData.get("phone") ?? ""),
+          email: String(formData.get("email") ?? ""),
+          previousSchool: String(formData.get("previousSchool") ?? ""),
+          notes: String(formData.get("notes") ?? ""),
+        });
+        setNotification({
+          id: result.reference,
+          event: "admissions.application_submitted",
+          recipient: String(formData.get("email") ?? ""),
+          subject: `Application enquiry received · ${result.reference}`,
+          body: "",
+          createdAt: new Date().toISOString(),
+          status: "queued",
+        });
+      } else {
+        await queueNotification("admissions.application_submitted", {
+          recipient: String(formData.get("email") ?? "admissions@mbaleprogressive.sc.ug"),
+          learnerName: String(formData.get("studentName") ?? "the learner"),
+          reference,
+        }).then(setNotification);
+      }
+      setSubmitted(true);
+    } catch (error) {
+      setSubmissionError(
+        error instanceof Error ? error.message : "Unable to submit the application.",
+      );
+    }
   }
 
   if (submitted) {
@@ -57,6 +89,11 @@ function ApplyForAdmission() {
                   ? "queued for the configured email provider"
                   : "preview queued locally; connect an email provider to send it"}
             </p>
+            {submissionError && (
+              <p role="alert" className="mt-4 text-sm text-destructive">
+                {submissionError}
+              </p>
+            )}
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild>
                 <Link to="/contact">
@@ -211,6 +248,12 @@ function ApplyForAdmission() {
               admissions enquiry.
             </span>
           </label>
+
+          {submissionError && (
+            <p role="alert" className="text-sm text-destructive">
+              {submissionError}
+            </p>
+          )}
 
           <Button type="submit" size="lg">
             Send application enquiry <ArrowRight />

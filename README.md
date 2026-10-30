@@ -32,3 +32,5 @@ Successful admissions submissions and fee payment requests create notification r
 ## Database integration
 
 The persistent-storage blueprint is documented in [`docs/database-integration-plan.md`](docs/database-integration-plan.md), with a PostgreSQL-compatible schema in [`database/schema.sql`](database/schema.sql). The plan intentionally does not connect a live database or migrate preview accounts until the provider, data-retention policy, and production identity/payment services are approved.
+
+The Express/PostgreSQL API integration lives in [`backend/`](backend/). See [`backend/README.md`](backend/README.md) for migration, seed, and local development commands. A visual architecture preview is available at [`/database`](http://localhost:8080/database) while the frontend is running.
