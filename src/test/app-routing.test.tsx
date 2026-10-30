@@ -19,4 +19,13 @@ describe("App routing", () => {
     const matches = createTestRouter().matchRoutes("/sports");
     expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
   });
+
+  it.each([
+    ["/admissions/apply", "/admissions/apply"],
+    ["/performance", "/performance"],
+    ["/faculty", "/faculty"],
+  ])("matches the %s page", (_label, path) => {
+    const matches = createTestRouter().matchRoutes(path);
+    expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
+  });
 });

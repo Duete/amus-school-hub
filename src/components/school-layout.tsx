@@ -7,6 +7,8 @@ const navigation = [
   { name: "Our school", to: "/about" },
   { name: "Our campuses", to: "/campuses" },
   { name: "Learning", to: "/academics" },
+  { name: "Faculty", to: "/faculty" },
+  { name: "Performance", to: "/performance" },
   { name: "Sports & student life", to: "/sports" },
   { name: "Admissions", to: "/admissions" },
   { name: "Contact", to: "/contact" },
@@ -119,6 +121,8 @@ export function SchoolFooter() {
           <div className="flex flex-wrap gap-6 text-sm">
             <Link to="/campuses">Our campuses</Link>
             <Link to="/academics">Learning</Link>
+            <Link to="/faculty">Faculty</Link>
+            <Link to="/performance">Performance</Link>
             <Link to="/sports">Sports & student life</Link>
             <Link to="/admissions">Admissions</Link>
             <Link to="/contact">Contact</Link>

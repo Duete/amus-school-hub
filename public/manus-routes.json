@@ -4,9 +4,12 @@
     { "path": "/about", "title": "Our school" },
     { "path": "/academics", "title": "Academics" },
     { "path": "/admissions", "title": "Admissions" },
+    { "path": "/admissions/apply", "title": "Apply for admission" },
     { "path": "/campuses", "title": "Our campuses" },
     { "path": "/campuses/:campus", "title": "Campus details" },
     { "path": "/contact", "title": "Contact" },
+    { "path": "/faculty", "title": "Faculty directory" },
+    { "path": "/performance", "title": "Student performance" },
     { "path": "/sports", "title": "Sports and student life" }
   ]
 }

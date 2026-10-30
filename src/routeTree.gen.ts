@@ -14,7 +14,10 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AcademicsRouteImport } from './routes/academics'
 import { Route as AdmissionsRouteImport } from './routes/admissions'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as FacultyRouteImport } from './routes/faculty'
+import { Route as PerformanceRouteImport } from './routes/performance'
 import { Route as SportsRouteImport } from './routes/sports'
+import { Route as AdmissionsApplyRouteImport } from './routes/admissions.apply'
 import { Route as CampusesIndexRouteImport } from './routes/campuses.index'
 import { Route as CampusesCampusRouteImport } from './routes/campuses.$campus'
 
@@ -43,10 +46,25 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FacultyRoute = FacultyRouteImport.update({
+  id: '/faculty',
+  path: '/faculty',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PerformanceRoute = PerformanceRouteImport.update({
+  id: '/performance',
+  path: '/performance',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SportsRoute = SportsRouteImport.update({
   id: '/sports',
   path: '/sports',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AdmissionsApplyRoute = AdmissionsApplyRouteImport.update({
+  id: '/apply',
+  path: '/apply',
+  getParentRoute: () => AdmissionsRoute,
 } as any)
 const CampusesIndexRoute = CampusesIndexRouteImport.update({
   id: '/campuses/',
@@ -63,9 +81,12 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/academics': typeof AcademicsRoute
-  '/admissions': typeof AdmissionsRoute
+  '/admissions': typeof AdmissionsRouteWithChildren
   '/contact': typeof ContactRoute
+  '/faculty': typeof FacultyRoute
+  '/performance': typeof PerformanceRoute
   '/sports': typeof SportsRoute
+  '/admissions/apply': typeof AdmissionsApplyRoute
   '/campuses/$campus': typeof CampusesCampusRoute
   '/campuses/': typeof CampusesIndexRoute
 }
@@ -73,9 +94,12 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/academics': typeof AcademicsRoute
-  '/admissions': typeof AdmissionsRoute
+  '/admissions': typeof AdmissionsRouteWithChildren
   '/contact': typeof ContactRoute
+  '/faculty': typeof FacultyRoute
+  '/performance': typeof PerformanceRoute
   '/sports': typeof SportsRoute
+  '/admissions/apply': typeof AdmissionsApplyRoute
   '/campuses/$campus': typeof CampusesCampusRoute
   '/campuses': typeof CampusesIndexRoute
 }
@@ -84,9 +108,12 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/academics': typeof AcademicsRoute
-  '/admissions': typeof AdmissionsRoute
+  '/admissions': typeof AdmissionsRouteWithChildren
   '/contact': typeof ContactRoute
+  '/faculty': typeof FacultyRoute
+  '/performance': typeof PerformanceRoute
   '/sports': typeof SportsRoute
+  '/admissions/apply': typeof AdmissionsApplyRoute
   '/campuses/$campus': typeof CampusesCampusRoute
   '/campuses/': typeof CampusesIndexRoute
 }
@@ -98,7 +125,10 @@ export interface FileRouteTypes {
     | '/academics'
     | '/admissions'
     | '/contact'
+    | '/faculty'
+    | '/performance'
     | '/sports'
+    | '/admissions/apply'
     | '/campuses/$campus'
     | '/campuses/'
   fileRoutesByTo: FileRoutesByTo
@@ -108,7 +138,10 @@ export interface FileRouteTypes {
     | '/academics'
     | '/admissions'
     | '/contact'
+    | '/faculty'
+    | '/performance'
     | '/sports'
+    | '/admissions/apply'
     | '/campuses/$campus'
     | '/campuses'
   id:
@@ -118,7 +151,10 @@ export interface FileRouteTypes {
     | '/academics'
     | '/admissions'
     | '/contact'
+    | '/faculty'
+    | '/performance'
     | '/sports'
+    | '/admissions/apply'
     | '/campuses/$campus'
     | '/campuses/'
   fileRoutesById: FileRoutesById
@@ -127,8 +163,10 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AcademicsRoute: typeof AcademicsRoute
-  AdmissionsRoute: typeof AdmissionsRoute
+  AdmissionsRoute: typeof AdmissionsRouteWithChildren
   ContactRoute: typeof ContactRoute
+  FacultyRoute: typeof FacultyRoute
+  PerformanceRoute: typeof PerformanceRoute
   SportsRoute: typeof SportsRoute
   CampusesCampusRoute: typeof CampusesCampusRoute
   CampusesIndexRoute: typeof CampusesIndexRoute
@@ -171,12 +209,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/faculty': {
+      id: '/faculty'
+      path: '/faculty'
+      fullPath: '/faculty'
+      preLoaderRoute: typeof FacultyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/performance': {
+      id: '/performance'
+      path: '/performance'
+      fullPath: '/performance'
+      preLoaderRoute: typeof PerformanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sports': {
       id: '/sports'
       path: '/sports'
       fullPath: '/sports'
       preLoaderRoute: typeof SportsRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/admissions/apply': {
+      id: '/admissions/apply'
+      path: '/apply'
+      fullPath: '/admissions/apply'
+      preLoaderRoute: typeof AdmissionsApplyRouteImport
+      parentRoute: typeof AdmissionsRoute
     }
     '/campuses/': {
       id: '/campuses/'
@@ -195,12 +254,26 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AdmissionsRouteChildren {
+  AdmissionsApplyRoute: typeof AdmissionsApplyRoute
+}
+
+const AdmissionsRouteChildren: AdmissionsRouteChildren = {
+  AdmissionsApplyRoute: AdmissionsApplyRoute,
+}
+
+const AdmissionsRouteWithChildren = AdmissionsRoute._addFileChildren(
+  AdmissionsRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AcademicsRoute: AcademicsRoute,
-  AdmissionsRoute: AdmissionsRoute,
+  AdmissionsRoute: AdmissionsRouteWithChildren,
   ContactRoute: ContactRoute,
+  FacultyRoute: FacultyRoute,
+  PerformanceRoute: PerformanceRoute,
   SportsRoute: SportsRoute,
   CampusesCampusRoute: CampusesCampusRoute,
   CampusesIndexRoute: CampusesIndexRoute,

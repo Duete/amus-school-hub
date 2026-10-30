@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, FileText } from "lucide-react";
 import { PageIntro } from "@/components/school-layout";
 import { Button } from "@/components/ui/button";
 import { schoolHead } from "@/lib/school";
@@ -51,6 +51,11 @@ function Admissions() {
             confirmation.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
+            <Button asChild>
+              <Link to="/admissions/apply">
+                Start an application <FileText />
+              </Link>
+            </Button>
             <Button asChild>
               <Link to="/contact">
                 Admissions information <ArrowRight />
