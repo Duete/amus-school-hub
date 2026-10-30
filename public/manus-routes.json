@@ -9,6 +9,7 @@
     { "path": "/campuses/:campus", "title": "Campus details" },
     { "path": "/contact", "title": "Contact" },
     { "path": "/faculty", "title": "Faculty directory" },
+    { "path": "/finance", "title": "Fees and financial clearance" },
     { "path": "/performance", "title": "Student performance" },
     { "path": "/sports", "title": "Sports and student life" }
   ]

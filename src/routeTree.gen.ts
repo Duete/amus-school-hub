@@ -15,8 +15,10 @@ import { Route as AcademicsRouteImport } from './routes/academics'
 import { Route as AdmissionsRouteImport } from './routes/admissions'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FacultyRouteImport } from './routes/faculty'
+import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as PerformanceRouteImport } from './routes/performance'
 import { Route as SportsRouteImport } from './routes/sports'
+import { Route as AdmissionsIndexRouteImport } from './routes/admissions.index'
 import { Route as AdmissionsApplyRouteImport } from './routes/admissions.apply'
 import { Route as CampusesIndexRouteImport } from './routes/campuses.index'
 import { Route as CampusesCampusRouteImport } from './routes/campuses.$campus'
@@ -51,6 +53,11 @@ const FacultyRoute = FacultyRouteImport.update({
   path: '/faculty',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FinanceRoute = FinanceRouteImport.update({
+  id: '/finance',
+  path: '/finance',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PerformanceRoute = PerformanceRouteImport.update({
   id: '/performance',
   path: '/performance',
@@ -60,6 +67,11 @@ const SportsRoute = SportsRouteImport.update({
   id: '/sports',
   path: '/sports',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AdmissionsIndexRoute = AdmissionsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdmissionsRoute,
 } as any)
 const AdmissionsApplyRoute = AdmissionsApplyRouteImport.update({
   id: '/apply',
@@ -84,23 +96,26 @@ export interface FileRoutesByFullPath {
   '/admissions': typeof AdmissionsRouteWithChildren
   '/contact': typeof ContactRoute
   '/faculty': typeof FacultyRoute
+  '/finance': typeof FinanceRoute
   '/performance': typeof PerformanceRoute
   '/sports': typeof SportsRoute
   '/admissions/apply': typeof AdmissionsApplyRoute
   '/campuses/$campus': typeof CampusesCampusRoute
+  '/admissions/': typeof AdmissionsIndexRoute
   '/campuses/': typeof CampusesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/academics': typeof AcademicsRoute
-  '/admissions': typeof AdmissionsRouteWithChildren
   '/contact': typeof ContactRoute
   '/faculty': typeof FacultyRoute
+  '/finance': typeof FinanceRoute
   '/performance': typeof PerformanceRoute
   '/sports': typeof SportsRoute
   '/admissions/apply': typeof AdmissionsApplyRoute
   '/campuses/$campus': typeof CampusesCampusRoute
+  '/admissions': typeof AdmissionsIndexRoute
   '/campuses': typeof CampusesIndexRoute
 }
 export interface FileRoutesById {
@@ -111,10 +126,12 @@ export interface FileRoutesById {
   '/admissions': typeof AdmissionsRouteWithChildren
   '/contact': typeof ContactRoute
   '/faculty': typeof FacultyRoute
+  '/finance': typeof FinanceRoute
   '/performance': typeof PerformanceRoute
   '/sports': typeof SportsRoute
   '/admissions/apply': typeof AdmissionsApplyRoute
   '/campuses/$campus': typeof CampusesCampusRoute
+  '/admissions/': typeof AdmissionsIndexRoute
   '/campuses/': typeof CampusesIndexRoute
 }
 export interface FileRouteTypes {
@@ -126,23 +143,26 @@ export interface FileRouteTypes {
     | '/admissions'
     | '/contact'
     | '/faculty'
+    | '/finance'
     | '/performance'
     | '/sports'
     | '/admissions/apply'
     | '/campuses/$campus'
+    | '/admissions/'
     | '/campuses/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/academics'
-    | '/admissions'
     | '/contact'
     | '/faculty'
+    | '/finance'
     | '/performance'
     | '/sports'
     | '/admissions/apply'
     | '/campuses/$campus'
+    | '/admissions'
     | '/campuses'
   id:
     | '__root__'
@@ -152,10 +172,12 @@ export interface FileRouteTypes {
     | '/admissions'
     | '/contact'
     | '/faculty'
+    | '/finance'
     | '/performance'
     | '/sports'
     | '/admissions/apply'
     | '/campuses/$campus'
+    | '/admissions/'
     | '/campuses/'
   fileRoutesById: FileRoutesById
 }
@@ -166,6 +188,7 @@ export interface RootRouteChildren {
   AdmissionsRoute: typeof AdmissionsRouteWithChildren
   ContactRoute: typeof ContactRoute
   FacultyRoute: typeof FacultyRoute
+  FinanceRoute: typeof FinanceRoute
   PerformanceRoute: typeof PerformanceRoute
   SportsRoute: typeof SportsRoute
   CampusesCampusRoute: typeof CampusesCampusRoute
@@ -216,6 +239,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FacultyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/finance': {
+      id: '/finance'
+      path: '/finance'
+      fullPath: '/finance'
+      preLoaderRoute: typeof FinanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/performance': {
       id: '/performance'
       path: '/performance'
@@ -229,6 +259,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/sports'
       preLoaderRoute: typeof SportsRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/admissions/': {
+      id: '/admissions/'
+      path: '/'
+      fullPath: '/admissions/'
+      preLoaderRoute: typeof AdmissionsIndexRouteImport
+      parentRoute: typeof AdmissionsRoute
     }
     '/admissions/apply': {
       id: '/admissions/apply'
@@ -256,10 +293,12 @@ declare module '@tanstack/react-router' {
 
 interface AdmissionsRouteChildren {
   AdmissionsApplyRoute: typeof AdmissionsApplyRoute
+  AdmissionsIndexRoute: typeof AdmissionsIndexRoute
 }
 
 const AdmissionsRouteChildren: AdmissionsRouteChildren = {
   AdmissionsApplyRoute: AdmissionsApplyRoute,
+  AdmissionsIndexRoute: AdmissionsIndexRoute,
 }
 
 const AdmissionsRouteWithChildren = AdmissionsRoute._addFileChildren(
@@ -273,6 +312,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdmissionsRoute: AdmissionsRouteWithChildren,
   ContactRoute: ContactRoute,
   FacultyRoute: FacultyRoute,
+  FinanceRoute: FinanceRoute,
   PerformanceRoute: PerformanceRoute,
   SportsRoute: SportsRoute,
   CampusesCampusRoute: CampusesCampusRoute,

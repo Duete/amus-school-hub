@@ -9,6 +9,7 @@ const navigation = [
   { name: "Learning", to: "/academics" },
   { name: "Faculty", to: "/faculty" },
   { name: "Performance", to: "/performance" },
+  { name: "Fees & clearance", to: "/finance" },
   { name: "Sports & student life", to: "/sports" },
   { name: "Admissions", to: "/admissions" },
   { name: "Contact", to: "/contact" },
@@ -123,6 +124,7 @@ export function SchoolFooter() {
             <Link to="/academics">Learning</Link>
             <Link to="/faculty">Faculty</Link>
             <Link to="/performance">Performance</Link>
+            <Link to="/finance">Fees & clearance</Link>
             <Link to="/sports">Sports & student life</Link>
             <Link to="/admissions">Admissions</Link>
             <Link to="/contact">Contact</Link>
