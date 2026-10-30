@@ -22,7 +22,9 @@ describe("App routing", () => {
 
   it.each([
     ["/admissions/apply", "/admissions/apply"],
+    ["/login", "/login"],
     ["/performance", "/performance"],
+    ["/portal", "/portal"],
     ["/faculty", "/faculty"],
   ])("matches the %s page", (_label, path) => {
     const matches = createTestRouter().matchRoutes(path);

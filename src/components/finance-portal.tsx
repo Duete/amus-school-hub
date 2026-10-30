@@ -9,6 +9,7 @@ import {
   WalletCards,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { queueNotification, type NotificationRecord } from "@/lib/notifications";
 
 type PaymentState = "idle" | "review" | "success";
 
@@ -17,6 +18,7 @@ const account = {
   studentId: "MPS-2026-0418",
   level: "S.4 · O’level",
   campus: "Day Campus",
+  guardianEmail: "grace.nankunda@example.com",
   term: "Term 3 · 2026",
   total: 1850000,
   paid: 1200000,
@@ -36,6 +38,7 @@ export function FinancePortal() {
   const [amount, setAmount] = useState("650000");
   const [method, setMethod] = useState("Mobile money");
   const [paymentState, setPaymentState] = useState<PaymentState>("idle");
+  const [notification, setNotification] = useState<NotificationRecord | null>(null);
 
   function handleLookup(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -46,6 +49,17 @@ export function FinancePortal() {
   function handlePayment(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setPaymentState("review");
+  }
+
+  function confirmPayment() {
+    const reference = `MPS-PAY-${Date.now().toString().slice(-6)}`;
+    setPaymentState("success");
+    void queueNotification("finance.payment_submitted", {
+      recipient: account.guardianEmail,
+      learnerName: account.learner,
+      reference,
+      amount: formatAmount(Number(amount) || 0),
+    }).then(setNotification);
   }
 
   const balance = account.total - account.paid;
@@ -178,8 +192,16 @@ export function FinancePortal() {
                   <CheckCircle2 className="text-primary" size={30} />
                   <h3 className="mt-4 text-2xl">Payment request recorded</h3>
                   <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                    Reference MPS-PAY-2026-1048 is ready for reconciliation. A production gateway
-                    will complete the mobile money or card authorization.
+                    The request is ready for reconciliation. A production gateway will complete the
+                    mobile money or card authorization.
+                  </p>
+                  <p className="mt-4 rounded-sm border border-border bg-background p-4 text-sm leading-6 text-muted-foreground">
+                    <span className="font-semibold text-primary">Email notification:</span>{" "}
+                    {notification?.status === "sent"
+                      ? `sent to ${notification.recipient}`
+                      : notification?.status === "queued"
+                        ? "queued for the configured email provider"
+                        : "preview queued locally; connect an email provider to send it"}
                   </p>
                   <Button
                     className="mt-6"
@@ -197,7 +219,7 @@ export function FinancePortal() {
                     {method} · {account.learner}
                   </p>
                   <div className="mt-6 flex flex-wrap gap-3">
-                    <Button onClick={() => setPaymentState("success")}>
+                    <Button onClick={confirmPayment}>
                       Confirm payment request <CheckCircle2 />
                     </Button>
                     <Button variant="outline" onClick={() => setPaymentState("idle")}>

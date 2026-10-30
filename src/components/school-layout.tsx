@@ -1,7 +1,8 @@
 import { Link, useLocation } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowRight, BookOpen, Menu, X } from "lucide-react";
+import { ArrowRight, BookOpen, LogIn, Menu, UserCircle, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/lib/auth";
 
 const navigation = [
   { name: "Our school", to: "/about" },
@@ -18,6 +19,7 @@ const navigation = [
 export function SchoolHeader() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const { user, signOut } = useAuth();
   return (
     <>
       <div className="bg-primary text-primary-foreground">
@@ -58,11 +60,31 @@ export function SchoolHeader() {
               </Link>
             ))}
           </nav>
-          <Button asChild className="hidden lg:inline-flex">
-            <Link to="/admissions">
-              Admission enquiries <ArrowRight />
-            </Link>
-          </Button>
+          <div className="hidden items-center gap-2 lg:flex">
+            {user ? (
+              <>
+                <Button asChild variant="outline" size="sm">
+                  <Link to="/portal">
+                    <UserCircle /> {user.name.split(" ")[0]}
+                  </Link>
+                </Button>
+                <Button variant="ghost" size="sm" onClick={signOut}>
+                  Sign out
+                </Button>
+              </>
+            ) : (
+              <Button asChild variant="outline" size="sm">
+                <Link to="/login">
+                  <LogIn /> Sign in
+                </Link>
+              </Button>
+            )}
+            <Button asChild>
+              <Link to="/admissions">
+                Admission enquiries <ArrowRight />
+              </Link>
+            </Button>
+          </div>
           <Button
             className="xl:hidden"
             variant="ghost"
@@ -101,6 +123,35 @@ export function SchoolHeader() {
             >
               Visit & contact
             </Link>
+            {user ? (
+              <>
+                <Link
+                  to="/portal"
+                  onClick={() => setOpen(false)}
+                  className="border-b border-border py-3 text-sm font-semibold"
+                >
+                  My portal · {user.name.split(" ")[0]}
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => {
+                    signOut();
+                    setOpen(false);
+                  }}
+                  className="py-3 text-left text-sm font-semibold"
+                >
+                  Sign out
+                </button>
+              </>
+            ) : (
+              <Link
+                to="/login"
+                onClick={() => setOpen(false)}
+                className="py-3 text-sm font-semibold"
+              >
+                Sign in
+              </Link>
+            )}
           </nav>
         )}
       </header>

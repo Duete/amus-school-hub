@@ -16,7 +16,9 @@ import { Route as AdmissionsRouteImport } from './routes/admissions'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FacultyRouteImport } from './routes/faculty'
 import { Route as FinanceRouteImport } from './routes/finance'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as PerformanceRouteImport } from './routes/performance'
+import { Route as PortalRouteImport } from './routes/portal'
 import { Route as SportsRouteImport } from './routes/sports'
 import { Route as AdmissionsIndexRouteImport } from './routes/admissions.index'
 import { Route as AdmissionsApplyRouteImport } from './routes/admissions.apply'
@@ -58,9 +60,19 @@ const FinanceRoute = FinanceRouteImport.update({
   path: '/finance',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PerformanceRoute = PerformanceRouteImport.update({
   id: '/performance',
   path: '/performance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortalRoute = PortalRouteImport.update({
+  id: '/portal',
+  path: '/portal',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SportsRoute = SportsRouteImport.update({
@@ -97,7 +109,9 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/faculty': typeof FacultyRoute
   '/finance': typeof FinanceRoute
+  '/login': typeof LoginRoute
   '/performance': typeof PerformanceRoute
+  '/portal': typeof PortalRoute
   '/sports': typeof SportsRoute
   '/admissions/apply': typeof AdmissionsApplyRoute
   '/campuses/$campus': typeof CampusesCampusRoute
@@ -111,7 +125,9 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/faculty': typeof FacultyRoute
   '/finance': typeof FinanceRoute
+  '/login': typeof LoginRoute
   '/performance': typeof PerformanceRoute
+  '/portal': typeof PortalRoute
   '/sports': typeof SportsRoute
   '/admissions/apply': typeof AdmissionsApplyRoute
   '/campuses/$campus': typeof CampusesCampusRoute
@@ -127,7 +143,9 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/faculty': typeof FacultyRoute
   '/finance': typeof FinanceRoute
+  '/login': typeof LoginRoute
   '/performance': typeof PerformanceRoute
+  '/portal': typeof PortalRoute
   '/sports': typeof SportsRoute
   '/admissions/apply': typeof AdmissionsApplyRoute
   '/campuses/$campus': typeof CampusesCampusRoute
@@ -144,7 +162,9 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faculty'
     | '/finance'
+    | '/login'
     | '/performance'
+    | '/portal'
     | '/sports'
     | '/admissions/apply'
     | '/campuses/$campus'
@@ -158,7 +178,9 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faculty'
     | '/finance'
+    | '/login'
     | '/performance'
+    | '/portal'
     | '/sports'
     | '/admissions/apply'
     | '/campuses/$campus'
@@ -173,7 +195,9 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faculty'
     | '/finance'
+    | '/login'
     | '/performance'
+    | '/portal'
     | '/sports'
     | '/admissions/apply'
     | '/campuses/$campus'
@@ -189,7 +213,9 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   FacultyRoute: typeof FacultyRoute
   FinanceRoute: typeof FinanceRoute
+  LoginRoute: typeof LoginRoute
   PerformanceRoute: typeof PerformanceRoute
+  PortalRoute: typeof PortalRoute
   SportsRoute: typeof SportsRoute
   CampusesCampusRoute: typeof CampusesCampusRoute
   CampusesIndexRoute: typeof CampusesIndexRoute
@@ -246,11 +272,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FinanceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/performance': {
       id: '/performance'
       path: '/performance'
       fullPath: '/performance'
       preLoaderRoute: typeof PerformanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portal': {
+      id: '/portal'
+      path: '/portal'
+      fullPath: '/portal'
+      preLoaderRoute: typeof PortalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sports': {
@@ -313,7 +353,9 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   FacultyRoute: FacultyRoute,
   FinanceRoute: FinanceRoute,
+  LoginRoute: LoginRoute,
   PerformanceRoute: PerformanceRoute,
+  PortalRoute: PortalRoute,
   SportsRoute: SportsRoute,
   CampusesCampusRoute: CampusesCampusRoute,
   CampusesIndexRoute: CampusesIndexRoute,

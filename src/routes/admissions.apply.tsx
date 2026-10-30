@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight, CheckCircle2, FileText, ShieldCheck } from "luci
 import { useState, type FormEvent } from "react";
 import { PageIntro } from "@/components/school-layout";
 import { Button } from "@/components/ui/button";
+import { queueNotification, type NotificationRecord } from "@/lib/notifications";
 import { schoolHead } from "@/lib/school";
 
 export const Route = createFileRoute("/admissions/apply")({
@@ -16,10 +17,18 @@ export const Route = createFileRoute("/admissions/apply")({
 
 function ApplyForAdmission() {
   const [submitted, setSubmitted] = useState(false);
+  const [notification, setNotification] = useState<NotificationRecord | null>(null);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const reference = `MPS-APP-${Date.now().toString().slice(-6)}`;
     setSubmitted(true);
+    void queueNotification("admissions.application_submitted", {
+      recipient: String(formData.get("email") ?? "admissions@mbaleprogressive.sc.ug"),
+      learnerName: String(formData.get("studentName") ?? "the learner"),
+      reference,
+    }).then(setNotification);
   }
 
   if (submitted) {
@@ -39,6 +48,14 @@ function ApplyForAdmission() {
             <p className="mt-4 leading-7 text-muted-foreground">
               This prototype confirms the form locally. It does not send personal information to the
               school until a secure admissions connection is configured.
+            </p>
+            <p className="mt-4 rounded-sm border border-border bg-background p-4 text-sm leading-6 text-muted-foreground">
+              <span className="font-semibold text-primary">Email notification:</span>{" "}
+              {notification?.status === "sent"
+                ? `sent to ${notification.recipient}`
+                : notification?.status === "queued"
+                  ? "queued for the configured email provider"
+                  : "preview queued locally; connect an email provider to send it"}
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild>

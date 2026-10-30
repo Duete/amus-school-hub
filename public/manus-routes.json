@@ -10,7 +10,9 @@
     { "path": "/contact", "title": "Contact" },
     { "path": "/faculty", "title": "Faculty directory" },
     { "path": "/finance", "title": "Fees and financial clearance" },
+    { "path": "/login", "title": "Sign in" },
     { "path": "/performance", "title": "Student performance" },
+    { "path": "/portal", "title": "My portal" },
     { "path": "/sports", "title": "Sports and student life" }
   ]
 }

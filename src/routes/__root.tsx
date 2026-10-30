@@ -11,6 +11,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import { SchoolHeader, SchoolFooter } from "@/components/school-layout";
+import { AuthProvider } from "@/lib/auth";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -130,12 +131,14 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <SchoolHeader />
-      <main>
-        <Outlet />
-      </main>
-      <SchoolFooter />
+      <AuthProvider>
+        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+        <SchoolHeader />
+        <main>
+          <Outlet />
+        </main>
+        <SchoolFooter />
+      </AuthProvider>
     </QueryClientProvider>
   );
 }
