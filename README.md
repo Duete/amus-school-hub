@@ -28,3 +28,7 @@ npm run dev
 The `/login` and `/portal` routes provide preview role-based access for students, teachers, and administrators. The preview accounts are shown in the sign-in interface and are intentionally stored only in the client demo; replace them with a server-side identity provider, hashed credentials, secure sessions, and database-backed role assignments before production use.
 
 Successful admissions submissions and fee payment requests create notification records through `src/lib/notifications.ts`. Set `VITE_EMAIL_NOTIFICATION_ENDPOINT` to a trusted server-side email adapter to dispatch those events through the school’s email provider. The browser must not hold provider API keys, and the current default is an explicit local preview queue.
+
+## Database integration
+
+The persistent-storage blueprint is documented in [`docs/database-integration-plan.md`](docs/database-integration-plan.md), with a PostgreSQL-compatible schema in [`database/schema.sql`](database/schema.sql). The plan intentionally does not connect a live database or migrate preview accounts until the provider, data-retention policy, and production identity/payment services are approved.
