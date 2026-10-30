@@ -1,0 +1,12 @@
+{
+  "routes": [
+    { "path": "/", "title": "Mbale Progressive Secondary School" },
+    { "path": "/about", "title": "Our school" },
+    { "path": "/academics", "title": "Academics" },
+    { "path": "/admissions", "title": "Admissions" },
+    { "path": "/campuses", "title": "Our campuses" },
+    { "path": "/campuses/:campus", "title": "Campus details" },
+    { "path": "/contact", "title": "Contact" },
+    { "path": "/sports", "title": "Sports and student life" }
+  ]
+}
