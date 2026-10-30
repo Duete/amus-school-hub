@@ -1,6 +1,42 @@
-import { createFileRoute } from '@tanstack/react-router';
-import { BookOpen, FlaskConical, Palette, Trophy } from 'lucide-react';
-import { PageIntro } from '@/components/school-layout';
-import { schoolHead } from '@/lib/school';
-export const Route = createFileRoute('/academics')({ head: () => schoolHead('Academics & student life', 'Explore Greenwood College’s approach to learning, creativity, sport, and character.'), component: Academics });
-function Academics() { return <><PageIntro eyebrow="ACADEMICS & STUDENT LIFE" title="Curiosity belongs in every classroom.">A balanced education that connects thoughtful academic learning with the skills and experiences that matter beyond school.</PageIntro><section className="site-width grid gap-x-16 gap-y-12 py-16 md:grid-cols-2">{[{ icon: BookOpen, title: 'Academic learning', text: 'Strong foundations in languages, mathematics, and the humanities, with an emphasis on questioning, understanding, and independent thought.' }, { icon: FlaskConical, title: 'Science & discovery', text: 'Practical exploration encourages students to investigate ideas, work together, and connect what they learn to everyday life.' }, { icon: Palette, title: 'Creative expression', text: 'Art, music, and creative activities make room for imagination, confidence, and individual voices.' }, { icon: Trophy, title: 'Sport & community', text: 'Teamwork, healthy activity, student leadership, and service help young people grow in confidence and character.' }].map(({ icon: Icon, title, text }) => <div key={title}><Icon size={32} className="text-primary" strokeWidth={1.5} /><h2 className="mt-4 text-2xl">{title}</h2><p className="mt-4 leading-7 text-muted-foreground">{text}</p></div>)}</section></>; }
+import { createFileRoute } from "@tanstack/react-router";
+import { PageIntro } from "@/components/school-layout";
+import { schoolHead } from "@/lib/school";
+export const Route = createFileRoute("/academics")({
+  head: () =>
+    schoolHead(
+      "Academics",
+      "Learn about UCE/O-Level and UACE/A-Level pathways at Mbale Progressive Secondary School.",
+    ),
+  component: Academics,
+});
+function Academics() {
+  return (
+    <>
+      <PageIntro eyebrow="ACADEMICS" title="Two stages of secondary education.">
+        Mbale Progressive Secondary School offers O-Level studies leading to UCE, followed by
+        A-Level studies leading to UACE.
+      </PageIntro>
+      <section className="site-width grid gap-x-16 gap-y-12 py-16 md:grid-cols-2">
+        {[
+          {
+            title: "O-Level · UCE",
+            text: "The O-Level pathway leads to the Uganda Certificate of Education (UCE).",
+          },
+          {
+            title: "A-Level · UACE",
+            text: "The A-Level pathway leads to the Uganda Advanced Certificate of Education (UACE).",
+          },
+        ].map(({ title, text }) => (
+          <div key={title}>
+            <h2 className="text-2xl">{title}</h2>
+            <p className="mt-4 leading-7 text-muted-foreground">{text}</p>
+          </div>
+        ))}
+        <p className="leading-7 text-muted-foreground md:col-span-2">
+          Subject offerings and A-Level combinations can change; confirm current options directly
+          with the school.
+        </p>
+      </section>
+    </>
+  );
+}

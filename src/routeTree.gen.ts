@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AcademicsRouteImport } from './routes/academics'
 import { Route as AdmissionsRouteImport } from './routes/admissions'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as SportsRouteImport } from './routes/sports'
 import { Route as CampusesIndexRouteImport } from './routes/campuses.index'
 import { Route as CampusesCampusRouteImport } from './routes/campuses.$campus'
 
@@ -42,6 +43,11 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SportsRoute = SportsRouteImport.update({
+  id: '/sports',
+  path: '/sports',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CampusesIndexRoute = CampusesIndexRouteImport.update({
   id: '/campuses/',
   path: '/campuses/',
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/academics': typeof AcademicsRoute
   '/admissions': typeof AdmissionsRoute
   '/contact': typeof ContactRoute
+  '/sports': typeof SportsRoute
   '/campuses/$campus': typeof CampusesCampusRoute
   '/campuses/': typeof CampusesIndexRoute
 }
@@ -68,6 +75,7 @@ export interface FileRoutesByTo {
   '/academics': typeof AcademicsRoute
   '/admissions': typeof AdmissionsRoute
   '/contact': typeof ContactRoute
+  '/sports': typeof SportsRoute
   '/campuses/$campus': typeof CampusesCampusRoute
   '/campuses': typeof CampusesIndexRoute
 }
@@ -78,6 +86,7 @@ export interface FileRoutesById {
   '/academics': typeof AcademicsRoute
   '/admissions': typeof AdmissionsRoute
   '/contact': typeof ContactRoute
+  '/sports': typeof SportsRoute
   '/campuses/$campus': typeof CampusesCampusRoute
   '/campuses/': typeof CampusesIndexRoute
 }
@@ -89,6 +98,7 @@ export interface FileRouteTypes {
     | '/academics'
     | '/admissions'
     | '/contact'
+    | '/sports'
     | '/campuses/$campus'
     | '/campuses/'
   fileRoutesByTo: FileRoutesByTo
@@ -98,6 +108,7 @@ export interface FileRouteTypes {
     | '/academics'
     | '/admissions'
     | '/contact'
+    | '/sports'
     | '/campuses/$campus'
     | '/campuses'
   id:
@@ -107,6 +118,7 @@ export interface FileRouteTypes {
     | '/academics'
     | '/admissions'
     | '/contact'
+    | '/sports'
     | '/campuses/$campus'
     | '/campuses/'
   fileRoutesById: FileRoutesById
@@ -117,6 +129,7 @@ export interface RootRouteChildren {
   AcademicsRoute: typeof AcademicsRoute
   AdmissionsRoute: typeof AdmissionsRoute
   ContactRoute: typeof ContactRoute
+  SportsRoute: typeof SportsRoute
   CampusesCampusRoute: typeof CampusesCampusRoute
   CampusesIndexRoute: typeof CampusesIndexRoute
 }
@@ -158,6 +171,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sports': {
+      id: '/sports'
+      path: '/sports'
+      fullPath: '/sports'
+      preLoaderRoute: typeof SportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/campuses/': {
       id: '/campuses/'
       path: '/campuses'
@@ -181,6 +201,7 @@ const rootRouteChildren: RootRouteChildren = {
   AcademicsRoute: AcademicsRoute,
   AdmissionsRoute: AdmissionsRoute,
   ContactRoute: ContactRoute,
+  SportsRoute: SportsRoute,
   CampusesCampusRoute: CampusesCampusRoute,
   CampusesIndexRoute: CampusesIndexRoute,
 }
