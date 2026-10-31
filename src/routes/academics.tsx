@@ -21,51 +21,48 @@ export const Route = createFileRoute("/academics")({
   component: Academics,
 });
 
-const oLevelSubjects = [
-  "English Language",
-  "Mathematics",
+const oLevelCompulsorySubjects = [
   "Biology",
   "Chemistry",
+  "Mathematics",
   "Physics",
+  "English",
+  "History and Political Education",
   "Geography",
-  "History",
+];
+
+const oLevelElectiveSubjects = [
+  "Agriculture",
+  "Art and Design",
   "Christian Religious Education",
   "Islamic Religious Education",
   "Entrepreneurship",
-  "Agriculture",
   "Information and Communication Technology",
-  "Fine Art",
-  "Music",
-  "Physical Education",
-  "Literature in English",
+  "Local Languages",
   "Kiswahili",
-  "French",
-  "Luganda",
-  "Local Language",
-  "Technology and Design",
-  "Nutrition and Food Technology",
+  "Literature",
+  "Physical Education",
 ];
 
-const aLevelSubjects = [
-  "General Paper",
+const aLevelPrincipalSubjects = [
+  "Biology",
+  "Chemistry",
   "Mathematics",
   "Physics",
-  "Chemistry",
-  "Biology",
-  "Geography",
   "History",
-  "Economics",
-  "Entrepreneurship",
-  "Agriculture",
-  "Computer Studies",
-  "Information and Communication Technology",
-  "Art",
-  "Literature in English",
-  "Divinity",
-  "French",
+  "Geography",
+  "Literature",
+  "Christian Religious Education",
+  "Local Languages",
   "Kiswahili",
-  "Technical Drawing",
+  "Fine Art",
+  "Entrepreneurship",
+  "Islamic Religious Education",
+  "Agriculture",
+  "Economics",
 ];
+
+const aLevelSubsidiarySubjects = ["General Paper", "Subsidiary Mathematics", "Subsidiary ICT"];
 
 const oLevelPrinciples = [
   [
@@ -146,20 +143,31 @@ function SubjectList({ subjects }: { subjects: string[] }) {
   );
 }
 
+function SubjectGroup({ title, subjects }: { title: string; subjects: string[] }) {
+  return (
+    <div>
+      <h4 className="mb-4 text-xl text-foreground">{title}</h4>
+      <SubjectList subjects={subjects} />
+    </div>
+  );
+}
+
 function Academics() {
   return (
     <>
       <PageIntro eyebrow="ACADEMICS" title="Learning with purpose, from UCE to UACE.">
         Mbale Progressive Secondary School offers two connected stages of secondary education. Our
         O’level programme builds a broad foundation, while A’level helps learners deepen their
-        strengths and prepare for life beyond school.
+        strengths and prepare for life beyond school. The school community has a total population of
+        over 1,500 students, with more than 400 UCE and 300 UACE candidates completing their courses
+        each year.
       </PageIntro>
 
       <section className="site-width grid gap-10 py-14 md:grid-cols-4 md:gap-8 md:py-16">
-        <Stat value="20+" label="O’level subjects of study" icon={BookOpen} />
-        <Stat value="800" label="O’level learners enrolled" icon={GraduationCap} />
-        <Stat value="17+" label="A’level subjects of study" icon={Lightbulb} />
-        <Stat value="400" label="A’level learners enrolled" icon={Users} />
+        <Stat value="1,500+" label="students in the school community" icon={Users} />
+        <Stat value="400+" label="UCE candidates each year" icon={GraduationCap} />
+        <Stat value="300+" label="UACE candidates each year" icon={Lightbulb} />
+        <Stat value="17+ / 15+" label="UCE / UACE subject areas" icon={BookOpen} />
       </section>
 
       <main className="border-t border-border">
@@ -188,8 +196,8 @@ function Academics() {
                   <Scale className="text-primary" size={22} />
                   <p className="mt-4 font-display text-2xl text-primary">Balanced choice</p>
                   <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                    More than 20 subjects give learners room to explore academic, creative,
-                    technical, and practical strengths.
+                    More than 17 subject areas give learners room to explore academic, creative,
+                    practical, and personal strengths.
                   </p>
                 </div>
               </div>
@@ -249,7 +257,10 @@ function Academics() {
                 Subject choices can be guided by learner interests, strengths, and future plans.
               </p>
             </div>
-            <SubjectList subjects={oLevelSubjects} />
+            <div className="grid gap-10 lg:grid-cols-2">
+              <SubjectGroup title="Compulsory subjects" subjects={oLevelCompulsorySubjects} />
+              <SubjectGroup title="Elective subjects" subjects={oLevelElectiveSubjects} />
+            </div>
           </div>
         </section>
 
@@ -268,16 +279,18 @@ function Academics() {
                 </p>
                 <div className="mt-8 grid gap-4 sm:grid-cols-3">
                   <div className="bg-background p-5">
-                    <p className="font-display text-3xl text-primary">400</p>
-                    <p className="mt-1 text-sm text-muted-foreground">learners enrolled</p>
+                    <p className="font-display text-3xl text-primary">300+</p>
+                    <p className="mt-1 text-sm text-muted-foreground">UACE candidates each year</p>
                   </div>
                   <div className="bg-background p-5">
                     <p className="font-display text-3xl text-primary">40:1</p>
                     <p className="mt-1 text-sm text-muted-foreground">student-to-teacher ratio</p>
                   </div>
                   <div className="bg-background p-5">
-                    <p className="font-display text-3xl text-primary">17+</p>
-                    <p className="mt-1 text-sm text-muted-foreground">subjects of study</p>
+                    <p className="font-display text-3xl text-primary">15+</p>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      principal and subsidiary subjects
+                    </p>
                   </div>
                 </div>
               </div>
@@ -308,7 +321,10 @@ function Academics() {
                   entrepreneurial ambitions.
                 </p>
               </div>
-              <SubjectList subjects={aLevelSubjects} />
+              <div className="grid gap-10 lg:grid-cols-[1.35fr_0.65fr]">
+                <SubjectGroup title="Principal subjects" subjects={aLevelPrincipalSubjects} />
+                <SubjectGroup title="Subsidiary subjects" subjects={aLevelSubsidiarySubjects} />
+              </div>
             </div>
           </div>
         </section>
