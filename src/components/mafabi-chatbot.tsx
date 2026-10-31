@@ -73,14 +73,14 @@ function answerFor(message: string, pathname: string) {
     return "Mbale Progressive Secondary School is a mixed day and boarding school in Mbale City, Uganda. It was established in 1993 and serves more than 1,500 learners from S.1 through UACE. The Day Campus is on Nyanza Road near Namatala; Mbale Progressive Annex is the boarding campus. The school motto is ‘The Love of Education Brought Us Here.’ The footer taglines are ‘We Unlock the Future’ and ‘The Temple of Knowledge.’";
   }
   if (query.includes("football") || query.includes("soccer")) {
-    return "Mbale Progressive represented the Bugisu Region at the 2026 National Boys’ Football Championship in Lira, held from 10 to 20 May. The team reached the Round of 16 and finished 14th nationally. Open the Sports & debate page for the full football article.";
+    return "Mbale Progressive’s football legacy grew from sports bursaries and local training in the Bugisu region. In the 2016 Mbale District Copa Qualifiers, the boys beat Nkoma SS 4–3 on penalties and the girls beat Mbale Comprehensive 2–0 to win both district trophies. The boys later beat Nyamitanga SS 3–2 at the 2022 National Championship. In 2026, Progressive drew 1–1 with Kisozi Seed, beat Ssaku SS 2–0, defeated Masindi SS 5–4 on penalties in the Round of 32, and reached the Round of 16 before a 4–2 shootout defeat to London College Nansana. The team finished 14th nationally. Open Sports & debate for the full history and scouting invitation for the boys’ and girls’ squads.";
   }
   if (
     query.includes("table tennis") ||
     query.includes("ping pong") ||
     query.includes("ping-pong")
   ) {
-    return "Mbale Progressive has a strong table-tennis record. A 2016 Kawowo report says the school won the women’s team event at the Kenya Thika Open International Table Tennis event, with Halima Nambozo retaining the women’s singles title and helping the team beat Mbale Tigers 3–2. The Sports & debate page links the report and a public NTV Uganda event video.";
+    return "Mbale Progressive’s table-tennis rise began around 2013 with talent development linked to Mbale Tigers Table Tennis Club. In 2016, the school won the women’s team event at the Kenya Thika Open, where Halima Nambozo retained the singles title and helped the team beat Mbale Tigers 3–2. Later that year, Captain Brian Bineni led the boys to the Kateregga Memorial Schools Championship title after wins over Kakungulu Memorial and defending champions Mbogo College. Sports scholarships and talent pathways have supported the programme since then, with training every evening after classes in the indoor sports hall. Open Sports & debate for the full feature and source links.";
   }
   if (query.includes("debate") || query.includes("debating") || query.includes("orator")) {
     return "In 2025/2026, the Debate Society reached the national knockout rounds at the NIRA National Schools Debate Championship, finished First Runners-Up at the fourth 93.1 IUIU FM Inter-School Debate Championship, and performed strongly at the Mbale District UNSA Debate Championship. The News page includes public event links, including the IUIU FM championship video.";
@@ -112,7 +112,7 @@ function answerFor(message: string, pathname: string) {
     return "The Faculty page lists subject heads, teachers, and activity leadership across O-Level and A-Level. For a named subject lead or teacher, open Faculty and search the directory rather than relying on a general chat answer.";
   }
   if (query.includes("location") || query.includes("address") || query.includes("office")) {
-    return "The Day Campus is on Nyanza Road near Namatala in Mbale City. Mbale Progressive Annex is the boarding campus. The usual office window is Monday to Friday, 08:00–17:00. Confirm term, holiday, and visitation arrangements before travelling.";
+    return "The Day Campus is on Nyanza Road near Namatala in Mbale City. Mbale Progressive Annex is the boarding campus. The usual office window is Monday to Saturday, 08:00–17:00. Confirm term, holiday, and visitation arrangements before travelling.";
   }
   if (query.includes("health") || query.includes("sick") || query.includes("clinic")) {
     return "Health services are for Boarding students. They provide everyday wellbeing and illness support, with referral arrangements when care beyond school is needed. Families should confirm current clinic hours and emergency procedures with the Boarding office.";
@@ -149,7 +149,7 @@ function answerFor(message: string, pathname: string) {
     return "For fee clearance, open Fees & clearance, enter the learner ID, review the statement and outstanding balance, then create a payment request. Keep the payment reference for follow-up. The portal is currently a preview until the PostgreSQL API and verified payment gateway are connected.";
   }
   if (query.includes("hours") || query.includes("open")) {
-    return "The school information strip lists the usual office window as Monday to Friday, 08:00–17:00. Please confirm holiday and term-time arrangements before visiting.";
+    return "The school information strip lists the usual office window as Monday to Saturday, 08:00–17:00. Please confirm holiday and term-time arrangements before visiting.";
   }
   return "I’m Mafabi, the Mbale Progressive School Hub assistant. I can explain the page you are viewing, school history and locations, UCE/UACE subjects, admissions, fees, scholarships, governance, faculty, houses, clubs, faith associations, football, debate, table tennis, and boarding health services.";
 }

@@ -169,12 +169,23 @@ function News() {
         </div>
         <div className="mt-8 grid gap-8 lg:grid-cols-2">
           <article className="border-l-2 border-secondary pl-6">
-            <p className="eyebrow text-primary">FOOTBALL · MAY 2026</p>
-            <h3 className="mt-3 text-2xl md:text-3xl">Progressive finishes 14th nationally</h3>
+            <p className="eyebrow text-primary">FOOTBALL · HISTORY & MAY 2026</p>
+            <h3 className="mt-3 text-2xl md:text-3xl">
+              Pitch Perfect: The Golden Legacy of Mbale Progressive Football
+            </h3>
             <p className="mt-4 leading-7 text-muted-foreground">
-              Mbale Progressive represented Bugisu Region at the 2026 National Boys’ Football
-              Championship in Lira from 10 to 20 May. The team reached the Round of 16 and finished
-              14th in the country among the leading secondary-school football teams.
+              Sports bursaries and local training grounds laid the foundation for the boys’ and
+              girls’ programmes before 2013. In the 2016 Mbale District Copa Qualifiers, the boys
+              beat Nkoma SS 4–3 on penalties and the girls beat Mbale Comprehensive 2–0 at Mbale
+              Municipal Stadium to sweep both district trophies. The boys later recorded a 3–2
+              National Championship win over Nyamitanga SS in 2022.
+            </p>
+            <p className="mt-3 leading-7 text-muted-foreground">
+              The 2026 USSSA National Boys Football Championship in Lira brought the school’s most
+              dramatic run yet. Progressive drew 1–1 with Kisozi Seed, beat Ssaku SS 2–0, then
+              defeated Masindi SS 5–4 on penalties after a goalless Round of 32 match. The run ended
+              against London College Nansana in the Round of 16 after a 4–2 shootout defeat, leaving
+              the team among the top 16 schools nationally and ranked 14th in the country.
             </p>
             <Link
               to="/sports"
@@ -184,12 +195,29 @@ function News() {
             </Link>
           </article>
           <article className="border-l-2 border-secondary pl-6">
-            <p className="eyebrow text-primary">TABLE TENNIS · ARCHIVE</p>
-            <h3 className="mt-3 text-2xl md:text-3xl">From Mbale to the Thika Open</h3>
+            <p className="eyebrow text-primary">TABLE TENNIS · NEWS FEATURE</p>
+            <h3 className="mt-3 text-2xl md:text-3xl">
+              From Grassroots to Giants: The Unstoppable Rise of Mbale Progressive Table Tennis
+            </h3>
             <p className="mt-4 leading-7 text-muted-foreground">
-              A 2016 Kawowo report records Mbale Progressive winning the women’s team event at the
-              Kenya Thika Open International Table Tennis event. Halima Nambozo retained the singles
+              From foundations built with Mbale Tigers Table Tennis Club around 2013–2015 to
+              national and international school stages, Progressive athletes have grown from local
+              contenders into champions. The 2016 Kenya Thika Open brought a breakthrough: Mbale
+              Progressive won the women’s team event, while Halima Nambozo retained the singles
               title and helped the team beat Mbale Tigers 3–2.
+            </p>
+            <p className="mt-3 leading-7 text-muted-foreground">
+              Later that year, Captain Brian Bineni led the boys at the Kateregga Memorial Schools
+              Championship at MTN Arena-Lugogo. The team beat Kakungulu Memorial 3–1 in the
+              semi-final and dethroned defending champions Mbogo College in the grand finale to lift
+              the overall Boys’ Team Trophy. Since 2017, sports scholarships and talent pathways
+              have helped learners balance serious training with demanding academics, while the team
+              continues to feature in the Fresh Dairy Secondary School Games, regional opens, and
+              the Mbale Schools Table Tennis Championship.
+            </p>
+            <p className="mt-3 leading-7 text-muted-foreground">
+              Training runs every evening after classes in the indoor sports hall. Pick up a racket
+              and join the legacy.
             </p>
             <a
               href="https://kawowo.com/2016/05/04/uganda-table-tennis-players-impress-at-thika-tourney/"

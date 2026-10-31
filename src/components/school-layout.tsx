@@ -53,7 +53,7 @@ const schoolHighlights = [
     value: "UCE/UACE pathways · campus life · school leadership",
     to: "/news",
   },
-  { label: "Office hours", value: "Monday–Friday · 08:00–17:00" },
+  { label: "Office hours", value: "Monday–Saturday · 08:00–17:00" },
   { label: "Visitation day", value: "Saturday · confirm the current schedule before travelling" },
 ] as const;
 
