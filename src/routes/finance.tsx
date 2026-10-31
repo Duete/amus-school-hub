@@ -19,9 +19,9 @@ function Finance() {
         Use the finance portal to view a learner statement, review the outstanding balance, request
         an online payment, and understand clearance status before the next school milestone.
       </PageIntro>
-      <main className="site-width py-16 md:py-20">
+      <div className="site-width py-16 md:py-20">
         <FinancePortal />
-      </main>
+      </div>
     </>
   );
 }

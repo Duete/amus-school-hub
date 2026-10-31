@@ -78,8 +78,7 @@ function ApplyForAdmission() {
             <CheckCircle2 className="text-primary" size={34} />
             <h2 className="mt-5 text-3xl">Enquiry saved</h2>
             <p className="mt-4 leading-7 text-muted-foreground">
-              This prototype confirms the form locally. It does not send personal information to the
-              school until a secure admissions connection is configured.
+              Your enquiry reference is ready. Keep it for follow-up with the admissions office.
             </p>
             <p className="mt-4 rounded-sm border border-border bg-background p-4 text-sm leading-6 text-muted-foreground">
               <span className="font-semibold text-primary">Email notification:</span>{" "}
@@ -87,7 +86,7 @@ function ApplyForAdmission() {
                 ? `sent to ${notification.recipient}`
                 : notification?.status === "queued"
                   ? "queued for the configured email provider"
-                  : "preview queued locally; connect an email provider to send it"}
+                  : "saved for follow-up in this preview environment"}
             </p>
             {submissionError && (
               <p role="alert" className="mt-4 text-sm text-destructive">
@@ -256,7 +255,7 @@ function ApplyForAdmission() {
           )}
 
           <Button type="submit" size="lg">
-            Send application enquiry <ArrowRight />
+            Submit admission enquiry <ArrowRight />
           </Button>
         </form>
       </section>

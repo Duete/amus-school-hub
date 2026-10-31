@@ -60,16 +60,24 @@ const schoolHighlights = [
 function SchoolHighlightsMarquee() {
   const items = [...schoolHighlights, ...schoolHighlights];
   return (
-    <div className="sticky top-0 z-40 overflow-hidden border-b border-primary-foreground/15 bg-primary text-primary-foreground">
+    <aside
+      className="sticky top-0 z-40 overflow-hidden border-b border-primary-foreground/15 bg-primary text-primary-foreground"
+      aria-label="School information"
+    >
       <div className="marquee-track flex min-w-max gap-10 whitespace-nowrap py-2 text-xs">
         {items.map((item, index) => (
-          <span key={`${item.label}-${index}`} className="inline-flex items-center gap-2">
+          <span
+            key={`${item.label}-${index}`}
+            className="inline-flex items-center gap-2"
+            aria-hidden={index >= schoolHighlights.length}
+          >
             <span className="font-bold uppercase tracking-[0.14em] text-secondary">
               {item.label}
             </span>
             {"to" in item ? (
               <Link
                 to={item.to}
+                tabIndex={index >= schoolHighlights.length ? -1 : undefined}
                 className="underline decoration-primary-foreground/40 underline-offset-4 hover:text-secondary"
               >
                 {item.value}
@@ -83,7 +91,7 @@ function SchoolHighlightsMarquee() {
           </span>
         ))}
       </div>
-    </div>
+    </aside>
   );
 }
 
@@ -174,7 +182,7 @@ export function SchoolHeader() {
               ),
             )}
           </nav>
-          <div className="hidden items-center gap-2 lg:flex">
+          <div className="hidden items-center gap-2 2xl:flex">
             {user ? (
               <>
                 <Button asChild variant="outline" size="sm">
@@ -195,7 +203,7 @@ export function SchoolHeader() {
             )}
             <Button asChild>
               <Link to="/admissions">
-                Admission enquiries <ArrowRight />
+                Ask about admission <ArrowRight />
               </Link>
             </Button>
           </div>
@@ -342,11 +350,14 @@ export function PageIntro({
   title: string;
   children: React.ReactNode;
 }) {
+  const headingId = `${title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-heading`;
   return (
-    <section className="bg-muted py-16 md:py-20">
+    <section className="bg-muted py-16 md:py-20" aria-labelledby={headingId}>
       <div className="site-width">
         <p className="eyebrow text-primary">{eyebrow}</p>
-        <h1 className="mt-4 max-w-3xl text-4xl leading-tight md:text-5xl">{title}</h1>
+        <h1 id={headingId} className="mt-4 max-w-3xl text-4xl leading-tight md:text-5xl">
+          {title}
+        </h1>
         <div className="mt-5 max-w-2xl text-base leading-7 text-muted-foreground">{children}</div>
       </div>
     </section>

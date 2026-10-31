@@ -244,8 +244,8 @@
     width: calc(100% - 40px);
   }
   .school-hero {
-    height: 580px;
-    min-height: 0;
+    height: auto;
+    min-height: 680px;
   }
   .hero-image {
     inset: 0;
@@ -279,6 +279,10 @@
 
 .marquee-track {
   animation: marquee 36s linear infinite;
+}
+
+aside[aria-label="School information"] {
+  overflow-x: clip;
 }
 
 @media (prefers-reduced-motion: reduce) {

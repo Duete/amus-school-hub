@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageIntro } from "@/components/school-layout";
 import { Button } from "@/components/ui/button";
 import { schoolHead } from "@/lib/school";
-import schoolLife from "@/assets/school-life.jpg";
+import schoolLife from "@/assets/school-life.webp";
 export const Route = createFileRoute("/about")({
   head: () =>
     schoolHead(
@@ -23,14 +23,14 @@ function About() {
         <figure>
           <img
             src={schoolLife}
-            alt="Illustrative school-life image"
+            alt="Students during a school-life activity"
             width={1920}
             height={1024}
             loading="lazy"
             className="aspect-[4/3] w-full rounded-md object-cover"
           />
           <figcaption className="mt-2 text-xs text-muted-foreground">
-            Illustrative image, not a documentary photograph of the school.
+            Representative school-life image.
           </figcaption>
         </figure>
         <div>
@@ -45,7 +45,7 @@ function About() {
             Mbale Progressive Annex.
           </p>
           <Button asChild className="mt-6">
-            <Link to="/campuses">Explore our campuses</Link>
+            <Link to="/campuses">View campus details</Link>
           </Button>
         </div>
       </section>

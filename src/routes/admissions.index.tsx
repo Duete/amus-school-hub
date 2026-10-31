@@ -28,7 +28,7 @@ function AdmissionsOverview() {
               text: "Day students attend the Day Campus on Nyanza Road near Namatala. Boarding students are based at Mbale Progressive Annex.",
             },
             {
-              title: "Explore the study levels",
+              title: "Choose a study level",
               text: "The school offers O-Level leading to UCE and A-Level leading to UACE.",
             },
             {
@@ -46,23 +46,22 @@ function AdmissionsOverview() {
         <div className="mt-14 border-t border-border pt-8">
           <h2 className="text-2xl">Planning to join Mbale Progressive?</h2>
           <p className="mt-4 max-w-3xl text-sm leading-7 text-muted-foreground">
-            Exact entry requirements and current fee amounts are not listed here. Please request the
-            latest guidance directly from the school; admissions contact channels are awaiting
-            confirmation.
+            Entry requirements and current fees can change by intake. Send an enquiry with the
+            learner’s intended level and campus; the school office can confirm the latest guidance.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Button asChild>
               <Link to="/admissions/apply">
-                Start an application <FileText />
+                Submit admission enquiry <FileText />
               </Link>
             </Button>
             <Button asChild>
               <Link to="/contact">
-                Admissions information <ArrowRight />
+                Ask about admission <ArrowRight />
               </Link>
             </Button>
             <Button asChild variant="outline">
-              <Link to="/campuses">Explore our campuses</Link>
+              <Link to="/campuses">View campus details</Link>
             </Button>
             <Button asChild variant="outline">
               <Link to="/scholarships">

@@ -168,7 +168,7 @@ function Faculty() {
         below.
       </PageIntro>
 
-      <main className="site-width py-16 md:py-20">
+      <div className="site-width py-16 md:py-20">
         <section>
           <div className="flex flex-wrap items-end justify-between gap-5">
             <div>
@@ -239,7 +239,7 @@ function Faculty() {
             </div>
           )}
         </section>
-      </main>
+      </div>
     </>
   );
 }

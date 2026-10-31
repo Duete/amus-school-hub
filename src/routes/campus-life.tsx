@@ -72,9 +72,9 @@ function CampusLife() {
   return (
     <>
       <PageIntro eyebrow="CAMPUS LIFE" title="Life beyond the classroom.">
-        A school day is shaped by more than the timetable. Houses, clubs, sports, music, leadership,
-        faith, and boarding life help learners grow as part of a community. Our motto is “The Love
-        of Education Brought Us Here”.
+        The timetable is only part of the day. Houses, clubs, sports, music, faith, and boarding
+        routines give learners places to compete, practise, lead, and rest. “The Love of Education
+        Brought Us Here” is the school motto.
       </PageIntro>
 
       <section className="site-width py-14 md:py-20">
@@ -130,9 +130,9 @@ function CampusLife() {
             <p className="eyebrow text-primary">BOARDING SUPPORT · WE UNLOCK THE FUTURE</p>
             <h2 className="mt-2 text-3xl md:text-4xl">The Temple of Knowledge.</h2>
             <p className="mt-5 max-w-2xl leading-7 text-muted-foreground">
-              Boarding life brings study, rest, friendships, welfare, and personal responsibility
-              together. House routines and adult supervision help students settle into a purposeful
-              rhythm where learners are prepared to unlock the future.
+              Boarding life combines supervised study, meals, rest, welfare, and personal
+              responsibility. Clear house routines help students know what happens next and where to
+              ask for help.
             </p>
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               <div className="rounded-sm border border-border p-5">

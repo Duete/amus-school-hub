@@ -44,12 +44,9 @@ const boardingLeaders = [
 function Governance() {
   return (
     <>
-      <PageIntro
-        eyebrow="GOVERNANCE & LEADERSHIP"
-        title="Steady leadership for a growing school community."
-      >
-        Mbale Progressive Secondary School is supported by governance that keeps accountability,
-        learner welfare, and quality education at the centre of school life.
+      <PageIntro eyebrow="GOVERNANCE & LEADERSHIP" title="The people responsible for school life.">
+        The Board of Governors provides oversight. Campus leaders handle academics, welfare,
+        administration, and studies across Day Campus and Mbale Progressive Annex.
       </PageIntro>
 
       <section className="site-width py-14 md:py-20">
@@ -59,10 +56,8 @@ function Governance() {
             <p className="eyebrow mt-6 text-primary">BOARD OF GOVERNORS</p>
             <h2 className="mt-3 text-3xl leading-tight">Strategic oversight and accountability.</h2>
             <p className="mt-5 leading-7 text-muted-foreground">
-              The Board of Governors provides strategic oversight, ensures accountability, and
-              supports school leadership in delivering quality education. It also provides a
-              governance framework for responsible decisions that serve learners, families, staff,
-              and the wider school community.
+              The Board of Governors sets direction and holds school leadership accountable for
+              learner welfare, teaching, resources, and day-to-day stewardship.
             </p>
           </div>
           <div>
@@ -71,8 +66,8 @@ function Governance() {
               <h2 className="text-2xl">Leadership across both settings</h2>
             </div>
             <p className="mt-4 max-w-2xl leading-7 text-muted-foreground">
-              Our Day Campus and Boarding setting have dedicated leaders for academics, welfare,
-              administration, and studies.
+              Each setting has named leaders for the work families need to reach: academics,
+              welfare, administration, and studies.
             </p>
             <div className="mt-8 grid gap-6 sm:grid-cols-2">
               <LeadershipGroup title="Day Campus" leaders={dayCampusLeaders} />
@@ -95,7 +90,7 @@ function Governance() {
             A Mbale Progressive UNSA speaker contested at District level and emerged as the District
             UNSA Speaker. Other Progressive leaders have also contested and emerged victorious at
             District and Regional levels, showing the quality of leaders developed by the school and
-            the trust they have in the Progressive community.
+            the trust they have earned among Progressive learners.
           </p>
         </div>
       </section>
@@ -152,7 +147,7 @@ function LeadershipGroup({
           >
             <img
               src={photo}
-              alt={`${name} — illustrative portrait`}
+              alt={`Representative portrait for ${name}`}
               width={640}
               height={640}
               loading="lazy"
@@ -161,9 +156,6 @@ function LeadershipGroup({
             <div className="border-t border-border p-4">
               <p className="font-semibold text-primary">{name}</p>
               <p className="mt-1 text-sm text-muted-foreground">{role}</p>
-              <p className="mt-3 text-[11px] uppercase tracking-wide text-muted-foreground/70">
-                Illustrative portrait
-              </p>
             </div>
           </article>
         ))}

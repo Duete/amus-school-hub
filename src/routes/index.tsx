@@ -3,9 +3,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, BookOpen, ChevronLeft, ChevronRight, MapPin, Pause, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { campuses, schoolHead } from "@/lib/school";
-import cityCampus from "@/assets/city-campus.jpg";
-import hillsideCampus from "@/assets/hillside-campus.jpg";
-import schoolLife from "@/assets/school-life.jpg";
+import cityCampus from "@/assets/city-campus.webp";
+import hillsideCampus from "@/assets/hillside-campus.webp";
+import schoolLife from "@/assets/school-life.webp";
 
 const heroSlides = [
   {
@@ -154,6 +154,7 @@ function Index() {
             </div>
             <div
               className="mt-8 flex items-center gap-2"
+              role="group"
               aria-label={`Slide ${activeIndex + 1} of ${heroSlides.length}`}
             >
               <button

@@ -15,7 +15,7 @@ export const Route = createFileRoute("/sports")({
 function Sports() {
   return (
     <>
-      <PageIntro eyebrow="SPORTS & DEBATE" title="Football, debate and community support.">
+      <PageIntro eyebrow="SPORTS & DEBATE" title="Results on the field and at the lectern.">
         Mbale Progressive Secondary School has consistently represented the Bugisu Region in
         secondary school football. The latest campaign reached the Round of 16 nationally.
       </PageIntro>
@@ -54,7 +54,9 @@ function Sports() {
               Debate at Progressive
             </h2>
             <p className="mt-3 max-w-2xl leading-7 text-muted-foreground">
-              Debate is among the school’s activities alongside football.
+              In 2025/2026, the Debate Society reached the national knockout rounds at the NIRA
+              National Schools Debate Championship, finished First Runners-Up at the fourth 93.1
+              IUIU FM Inter-School Debate Championship, and won through district-level UNSA debate.
             </p>
           </div>
         </div>
@@ -88,7 +90,9 @@ function Sports() {
             Galiwango Foundation scholarship
           </h2>
           <p className="mt-3 max-w-2xl leading-7 text-muted-foreground">
-            The foundation provided a scholarship to a student who had faced financial hardship.
+            The Galiwango Foundation sponsors more than 50 students across both campuses and all
+            levels. Merit awards also support strong PLE entrants, class leaders, and top UCE
+            performers moving into A-Level.
           </p>
         </div>
       </section>
