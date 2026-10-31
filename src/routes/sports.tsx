@@ -7,7 +7,7 @@ export const Route = createFileRoute("/sports")({
   head: () =>
     schoolHead(
       "Sports & debate",
-      "Football and debate at Mbale Progressive Secondary School, including the school’s 2026 national championship result.",
+      "Football, debate, and table tennis at Mbale Progressive Secondary School, including the school’s 2026 national championship result and table-tennis history.",
     ),
   component: Sports,
 });
@@ -86,23 +86,59 @@ function Sports() {
             <Trophy size={24} strokeWidth={1.6} />
           </span>
           <div>
-            <p className="eyebrow text-primary">TABLE TENNIS</p>
+            <p className="eyebrow text-primary">TABLE TENNIS · NEWS FEATURE</p>
             <h2 id="table-tennis-heading" className="mt-2 text-2xl md:text-3xl">
-              A school with a real table-tennis record
+              From Grassroots to Giants: The Unstoppable Rise of Mbale Progressive Table Tennis
             </h2>
             <p className="mt-3 max-w-3xl leading-7 text-muted-foreground">
-              Mbale Progressive’s table-tennis story reaches beyond school fixtures. Kawowo Sports
-              reported that the school won the women’s team event at the 2016 Kenya Thika Open
-              International Table Tennis event in Nairobi. Halima Nambozo retained the women’s
-              singles title and helped the Progressive team beat Mbale Tigers 3–2 in the team final.
-              The event brought together clubs and players from Kenya, Rwanda, Burundi, Tanzania,
-              and Uganda.
+              Mbale Progressive Secondary School has cemented its status as a premier powerhouse of
+              Ugandan table tennis. Over the last decade, our athletes have transformed from local
+              underdogs into national champions, dominating the biggest school stages.
             </p>
             <p className="mt-3 max-w-3xl leading-7 text-muted-foreground">
-              The archive also includes an NTV Uganda report on a 25-school table-tennis event in
-              which Mbale Progressive landed boys’ gold. These results give the club a place in the
-              school’s wider sports identity: disciplined practice, competition experience, and
-              opportunities that can open doors for talented learners.
+              <strong className="text-foreground">
+                The Genesis: Laying Foundations (2013–2015).
+              </strong>{" "}
+              The roots of the school’s modern dominance took shape around 2013. Partnering with
+              local developmental initiatives like the Mbale Tigers Table Tennis Club, the school
+              began investing in raw talent. These structures provided the foundational training
+              that turned high-potential students into structured, disciplined competitors. By 2015,
+              the school was regularly sending teams to national stages, laying the groundwork for a
+              major breakthrough.
+            </p>
+            <p className="mt-3 max-w-3xl leading-7 text-muted-foreground">
+              <strong className="text-foreground">
+                Breaking Boundaries & International Glory (2016).
+              </strong>{" "}
+              May 2016 became the golden breakthrough. At the Kenya Thika Open International Table
+              Tennis tournament in Nairobi, Mbale Progressive players swept top honours. Two months
+              later, the boys carried that confidence to the Kateregga Memorial Schools Championship
+              at MTN Arena-Lugogo, where Captain Brian Bineni led the team through a decisive run.
+            </p>
+            <ul className="mt-4 max-w-3xl list-disc space-y-2 pl-5 leading-7 text-muted-foreground">
+              <li>
+                In the semi-finals, they avenged a past defeat by beating Kakungulu Memorial 3–1.
+              </li>
+              <li>
+                In the grand finale, they dethroned defending champions Mbogo College to win the
+                overall Boys’ Team Trophy.
+              </li>
+            </ul>
+            <p className="mt-3 max-w-3xl leading-7 text-muted-foreground">
+              <strong className="text-foreground">
+                Sustaining Excellence & Local Dominance (2017–Present).
+              </strong>{" "}
+              Following the historic 2016 season, Mbale Progressive became a household name. The
+              school established strong talent pathways, using sports scholarships to help elite
+              prospects balance rigorous training with top-tier academics. At national events such
+              as the Fresh Dairy Secondary School Games and regional opens, Progressive players have
+              continued to command the podium and feature prominently in the Mbale Schools Table
+              Tennis Championship.
+            </p>
+            <p className="mt-3 max-w-3xl leading-7 text-muted-foreground">
+              From a hungry team of contenders in 2013 to regional heavyweights today, the journey
+              proves that dedication breeds true champions. Table-tennis training runs every evening
+              after classes in the indoor sports hall. Pick up a racket and join the legacy.
             </p>
             <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold">
               <a
