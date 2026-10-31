@@ -2,6 +2,15 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Building2, CheckCircle2, ShieldCheck, UsersRound } from "lucide-react";
 import { PageIntro } from "@/components/school-layout";
 import { schoolHead } from "@/lib/school";
+import buyiAliceLamwaka from "@/assets/admin-buyi-alice-lamwaka-web.jpg";
+import gwireMuhammad from "@/assets/admin-gwire-muhammad-web.jpg";
+import mudeboAliMasai from "@/assets/admin-mudebo-ali-masai-web.jpg";
+import nabukwasiPatience from "@/assets/admin-nabukwasi-patience-web.jpg";
+import ocukulJulius from "@/assets/admin-ocukul-julius-web.jpg";
+import sahamaliElias from "@/assets/admin-sahamali-elias-web.jpg";
+import ssempalaNathan from "@/assets/admin-ssempala-nathan-web.jpg";
+import wangotaJoshua from "@/assets/admin-wangota-joshua-web.jpg";
+import wambogaAsuman from "@/assets/admin-wamboga-asuman-web.jpg";
 
 export const Route = createFileRoute("/governance")({
   head: () =>
@@ -14,18 +23,22 @@ export const Route = createFileRoute("/governance")({
 });
 
 const dayCampusLeaders = [
-  ["Mr. Ocukul Julius", "Head Teacher · Day Campus"],
-  ["Mr. Ssempala Nathan", "Deputy · Academics"],
-  ["Ms. Nabukwasi Patience", "Deputy · Welfare and Administration"],
-  ["Mr. Sahamali Elias", "Director of Studies I"],
-  ["Mr. Gwire Muhammad", "Director of Studies II"],
+  { name: "Mr. Ocukul Julius", role: "Head Teacher · Day Campus", photo: ocukulJulius },
+  { name: "Mr. Ssempala Nathan", role: "Deputy · Academics", photo: ssempalaNathan },
+  {
+    name: "Ms. Nabukwasi Patience",
+    role: "Deputy · Welfare and Administration",
+    photo: nabukwasiPatience,
+  },
+  { name: "Mr. Sahamali Elias", role: "Director of Studies I", photo: sahamaliElias },
+  { name: "Mr. Gwire Muhammad", role: "Director of Studies II", photo: gwireMuhammad },
 ];
 
 const boardingLeaders = [
-  ["Mr. Mudebo Ali Masai", "Head Teacher · Boarding"],
-  ["Mrs. Buyi Alice Lamwaka", "Deputy Head Teacher"],
-  ["Mr. Wamboga Asuman", "Director of Studies I"],
-  ["Mr. Wangota Joshua", "Director of Studies II"],
+  { name: "Mr. Mudebo Ali Masai", role: "Head Teacher · Boarding", photo: mudeboAliMasai },
+  { name: "Mrs. Buyi Alice Lamwaka", role: "Deputy Head Teacher", photo: buyiAliceLamwaka },
+  { name: "Mr. Wamboga Asuman", role: "Director of Studies I", photo: wambogaAsuman },
+  { name: "Mr. Wangota Joshua", role: "Director of Studies II", photo: wangotaJoshua },
 ];
 
 function Governance() {
@@ -121,16 +134,38 @@ function Governance() {
   );
 }
 
-function LeadershipGroup({ title, leaders }: { title: string; leaders: string[][] }) {
+function LeadershipGroup({
+  title,
+  leaders,
+}: {
+  title: string;
+  leaders: Array<{ name: string; role: string; photo: string }>;
+}) {
   return (
-    <div className="rounded-sm border border-border p-5">
+    <div>
       <h3 className="text-xl">{title}</h3>
-      <div className="mt-5 divide-y divide-border border-y border-border">
-        {leaders.map(([name, role]) => (
-          <div key={name} className="py-4">
-            <p className="font-semibold text-primary">{name}</p>
-            <p className="mt-1 text-sm text-muted-foreground">{role}</p>
-          </div>
+      <div className="mt-5 grid gap-4 sm:grid-cols-2">
+        {leaders.map(({ name, role, photo }) => (
+          <article
+            key={name}
+            className="overflow-hidden rounded-sm border border-border bg-background"
+          >
+            <img
+              src={photo}
+              alt={`${name} — illustrative portrait`}
+              width={640}
+              height={640}
+              loading="lazy"
+              className="aspect-square w-full object-cover"
+            />
+            <div className="border-t border-border p-4">
+              <p className="font-semibold text-primary">{name}</p>
+              <p className="mt-1 text-sm text-muted-foreground">{role}</p>
+              <p className="mt-3 text-[11px] uppercase tracking-wide text-muted-foreground/70">
+                Illustrative portrait
+              </p>
+            </div>
+          </article>
         ))}
       </div>
     </div>

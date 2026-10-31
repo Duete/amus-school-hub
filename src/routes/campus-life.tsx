@@ -44,7 +44,7 @@ const campusThreads = [
   [
     BookOpenCheck,
     "Clubs",
-    "Clubs give learners space to explore debate, science, creativity, enterprise, and service beyond lessons.",
+    "The Debate Society leads a strong clubs programme: a deep run at the 2025 NIRA National Schools Debate Championship against more than 20 schools, First Runners-Up at the fourth 93.1 IUIU FM Inter-School Debate Championship, and a standout performance at the Mbale District UNSA Debate Championship.",
   ],
   [
     Trophy,
@@ -73,7 +73,8 @@ function CampusLife() {
     <>
       <PageIntro eyebrow="CAMPUS LIFE" title="Life beyond the classroom.">
         A school day is shaped by more than the timetable. Houses, clubs, sports, music, leadership,
-        faith, and boarding life help learners grow as part of a community.
+        faith, and boarding life help learners grow as part of a community. Our motto is “The Love
+        of Education Brought Us Here”.
       </PageIntro>
 
       <section className="site-width py-14 md:py-20">
@@ -126,12 +127,12 @@ function CampusLife() {
       <section className="site-width py-14 md:py-20">
         <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
-            <p className="eyebrow text-primary">BOARDING SUPPORT</p>
-            <h2 className="mt-2 text-3xl md:text-4xl">A safe base for learning and living.</h2>
+            <p className="eyebrow text-primary">BOARDING SUPPORT · WE UNLOCK THE FUTURE</p>
+            <h2 className="mt-2 text-3xl md:text-4xl">The Temple of Knowledge.</h2>
             <p className="mt-5 max-w-2xl leading-7 text-muted-foreground">
               Boarding life brings study, rest, friendships, welfare, and personal responsibility
               together. House routines and adult supervision help students settle into a purposeful
-              rhythm.
+              rhythm where learners are prepared to unlock the future.
             </p>
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               <div className="rounded-sm border border-border p-5">

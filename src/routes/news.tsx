@@ -80,6 +80,59 @@ function News() {
         </div>
       </section>
 
+      <section
+        className="border-y border-border bg-muted py-14 md:py-20"
+        aria-labelledby="debate-news-heading"
+      >
+        <div className="site-width grid gap-8 lg:grid-cols-[1fr_0.34fr] lg:gap-16">
+          <article>
+            <p className="eyebrow text-primary">DEBATE SOCIETY · 2025/2026</p>
+            <h2 id="debate-news-heading" className="mt-3 text-3xl leading-tight md:text-4xl">
+              The Mighty Orators: Mbale Progressive Shines in the 2025/2026 Debating Arena!
+            </h2>
+            <p className="mt-5 leading-7 text-muted-foreground">
+              What a year it has been for our brilliant wordsmiths. The Mbale Progressive Secondary
+              School Debate Society has shown that critical thinking, sharp arguments, and eloquent
+              public speaking are central to the Progressive experience.
+            </p>
+            <p className="mt-4 leading-7 text-muted-foreground">
+              The team made a deep national run at the 2025 NIRA National Schools Debate
+              Championship, debating critical policy issues against more than 20 elite schools from
+              across the country. Senior speakers demonstrated intellectual maturity and earned
+              respect on the national stage.
+            </p>
+            <p className="mt-4 leading-7 text-muted-foreground">
+              At the fourth 93.1 IUIU FM Inter-School Debate Championship at the Islamic University
+              in Uganda Main Campus, the team fought through a month-long youth-leadership
+              tournament and finished as proud First Runners-Up after an electrifying final against
+              Nkoma SS.
+            </p>
+            <p className="mt-4 leading-7 text-muted-foreground">
+              Closer to home, Progressive debaters also dominated the Mbale District UNSA Debate
+              Championship, showcasing research, quick-witted refutation, and the communication
+              skills encouraged by the lower secondary curriculum.
+            </p>
+            <p className="mt-4 leading-7 text-muted-foreground">
+              Congratulations to the student debaters and club patrons for hoisting the Mbale
+              Progressive flag high. Students who want to sharpen their minds, conquer stage fright,
+              and join a winning team are invited to join the Debate Society. Progressive Oyee!
+            </p>
+          </article>
+          <aside className="self-start rounded-sm bg-primary p-7 text-primary-foreground md:p-8">
+            <Award size={28} className="text-secondary" />
+            <p className="eyebrow mt-6 text-secondary">DEBATING CLUB</p>
+            <h3 className="mt-3 text-2xl">Research. Reason. Voice.</h3>
+            <p className="mt-4 text-sm leading-6 text-primary-foreground/80">
+              The Debate Society gives learners a practical space to research national issues, build
+              persuasive arguments, listen carefully, and speak with confidence.
+            </p>
+            <p className="mt-4 text-sm font-semibold text-secondary">
+              Join the team · Progressive Oyee!
+            </p>
+          </aside>
+        </div>
+      </section>
+
       <section className="border-y border-border bg-muted py-14 md:py-16">
         <div className="site-width flex flex-col justify-between gap-6 md:flex-row md:items-center">
           <div>
