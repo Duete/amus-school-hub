@@ -41,6 +41,14 @@ const navigation = [
 
 const schoolHighlights = [
   {
+    label: "School motto",
+    value: "The Love of Education Brought Us Here",
+  },
+  {
+    label: "Boarding identity",
+    value: "We Unlock the Future · The Temple of Knowledge",
+  },
+  {
     label: "Today",
     value: new Intl.DateTimeFormat("en-UG", { dateStyle: "long" }).format(new Date()),
   },
@@ -117,6 +125,10 @@ export function SchoolHeader() {
               </span>
               <span className="block text-[10px] font-bold text-muted-foreground">
                 SECONDARY SCHOOL · EST. 1993
+              </span>
+              <span className="mt-1 hidden max-w-64 text-[9px] font-semibold uppercase tracking-[0.08em] text-primary/70 sm:block">
+                The Love of Education Brought Us Here · We Unlock the Future · The Temple of
+                Knowledge
               </span>
             </span>
           </Link>
