@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, FileText } from "lucide-react";
+import { ArrowRight, FileText, HeartHandshake } from "lucide-react";
 import { PageIntro } from "@/components/school-layout";
 import { Button } from "@/components/ui/button";
 import { schoolHead } from "@/lib/school";
@@ -63,6 +63,11 @@ function AdmissionsOverview() {
             </Button>
             <Button asChild variant="outline">
               <Link to="/campuses">Explore our campuses</Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link to="/scholarships">
+                Scholarships and sponsorships <HeartHandshake />
+              </Link>
             </Button>
           </div>
         </div>

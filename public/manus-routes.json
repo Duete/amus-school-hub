@@ -17,6 +17,7 @@
     { "path": "/news", "title": "News and updates" },
     { "path": "/performance", "title": "Student performance" },
     { "path": "/portal", "title": "My portal" },
+    { "path": "/scholarships", "title": "Scholarships and sponsorships" },
     { "path": "/sports", "title": "Sports and student life" }
   ]
 }

@@ -30,6 +30,7 @@ describe("App routing", () => {
     ["/faculty", "/faculty"],
     ["/governance", "/governance"],
     ["/news", "/news"],
+    ["/scholarships", "/scholarships"],
   ])("matches the %s page", (_label, path) => {
     const matches = createTestRouter().matchRoutes(path);
     expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);

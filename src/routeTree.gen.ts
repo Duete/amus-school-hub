@@ -23,6 +23,7 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as PerformanceRouteImport } from './routes/performance'
 import { Route as PortalRouteImport } from './routes/portal'
+import { Route as ScholarshipsRouteImport } from './routes/scholarships'
 import { Route as SportsRouteImport } from './routes/sports'
 import { Route as AdmissionsIndexRouteImport } from './routes/admissions.index'
 import { Route as AdmissionsApplyRouteImport } from './routes/admissions.apply'
@@ -99,6 +100,11 @@ const PortalRoute = PortalRouteImport.update({
   path: '/portal',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ScholarshipsRoute = ScholarshipsRouteImport.update({
+  id: '/scholarships',
+  path: '/scholarships',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SportsRoute = SportsRouteImport.update({
   id: '/sports',
   path: '/sports',
@@ -140,6 +146,7 @@ export interface FileRoutesByFullPath {
   '/news': typeof NewsRoute
   '/performance': typeof PerformanceRoute
   '/portal': typeof PortalRoute
+  '/scholarships': typeof ScholarshipsRoute
   '/sports': typeof SportsRoute
   '/admissions/apply': typeof AdmissionsApplyRoute
   '/campuses/$campus': typeof CampusesCampusRoute
@@ -160,6 +167,7 @@ export interface FileRoutesByTo {
   '/news': typeof NewsRoute
   '/performance': typeof PerformanceRoute
   '/portal': typeof PortalRoute
+  '/scholarships': typeof ScholarshipsRoute
   '/sports': typeof SportsRoute
   '/admissions/apply': typeof AdmissionsApplyRoute
   '/campuses/$campus': typeof CampusesCampusRoute
@@ -182,6 +190,7 @@ export interface FileRoutesById {
   '/news': typeof NewsRoute
   '/performance': typeof PerformanceRoute
   '/portal': typeof PortalRoute
+  '/scholarships': typeof ScholarshipsRoute
   '/sports': typeof SportsRoute
   '/admissions/apply': typeof AdmissionsApplyRoute
   '/campuses/$campus': typeof CampusesCampusRoute
@@ -205,6 +214,7 @@ export interface FileRouteTypes {
     | '/news'
     | '/performance'
     | '/portal'
+    | '/scholarships'
     | '/sports'
     | '/admissions/apply'
     | '/campuses/$campus'
@@ -225,6 +235,7 @@ export interface FileRouteTypes {
     | '/news'
     | '/performance'
     | '/portal'
+    | '/scholarships'
     | '/sports'
     | '/admissions/apply'
     | '/campuses/$campus'
@@ -246,6 +257,7 @@ export interface FileRouteTypes {
     | '/news'
     | '/performance'
     | '/portal'
+    | '/scholarships'
     | '/sports'
     | '/admissions/apply'
     | '/campuses/$campus'
@@ -268,6 +280,7 @@ export interface RootRouteChildren {
   NewsRoute: typeof NewsRoute
   PerformanceRoute: typeof PerformanceRoute
   PortalRoute: typeof PortalRoute
+  ScholarshipsRoute: typeof ScholarshipsRoute
   SportsRoute: typeof SportsRoute
   CampusesCampusRoute: typeof CampusesCampusRoute
   CampusesIndexRoute: typeof CampusesIndexRoute
@@ -373,6 +386,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortalRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/scholarships': {
+      id: '/scholarships'
+      path: '/scholarships'
+      fullPath: '/scholarships'
+      preLoaderRoute: typeof ScholarshipsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sports': {
       id: '/sports'
       path: '/sports'
@@ -440,6 +460,7 @@ const rootRouteChildren: RootRouteChildren = {
   NewsRoute: NewsRoute,
   PerformanceRoute: PerformanceRoute,
   PortalRoute: PortalRoute,
+  ScholarshipsRoute: ScholarshipsRoute,
   SportsRoute: SportsRoute,
   CampusesCampusRoute: CampusesCampusRoute,
   CampusesIndexRoute: CampusesIndexRoute,

@@ -43,7 +43,14 @@ export const roleLabels: Record<UserRole, string> = {
 
 export const rolePermissions: Record<UserRole, string[]> = {
   student: ["view:own-profile", "view:own-performance", "view:own-finance", "submit:application"],
-  teacher: ["view:own-profile", "view:performance", "manage:class-records", "view:faculty"],
+  teacher: [
+    "view:own-profile",
+    "view:performance",
+    "manage:class-records",
+    "view:faculty",
+    "view:admissions-records",
+    "view:fee-records",
+  ],
   administrator: [
     "view:performance",
     "manage:admissions",

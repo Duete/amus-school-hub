@@ -7,6 +7,8 @@ describe("role-based access", () => {
     expect(rolePermissions.student).toContain("view:own-finance");
     expect(rolePermissions.student).not.toContain("manage:users");
     expect(rolePermissions.teacher).toContain("view:performance");
+    expect(rolePermissions.teacher).toContain("view:admissions-records");
+    expect(rolePermissions.teacher).toContain("view:fee-records");
     expect(rolePermissions.administrator).toContain("manage:notifications");
   });
 });

@@ -3,14 +3,16 @@ import {
   ArrowRight,
   Bell,
   BookOpenCheck,
+  CheckCircle2,
   ClipboardList,
   CreditCard,
   Gauge,
   GraduationCap,
+  Clock3,
   LogOut,
   UsersRound,
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { PageIntro } from "@/components/school-layout";
 import { Button } from "@/components/ui/button";
 import { roleLabels, useAuth } from "@/lib/auth";
@@ -93,56 +95,198 @@ function Portal() {
 
 function StudentPortal({ hasPermission }: { hasPermission: (permission: string) => boolean }) {
   return (
-    <div className="mt-8 grid gap-5 md:grid-cols-3">
-      <PortalCard
-        icon={Gauge}
-        title="My performance"
-        text="Review attainment trends and subject progress."
-        href="/performance"
-        enabled={hasPermission("view:own-performance")}
-      />
-      <PortalCard
-        icon={CreditCard}
-        title="My finances"
-        text="View the learner statement and payment status."
-        href="/finance"
-        enabled={hasPermission("view:own-finance")}
-      />
-      <PortalCard
-        icon={ClipboardList}
-        title="Admissions"
-        text="Submit an application enquiry for a future pathway."
-        href="/admissions/apply"
-        enabled={hasPermission("submit:application")}
-      />
+    <div className="mt-8 space-y-8">
+      <div className="grid gap-5 md:grid-cols-3">
+        <PortalCard
+          icon={Gauge}
+          title="My performance"
+          text="Review attainment trends and subject progress."
+          href="/performance"
+          enabled={hasPermission("view:own-performance")}
+        />
+        <PortalCard
+          icon={CreditCard}
+          title="My finances"
+          text="View the learner statement and payment status."
+          href="/finance"
+          enabled={hasPermission("view:own-finance")}
+        />
+        <PortalCard
+          icon={GraduationCap}
+          title="Scholarships"
+          text="Review sponsorship and merit-award pathways."
+          href="/scholarships"
+          enabled={hasPermission("view:own-profile")}
+        />
+      </div>
+      <section className="grid gap-8 lg:grid-cols-2">
+        <PortalRecordPanel
+          icon={ClipboardList}
+          title="My admissions applications"
+          description="Track submitted enquiries and the next action for each pathway."
+          action={{ label: "Start an application", href: "/admissions/apply" }}
+        >
+          <RecordTable
+            headers={["Reference", "Pathway", "Status"]}
+            rows={[["MPS-APP-240418", "O’level · Day", "Under review"]]}
+          />
+        </PortalRecordPanel>
+        <PortalRecordPanel
+          icon={CreditCard}
+          title="My fee-payment records"
+          description="Review your latest payment request and current clearance status."
+          action={{ label: "Open fees & clearance", href: "/finance" }}
+        >
+          <RecordTable
+            headers={["Reference", "Amount", "Status"]}
+            rows={[["MPS-PAY-240418", "UGX 650,000", "Pending"]]}
+          />
+          <div className="mt-4 flex items-center gap-2 text-xs font-semibold text-secondary-foreground">
+            <Clock3 size={15} /> Outstanding balance requires finance clearance.
+          </div>
+        </PortalRecordPanel>
+      </section>
     </div>
   );
 }
 
 function TeacherPortal({ hasPermission }: { hasPermission: (permission: string) => boolean }) {
   return (
-    <div className="mt-8 grid gap-5 md:grid-cols-3">
-      <PortalCard
-        icon={BookOpenCheck}
-        title="Class performance"
-        text="Use the analytics dashboard to spot progress and support needs."
-        href="/performance"
-        enabled={hasPermission("view:performance")}
-      />
-      <PortalCard
-        icon={UsersRound}
-        title="Faculty directory"
-        text="Find subject heads and connect with colleagues."
-        href="/faculty"
-        enabled={hasPermission("view:faculty")}
-      />
-      <PortalCard
-        icon={ClipboardList}
-        title="Class records"
-        text="The role is provisioned for class-record management when a data source is connected."
-        enabled={hasPermission("manage:class-records")}
-      />
+    <div className="mt-8 space-y-8">
+      <div className="grid gap-5 md:grid-cols-3">
+        <PortalCard
+          icon={BookOpenCheck}
+          title="Class performance"
+          text="Use the analytics dashboard to spot progress and support needs."
+          href="/performance"
+          enabled={hasPermission("view:performance")}
+        />
+        <PortalCard
+          icon={UsersRound}
+          title="Faculty directory"
+          text="Find subject heads and connect with colleagues."
+          href="/faculty"
+          enabled={hasPermission("view:faculty")}
+        />
+        <PortalCard
+          icon={ClipboardList}
+          title="Class records"
+          text="Manage class-record workflows when a data source is connected."
+          enabled={hasPermission("manage:class-records")}
+        />
+      </div>
+      <section className="grid gap-8 lg:grid-cols-2">
+        <PortalRecordPanel
+          icon={ClipboardList}
+          title="Admissions applications"
+          description="Review application enquiries that need academic or campus follow-up."
+          action={{ label: "Open admissions", href: "/admissions" }}
+          enabled={hasPermission("view:admissions-records")}
+        >
+          <RecordTable
+            headers={["Applicant", "Entry level", "Status"]}
+            rows={[
+              ["Amina Nankunda", "O’level · Day", "New"],
+              ["Isaac Waiswa", "A’level · Boarding", "Academic review"],
+            ]}
+          />
+        </PortalRecordPanel>
+        <PortalRecordPanel
+          icon={CreditCard}
+          title="Fee-payment records"
+          description="View payment requests linked to your assigned learners and flag follow-up items for finance."
+          action={{ label: "Open fee portal", href: "/finance" }}
+          enabled={hasPermission("view:fee-records")}
+        >
+          <RecordTable
+            headers={["Learner", "Reference", "Status"]}
+            rows={[
+              ["Amina Nankunda", "MPS-PAY-240418", "Pending reconciliation"],
+              ["Isaac Waiswa", "MPS-PAY-240401", "Cleared"],
+            ]}
+          />
+        </PortalRecordPanel>
+      </section>
     </div>
+  );
+}
+
+function PortalRecordPanel({
+  icon: Icon,
+  title,
+  description,
+  action,
+  enabled = true,
+  children,
+}: {
+  icon: typeof Gauge;
+  title: string;
+  description: string;
+  action: { label: string; href: string };
+  enabled?: boolean;
+  children: ReactNode;
+}) {
+  return (
+    <section
+      className={`rounded-sm border border-border p-6 ${enabled ? "bg-background" : "bg-muted/60"}`}
+    >
+      <div className="flex items-start justify-between gap-4">
+        <div className="flex items-center gap-3">
+          <Icon className="text-primary" size={22} />
+          <h2 className="text-xl">{title}</h2>
+        </div>
+        {enabled ? (
+          <CheckCircle2 className="text-primary" size={19} />
+        ) : (
+          <span className="text-xs font-semibold text-muted-foreground">Restricted</span>
+        )}
+      </div>
+      <p className="mt-2 text-sm leading-6 text-muted-foreground">{description}</p>
+      {enabled ? (
+        <>
+          <div className="mt-5 overflow-x-auto">{children}</div>
+          <Button asChild variant="outline" className="mt-5">
+            <Link to={action.href}>
+              {action.label} <ArrowRight />
+            </Link>
+          </Button>
+        </>
+      ) : (
+        <p className="mt-6 text-sm text-muted-foreground">
+          This record area is not enabled for this role.
+        </p>
+      )}
+    </section>
+  );
+}
+
+function RecordTable({ headers, rows }: { headers: string[]; rows: string[][] }) {
+  return (
+    <table className="w-full min-w-[420px] text-left text-sm">
+      <thead className="border-b border-border text-xs uppercase tracking-wide text-muted-foreground">
+        <tr>
+          {headers.map((header) => (
+            <th key={header} className="px-3 py-3 font-bold">
+              {header}
+            </th>
+          ))}
+        </tr>
+      </thead>
+      <tbody className="divide-y divide-border">
+        {rows.map((row, rowIndex) => (
+          <tr key={`${row[0]}-${rowIndex}`}>
+            {row.map((cell, cellIndex) => (
+              <td
+                key={`${cell}-${cellIndex}`}
+                className={`px-3 py-3 ${cellIndex === row.length - 1 ? "font-semibold text-primary" : "text-muted-foreground"}`}
+              >
+                {cell}
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 }
 
