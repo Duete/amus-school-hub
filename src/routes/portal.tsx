@@ -16,6 +16,13 @@ import { useEffect, useState, type ReactNode } from "react";
 import { PageIntro } from "@/components/school-layout";
 import { Button } from "@/components/ui/button";
 import { roleLabels, useAuth } from "@/lib/auth";
+import {
+  getStudentDashboard,
+  getTeacherDashboard,
+  isApiConfigured,
+  type StudentDashboardData,
+  type TeacherDashboardData,
+} from "@/lib/api";
 import { getNotificationLog, type NotificationRecord } from "@/lib/notifications";
 import { schoolHead } from "@/lib/school";
 
@@ -31,6 +38,10 @@ export const Route = createFileRoute("/portal")({
 function Portal() {
   const { user, isReady, hasPermission, signOut } = useAuth();
   const [notifications, setNotifications] = useState<NotificationRecord[]>([]);
+  const [studentDashboard, setStudentDashboard] = useState<StudentDashboardData | null>(null);
+  const [teacherDashboard, setTeacherDashboard] = useState<TeacherDashboardData | null>(null);
+  const [dashboardLoading, setDashboardLoading] = useState(false);
+  const [dashboardError, setDashboardError] = useState("");
 
   useEffect(() => {
     if (user?.role === "administrator") {
@@ -40,6 +51,25 @@ function Portal() {
       return () => window.removeEventListener("notification-log-updated", refresh);
     }
   }, [user?.role]);
+
+  useEffect(() => {
+    if (!user || !isApiConfigured() || (user.role !== "student" && user.role !== "teacher")) return;
+    setDashboardLoading(true);
+    setDashboardError("");
+    const loadDashboard = async () => {
+      try {
+        if (user.role === "student") setStudentDashboard(await getStudentDashboard(user.id));
+        if (user.role === "teacher") setTeacherDashboard(await getTeacherDashboard(user.id));
+      } catch (error) {
+        setDashboardError(
+          error instanceof Error ? error.message : "Unable to load dashboard records.",
+        );
+      } finally {
+        setDashboardLoading(false);
+      }
+    };
+    void loadDashboard();
+  }, [user]);
 
   if (!isReady) return null;
 
@@ -83,8 +113,22 @@ function Portal() {
           </Button>
         </div>
 
-        {user.role === "student" && <StudentPortal hasPermission={hasPermission} />}
-        {user.role === "teacher" && <TeacherPortal hasPermission={hasPermission} />}
+        {isApiConfigured() && (dashboardLoading || dashboardError) && (
+          <p
+            className={`mt-6 rounded-sm p-4 text-sm ${dashboardError ? "bg-destructive/10 text-destructive" : "bg-muted text-muted-foreground"}`}
+          >
+            {dashboardLoading
+              ? "Loading live PostgreSQL dashboard records…"
+              : `Live dashboard unavailable: ${dashboardError}`}
+          </p>
+        )}
+
+        {user.role === "student" && (
+          <StudentPortal hasPermission={hasPermission} dashboard={studentDashboard} />
+        )}
+        {user.role === "teacher" && (
+          <TeacherPortal hasPermission={hasPermission} dashboard={teacherDashboard} />
+        )}
         {user.role === "administrator" && (
           <AdministratorPortal hasPermission={hasPermission} notifications={notifications} />
         )}
@@ -93,7 +137,27 @@ function Portal() {
   );
 }
 
-function StudentPortal({ hasPermission }: { hasPermission: (permission: string) => boolean }) {
+function StudentPortal({
+  hasPermission,
+  dashboard,
+}: {
+  hasPermission: (permission: string) => boolean;
+  dashboard: StudentDashboardData | null;
+}) {
+  const applicationRows = dashboard
+    ? dashboard.applications.map((item) => [
+        item.reference,
+        `${item.entry_level} · ${item.preferred_campus}`,
+        item.status,
+      ])
+    : [["MPS-APP-240418", "O’level · Day", "Under review"]];
+  const paymentRows = dashboard
+    ? dashboard.payments.map((item) => [
+        item.reference,
+        `UGX ${Number(item.amount).toLocaleString("en-UG")}`,
+        item.status,
+      ])
+    : [["MPS-PAY-240418", "UGX 650,000", "Pending"]];
   return (
     <div className="mt-8 space-y-8">
       <div className="grid gap-5 md:grid-cols-3">
@@ -126,10 +190,7 @@ function StudentPortal({ hasPermission }: { hasPermission: (permission: string) 
           description="Track submitted enquiries and the next action for each pathway."
           action={{ label: "Start an application", href: "/admissions/apply" }}
         >
-          <RecordTable
-            headers={["Reference", "Pathway", "Status"]}
-            rows={[["MPS-APP-240418", "O’level · Day", "Under review"]]}
-          />
+          <RecordTable headers={["Reference", "Pathway", "Status"]} rows={applicationRows} />
         </PortalRecordPanel>
         <PortalRecordPanel
           icon={CreditCard}
@@ -137,10 +198,7 @@ function StudentPortal({ hasPermission }: { hasPermission: (permission: string) 
           description="Review your latest payment request and current clearance status."
           action={{ label: "Open fees & clearance", href: "/finance" }}
         >
-          <RecordTable
-            headers={["Reference", "Amount", "Status"]}
-            rows={[["MPS-PAY-240418", "UGX 650,000", "Pending"]]}
-          />
+          <RecordTable headers={["Reference", "Amount", "Status"]} rows={paymentRows} />
           <div className="mt-4 flex items-center gap-2 text-xs font-semibold text-secondary-foreground">
             <Clock3 size={15} /> Outstanding balance requires finance clearance.
           </div>
@@ -150,7 +208,25 @@ function StudentPortal({ hasPermission }: { hasPermission: (permission: string) 
   );
 }
 
-function TeacherPortal({ hasPermission }: { hasPermission: (permission: string) => boolean }) {
+function TeacherPortal({
+  hasPermission,
+  dashboard,
+}: {
+  hasPermission: (permission: string) => boolean;
+  dashboard: TeacherDashboardData | null;
+}) {
+  const applicationRows = dashboard
+    ? dashboard.applications.map((item) => [item.learner_name, item.entry_level, item.status])
+    : [
+        ["Amina Nankunda", "O’level · Day", "New"],
+        ["Isaac Waiswa", "A’level · Boarding", "Academic review"],
+      ];
+  const paymentRows = dashboard
+    ? dashboard.payments.map((item) => [item.learner_name, item.reference, item.status])
+    : [
+        ["Amina Nankunda", "MPS-PAY-240418", "Pending reconciliation"],
+        ["Isaac Waiswa", "MPS-PAY-240401", "Cleared"],
+      ];
   return (
     <div className="mt-8 space-y-8">
       <div className="grid gap-5 md:grid-cols-3">
@@ -183,13 +259,7 @@ function TeacherPortal({ hasPermission }: { hasPermission: (permission: string) 
           action={{ label: "Open admissions", href: "/admissions" }}
           enabled={hasPermission("view:admissions-records")}
         >
-          <RecordTable
-            headers={["Applicant", "Entry level", "Status"]}
-            rows={[
-              ["Amina Nankunda", "O’level · Day", "New"],
-              ["Isaac Waiswa", "A’level · Boarding", "Academic review"],
-            ]}
-          />
+          <RecordTable headers={["Applicant", "Entry level", "Status"]} rows={applicationRows} />
         </PortalRecordPanel>
         <PortalRecordPanel
           icon={CreditCard}
@@ -198,13 +268,7 @@ function TeacherPortal({ hasPermission }: { hasPermission: (permission: string) 
           action={{ label: "Open fee portal", href: "/finance" }}
           enabled={hasPermission("view:fee-records")}
         >
-          <RecordTable
-            headers={["Learner", "Reference", "Status"]}
-            rows={[
-              ["Amina Nankunda", "MPS-PAY-240418", "Pending reconciliation"],
-              ["Isaac Waiswa", "MPS-PAY-240401", "Cleared"],
-            ]}
-          />
+          <RecordTable headers={["Learner", "Reference", "Status"]} rows={paymentRows} />
         </PortalRecordPanel>
       </section>
     </div>

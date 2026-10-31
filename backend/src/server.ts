@@ -2,6 +2,7 @@ import "dotenv/config";
 import cors from "cors";
 import express from "express";
 import { admissionsRouter } from "./admissions.js";
+import { dashboardRouter } from "./dashboard.js";
 import { paymentsRouter } from "./payments.js";
 import { pool } from "./db.js";
 
@@ -27,6 +28,7 @@ app.get("/health", async (_request, response) => {
 
 app.use("/api/admissions", admissionsRouter);
 app.use("/api/payments", paymentsRouter);
+app.use("/api/dashboard", dashboardRouter);
 
 app.use(
   (

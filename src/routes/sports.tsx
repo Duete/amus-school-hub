@@ -7,7 +7,7 @@ export const Route = createFileRoute("/sports")({
   head: () =>
     schoolHead(
       "Sports & debate",
-      "Football and debate at Mbale Progressive Secondary School, including football milestones in 2024 and 2026.",
+      "Football and debate at Mbale Progressive Secondary School, including the school’s 2026 national championship result.",
     ),
   component: Sports,
 });
@@ -16,8 +16,8 @@ function Sports() {
   return (
     <>
       <PageIntro eyebrow="SPORTS & DEBATE" title="Football, debate and community support.">
-        Mbale Progressive Secondary School has a football and debate programme. The school’s
-        football record includes milestones in 2024 and 2026.
+        Mbale Progressive Secondary School has consistently represented the Bugisu Region in
+        secondary school football. The latest campaign reached the Round of 16 nationally.
       </PageIntro>
 
       <section className="site-width py-16 md:py-20" aria-labelledby="football-heading">
@@ -31,9 +31,10 @@ function Sports() {
               National football milestones
             </h2>
             <p className="mt-4 max-w-2xl leading-7 text-muted-foreground">
-              In 2024, Mbale Progressive Secondary School was among six schools representing Bugisu
-              Region at the National Games. In 2026, its team advanced to the Round of 32 and
-              reached the Round of 16 at the National Boys’ Football Championship.
+              Mbale Progressive has consistently represented the Bugisu Region. In the latest
+              edition of the National Boys’ Football Championship, held in Lira from 10 to 20 May
+              2026, the team reached the Round of 16 among leading secondary school teams from
+              across Uganda and finished 14th nationally.
             </p>
           </div>
         </div>
