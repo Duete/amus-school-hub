@@ -192,28 +192,31 @@
   box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 14%, transparent);
 }
 .school-hero {
-  min-height: 570px;
-  height: min(650px, 72vh);
+  min-height: 650px;
+  height: min(720px, 78vh);
   position: relative;
-  display: flex;
-  align-items: center;
+  display: grid;
+  align-items: stretch;
+  background: var(--color-primary);
+  overflow: hidden;
 }
 .hero-image {
   position: absolute;
-  inset: 0;
-  width: 100%;
+  inset: 0 0 0 45%;
+  width: 55%;
   height: 100%;
   object-fit: cover;
   object-position: center 43%;
+  clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%);
 }
 .hero-overlay {
   position: absolute;
-  inset: 0;
+  inset: 0 0 0 45%;
   background: linear-gradient(
     90deg,
-    color-mix(in oklch, var(--hero-shade) 85%, transparent),
-    color-mix(in oklch, var(--hero-shade) 55%, transparent) 42%,
-    color-mix(in oklch, var(--hero-shade) 5%, transparent) 80%
+    color-mix(in oklch, var(--hero-shade) 72%, transparent),
+    color-mix(in oklch, var(--hero-shade) 18%, transparent) 70%,
+    transparent
   );
 }
 .eyebrow {
@@ -245,9 +248,13 @@
     min-height: 0;
   }
   .hero-image {
+    inset: 0;
+    width: 100%;
     object-position: 63% center;
+    clip-path: none;
   }
   .hero-overlay {
+    inset: 0;
     background: color-mix(in oklch, var(--hero-shade) 65%, transparent);
   }
 }

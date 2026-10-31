@@ -156,7 +156,7 @@ export function SchoolHeader() {
                   {activeMenu === item.name && (
                     <div className="absolute left-0 top-full z-40 min-w-56 border border-border bg-background p-2 shadow-xl">
                       <p className="px-3 pb-2 pt-1 text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
-                        Explore {item.name}
+                        Pages in {item.name}
                       </p>
                       {item.children.map((child) => (
                         <Link
@@ -305,7 +305,10 @@ export function SchoolFooter() {
               We Unlock the Future · The Temple of Knowledge
             </p>
           </div>
-          <div className="flex flex-wrap gap-6 text-sm">
+          <nav
+            aria-label="Footer navigation"
+            className="flex max-w-xl flex-wrap gap-x-6 gap-y-3 text-sm"
+          >
             <Link to="/campuses">Our campuses</Link>
             <Link to="/campus-life">Campus life</Link>
             <Link to="/governance">Governance</Link>
@@ -318,12 +321,12 @@ export function SchoolFooter() {
             <Link to="/scholarships">Scholarships</Link>
             <Link to="/news">News</Link>
             <Link to="/contact">Contact</Link>
-          </div>
+          </nav>
         </div>
         <div className="mt-9 flex flex-wrap justify-between gap-3 border-t border-primary-foreground/20 pt-5 text-xs text-primary-foreground/60">
           <span>© {new Date().getFullYear()} Mbale Progressive Secondary School</span>
           <span>Designed and developed by BlackRock Technologies · +256785691259</span>
-          <span>Illustrative photography · Campus images are not documentary photographs</span>
+          <span>Campus images are representative.</span>
         </div>
       </div>
     </footer>
