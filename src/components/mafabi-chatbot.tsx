@@ -1,7 +1,7 @@
 import { Bot, MessageCircle, Send, X } from "lucide-react";
 import { useMemo, useState, type FormEvent } from "react";
 
-const quickPrompts = ["Campus life", "Health services", "Admissions", "UACE subjects"];
+const quickPrompts = ["Admissions criteria", "Fee clearance", "Campus life", "Visitation day"];
 
 type ChatMessage = { from: "mafabi" | "visitor"; text: string };
 
@@ -11,6 +11,18 @@ function answerFor(message: string) {
     return "Health services are for Boarding students. They provide everyday wellbeing and illness support, with referral arrangements when care beyond school is needed. Families should confirm current clinic hours and emergency procedures with the Boarding office.";
   }
   if (
+    query.includes("criteria") ||
+    query.includes("requirement") ||
+    query.includes("qualify") ||
+    query.includes("admission") ||
+    query.includes("apply")
+  ) {
+    return "Admissions criteria vary by entry level. Start with the application form and prepare the learner’s full name, previous school, intended level (O’level/UCE or A’level/UACE), campus choice, guardian contacts, and recent academic information. The Admissions office should confirm the latest entry requirements and available places before a final decision.";
+  }
+  if (query.includes("visitation") || query.includes("visit day") || query.includes("visiting")) {
+    return "Visitation day is intended for families to connect with boarding students and the school team. Please contact the school before travelling to confirm the current Saturday visitation time, visitor guidance, and any term-specific arrangements.";
+  }
+  if (
     query.includes("campus") ||
     query.includes("club") ||
     query.includes("sport") ||
@@ -18,22 +30,29 @@ function answerFor(message: string) {
   ) {
     return "Campus life includes houses, clubs, sports, music, dance and drama, student leadership, faith and reflection, plus a structured Boarding routine. Visit the Campus life page for the full overview.";
   }
-  if (query.includes("admission") || query.includes("apply")) {
-    return "You can start an admissions enquiry from the Admissions page. The form asks for learner, guardian, previous-school, study-level, and campus information.";
-  }
   if (query.includes("uace") || query.includes("a level") || query.includes("alevel")) {
     return "UACE principal subjects include Biology, Chemistry, Mathematics, Physics, History, Geography, Literature, Christian Religious Education, Local Languages, Kiswahili, Fine Art, Entrepreneurship, Islamic Religious Education, Agriculture, and Economics. Subsidiaries are General Paper, Subsidiary Mathematics, and Subsidiary ICT.";
   }
   if (query.includes("uce") || query.includes("o level") || query.includes("olevel")) {
     return "UCE compulsory subjects are Biology, Chemistry, Mathematics, Physics, English, History and Political Education, and Geography. Electives include Agriculture, Art and Design, Religious Education, Entrepreneurship, ICT, Local Languages, Kiswahili, Literature, and Physical Education.";
   }
-  if (query.includes("fee") || query.includes("payment") || query.includes("finance")) {
-    return "Use Fees & clearance to view a learner statement and create a payment request. The current portal is a preview until the PostgreSQL API and a verified payment gateway are connected.";
+  if (
+    query.includes("fee") ||
+    query.includes("payment") ||
+    query.includes("finance") ||
+    query.includes("clearance") ||
+    query.includes("balance") ||
+    query.includes("statement")
+  ) {
+    return "For fee clearance, open Fees & clearance, enter the learner ID, review the statement and outstanding balance, then create a payment request. Keep the payment reference for follow-up. The portal is currently a preview until the PostgreSQL API and verified payment gateway are connected.";
   }
   if (query.includes("govern") || query.includes("head teacher") || query.includes("leadership")) {
     return "The Governance page explains the Board of Governors role and lists Day Campus and Boarding leaders, including the Heads, Deputies, and Directors of Studies.";
   }
-  return "I’m Mafabi, the Mbale Progressive School Hub assistant. Ask me about campus life, Boarding health services, UCE/UACE subjects, admissions, fees, governance, or school activities.";
+  if (query.includes("office") || query.includes("hours") || query.includes("open")) {
+    return "The school information strip lists the usual office window as Monday to Friday, 08:00–17:00. Please confirm holiday and term-time arrangements before visiting.";
+  }
+  return "I’m Mafabi, the Mbale Progressive School Hub assistant. Ask me about admissions criteria, fee clearance, campus life, Boarding health services, UCE/UACE subjects, visitation day, governance, or school activities.";
 }
 
 export function MafabiChatbot() {

@@ -38,6 +38,50 @@ const navigation = [
   { type: "link", name: "Contact", to: "/contact" },
 ] as const;
 
+const schoolHighlights = [
+  {
+    label: "Today",
+    value: new Intl.DateTimeFormat("en-UG", { dateStyle: "long" }).format(new Date()),
+  },
+  {
+    label: "Latest news",
+    value: "UCE/UACE pathways · campus life · school leadership",
+    to: "/news",
+  },
+  { label: "Office hours", value: "Monday–Friday · 08:00–17:00" },
+  { label: "Visitation day", value: "Saturday · confirm the current schedule before travelling" },
+] as const;
+
+function SchoolHighlightsMarquee() {
+  const items = [...schoolHighlights, ...schoolHighlights];
+  return (
+    <div className="sticky top-0 z-40 overflow-hidden border-b border-primary-foreground/15 bg-primary text-primary-foreground">
+      <div className="marquee-track flex min-w-max gap-10 whitespace-nowrap py-2 text-xs">
+        {items.map((item, index) => (
+          <span key={`${item.label}-${index}`} className="inline-flex items-center gap-2">
+            <span className="font-bold uppercase tracking-[0.14em] text-secondary">
+              {item.label}
+            </span>
+            {"to" in item ? (
+              <Link
+                to={item.to}
+                className="underline decoration-primary-foreground/40 underline-offset-4 hover:text-secondary"
+              >
+                {item.value}
+              </Link>
+            ) : (
+              <span className="text-primary-foreground/80">{item.value}</span>
+            )}
+            <span className="text-secondary" aria-hidden="true">
+              •
+            </span>
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function SchoolHeader() {
   const [open, setOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
@@ -47,6 +91,7 @@ export function SchoolHeader() {
     location.pathname === to || location.pathname.startsWith(`${to}/`);
   return (
     <>
+      <SchoolHighlightsMarquee />
       <div className="bg-primary text-primary-foreground">
         <div className="site-width flex min-h-9 items-center justify-between gap-3 text-xs">
           <span>Mixed day and boarding secondary education in Mbale City.</span>
