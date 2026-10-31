@@ -28,13 +28,46 @@ function Sports() {
           <div>
             <p className="eyebrow text-primary">FOOTBALL</p>
             <h2 id="football-heading" className="mt-2 text-3xl md:text-4xl">
-              National football milestones
+              Pitch Perfect: The Golden Legacy of Mbale Progressive Football
             </h2>
             <p className="mt-4 max-w-2xl leading-7 text-muted-foreground">
-              Mbale Progressive has consistently represented the Bugisu Region. In the latest
-              edition of the National Boys’ Football Championship, held in Lira from 10 to 20 May
-              2026, the team reached the Round of 16 among leading secondary school teams from
-              across Uganda and finished 14th nationally.
+              Mbale Progressive Secondary School has established itself as an undeniable heavyweight
+              in Ugandan school football. Over the last two decades, the boys’ and girls’ teams have
+              grown from passionate regional competitors into squads capable of challenging the
+              nation’s best.
+            </p>
+            <p className="mt-4 max-w-2xl leading-7 text-muted-foreground">
+              <strong className="text-foreground">The Early Foundations (Pre-2013 to 2015).</strong>{" "}
+              Long before the modern championship runs, the football legacy was built on the dust
+              pitches and training grounds of Mbale. By the mid-2000s and early 2010s, dedicated
+              sports bursaries were attracting talented players from across the Bugisu region.
+            </p>
+            <p className="mt-4 max-w-2xl leading-7 text-muted-foreground">
+              In 2016, that investment produced a local double at the Mbale District Copa
+              Qualifiers. At Mbale Municipal Stadium, the boys outlasted Nkoma SS 4–3 on penalties
+              while the girls beat Mbale Comprehensive 2–0, giving Progressive both district
+              trophies.
+            </p>
+            <p className="mt-4 max-w-2xl leading-7 text-muted-foreground">
+              <strong className="text-foreground">Rising Through the Ranks (2016–2025).</strong> The
+              teams became regulars in Uganda Secondary Schools Sports Association qualifiers. By
+              the 2022 National Championship, the boys had recorded a statement 3–2 victory over
+              Nyamitanga SS. The girls continued building a disciplined, technically gifted pipeline
+              through competitive district and zonal pools alongside regional teams such as Bugisu
+              High.
+            </p>
+            <p className="mt-4 max-w-2xl leading-7 text-muted-foreground">
+              <strong className="text-foreground">A Historic National Campaign (2026).</strong>{" "}
+              After a charged zonal campaign, the boys qualified for the USSSA National Boys
+              Football Championship in Lira, held from 10 to 20 May. They drew 1–1 with Kisozi Seed
+              and beat Ssaku SS 2–0 in the group stage. In the Round of 32, a 0–0 draw with Masindi
+              SS was settled by a 5–4 penalty-shootout victory. The run ended in the Round of 16
+              against London College Nansana after a narrow 4–2 shootout defeat.
+            </p>
+            <p className="mt-4 max-w-2xl leading-7 text-muted-foreground">
+              Finishing among the top 16 schools in the country cemented Progressive’s national
+              standing. The coaching staff is scouting talent for both the boys’ and girls’ squads
+              ahead of the upcoming district qualifiers.
             </p>
           </div>
         </div>

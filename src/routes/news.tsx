@@ -169,12 +169,23 @@ function News() {
         </div>
         <div className="mt-8 grid gap-8 lg:grid-cols-2">
           <article className="border-l-2 border-secondary pl-6">
-            <p className="eyebrow text-primary">FOOTBALL · MAY 2026</p>
-            <h3 className="mt-3 text-2xl md:text-3xl">Progressive finishes 14th nationally</h3>
+            <p className="eyebrow text-primary">FOOTBALL · HISTORY & MAY 2026</p>
+            <h3 className="mt-3 text-2xl md:text-3xl">
+              Pitch Perfect: The Golden Legacy of Mbale Progressive Football
+            </h3>
             <p className="mt-4 leading-7 text-muted-foreground">
-              Mbale Progressive represented Bugisu Region at the 2026 National Boys’ Football
-              Championship in Lira from 10 to 20 May. The team reached the Round of 16 and finished
-              14th in the country among the leading secondary-school football teams.
+              Sports bursaries and local training grounds laid the foundation for the boys’ and
+              girls’ programmes before 2013. In the 2016 Mbale District Copa Qualifiers, the boys
+              beat Nkoma SS 4–3 on penalties and the girls beat Mbale Comprehensive 2–0 at Mbale
+              Municipal Stadium to sweep both district trophies. The boys later recorded a 3–2
+              National Championship win over Nyamitanga SS in 2022.
+            </p>
+            <p className="mt-3 leading-7 text-muted-foreground">
+              The 2026 USSSA National Boys Football Championship in Lira brought the school’s most
+              dramatic run yet. Progressive drew 1–1 with Kisozi Seed, beat Ssaku SS 2–0, then
+              defeated Masindi SS 5–4 on penalties after a goalless Round of 32 match. The run ended
+              against London College Nansana in the Round of 16 after a 4–2 shootout defeat, leaving
+              the team among the top 16 schools nationally and ranked 14th in the country.
             </p>
             <Link
               to="/sports"
