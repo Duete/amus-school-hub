@@ -329,31 +329,6 @@ function Academics() {
           </div>
         </section>
       </main>
-
-      <section className="site-width py-12 text-sm leading-6 text-muted-foreground md:py-16">
-        <p>
-          Curriculum framing follows the competency-based direction described by the Uganda
-          curriculum pages for{" "}
-          <a
-            className="font-semibold text-primary underline underline-offset-4"
-            href="https://gayazahs.sc.ug/academics/olevel/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            O’level
-          </a>{" "}
-          and{" "}
-          <a
-            className="font-semibold text-primary underline underline-offset-4"
-            href="https://gayazahs.sc.ug/academics/alevel/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            A’level
-          </a>
-          .
-        </p>
-      </section>
     </>
   );
 }

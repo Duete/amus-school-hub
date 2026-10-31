@@ -1,7 +1,5 @@
 # Amus School Hub
 
-Imported website: https://amuscollegeschool.com
-
 This project was built with [Lovable](https://lovable.dev).
 
 ## Build with Lovable

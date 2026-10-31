@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowUpRight, Building2, CheckCircle2, ShieldCheck, UsersRound } from "lucide-react";
+import { Building2, CheckCircle2, ShieldCheck, UsersRound } from "lucide-react";
 import { PageIntro } from "@/components/school-layout";
 import { schoolHead } from "@/lib/school";
 
@@ -49,18 +49,6 @@ function Governance() {
               supports school leadership in delivering quality education. It also provides a
               governance framework for responsible decisions that serve learners, families, staff,
               and the wider school community.
-            </p>
-            <p className="mt-5 text-sm leading-6 text-muted-foreground">
-              This governance framing follows the Board of Governors description published by{" "}
-              <a
-                className="font-semibold text-primary underline underline-offset-4"
-                href="https://gayazahs.sc.ug/about/board-of-governors/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Gayaza High School <ArrowUpRight className="inline" size={14} />
-              </a>
-              .
             </p>
           </div>
           <div>
