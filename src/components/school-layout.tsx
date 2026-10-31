@@ -322,6 +322,7 @@ export function SchoolFooter() {
         </div>
         <div className="mt-9 flex flex-wrap justify-between gap-3 border-t border-primary-foreground/20 pt-5 text-xs text-primary-foreground/60">
           <span>© {new Date().getFullYear()} Mbale Progressive Secondary School</span>
+          <span>Designed and developed by BlackRock Technologies · +256785691259</span>
           <span>Illustrative photography · Campus images are not documentary photographs</span>
         </div>
       </div>
