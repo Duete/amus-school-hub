@@ -17,6 +17,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DatabaseRouteImport } from './routes/database'
 import { Route as FacultyRouteImport } from './routes/faculty'
 import { Route as FinanceRouteImport } from './routes/finance'
+import { Route as GovernanceRouteImport } from './routes/governance'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as PerformanceRouteImport } from './routes/performance'
 import { Route as PortalRouteImport } from './routes/portal'
@@ -64,6 +65,11 @@ const FacultyRoute = FacultyRouteImport.update({
 const FinanceRoute = FinanceRouteImport.update({
   id: '/finance',
   path: '/finance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GovernanceRoute = GovernanceRouteImport.update({
+  id: '/governance',
+  path: '/governance',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -116,6 +122,7 @@ export interface FileRoutesByFullPath {
   '/database': typeof DatabaseRoute
   '/faculty': typeof FacultyRoute
   '/finance': typeof FinanceRoute
+  '/governance': typeof GovernanceRoute
   '/login': typeof LoginRoute
   '/performance': typeof PerformanceRoute
   '/portal': typeof PortalRoute
@@ -133,6 +140,7 @@ export interface FileRoutesByTo {
   '/database': typeof DatabaseRoute
   '/faculty': typeof FacultyRoute
   '/finance': typeof FinanceRoute
+  '/governance': typeof GovernanceRoute
   '/login': typeof LoginRoute
   '/performance': typeof PerformanceRoute
   '/portal': typeof PortalRoute
@@ -152,6 +160,7 @@ export interface FileRoutesById {
   '/database': typeof DatabaseRoute
   '/faculty': typeof FacultyRoute
   '/finance': typeof FinanceRoute
+  '/governance': typeof GovernanceRoute
   '/login': typeof LoginRoute
   '/performance': typeof PerformanceRoute
   '/portal': typeof PortalRoute
@@ -172,6 +181,7 @@ export interface FileRouteTypes {
     | '/database'
     | '/faculty'
     | '/finance'
+    | '/governance'
     | '/login'
     | '/performance'
     | '/portal'
@@ -189,6 +199,7 @@ export interface FileRouteTypes {
     | '/database'
     | '/faculty'
     | '/finance'
+    | '/governance'
     | '/login'
     | '/performance'
     | '/portal'
@@ -207,6 +218,7 @@ export interface FileRouteTypes {
     | '/database'
     | '/faculty'
     | '/finance'
+    | '/governance'
     | '/login'
     | '/performance'
     | '/portal'
@@ -226,6 +238,7 @@ export interface RootRouteChildren {
   DatabaseRoute: typeof DatabaseRoute
   FacultyRoute: typeof FacultyRoute
   FinanceRoute: typeof FinanceRoute
+  GovernanceRoute: typeof GovernanceRoute
   LoginRoute: typeof LoginRoute
   PerformanceRoute: typeof PerformanceRoute
   PortalRoute: typeof PortalRoute
@@ -290,6 +303,13 @@ declare module '@tanstack/react-router' {
       path: '/finance'
       fullPath: '/finance'
       preLoaderRoute: typeof FinanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/governance': {
+      id: '/governance'
+      path: '/governance'
+      fullPath: '/governance'
+      preLoaderRoute: typeof GovernanceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -374,6 +394,7 @@ const rootRouteChildren: RootRouteChildren = {
   DatabaseRoute: DatabaseRoute,
   FacultyRoute: FacultyRoute,
   FinanceRoute: FinanceRoute,
+  GovernanceRoute: GovernanceRoute,
   LoginRoute: LoginRoute,
   PerformanceRoute: PerformanceRoute,
   PortalRoute: PortalRoute,

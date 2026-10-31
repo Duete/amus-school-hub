@@ -11,6 +11,7 @@
     { "path": "/database", "title": "Database architecture" },
     { "path": "/faculty", "title": "Faculty directory" },
     { "path": "/finance", "title": "Fees and financial clearance" },
+    { "path": "/governance", "title": "Governance and leadership" },
     { "path": "/login", "title": "Sign in" },
     { "path": "/performance", "title": "Student performance" },
     { "path": "/portal", "title": "My portal" },

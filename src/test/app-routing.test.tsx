@@ -27,6 +27,7 @@ describe("App routing", () => {
     ["/contact", "/contact"],
     ["/database", "/database"],
     ["/faculty", "/faculty"],
+    ["/governance", "/governance"],
   ])("matches the %s page", (_label, path) => {
     const matches = createTestRouter().matchRoutes(path);
     expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);

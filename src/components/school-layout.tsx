@@ -6,6 +6,7 @@ import { useAuth } from "@/lib/auth";
 
 const navigation = [
   { name: "Our school", to: "/about" },
+  { name: "Governance", to: "/governance" },
   { name: "Our campuses", to: "/campuses" },
   { name: "Learning", to: "/academics" },
   { name: "Faculty", to: "/faculty" },
@@ -172,6 +173,7 @@ export function SchoolFooter() {
           </div>
           <div className="flex flex-wrap gap-6 text-sm">
             <Link to="/campuses">Our campuses</Link>
+            <Link to="/governance">Governance</Link>
             <Link to="/academics">Learning</Link>
             <Link to="/faculty">Faculty</Link>
             <Link to="/performance">Performance</Link>
