@@ -8,6 +8,7 @@ export const Route = createFileRoute("/governance")({
     schoolHead(
       "Governance and leadership",
       "Meet the Board of Governors and campus leadership team at Mbale Progressive Secondary School.",
+      "/governance",
     ),
   component: Governance,
 });
@@ -65,6 +66,24 @@ function Governance() {
               <LeadershipGroup title="Boarding" leaders={boardingLeaders} />
             </div>
           </div>
+        </div>
+      </section>
+
+      <section
+        className="border-t border-border bg-muted py-14 md:py-16"
+        aria-labelledby="student-leadership-heading"
+      >
+        <div className="site-width">
+          <p className="eyebrow text-primary">STUDENT LEADERSHIP</p>
+          <h2 id="student-leadership-heading" className="mt-2 text-2xl md:text-3xl">
+            A culture of trusted public leadership.
+          </h2>
+          <p className="mt-3 max-w-3xl leading-7 text-muted-foreground">
+            A Mbale Progressive UNSA speaker contested at District level and emerged as the District
+            UNSA Speaker. Other Progressive leaders have also contested and emerged victorious at
+            District and Regional levels, showing the quality of leaders developed by the school and
+            the trust they have in the Progressive community.
+          </p>
         </div>
       </section>
 

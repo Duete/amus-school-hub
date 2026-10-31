@@ -1,34 +1,34 @@
 # Amus School Hub
 
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/a9fb9691-5718-4376-a705-ec8298312a91).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+Mbale Progressive Secondary School’s public information and portal website. The site presents the school’s history, campuses, UCE/UACE learning pathways, leadership, campus life, news, sports, admissions, scholarships, and role-based portals.
 
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+The project uses Node.js, Vite, TanStack Start, React, and PostgreSQL-backed Express services.
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+pnpm install
+pnpm run dev
 ```
+
+Run the quality checks before publishing:
+
+```sh
+pnpm run lint
+pnpm run test
+pnpm run build
+```
+
+## SEO and answer-engine readiness
+
+Public routes provide server-rendered page content, route-specific titles and descriptions, Open Graph and Twitter metadata, canonical URLs when `VITE_PUBLIC_SITE_URL` is configured, school structured data, and a crawlable sitemap and robots policy. Set the public origin explicitly in production rather than deriving it from an internal request URL.
 
 ## Portal and notification integrations
 
-The `/login` and `/portal` routes provide preview role-based access for students, teachers, and administrators. The preview accounts are shown in the sign-in interface and are intentionally stored only in the client demo; replace them with a server-side identity provider, hashed credentials, secure sessions, and database-backed role assignments before production use.
+The `/login` and `/portal` routes provide preview role-based access for students, teachers, and administrators. Replace the preview identities with a server-side identity provider, hashed credentials, secure sessions, and database-backed role assignments before production use.
 
-Successful admissions submissions and fee payment requests create notification records through `src/lib/notifications.ts`. Set `VITE_EMAIL_NOTIFICATION_ENDPOINT` to a trusted server-side email adapter to dispatch those events through the school’s email provider. The browser must not hold provider API keys, and the current default is an explicit local preview queue.
+Successful admissions submissions and fee payment requests create notification records through `src/lib/notifications.ts`. Set `VITE_EMAIL_NOTIFICATION_ENDPOINT` to a trusted server-side email adapter to dispatch those events through the school’s email provider. The browser must not hold provider API keys.
 
 ## Database integration
 
-The persistent-storage blueprint is documented in [`docs/database-integration-plan.md`](docs/database-integration-plan.md), with a PostgreSQL-compatible schema in [`database/schema.sql`](database/schema.sql). The plan intentionally does not connect a live database or migrate preview accounts until the provider, data-retention policy, and production identity/payment services are approved.
-
-The Express/PostgreSQL API integration lives in [`backend/`](backend/). See [`backend/README.md`](backend/README.md) for migration, seed, and local development commands. A visual architecture preview is available at [`/database`](http://localhost:8080/database) while the frontend is running.
+The persistent-storage blueprint is documented in [`docs/database-integration-plan.md`](docs/database-integration-plan.md), with a PostgreSQL-compatible schema in [`database/schema.sql`](database/schema.sql). The Express/PostgreSQL API integration lives in [`backend/`](backend/). See [`backend/README.md`](backend/README.md) for migration, seed, dashboard, and local development commands. A visual architecture preview is available at `/database` while the frontend is running.

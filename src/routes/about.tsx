@@ -8,6 +8,7 @@ export const Route = createFileRoute("/about")({
     schoolHead(
       "About Mbale Progressive",
       "Learn about Mbale Progressive Secondary School, established in 1993 in Mbale City, Eastern Uganda.",
+      "/about",
     ),
   component: About,
 });
@@ -46,6 +47,36 @@ function About() {
           <Button asChild className="mt-6">
             <Link to="/campuses">Explore our campuses</Link>
           </Button>
+        </div>
+      </section>
+
+      <section
+        className="border-y border-border bg-muted py-14 md:py-16"
+        aria-labelledby="leadership-heading"
+      >
+        <div className="site-width grid gap-6 md:grid-cols-[auto_1fr] md:gap-8">
+          <div
+            className="flex h-12 w-12 items-center justify-center rounded-full bg-background text-primary"
+            aria-hidden="true"
+          >
+            <span className="font-display text-xl">L</span>
+          </div>
+          <div>
+            <p className="eyebrow text-primary">LEADERSHIP IN THE COMMUNITY</p>
+            <h2 id="leadership-heading" className="mt-2 text-2xl md:text-3xl">
+              Learners trusted to lead.
+            </h2>
+            <p className="mt-3 max-w-3xl leading-7 text-muted-foreground">
+              A Mbale Progressive UNSA speaker contested at District level and emerged as the
+              District UNSA Speaker. This achievement follows other school leaders who have
+              contested and emerged victorious at both District and Regional levels, reflecting the
+              quality of leadership developed at Progressive and the trust learners place in the
+              school.
+            </p>
+            <Button asChild variant="link" className="mt-3 px-0">
+              <Link to="/news">Read the latest leadership news</Link>
+            </Button>
+          </div>
         </div>
       </section>
     </>

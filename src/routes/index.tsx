@@ -55,6 +55,39 @@ export const Route = createFileRoute("/")({
     schoolHead(
       "Home",
       "Mbale Progressive Secondary School is a mixed day and boarding secondary school in Mbale City, offering UCE/O-Level and UACE/A-Level education. Established in 1993.",
+      "/",
+      [
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "What kind of school is Mbale Progressive Secondary School?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Mbale Progressive Secondary School is a mixed day and boarding secondary school in Mbale City, Uganda, offering UCE/O-Level and UACE/A-Level pathways.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Where are the school campuses?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "The Day Campus is on Nyanza Road near Namatala in Mbale City. Mbale Progressive Annex is the school’s boarding campus.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "How can a family enquire about admission?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Families can review the admissions information and submit an enquiry through the school’s online application page, then confirm current requirements with the school office.",
+              },
+            },
+          ],
+        },
+      ],
     ),
   component: Index,
 });
@@ -283,6 +316,45 @@ function Index() {
               Explore sports &amp; student life <ArrowRight />
             </Link>
           </Button>
+        </div>
+      </section>
+
+      <section
+        className="border-y border-border bg-background py-16 md:py-20"
+        aria-labelledby="faq-heading"
+      >
+        <div className="site-width">
+          <p className="eyebrow text-primary">QUICK ANSWERS</p>
+          <h2 id="faq-heading" className="mt-3 text-3xl md:text-4xl">
+            Questions families ask.
+          </h2>
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            <details className="rounded-sm border border-border p-5">
+              <summary className="cursor-pointer font-semibold">
+                What kind of school is Progressive?
+              </summary>
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                It is a mixed day and boarding secondary school in Mbale City offering UCE/O-Level
+                and UACE/A-Level education.
+              </p>
+            </details>
+            <details className="rounded-sm border border-border p-5">
+              <summary className="cursor-pointer font-semibold">Where are the campuses?</summary>
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                The Day Campus is on Nyanza Road near Namatala. Mbale Progressive Annex is the
+                boarding campus.
+              </p>
+            </details>
+            <details className="rounded-sm border border-border p-5">
+              <summary className="cursor-pointer font-semibold">
+                How do I enquire about admission?
+              </summary>
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                Review the admissions guidance, submit an enquiry online, and confirm current entry
+                requirements with the school office.
+              </p>
+            </details>
+          </div>
         </div>
       </section>
 

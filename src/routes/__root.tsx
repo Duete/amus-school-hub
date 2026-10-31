@@ -8,14 +8,18 @@ import {
   Scripts,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { type ReactNode } from "react";
 
 import { SchoolHeader, SchoolFooter } from "@/components/school-layout";
 import { MafabiChatbot } from "@/components/mafabi-chatbot";
 import { AuthProvider } from "@/lib/auth";
 
 import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
+
+const publicOrigin = (import.meta.env.VITE_PUBLIC_SITE_URL as string | undefined)?.replace(
+  /\/$/,
+  "",
+);
 
 function NotFoundComponent() {
   return (
@@ -42,9 +46,6 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -88,6 +89,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "A mixed day and boarding secondary school in Mbale City, Uganda, offering UCE/O-Level and UACE/A-Level education. Established in 1993.",
       },
+      {
+        name: "keywords",
+        content: "Mbale secondary school, UCE, UACE, O-Level, A-Level, boarding school, Uganda",
+      },
+      { name: "robots", content: "index,follow" },
       { property: "og:title", content: "Mbale Progressive Secondary School" },
       {
         property: "og:description",
@@ -95,9 +101,34 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "A mixed day and boarding secondary school in Mbale City, offering UCE/O-Level and UACE/A-Level education. Established in 1993.",
       },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:site_name", content: "Mbale Progressive Secondary School" },
+      ...(publicOrigin ? [{ property: "og:url", content: publicOrigin }] : []),
+      { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: "Mbale Progressive Secondary School" },
+      {
+        name: "twitter:description",
+        content:
+          "A mixed day and boarding secondary school in Mbale City, Uganda, offering UCE/O-Level and UACE/A-Level education.",
+      },
+      {
+        "script:ld+json": {
+          "@context": "https://schema.org",
+          "@type": "EducationalOrganization",
+          name: "Mbale Progressive Secondary School",
+          description:
+            "A mixed day and boarding secondary school in Mbale City, Uganda, offering UCE/O-Level and UACE/A-Level education.",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Mbale",
+            addressRegion: "Eastern Uganda",
+            addressCountry: "UG",
+          },
+          ...(publicOrigin ? { url: publicOrigin } : {}),
+        },
+      },
     ],
     links: [
+      ...(publicOrigin ? [{ rel: "canonical", href: publicOrigin }] : []),
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {

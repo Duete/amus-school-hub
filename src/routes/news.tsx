@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, BellRing, BookOpen, CalendarDays, UsersRound } from "lucide-react";
+import { ArrowRight, Award, BellRing, BookOpen, CalendarDays, UsersRound } from "lucide-react";
 import { PageIntro } from "@/components/school-layout";
 import { schoolHead } from "@/lib/school";
 
@@ -8,6 +8,7 @@ export const Route = createFileRoute("/news")({
     schoolHead(
       "News and updates",
       "School news, notices, achievements, and updates from Mbale Progressive Secondary School.",
+      "/news",
     ),
   component: News,
 });
@@ -37,6 +38,14 @@ const updates = [
     to: "/governance",
     link: "Meet school leadership",
   },
+  {
+    icon: Award,
+    eyebrow: "STUDENT LEADERSHIP",
+    title: "UNSA District Speaker",
+    text: "A Mbale Progressive UNSA speaker contested at District level and emerged as the District UNSA Speaker, following other Progressive leaders who have won at District and Regional levels.",
+    to: "/governance",
+    link: "Explore leadership",
+  },
 ];
 
 function News() {
@@ -52,7 +61,7 @@ function News() {
           <CalendarDays className="text-primary" size={24} />
           <h2 className="text-3xl">Latest updates</h2>
         </div>
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
+        <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {updates.map(({ icon: Icon, eyebrow, title, text, to, link }) => (
             <article key={title} className="flex flex-col rounded-sm border border-border p-6">
               <Icon className="text-primary" size={25} />
