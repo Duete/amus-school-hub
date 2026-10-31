@@ -45,10 +45,6 @@ const schoolHighlights = [
     value: "The Love of Education Brought Us Here",
   },
   {
-    label: "Boarding identity",
-    value: "We Unlock the Future · The Temple of Knowledge",
-  },
-  {
     label: "Today",
     value: new Intl.DateTimeFormat("en-UG", { dateStyle: "long" }).format(new Date()),
   },
@@ -127,8 +123,7 @@ export function SchoolHeader() {
                 SECONDARY SCHOOL · EST. 1993
               </span>
               <span className="mt-1 hidden max-w-64 text-[9px] font-semibold uppercase tracking-[0.08em] text-primary/70 sm:block">
-                The Love of Education Brought Us Here · We Unlock the Future · The Temple of
-                Knowledge
+                The Love of Education Brought Us Here
               </span>
             </span>
           </Link>
@@ -305,6 +300,9 @@ export function SchoolFooter() {
             <h2 className="font-display text-2xl">Mbale Progressive Secondary School</h2>
             <p className="mt-3 max-w-md text-sm text-primary-foreground/75">
               A mixed day and boarding secondary school in Mbale City, Uganda. Established in 1993.
+            </p>
+            <p className="mt-4 text-xs font-semibold uppercase tracking-[0.12em] text-secondary">
+              We Unlock the Future · The Temple of Knowledge
             </p>
           </div>
           <div className="flex flex-wrap gap-6 text-sm">

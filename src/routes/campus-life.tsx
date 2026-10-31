@@ -39,12 +39,12 @@ const campusThreads = [
   [
     House,
     "Houses",
-    "House identity creates friendly competition, belonging, and opportunities for students to work together.",
+    "The school houses are Galiwango House, Mukongoni House, Nantume House, and Kaggwa House. House identity creates friendly competition, belonging, and opportunities for students to work together.",
   ],
   [
     BookOpenCheck,
     "Clubs",
-    "The Debate Society leads a strong clubs programme: a deep run at the 2025 NIRA National Schools Debate Championship against more than 20 schools, First Runners-Up at the fourth 93.1 IUIU FM Inter-School Debate Championship, and a standout performance at the Mbale District UNSA Debate Championship.",
+    "Other clubs include the Red Cross Club, Writers' Club, Science Club, and Interact Club. The Debate Society also leads a strong programme: a deep run at the 2025 NIRA National Schools Debate Championship against more than 20 schools, First Runners-Up at the fourth 93.1 IUIU FM Inter-School Debate Championship, and a standout performance at the Mbale District UNSA Debate Championship.",
   ],
   [
     Trophy,
@@ -64,7 +64,7 @@ const campusThreads = [
   [
     ShieldCheck,
     "Faith and reflection",
-    "Christian and Muslim learners are supported in observing their faith and developing values for community life.",
+    "Faith life includes the Muslim Students Association, Young Catholics Association, and Scripture Union, supporting learners in observing their faith and developing values for community life.",
   ],
 ];
 
