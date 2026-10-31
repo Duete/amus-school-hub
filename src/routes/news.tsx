@@ -184,12 +184,29 @@ function News() {
             </Link>
           </article>
           <article className="border-l-2 border-secondary pl-6">
-            <p className="eyebrow text-primary">TABLE TENNIS · ARCHIVE</p>
-            <h3 className="mt-3 text-2xl md:text-3xl">From Mbale to the Thika Open</h3>
+            <p className="eyebrow text-primary">TABLE TENNIS · NEWS FEATURE</p>
+            <h3 className="mt-3 text-2xl md:text-3xl">
+              From Grassroots to Giants: The Unstoppable Rise of Mbale Progressive Table Tennis
+            </h3>
             <p className="mt-4 leading-7 text-muted-foreground">
-              A 2016 Kawowo report records Mbale Progressive winning the women’s team event at the
-              Kenya Thika Open International Table Tennis event. Halima Nambozo retained the singles
+              From foundations built with Mbale Tigers Table Tennis Club around 2013–2015 to
+              national and international school stages, Progressive athletes have grown from local
+              contenders into champions. The 2016 Kenya Thika Open brought a breakthrough: Mbale
+              Progressive won the women’s team event, while Halima Nambozo retained the singles
               title and helped the team beat Mbale Tigers 3–2.
+            </p>
+            <p className="mt-3 leading-7 text-muted-foreground">
+              Later that year, Captain Brian Bineni led the boys at the Kateregga Memorial Schools
+              Championship at MTN Arena-Lugogo. The team beat Kakungulu Memorial 3–1 in the
+              semi-final and dethroned defending champions Mbogo College in the grand finale to lift
+              the overall Boys’ Team Trophy. Since 2017, sports scholarships and talent pathways
+              have helped learners balance serious training with demanding academics, while the team
+              continues to feature in the Fresh Dairy Secondary School Games, regional opens, and
+              the Mbale Schools Table Tennis Championship.
+            </p>
+            <p className="mt-3 leading-7 text-muted-foreground">
+              Training runs every evening after classes in the indoor sports hall. Pick up a racket
+              and join the legacy.
             </p>
             <a
               href="https://kawowo.com/2016/05/04/uganda-table-tennis-players-impress-at-thika-tourney/"
