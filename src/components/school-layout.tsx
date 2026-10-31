@@ -1,27 +1,42 @@
 import { Link, useLocation } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowRight, BookOpen, LogIn, Menu, UserCircle, X } from "lucide-react";
+import { ArrowRight, BookOpen, ChevronDown, LogIn, Menu, UserCircle, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/lib/auth";
 
 const navigation = [
-  { name: "Our school", to: "/about" },
-  { name: "Governance", to: "/governance" },
-  { name: "Our campuses", to: "/campuses" },
-  { name: "Campus life", to: "/campus-life" },
-  { name: "Learning", to: "/academics" },
-  { name: "Faculty", to: "/faculty" },
-  { name: "Performance", to: "/performance" },
-  { name: "Fees & clearance", to: "/finance" },
-  { name: "Sports & student life", to: "/sports" },
-  { name: "Admissions", to: "/admissions" },
-  { name: "Contact", to: "/contact" },
+  { type: "link", name: "Our school", to: "/about" },
+  { type: "link", name: "Governance", to: "/governance" },
+  {
+    type: "group",
+    name: "Campus life",
+    children: [
+      { name: "Campus life", to: "/campus-life" },
+      { name: "Our campuses", to: "/campuses" },
+      { name: "Sports & student life", to: "/sports" },
+    ],
+  },
+  {
+    type: "group",
+    name: "Learning",
+    children: [
+      { name: "Learning", to: "/academics" },
+      { name: "Performance", to: "/performance" },
+    ],
+  },
+  { type: "link", name: "Faculty", to: "/faculty" },
+  { type: "link", name: "Fees & clearance", to: "/finance" },
+  { type: "link", name: "Admissions", to: "/admissions" },
+  { type: "link", name: "Contact", to: "/contact" },
 ] as const;
 
 export function SchoolHeader() {
   const [open, setOpen] = useState(false);
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const location = useLocation();
   const { user, signOut } = useAuth();
+  const isActive = (to: string) =>
+    location.pathname === to || location.pathname.startsWith(`${to}/`);
   return (
     <>
       <div className="bg-primary text-primary-foreground">
@@ -52,15 +67,51 @@ export function SchoolHeader() {
             </span>
           </Link>
           <nav aria-label="Main navigation" className="hidden items-center gap-5 xl:flex">
-            {navigation.map((item) => (
-              <Link
-                key={item.to}
-                to={item.to}
-                className={`border-b-2 py-3 text-sm font-semibold transition-colors ${location.pathname === item.to ? "border-primary text-primary" : "border-transparent text-muted-foreground hover:text-primary"}`}
-              >
-                {item.name}
-              </Link>
-            ))}
+            {navigation.map((item) =>
+              item.type === "link" ? (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  className={`border-b-2 py-3 text-sm font-semibold transition-colors ${isActive(item.to) ? "border-primary text-primary" : "border-transparent text-muted-foreground hover:text-primary"}`}
+                >
+                  {item.name}
+                </Link>
+              ) : (
+                <div
+                  key={item.name}
+                  className="relative"
+                  onMouseEnter={() => setActiveMenu(item.name)}
+                  onMouseLeave={() => setActiveMenu(null)}
+                >
+                  <button
+                    type="button"
+                    className={`flex items-center gap-1 border-b-2 py-3 text-sm font-semibold transition-colors ${item.children.some((child) => isActive(child.to)) ? "border-primary text-primary" : "border-transparent text-muted-foreground hover:text-primary"}`}
+                    aria-expanded={activeMenu === item.name}
+                    onClick={() => setActiveMenu(activeMenu === item.name ? null : item.name)}
+                  >
+                    {item.name}
+                    <ChevronDown size={15} />
+                  </button>
+                  {activeMenu === item.name && (
+                    <div className="absolute left-0 top-full z-40 min-w-56 border border-border bg-background p-2 shadow-xl">
+                      <p className="px-3 pb-2 pt-1 text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
+                        Explore {item.name}
+                      </p>
+                      {item.children.map((child) => (
+                        <Link
+                          key={child.to}
+                          to={child.to}
+                          onClick={() => setActiveMenu(null)}
+                          className={`block px-3 py-2 text-sm font-semibold ${isActive(child.to) ? "bg-muted text-primary" : "text-foreground hover:bg-muted hover:text-primary"}`}
+                        >
+                          {child.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ),
+            )}
           </nav>
           <div className="hidden items-center gap-2 lg:flex">
             {user ? (
@@ -108,16 +159,34 @@ export function SchoolHeader() {
               if (e.key === "Escape") setOpen(false);
             }}
           >
-            {navigation.map((item) => (
-              <Link
-                key={item.to}
-                to={item.to}
-                onClick={() => setOpen(false)}
-                className="border-b border-border py-3 text-sm font-semibold"
-              >
-                {item.name}
-              </Link>
-            ))}
+            {navigation.map((item) =>
+              item.type === "link" ? (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  onClick={() => setOpen(false)}
+                  className="border-b border-border py-3 text-sm font-semibold"
+                >
+                  {item.name}
+                </Link>
+              ) : (
+                <div key={item.name} className="border-b border-border pb-2">
+                  <p className="py-3 text-xs font-bold uppercase tracking-[0.16em] text-primary">
+                    {item.name}
+                  </p>
+                  {item.children.map((child) => (
+                    <Link
+                      key={child.to}
+                      to={child.to}
+                      onClick={() => setOpen(false)}
+                      className="block py-2 pl-3 text-sm font-semibold text-muted-foreground"
+                    >
+                      {child.name}
+                    </Link>
+                  ))}
+                </div>
+              ),
+            )}
             <Link
               to="/contact"
               onClick={() => setOpen(false)}
