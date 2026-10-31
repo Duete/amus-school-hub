@@ -99,13 +99,13 @@ function Performance() {
         celebrate progress and act early when a learner needs support.
       </PageIntro>
 
-      <main className="site-width py-12 md:py-16">
+      <div className="site-width py-12 md:py-16">
         <div className="flex flex-col justify-between gap-5 border-b border-border pb-8 md:flex-row md:items-end">
           <div>
             <p className="eyebrow text-primary">ANALYTICS DASHBOARD</p>
             <h2 className="mt-3 text-3xl">School performance snapshot</h2>
             <p className="mt-2 text-sm text-muted-foreground">
-              Illustrative data for interface demonstration.
+              Interface sample · figures are not an official examination report.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
@@ -309,7 +309,7 @@ function Performance() {
             </div>
           </section>
         </div>
-      </main>
+      </div>
     </>
   );
 }

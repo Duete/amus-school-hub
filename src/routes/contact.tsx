@@ -8,7 +8,7 @@ export const Route = createFileRoute("/contact")({
   head: () =>
     schoolHead(
       "Contact Mbale Progressive",
-      "View the Mbale Progressive Secondary School campus settings and locations. Official contact channels are awaiting confirmation.",
+      "Find Mbale Progressive Secondary School’s Day Campus and boarding campus in Mbale City, then send an enquiry for current admission guidance.",
     ),
   component: Contact,
 });
@@ -17,8 +17,8 @@ function Contact() {
   return (
     <>
       <PageIntro eyebrow="CONTACT US" title="Find our campuses.">
-        Mbale Progressive Secondary School is based in Mbale City. Campus settings and location
-        details are shown below.
+        Both school settings are in Mbale City. Use the campus details below, then send an enquiry
+        if you need current fees, entry requirements, or visiting guidance.
       </PageIntro>
       <section className="site-width py-16">
         <div className="grid gap-10 md:grid-cols-2">
@@ -29,7 +29,7 @@ function Contact() {
               <p className="mt-3 text-sm leading-6 text-muted-foreground">{campus.setting}</p>
               <Button asChild variant="link" className="mt-4 px-0">
                 <Link to="/campuses/$campus" params={{ campus: campus.slug }}>
-                  Explore this campus <ArrowRight />
+                  View campus details <ArrowRight />
                 </Link>
               </Button>
             </div>
@@ -38,9 +38,14 @@ function Contact() {
         <div className="mt-12 border-t border-border pt-8">
           <h2 className="text-2xl">Official enquiry channels</h2>
           <p className="mt-4 max-w-3xl text-sm leading-7 text-muted-foreground">
-            Verified phone, email, and messaging details have not yet been supplied for this
-            website. They will be added once confirmed by the school.
+            For a response from the admissions team, use the online enquiry form. Include the
+            learner’s intended level, preferred campus, and any question about fees or boarding.
           </p>
+          <Button asChild className="mt-6">
+            <Link to="/admissions/apply">
+              Submit admission enquiry <ArrowRight />
+            </Link>
+          </Button>
         </div>
       </section>
     </>

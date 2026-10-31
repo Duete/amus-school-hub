@@ -1,5 +1,5 @@
-import cityCampus from "@/assets/city-campus.jpg";
-import hillsideCampus from "@/assets/hillside-campus.jpg";
+import cityCampus from "@/assets/city-campus.webp";
+import hillsideCampus from "@/assets/hillside-campus.webp";
 
 export const campuses = [
   {

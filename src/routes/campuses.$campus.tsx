@@ -26,7 +26,7 @@ function Campus() {
           width={1024}
           height={768}
           className="hero-image"
-          alt="Illustrative campus scene"
+          alt={`${campus.name} campus setting`}
         />
         <div className="hero-overlay" />
         <div className="site-width relative text-hero-foreground">
@@ -35,10 +35,10 @@ function Campus() {
           <p className="mt-5 font-display text-xl">{campus.setting}</p>
           <Button asChild variant="hero" size="lg" className="mt-8">
             <Link to="/admissions">
-              Explore admissions <ArrowRight />
+              Ask about admission <ArrowRight />
             </Link>
           </Button>
-          <p className="mt-3 text-xs text-hero-muted">Illustrative campus image.</p>
+          <p className="mt-3 text-xs text-hero-muted">Representative campus image.</p>
         </div>
       </section>
       <section className="site-width grid gap-10 py-16 md:grid-cols-2">
@@ -58,7 +58,7 @@ function Campus() {
       </section>
       <div className="site-width pb-16">
         <Button asChild variant="outline">
-          <Link to="/campuses">View both campuses</Link>
+          <Link to="/campuses">Compare both campuses</Link>
         </Button>
       </div>
     </>

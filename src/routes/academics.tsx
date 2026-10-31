@@ -156,21 +156,19 @@ function Academics() {
   return (
     <>
       <PageIntro eyebrow="ACADEMICS" title="Learning with purpose, from UCE to UACE.">
-        Mbale Progressive Secondary School offers two connected stages of secondary education. Our
-        O’level programme builds a broad foundation, while A’level helps learners deepen their
-        strengths and prepare for life beyond school. The school community has a total population of
-        over 1,500 students, with more than 400 UCE and 300 UACE candidates completing their courses
-        each year.
+        Mbale Progressive offers two stages of secondary education. O’level covers more than 17
+        subjects and leads to UCE; A’level covers more than 15 subjects and leads to UACE. More than
+        400 UCE and 300 UACE candidates complete their courses each year.
       </PageIntro>
 
       <section className="site-width grid gap-10 py-14 md:grid-cols-4 md:gap-8 md:py-16">
-        <Stat value="1,500+" label="students in the school community" icon={Users} />
+        <Stat value="1,500+" label="students across both campuses" icon={Users} />
         <Stat value="400+" label="UCE candidates each year" icon={GraduationCap} />
         <Stat value="300+" label="UACE candidates each year" icon={Lightbulb} />
         <Stat value="17+ / 15+" label="UCE / UACE subject areas" icon={BookOpen} />
       </section>
 
-      <main className="border-t border-border">
+      <div className="border-t border-border">
         <section className="site-width py-16 md:py-20" id="olevel">
           <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
             <div>
@@ -328,7 +326,7 @@ function Academics() {
             </div>
           </div>
         </section>
-      </main>
+      </div>
     </>
   );
 }
