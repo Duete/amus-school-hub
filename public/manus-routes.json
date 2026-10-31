@@ -14,6 +14,7 @@
     { "path": "/finance", "title": "Fees and financial clearance" },
     { "path": "/governance", "title": "Governance and leadership" },
     { "path": "/login", "title": "Sign in" },
+    { "path": "/news", "title": "News and updates" },
     { "path": "/performance", "title": "Student performance" },
     { "path": "/portal", "title": "My portal" },
     { "path": "/sports", "title": "Sports and student life" }

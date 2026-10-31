@@ -18,15 +18,23 @@ const navigation = [
   },
   {
     type: "group",
-    name: "Learning",
+    name: "Academics",
     children: [
-      { name: "Learning", to: "/academics" },
+      { name: "Academics", to: "/academics" },
       { name: "Performance", to: "/performance" },
+    ],
+  },
+  {
+    type: "group",
+    name: "Admissions",
+    children: [
+      { name: "Admissions", to: "/admissions" },
+      { name: "Apply now", to: "/admissions/apply" },
     ],
   },
   { type: "link", name: "Faculty", to: "/faculty" },
   { type: "link", name: "Fees & clearance", to: "/finance" },
-  { type: "link", name: "Admissions", to: "/admissions" },
+  { type: "link", name: "News", to: "/news" },
   { type: "link", name: "Contact", to: "/contact" },
 ] as const;
 
@@ -245,12 +253,13 @@ export function SchoolFooter() {
             <Link to="/campuses">Our campuses</Link>
             <Link to="/campus-life">Campus life</Link>
             <Link to="/governance">Governance</Link>
-            <Link to="/academics">Learning</Link>
+            <Link to="/academics">Academics</Link>
             <Link to="/faculty">Faculty</Link>
             <Link to="/performance">Performance</Link>
             <Link to="/finance">Fees & clearance</Link>
             <Link to="/sports">Sports & student life</Link>
             <Link to="/admissions">Admissions</Link>
+            <Link to="/news">News</Link>
             <Link to="/contact">Contact</Link>
           </div>
         </div>

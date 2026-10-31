@@ -20,6 +20,7 @@ import { Route as FacultyRouteImport } from './routes/faculty'
 import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as GovernanceRouteImport } from './routes/governance'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as NewsRouteImport } from './routes/news'
 import { Route as PerformanceRouteImport } from './routes/performance'
 import { Route as PortalRouteImport } from './routes/portal'
 import { Route as SportsRouteImport } from './routes/sports'
@@ -83,6 +84,11 @@ const LoginRoute = LoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NewsRoute = NewsRouteImport.update({
+  id: '/news',
+  path: '/news',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PerformanceRoute = PerformanceRouteImport.update({
   id: '/performance',
   path: '/performance',
@@ -131,6 +137,7 @@ export interface FileRoutesByFullPath {
   '/finance': typeof FinanceRoute
   '/governance': typeof GovernanceRoute
   '/login': typeof LoginRoute
+  '/news': typeof NewsRoute
   '/performance': typeof PerformanceRoute
   '/portal': typeof PortalRoute
   '/sports': typeof SportsRoute
@@ -150,6 +157,7 @@ export interface FileRoutesByTo {
   '/finance': typeof FinanceRoute
   '/governance': typeof GovernanceRoute
   '/login': typeof LoginRoute
+  '/news': typeof NewsRoute
   '/performance': typeof PerformanceRoute
   '/portal': typeof PortalRoute
   '/sports': typeof SportsRoute
@@ -171,6 +179,7 @@ export interface FileRoutesById {
   '/finance': typeof FinanceRoute
   '/governance': typeof GovernanceRoute
   '/login': typeof LoginRoute
+  '/news': typeof NewsRoute
   '/performance': typeof PerformanceRoute
   '/portal': typeof PortalRoute
   '/sports': typeof SportsRoute
@@ -193,6 +202,7 @@ export interface FileRouteTypes {
     | '/finance'
     | '/governance'
     | '/login'
+    | '/news'
     | '/performance'
     | '/portal'
     | '/sports'
@@ -212,6 +222,7 @@ export interface FileRouteTypes {
     | '/finance'
     | '/governance'
     | '/login'
+    | '/news'
     | '/performance'
     | '/portal'
     | '/sports'
@@ -232,6 +243,7 @@ export interface FileRouteTypes {
     | '/finance'
     | '/governance'
     | '/login'
+    | '/news'
     | '/performance'
     | '/portal'
     | '/sports'
@@ -253,6 +265,7 @@ export interface RootRouteChildren {
   FinanceRoute: typeof FinanceRoute
   GovernanceRoute: typeof GovernanceRoute
   LoginRoute: typeof LoginRoute
+  NewsRoute: typeof NewsRoute
   PerformanceRoute: typeof PerformanceRoute
   PortalRoute: typeof PortalRoute
   SportsRoute: typeof SportsRoute
@@ -339,6 +352,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/news': {
+      id: '/news'
+      path: '/news'
+      fullPath: '/news'
+      preLoaderRoute: typeof NewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/performance': {
       id: '/performance'
       path: '/performance'
@@ -417,6 +437,7 @@ const rootRouteChildren: RootRouteChildren = {
   FinanceRoute: FinanceRoute,
   GovernanceRoute: GovernanceRoute,
   LoginRoute: LoginRoute,
+  NewsRoute: NewsRoute,
   PerformanceRoute: PerformanceRoute,
   PortalRoute: PortalRoute,
   SportsRoute: SportsRoute,
