@@ -1,5 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Award, BellRing, BookOpen, CalendarDays, UsersRound } from "lucide-react";
+import {
+  ArrowRight,
+  Award,
+  BellRing,
+  BookOpen,
+  CalendarDays,
+  ExternalLink,
+  Trophy,
+  UsersRound,
+} from "lucide-react";
 import { PageIntro } from "@/components/school-layout";
 import { schoolHead } from "@/lib/school";
 
@@ -117,6 +126,24 @@ function News() {
               Progressive flag high. Students who want to sharpen their minds, conquer stage fright,
               and join a winning team are invited to join the Debate Society. Progressive Oyee!
             </p>
+            <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold">
+              <a
+                href="https://www.youtube.com/watch?v=T-jv1_wk9Js"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 text-primary underline underline-offset-4"
+              >
+                IUIU FM championship report <ExternalLink size={14} />
+              </a>
+              <a
+                href="https://inspired.calicotab.com/niraschools/results/round/5/?view=debate"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 text-primary underline underline-offset-4"
+              >
+                NIRA 2025 results <ExternalLink size={14} />
+              </a>
+            </div>
           </article>
           <aside className="self-start rounded-sm bg-primary p-7 text-primary-foreground md:p-8">
             <Award size={28} className="text-secondary" />
@@ -130,6 +157,49 @@ function News() {
               Join the team · Progressive Oyee!
             </p>
           </aside>
+        </div>
+      </section>
+
+      <section className="site-width py-14 md:py-20" aria-labelledby="sports-news-heading">
+        <div className="flex items-center gap-3">
+          <Trophy className="text-primary" size={24} />
+          <h2 id="sports-news-heading" className="text-3xl">
+            Sports reports
+          </h2>
+        </div>
+        <div className="mt-8 grid gap-8 lg:grid-cols-2">
+          <article className="border-l-2 border-secondary pl-6">
+            <p className="eyebrow text-primary">FOOTBALL · MAY 2026</p>
+            <h3 className="mt-3 text-2xl md:text-3xl">Progressive finishes 14th nationally</h3>
+            <p className="mt-4 leading-7 text-muted-foreground">
+              Mbale Progressive represented Bugisu Region at the 2026 National Boys’ Football
+              Championship in Lira from 10 to 20 May. The team reached the Round of 16 and finished
+              14th in the country among the leading secondary-school football teams.
+            </p>
+            <Link
+              to="/sports"
+              className="mt-5 inline-flex items-center gap-2 font-bold text-primary"
+            >
+              Read the football record <ArrowRight size={16} />
+            </Link>
+          </article>
+          <article className="border-l-2 border-secondary pl-6">
+            <p className="eyebrow text-primary">TABLE TENNIS · ARCHIVE</p>
+            <h3 className="mt-3 text-2xl md:text-3xl">From Mbale to the Thika Open</h3>
+            <p className="mt-4 leading-7 text-muted-foreground">
+              A 2016 Kawowo report records Mbale Progressive winning the women’s team event at the
+              Kenya Thika Open International Table Tennis event. Halima Nambozo retained the singles
+              title and helped the team beat Mbale Tigers 3–2.
+            </p>
+            <a
+              href="https://kawowo.com/2016/05/04/uganda-table-tennis-players-impress-at-thika-tourney/"
+              target="_blank"
+              rel="noreferrer"
+              className="mt-5 inline-flex items-center gap-2 font-bold text-primary underline underline-offset-4"
+            >
+              Read the Kawowo report <ExternalLink size={16} />
+            </a>
+          </article>
         </div>
       </section>
 
