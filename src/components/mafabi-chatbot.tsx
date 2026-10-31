@@ -73,7 +73,7 @@ function answerFor(message: string, pathname: string) {
     return "Mbale Progressive Secondary School is a mixed day and boarding school in Mbale City, Uganda. It was established in 1993 and serves more than 1,500 learners from S.1 through UACE. The Day Campus is on Nyanza Road near Namatala; Mbale Progressive Annex is the boarding campus. The school motto is ‘The Love of Education Brought Us Here.’ The footer taglines are ‘We Unlock the Future’ and ‘The Temple of Knowledge.’";
   }
   if (query.includes("football") || query.includes("soccer")) {
-    return "Mbale Progressive represented the Bugisu Region at the 2026 National Boys’ Football Championship in Lira, held from 10 to 20 May. The team reached the Round of 16 and finished 14th nationally. Open the Sports & debate page for the full football article.";
+    return "Mbale Progressive’s football legacy grew from sports bursaries and local training in the Bugisu region. In the 2016 Mbale District Copa Qualifiers, the boys beat Nkoma SS 4–3 on penalties and the girls beat Mbale Comprehensive 2–0 to win both district trophies. The boys later beat Nyamitanga SS 3–2 at the 2022 National Championship. In 2026, Progressive drew 1–1 with Kisozi Seed, beat Ssaku SS 2–0, defeated Masindi SS 5–4 on penalties in the Round of 32, and reached the Round of 16 before a 4–2 shootout defeat to London College Nansana. The team finished 14th nationally. Open Sports & debate for the full history and scouting invitation for the boys’ and girls’ squads.";
   }
   if (
     query.includes("table tennis") ||
