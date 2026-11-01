@@ -22,6 +22,7 @@ const navigation = [
     children: [
       { name: "Academics", to: "/academics" },
       { name: "Performance", to: "/performance" },
+      { name: "e-Library", to: "/e-library" },
     ],
   },
   {
@@ -321,6 +322,7 @@ export function SchoolFooter() {
             <Link to="/campus-life">Campus life</Link>
             <Link to="/governance">Governance</Link>
             <Link to="/academics">Academics</Link>
+            <Link to="/e-library">e-Library</Link>
             <Link to="/faculty">Faculty</Link>
             <Link to="/performance">Performance</Link>
             <Link to="/finance">Fees & clearance</Link>

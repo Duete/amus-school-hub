@@ -16,6 +16,7 @@ import { Route as AdmissionsRouteImport } from './routes/admissions'
 import { Route as CampusLifeRouteImport } from './routes/campus-life'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DatabaseRouteImport } from './routes/database'
+import { Route as ELibraryRouteImport } from './routes/e-library'
 import { Route as FacultyRouteImport } from './routes/faculty'
 import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as GovernanceRouteImport } from './routes/governance'
@@ -63,6 +64,11 @@ const ContactRoute = ContactRouteImport.update({
 const DatabaseRoute = DatabaseRouteImport.update({
   id: '/database',
   path: '/database',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ELibraryRoute = ELibraryRouteImport.update({
+  id: '/e-library',
+  path: '/e-library',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FacultyRoute = FacultyRouteImport.update({
@@ -139,6 +145,7 @@ export interface FileRoutesByFullPath {
   '/campus-life': typeof CampusLifeRoute
   '/contact': typeof ContactRoute
   '/database': typeof DatabaseRoute
+  '/e-library': typeof ELibraryRoute
   '/faculty': typeof FacultyRoute
   '/finance': typeof FinanceRoute
   '/governance': typeof GovernanceRoute
@@ -160,6 +167,7 @@ export interface FileRoutesByTo {
   '/campus-life': typeof CampusLifeRoute
   '/contact': typeof ContactRoute
   '/database': typeof DatabaseRoute
+  '/e-library': typeof ELibraryRoute
   '/faculty': typeof FacultyRoute
   '/finance': typeof FinanceRoute
   '/governance': typeof GovernanceRoute
@@ -183,6 +191,7 @@ export interface FileRoutesById {
   '/campus-life': typeof CampusLifeRoute
   '/contact': typeof ContactRoute
   '/database': typeof DatabaseRoute
+  '/e-library': typeof ELibraryRoute
   '/faculty': typeof FacultyRoute
   '/finance': typeof FinanceRoute
   '/governance': typeof GovernanceRoute
@@ -207,6 +216,7 @@ export interface FileRouteTypes {
     | '/campus-life'
     | '/contact'
     | '/database'
+    | '/e-library'
     | '/faculty'
     | '/finance'
     | '/governance'
@@ -228,6 +238,7 @@ export interface FileRouteTypes {
     | '/campus-life'
     | '/contact'
     | '/database'
+    | '/e-library'
     | '/faculty'
     | '/finance'
     | '/governance'
@@ -250,6 +261,7 @@ export interface FileRouteTypes {
     | '/campus-life'
     | '/contact'
     | '/database'
+    | '/e-library'
     | '/faculty'
     | '/finance'
     | '/governance'
@@ -273,6 +285,7 @@ export interface RootRouteChildren {
   CampusLifeRoute: typeof CampusLifeRoute
   ContactRoute: typeof ContactRoute
   DatabaseRoute: typeof DatabaseRoute
+  ELibraryRoute: typeof ELibraryRoute
   FacultyRoute: typeof FacultyRoute
   FinanceRoute: typeof FinanceRoute
   GovernanceRoute: typeof GovernanceRoute
@@ -335,6 +348,13 @@ declare module '@tanstack/react-router' {
       path: '/database'
       fullPath: '/database'
       preLoaderRoute: typeof DatabaseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/e-library': {
+      id: '/e-library'
+      path: '/e-library'
+      fullPath: '/e-library'
+      preLoaderRoute: typeof ELibraryRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faculty': {
@@ -453,6 +473,7 @@ const rootRouteChildren: RootRouteChildren = {
   CampusLifeRoute: CampusLifeRoute,
   ContactRoute: ContactRoute,
   DatabaseRoute: DatabaseRoute,
+  ELibraryRoute: ELibraryRoute,
   FacultyRoute: FacultyRoute,
   FinanceRoute: FinanceRoute,
   GovernanceRoute: GovernanceRoute,
