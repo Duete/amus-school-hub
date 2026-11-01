@@ -19,6 +19,8 @@ const pageDescriptions: Record<string, string> = {
     "This is the school profile page. It covers Mbale Progressive’s history, identity, location, motto, and the kind of education families can expect.",
   "/academics":
     "This is the academics page. It lists the UCE/O-Level and UACE/A-Level pathways, subjects, candidate numbers, assessment approach, and the route from S.1 through UACE.",
+  "/e-library":
+    "This is the e-Library. It groups learning shelves by O-Level classes S.1–S.4 and A-Level classes S.5–S.6, then organises each class into subject areas.",
   "/admissions":
     "This is the admissions page. It explains Day Campus and boarding at Mbale Progressive Annex, entry guidance, application steps, and how to ask the school about places and fees.",
   "/admissions/apply":
@@ -71,6 +73,9 @@ function answerFor(message: string, pathname: string) {
     query.includes("motto")
   ) {
     return "Mbale Progressive Secondary School is a mixed day and boarding school in Mbale City, Uganda. It was established in 1993 and serves more than 1,500 learners from S.1 through UACE. The Day Campus is on Nyanza Road near Namatala; Mbale Progressive Annex is the boarding campus. The school motto is ‘The Love of Education Brought Us Here.’ The footer taglines are ‘We Unlock the Future’ and ‘The Temple of Knowledge.’";
+  }
+  if (query.includes("e-library") || query.includes("e library") || query.includes("library")) {
+    return "The e-Library is organised in two levels: O-Level has S.1, S.2, S.3, and S.4 shelves; A-Level has S.5 and S.6 shelves. Open a class shelf to browse its core, elective, principal, or subsidiary subject areas. School-approved notes, reading lists, revision guides, and past papers can be attached to each subject shelf.";
   }
   if (query.includes("football") || query.includes("soccer")) {
     return "Mbale Progressive’s football legacy grew from sports bursaries and local training in the Bugisu region. In the 2016 Mbale District Copa Qualifiers, the boys beat Nkoma SS 4–3 on penalties and the girls beat Mbale Comprehensive 2–0 to win both district trophies. The boys later beat Nyamitanga SS 3–2 at the 2022 National Championship. In 2026, Progressive drew 1–1 with Kisozi Seed, beat Ssaku SS 2–0, defeated Masindi SS 5–4 on penalties in the Round of 32, and reached the Round of 16 before a 4–2 shootout defeat to London College Nansana. The team finished 14th nationally. Open Sports & debate for the full history and scouting invitation for the boys’ and girls’ squads.";
@@ -151,7 +156,7 @@ function answerFor(message: string, pathname: string) {
   if (query.includes("hours") || query.includes("open")) {
     return "The school information strip lists the usual office window as Monday to Saturday, 08:00–17:00. Please confirm holiday and term-time arrangements before visiting.";
   }
-  return "I’m Mafabi, the Mbale Progressive School Hub assistant. I can explain the page you are viewing, school history and locations, UCE/UACE subjects, admissions, fees, scholarships, governance, faculty, houses, clubs, faith associations, football, debate, table tennis, and boarding health services.";
+  return "I’m Mafabi, the Mbale Progressive School Hub assistant. I can explain the page you are viewing, school history and locations, UCE/UACE subjects, the e-Library, admissions, fees, scholarships, governance, faculty, houses, clubs, faith associations, football, debate, table tennis, and boarding health services.";
 }
 
 export function MafabiChatbot() {

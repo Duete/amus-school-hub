@@ -30,6 +30,7 @@ const knownPaths: Record<string, string> = {
   Home: "/",
   "About Mbale Progressive": "/about",
   Academics: "/academics",
+  "e-Library": "/e-library",
   Admissions: "/admissions",
   "Admissions application": "/admissions/apply",
   "Campus life": "/campus-life",

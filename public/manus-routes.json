@@ -10,6 +10,7 @@
     { "path": "/campus-life", "title": "Campus life" },
     { "path": "/contact", "title": "Contact" },
     { "path": "/database", "title": "Database architecture" },
+    { "path": "/e-library", "title": "e-Library" },
     { "path": "/faculty", "title": "Faculty directory" },
     { "path": "/finance", "title": "Fees and financial clearance" },
     { "path": "/governance", "title": "Governance and leadership" },

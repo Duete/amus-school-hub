@@ -27,6 +27,7 @@ describe("App routing", () => {
     ["/performance", "/performance"],
     ["/contact", "/contact"],
     ["/database", "/database"],
+    ["/e-library", "/e-library"],
     ["/faculty", "/faculty"],
     ["/governance", "/governance"],
     ["/news", "/news"],
