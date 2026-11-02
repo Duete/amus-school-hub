@@ -131,7 +131,7 @@ export function SchoolHeader() {
               <span className="block text-[10px] font-bold text-muted-foreground">
                 SECONDARY SCHOOL · EST. 1993
               </span>
-              <span className="mt-1 hidden max-w-64 text-[9px] font-semibold uppercase tracking-[0.08em] text-primary/70 sm:block">
+              <span className="mt-1 hidden max-w-64 text-[10px] font-medium tracking-[0.03em] text-primary/70 sm:block">
                 The Love of Education Brought Us Here
               </span>
             </span>
@@ -164,7 +164,7 @@ export function SchoolHeader() {
                   </button>
                   {activeMenu === item.name && (
                     <div className="absolute left-0 top-full z-40 min-w-56 border border-border bg-background p-2 shadow-xl">
-                      <p className="px-3 pb-2 pt-1 text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
+                      <p className="px-3 pb-2 pt-1 text-xs font-semibold tracking-[0.04em] text-muted-foreground">
                         Pages in {item.name}
                       </p>
                       {item.children.map((child) => (
@@ -241,7 +241,7 @@ export function SchoolHeader() {
                 </Link>
               ) : (
                 <div key={item.name} className="border-b border-border pb-2">
-                  <p className="py-3 text-xs font-bold uppercase tracking-[0.16em] text-primary">
+                  <p className="py-3 text-sm font-semibold tracking-[0.04em] text-primary">
                     {item.name}
                   </p>
                   {item.children.map((child) => (
@@ -310,7 +310,7 @@ export function SchoolFooter() {
             <p className="mt-3 max-w-md text-sm text-primary-foreground/75">
               A mixed day and boarding secondary school in Mbale City, Uganda. Established in 1993.
             </p>
-            <p className="mt-4 text-xs font-semibold uppercase tracking-[0.12em] text-secondary">
+            <p className="mt-4 text-sm font-medium tracking-[0.04em] text-secondary">
               We Unlock the Future · The Temple of Knowledge
             </p>
           </div>
@@ -354,13 +354,13 @@ export function PageIntro({
 }) {
   const headingId = `${title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-heading`;
   return (
-    <section className="bg-muted py-16 md:py-20" aria-labelledby={headingId}>
+    <section className="bg-muted py-20 md:py-28" aria-labelledby={headingId}>
       <div className="site-width">
         <p className="eyebrow text-primary">{eyebrow}</p>
         <h1 id={headingId} className="mt-4 max-w-3xl text-4xl leading-tight md:text-5xl">
           {title}
         </h1>
-        <div className="mt-5 max-w-2xl text-base leading-7 text-muted-foreground">{children}</div>
+        <div className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">{children}</div>
       </div>
     </section>
   );
