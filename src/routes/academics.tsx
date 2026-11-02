@@ -44,6 +44,29 @@ const oLevelElectiveSubjects = [
   "Physical Education",
 ];
 
+const uce2025Performance = [
+  ["PE", "0", "5", "8", "0", "0", "0", "13", "100.00%", "100.00%"],
+  ["AGR", "0", "33", "108", "0", "2", "0", "143", "98.60%", "98.60%"],
+  ["MAT", "5", "69", "329", "29", "5", "2", "439", "91.80%", "98.41%"],
+  ["GEO", "5", "62", "324", "43", "3", "2", "439", "89.07%", "98.86%"],
+  ["KIS", "0", "0", "8", "1", "0", "0", "9", "88.89%", "100.00%"],
+  ["CRE", "1", "23", "236", "31", "1", "3", "295", "88.14%", "98.64%"],
+  ["IRE", "0", "21", "90", "15", "0", "0", "126", "88.10%", "100.00%"],
+  ["ICT", "0", "2", "104", "14", "0", "2", "122", "86.89%", "98.36%"],
+  ["BIO", "1", "31", "346", "56", "2", "3", "439", "86.10%", "98.86%"],
+  ["ENT", "1", "10", "67", "14", "0", "0", "92", "84.78%", "100.00%"],
+  ["HIS", "1", "37", "320", "73", "6", "2", "439", "81.55%", "98.18%"],
+  ["ENG", "3", "50", "293", "88", "3", "2", "439", "78.82%", "98.86%"],
+  ["CHE", "0", "21", "314", "99", "2", "3", "439", "76.31%", "98.86%"],
+  ["LUMASAABA", "0", "4", "2", "1", "1", "0", "8", "75.00%", "87.50%"],
+  ["PHY", "1", "25", "290", "116", "4", "3", "439", "71.98%", "98.41%"],
+  ["F/A", "0", "0", "20", "6", "1", "1", "28", "71.43%", "92.86%"],
+  ["LIT", "0", "0", "5", "10", "0", "1", "16", "31.25%", "93.75%"],
+  ["Sub Total", "18", "393", "2859", "586", "30", "23", "", "", ""],
+  ["PROJECT", "332", "12", "92", "2", "1", "", "439", "99.32%", "99.77%"],
+  ["Grand Total", "350", "405", "2951", "588", "31", "23", "", "", ""],
+];
+
 const aLevelPrincipalSubjects = [
   "Biology",
   "Chemistry",
@@ -259,6 +282,79 @@ function Academics() {
               <SubjectGroup title="Compulsory subjects" subjects={oLevelCompulsorySubjects} />
               <SubjectGroup title="Elective subjects" subjects={oLevelElectiveSubjects} />
             </div>
+
+            <section
+              className="mt-16 border-t border-border pt-10"
+              id="uce-performance"
+              aria-labelledby="uce-performance-heading"
+            >
+              <div className="flex flex-wrap items-end justify-between gap-5">
+                <div>
+                  <p className="eyebrow text-primary">2025 UCE RESULTS</p>
+                  <h3 id="uce-performance-heading" className="mt-2 text-3xl">
+                    Subject performance
+                  </h3>
+                </div>
+                <p className="max-w-xl text-sm leading-6 text-muted-foreground">
+                  The 2025 UCE results below show the grade distribution by subject. Pass A–C counts
+                  grades A through C; pass A–D also includes grade D.
+                </p>
+              </div>
+              <div className="mt-8 overflow-x-auto border border-border">
+                <table className="min-w-[980px] w-full border-collapse text-right text-xs">
+                  <caption className="sr-only">
+                    Mbale Progressive 2025 UCE subject performance
+                  </caption>
+                  <thead className="bg-primary text-left text-primary-foreground">
+                    <tr>
+                      {[
+                        "Subject",
+                        "A",
+                        "B",
+                        "C",
+                        "D",
+                        "E",
+                        "X",
+                        "TTL",
+                        "% Pass A–C",
+                        "% Pass A–D",
+                      ].map((heading, index) => (
+                        <th
+                          key={heading}
+                          className={`whitespace-nowrap px-3 py-3 font-bold ${index === 0 ? "text-left" : ""}`}
+                        >
+                          {heading}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {uce2025Performance.map((row) => {
+                      const isSummary = ["Sub Total", "PROJECT", "Grand Total"].includes(row[0]);
+                      return (
+                        <tr
+                          key={row[0]}
+                          className={
+                            isSummary
+                              ? "bg-muted font-bold text-foreground"
+                              : "border-t border-border text-muted-foreground"
+                          }
+                        >
+                          {row.map((value, index) => (
+                            <td
+                              key={`${row[0]}-${index}`}
+                              className={`whitespace-nowrap px-3 py-3 ${index === 0 ? "text-left font-semibold text-primary" : ""}`}
+                            >
+                              {value || "—"}
+                            </td>
+                          ))}
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </section>
           </div>
         </section>
 
