@@ -67,6 +67,14 @@ const uce2025Performance = [
   ["Grand Total", "350", "405", "2951", "588", "31", "23", "", "", ""],
 ];
 
+const ucePassRateChart = uce2025Performance
+  .filter((row) => row[8] && row[9])
+  .map(([subject, , , , , , , , passAc, passAd]) => ({
+    subject,
+    passAc: Number.parseFloat(passAc),
+    passAd: Number.parseFloat(passAd),
+  }));
+
 const aLevelPrincipalSubjects = [
   "Biology",
   "Chemistry",
@@ -172,6 +180,75 @@ function SubjectGroup({ title, subjects }: { title: string; subjects: string[] }
       <h4 className="mb-4 text-xl text-foreground">{title}</h4>
       <SubjectList subjects={subjects} />
     </div>
+  );
+}
+
+function UcePassRateChart() {
+  return (
+    <figure
+      className="border border-border bg-background p-5 md:p-6"
+      aria-labelledby="uce-chart-title"
+    >
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p className="eyebrow text-primary">GRAPHICAL VIEW</p>
+          <figcaption id="uce-chart-title" className="mt-2 text-2xl">
+            2025 UCE pass rates by subject
+          </figcaption>
+        </div>
+        <div
+          className="flex gap-4 text-xs font-semibold text-muted-foreground"
+          aria-label="Chart legend"
+        >
+          <span className="inline-flex items-center gap-2">
+            <span className="size-2 rounded-full bg-primary" aria-hidden="true" /> A–C
+          </span>
+          <span className="inline-flex items-center gap-2">
+            <span className="size-2 rounded-full bg-secondary" aria-hidden="true" /> A–D
+          </span>
+        </div>
+      </div>
+      <div className="mt-7 space-y-3">
+        {ucePassRateChart.map(({ subject, passAc, passAd }) => (
+          <div
+            key={subject}
+            className="grid grid-cols-[72px_1fr] items-center gap-3 text-xs sm:grid-cols-[92px_1fr_1fr] sm:gap-4"
+          >
+            <span className="font-semibold text-primary">{subject}</span>
+            <div className="space-y-1 sm:contents">
+              <div
+                className="flex items-center gap-2"
+                role="img"
+                aria-label={`${subject} A to C pass rate ${passAc.toFixed(2)} percent`}
+              >
+                <div className="h-2 flex-1 bg-muted" aria-hidden="true">
+                  <div className="h-full bg-primary" style={{ width: `${passAc}%` }} />
+                </div>
+                <span className="w-14 text-right tabular-nums text-muted-foreground">
+                  {passAc.toFixed(2)}%
+                </span>
+              </div>
+              <div
+                className="flex items-center gap-2"
+                role="img"
+                aria-label={`${subject} A to D pass rate ${passAd.toFixed(2)} percent`}
+              >
+                <div className="h-2 flex-1 bg-muted" aria-hidden="true">
+                  <div className="h-full bg-secondary" style={{ width: `${passAd}%` }} />
+                </div>
+                <span className="w-14 text-right tabular-nums text-muted-foreground">
+                  {passAd.toFixed(2)}%
+                </span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <p className="mt-6 text-xs leading-5 text-muted-foreground">
+        Bars show the same percentages listed in the table below. Project Work is included as
+        PROJECT; subtotal and grand-total rows are excluded from the subject comparison.
+      </p>
+    </figure>
   );
 }
 
@@ -300,32 +377,53 @@ function Academics() {
                   grades A through C; pass A–D also includes grade D.
                 </p>
               </div>
+              <div className="mt-8 grid gap-6 lg:grid-cols-[1.4fr_0.6fr]">
+                <UcePassRateChart />
+                <aside
+                  className="border-l-2 border-secondary bg-muted p-6"
+                  aria-labelledby="excellence-heading"
+                >
+                  <p className="eyebrow text-primary">A RECORD WORTH NOTING</p>
+                  <h4 id="excellence-heading" className="mt-3 text-2xl">
+                    Commitment to excellence
+                  </h4>
+                  <p className="mt-4 text-sm leading-7 text-muted-foreground">
+                    The 2025 results show what focused teaching, disciplined preparation, and steady
+                    learner support can produce across the curriculum. Mbale Progressive’s
+                    commitment to excellence is also reflected in the best student in the NLSC UCE
+                    2025 results, who scored 9 As in 9 subjects and an A in Project Work.
+                  </p>
+                </aside>
+              </div>
               <div className="mt-8 overflow-x-auto border border-border">
-                <table className="min-w-[980px] w-full border-collapse text-right text-xs">
+                <table className="min-w-[980px] w-full border-collapse text-xs tabular-nums">
                   <caption className="sr-only">
                     Mbale Progressive 2025 UCE subject performance
                   </caption>
-                  <thead className="bg-primary text-left text-primary-foreground">
+                  <colgroup>
+                    <col className="w-[150px]" />
+                    {Array.from({ length: 7 }, (_, index) => (
+                      <col key={`grade-column-${index}`} className="w-[58px]" />
+                    ))}
+                    <col className="w-[105px]" />
+                    <col className="w-[115px]" />
+                  </colgroup>
+                  <thead className="bg-primary text-primary-foreground">
                     <tr>
-                      {[
-                        "Subject",
-                        "A",
-                        "B",
-                        "C",
-                        "D",
-                        "E",
-                        "X",
-                        "TTL",
-                        "% Pass A–C",
-                        "% Pass A–D",
-                      ].map((heading, index) => (
-                        <th
-                          key={heading}
-                          className={`whitespace-nowrap px-3 py-3 font-bold ${index === 0 ? "text-left" : ""}`}
-                        >
-                          {heading}
-                        </th>
-                      ))}
+                      <th scope="col" className="px-3 py-3 text-left font-bold">
+                        Subject
+                      </th>
+                      {["A", "B", "C", "D", "E", "X", "TTL", "% Pass A–C", "% Pass A–D"].map(
+                        (heading) => (
+                          <th
+                            key={heading}
+                            scope="col"
+                            className="whitespace-nowrap px-3 py-3 text-right font-bold"
+                          >
+                            {heading}
+                          </th>
+                        ),
+                      )}
                     </tr>
                   </thead>
                   <tbody>
@@ -343,7 +441,7 @@ function Academics() {
                           {row.map((value, index) => (
                             <td
                               key={`${row[0]}-${index}`}
-                              className={`whitespace-nowrap px-3 py-3 ${index === 0 ? "text-left font-semibold text-primary" : ""}`}
+                              className={`whitespace-nowrap px-3 py-3 text-right ${index === 0 ? "text-left font-semibold text-primary" : ""}`}
                             >
                               {value || "—"}
                             </td>
