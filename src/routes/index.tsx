@@ -1,11 +1,22 @@
 import { useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, BookOpen, ChevronLeft, ChevronRight, MapPin, Pause, Play } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpen,
+  CalendarDays,
+  ChevronLeft,
+  ChevronRight,
+  MapPin,
+  Pause,
+  Play,
+  Quote,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { campuses, schoolHead } from "@/lib/school";
 import cityCampus from "@/assets/city-campus.webp";
 import hillsideCampus from "@/assets/hillside-campus.webp";
 import schoolLife from "@/assets/school-life.webp";
+import headteacherPhoto from "@/assets/admin-ocukul-julius-web.jpg";
 
 const heroSlides = [
   {
@@ -48,6 +59,33 @@ const schoolFacts = [
   { value: "400+", label: "UCE candidates each year" },
   { value: "300+", label: "UACE candidates each year" },
   { value: "1993", label: "school established" },
+];
+
+const upcomingEvents = [
+  {
+    date: "SATURDAY",
+    label: "Weekly school calendar",
+    title: "Campus visitation",
+    text: "Visit the Day Campus or Mbale Progressive Annex. Confirm the current schedule with the school office before travelling.",
+    to: "/contact" as const,
+    action: "Plan a visit",
+  },
+  {
+    date: "AFTER CLASSES",
+    label: "Sports calendar",
+    title: "Table-tennis training",
+    text: "Training runs every evening in the indoor sports hall. Learners can pick up a racket and join the school’s table-tennis programme.",
+    to: "/sports" as const,
+    action: "See sports life",
+  },
+  {
+    date: "NEXT INTAKE",
+    label: "Admissions calendar",
+    title: "Admissions enquiries",
+    text: "Ask the school office about available places, fees, entry requirements, and the right campus for your family.",
+    to: "/admissions" as const,
+    action: "Ask about admission",
+  },
 ];
 
 export const Route = createFileRoute("/")({
@@ -224,6 +262,49 @@ function Index() {
         </div>
       </section>
 
+      <section
+        className="border-b border-border bg-muted py-16 md:py-20"
+        aria-labelledby="events-heading"
+      >
+        <div className="site-width">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <div>
+              <p className="text-sm font-semibold tracking-[0.04em] text-primary">Keep the date</p>
+              <h2 id="events-heading" className="mt-3 max-w-xl text-4xl leading-tight md:text-5xl">
+                What is coming up at Progressive.
+              </h2>
+            </div>
+            <p className="max-w-md text-sm leading-7 text-muted-foreground">
+              Regular school activities and practical next steps for learners and families. Confirm
+              term dates and arrangements with the school office.
+            </p>
+          </div>
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {upcomingEvents.map((event) => (
+              <article key={event.title} className="border border-border bg-background p-6">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-sm font-bold tracking-[0.08em] text-primary">{event.date}</p>
+                    <p className="mt-1 text-xs text-muted-foreground">{event.label}</p>
+                  </div>
+                  <CalendarDays className="text-secondary-foreground" size={22} strokeWidth={1.6} />
+                </div>
+                <h3 className="mt-8 text-2xl">{event.title}</h3>
+                <p className="mt-3 min-h-20 text-sm leading-6 text-muted-foreground">
+                  {event.text}
+                </p>
+                <Link
+                  to={event.to}
+                  className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-primary"
+                >
+                  {event.action} <ArrowRight size={15} />
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="py-20 md:py-28" aria-labelledby="campuses-heading">
         <div className="site-width">
           <div className="grid gap-8 md:grid-cols-[0.72fr_1.28fr] md:items-end">
@@ -280,6 +361,52 @@ function Index() {
                 </div>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section
+        className="border-y border-border bg-primary text-primary-foreground"
+        aria-labelledby="headteacher-heading"
+      >
+        <div className="site-width grid gap-10 py-16 md:grid-cols-[0.7fr_1.3fr] md:items-center md:gap-16 md:py-20">
+          <div className="relative">
+            <img
+              src={headteacherPhoto}
+              width={640}
+              height={800}
+              loading="lazy"
+              alt="Mr. Ocukul Julius, Day Campus Head Teacher"
+              className="aspect-[4/5] w-full max-w-sm object-cover object-top grayscale-[20%]"
+            />
+            <p className="absolute bottom-4 left-4 bg-secondary px-3 py-2 text-xs font-bold text-secondary-foreground">
+              Mr. Ocukul Julius
+            </p>
+          </div>
+          <div>
+            <Quote className="text-secondary" size={34} strokeWidth={1.4} />
+            <p className="mt-5 text-sm font-semibold tracking-[0.04em] text-secondary">
+              A message from the school
+            </p>
+            <h2
+              id="headteacher-heading"
+              className="mt-4 max-w-2xl text-4xl leading-tight md:text-5xl"
+            >
+              Education works best when a school knows every learner.
+            </h2>
+            <p className="mt-6 max-w-2xl text-base leading-8 text-primary-foreground/80">
+              At Mbale Progressive, our work is steady and practical: teach well, guide closely, and
+              give young people room to discover what they can do. Our Day Campus and Mbale
+              Progressive Annex share the same academic purpose, the same high expectations, and the
+              same responsibility to families.
+            </p>
+            <p className="mt-5 max-w-2xl text-base leading-8 text-primary-foreground/80">
+              We welcome learners who are ready to work, ask questions, serve others, and take their
+              next step with confidence.
+            </p>
+            <p className="mt-7 text-sm font-semibold text-secondary">
+              Mr. Ocukul Julius · Head Teacher, Day Campus
+            </p>
           </div>
         </div>
       </section>
@@ -351,6 +478,77 @@ function Index() {
             >
               Read the full record <ArrowRight size={16} />
             </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 md:py-28" aria-labelledby="gallery-heading">
+        <div className="site-width">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <div>
+              <p className="text-sm font-semibold tracking-[0.04em] text-primary">Around campus</p>
+              <h2 id="gallery-heading" className="mt-3 max-w-xl text-4xl leading-tight md:text-5xl">
+                A closer look at school life.
+              </h2>
+            </div>
+            <Link to="/campuses" className="inline-flex items-center gap-2 font-bold text-primary">
+              Explore the campuses <ArrowRight size={16} />
+            </Link>
+          </div>
+          <div className="mt-10 grid gap-5 md:grid-cols-[1.25fr_0.75fr]">
+            <Link
+              to="/campuses/day-campus"
+              className="group relative min-h-80 overflow-hidden bg-primary"
+            >
+              <img
+                src={schoolLife}
+                width={1200}
+                height={800}
+                loading="lazy"
+                alt="Learners walking across the Mbale Progressive campus"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/10 to-transparent" />
+              <p className="absolute bottom-5 left-5 text-lg font-semibold text-white">
+                Learners, purpose, and room to grow
+              </p>
+            </Link>
+            <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-1">
+              <Link
+                to="/campuses/day-campus"
+                className="group relative min-h-40 overflow-hidden bg-primary"
+              >
+                <img
+                  src={cityCampus}
+                  width={1024}
+                  height={768}
+                  loading="lazy"
+                  alt="Day Campus setting near Namatala"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent" />
+                <p className="absolute bottom-4 left-4 text-sm font-semibold text-white">
+                  Day Campus · Nyanza Road
+                </p>
+              </Link>
+              <Link
+                to="/campuses/mbale-progressive-annex"
+                className="group relative min-h-40 overflow-hidden bg-primary"
+              >
+                <img
+                  src={hillsideCampus}
+                  width={1024}
+                  height={768}
+                  loading="lazy"
+                  alt="Mbale Progressive Annex boarding campus setting"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent" />
+                <p className="absolute bottom-4 left-4 text-sm font-semibold text-white">
+                  Mbale Progressive Annex · Boarding
+                </p>
+              </Link>
+            </div>
           </div>
         </div>
       </section>

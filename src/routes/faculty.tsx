@@ -1,16 +1,16 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Mail, Search, UsersRound } from "lucide-react";
 import { useMemo, useState } from "react";
-import { PageIntro } from "@/components/school-layout";
 import { schoolHead } from "@/lib/school";
 
 export const Route = createFileRoute("/faculty")({
   head: () =>
     schoolHead(
-      "Faculty directory",
+      "Teaching Staff",
       "Meet the subject heads, teachers, and learner support team at Mbale Progressive Secondary School.",
+      "/faculty",
     ),
-  component: Faculty,
+  component: TeachingStaff,
 });
 
 type FacultyMember = {
@@ -145,7 +145,26 @@ const departments = [
   ...Array.from(new Set(faculty.map((member) => member.department))),
 ];
 
-function Faculty() {
+function AcademicTabs() {
+  return (
+    <nav className="flex flex-wrap gap-2" aria-label="Academic sections">
+      <a href="/academics#olevel" className="academic-tab">
+        O’Level
+      </a>
+      <a href="/academics#alevel" className="academic-tab">
+        A’Level
+      </a>
+      <Link to="/academics" className="academic-tab">
+        Academic programme
+      </Link>
+      <Link to="/faculty" className="academic-tab academic-tab-active" aria-current="page">
+        Teaching staff
+      </Link>
+    </nav>
+  );
+}
+
+function TeachingStaff() {
   const [query, setQuery] = useState("");
   const [department, setDepartment] = useState("All departments");
   const subjectHeads = faculty.filter((member) => member.head);
@@ -162,18 +181,54 @@ function Faculty() {
 
   return (
     <>
-      <PageIntro eyebrow="OUR PEOPLE" title="Teachers who know their subjects and their learners.">
-        Our faculty brings academic expertise, practical experience, and close learner support
-        together across O’level and A’level. Start with subject heads, or search the full directory
-        below.
-      </PageIntro>
+      <section className="bg-primary py-16 text-primary-foreground md:py-20">
+        <div className="site-width">
+          <p className="text-sm font-semibold tracking-[0.04em] text-secondary">Academics</p>
+          <h1 className="mt-4 max-w-3xl text-4xl leading-tight md:text-6xl">Teaching staff</h1>
+          <p className="mt-5 max-w-2xl text-base leading-8 text-primary-foreground/80">
+            Subject knowledge, practical guidance, and steady support from S.1 through UACE.
+          </p>
+        </div>
+      </section>
+
+      <div className="border-b border-border bg-background">
+        <div className="site-width py-5">
+          <AcademicTabs />
+        </div>
+      </div>
 
       <div className="site-width py-16 md:py-20">
-        <section>
+        <section aria-labelledby="staff-overview-heading">
+          <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
+            <div>
+              <p className="text-sm font-semibold tracking-[0.04em] text-primary">Our teachers</p>
+              <h2 id="staff-overview-heading" className="mt-3 text-4xl leading-tight md:text-5xl">
+                People who know their subjects and their learners.
+              </h2>
+            </div>
+            <p className="max-w-2xl border-l-2 border-secondary pl-5 leading-7 text-muted-foreground">
+              Mbale Progressive’s teaching staff brings academic expertise, practical experience,
+              and close learner support together across O’Level and A’Level. Begin with subject
+              heads, then search the full directory.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-4 border-y border-border py-6 sm:grid-cols-3">
+            <StaffStat value={String(faculty.length)} label="directory entries" />
+            <StaffStat value={String(subjectHeads.length)} label="subject and programme leads" />
+            <StaffStat value="2" label="campuses served" />
+          </div>
+        </section>
+
+        <section className="mt-16" aria-labelledby="subject-heads-heading">
           <div className="flex flex-wrap items-end justify-between gap-5">
             <div>
-              <p className="eyebrow text-primary">SUBJECT LEADERSHIP</p>
-              <h2 className="mt-3 text-3xl">Subject heads</h2>
+              <p className="text-sm font-semibold tracking-[0.04em] text-primary">
+                Academic leadership
+              </p>
+              <h2 id="subject-heads-heading" className="mt-3 text-3xl">
+                Subject heads
+              </h2>
             </div>
             <p className="max-w-md text-sm leading-6 text-muted-foreground">
               Subject heads coordinate planning, assessment quality, and teacher collaboration in
@@ -182,20 +237,24 @@ function Faculty() {
           </div>
           <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {subjectHeads.map((member) => (
-              <FacultyCard key={member.name} member={member} highlight />
+              <StaffCard key={member.name} member={member} highlight />
             ))}
           </div>
         </section>
 
-        <section className="mt-20 border-t border-border pt-12">
+        <section className="mt-20 border-t border-border pt-12" aria-labelledby="directory-heading">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div>
-              <p className="eyebrow text-primary">FACULTY DIRECTORY</p>
-              <h2 className="mt-3 text-3xl">Find a teacher or learning area</h2>
+              <p className="text-sm font-semibold tracking-[0.04em] text-primary">
+                Teaching staff directory
+              </p>
+              <h2 id="directory-heading" className="mt-3 text-3xl">
+                Find a teacher or learning area
+              </h2>
             </div>
             <div className="flex w-full flex-col gap-3 sm:flex-row md:w-auto">
               <label className="relative block sm:min-w-64">
-                <span className="sr-only">Search faculty</span>
+                <span className="sr-only">Search teaching staff</span>
                 <Search
                   className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
                   size={17}
@@ -226,13 +285,13 @@ function Faculty() {
           </p>
           <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {visibleFaculty.map((member) => (
-              <FacultyCard key={member.name} member={member} />
+              <StaffCard key={member.name} member={member} />
             ))}
           </div>
           {visibleFaculty.length === 0 && (
-            <div className="mt-8 rounded-sm border border-dashed border-border p-10 text-center">
+            <div className="mt-8 border border-dashed border-border p-10 text-center">
               <UsersRound className="mx-auto text-muted-foreground" size={26} />
-              <p className="mt-4 font-semibold">No faculty match that search.</p>
+              <p className="mt-4 font-semibold">No teaching staff match that search.</p>
               <p className="mt-2 text-sm text-muted-foreground">
                 Try a different name, subject, or department.
               </p>
@@ -244,16 +303,19 @@ function Faculty() {
   );
 }
 
-function FacultyCard({
-  member,
-  highlight = false,
-}: {
-  member: FacultyMember;
-  highlight?: boolean;
-}) {
+function StaffStat({ value, label }: { value: string; label: string }) {
+  return (
+    <div className="border-l-2 border-secondary pl-4">
+      <p className="font-display text-3xl text-primary">{value}</p>
+      <p className="mt-1 text-sm text-muted-foreground">{label}</p>
+    </div>
+  );
+}
+
+function StaffCard({ member, highlight = false }: { member: FacultyMember; highlight?: boolean }) {
   return (
     <article
-      className={`flex h-full flex-col rounded-sm border border-border p-6 ${highlight ? "bg-muted" : "bg-background"}`}
+      className={`flex h-full flex-col border border-border p-6 ${highlight ? "bg-muted" : "bg-background"}`}
     >
       <div className="flex items-start justify-between gap-4">
         <div className="flex size-12 items-center justify-center rounded-full bg-primary text-lg font-semibold text-primary-foreground">
@@ -264,7 +326,7 @@ function FacultyCard({
             .join("")}
         </div>
         {member.head && (
-          <span className="rounded-full bg-secondary px-3 py-1 text-[10px] font-extrabold uppercase tracking-wide text-secondary-foreground">
+          <span className="bg-secondary px-3 py-1 text-[10px] font-bold tracking-[0.04em] text-secondary-foreground">
             Subject head
           </span>
         )}

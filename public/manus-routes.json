@@ -11,7 +11,7 @@
     { "path": "/contact", "title": "Contact" },
     { "path": "/database", "title": "Database architecture" },
     { "path": "/e-library", "title": "e-Library" },
-    { "path": "/faculty", "title": "Faculty directory" },
+    { "path": "/faculty", "title": "Teaching staff" },
     { "path": "/finance", "title": "Fees and financial clearance" },
     { "path": "/governance", "title": "Governance and leadership" },
     { "path": "/login", "title": "Sign in" },
