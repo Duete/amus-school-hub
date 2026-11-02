@@ -323,6 +323,23 @@ function Academics() {
                 <SubjectGroup title="Principal subjects" subjects={aLevelPrincipalSubjects} />
                 <SubjectGroup title="Subsidiary subjects" subjects={aLevelSubsidiarySubjects} />
               </div>
+
+              <article className="mt-16 grid gap-8 border-t border-secondary pt-10 md:grid-cols-[0.8fr_1.2fr] md:items-center">
+                <div>
+                  <p className="eyebrow text-primary">A’LEVEL ACHIEVEMENT · UACE 2025</p>
+                  <h3 className="mt-3 text-3xl md:text-4xl">Worasi Joel</h3>
+                  <p className="mt-2 text-sm font-semibold text-primary">Best UACE 2025 student</p>
+                </div>
+                <div className="border-l-2 border-secondary pl-6">
+                  <p className="font-display text-4xl text-primary">18 points</p>
+                  <p className="mt-2 text-lg font-semibold">2ABB3 · BCM / ICT</p>
+                  <p className="mt-3 text-sm leading-7 text-muted-foreground">
+                    A strong A’Level result in Biology, Chemistry, Mathematics, and ICT. Worasi
+                    Joel’s performance reflects the focus and steady preparation expected of
+                    Progressive learners at UACE.
+                  </p>
+                </div>
+              </article>
             </div>
           </div>
         </section>
