@@ -161,13 +161,13 @@ function ApplyForAdmission() {
 
   return (
     <>
-      <section className="bg-primary py-16 text-primary-foreground md:py-20">
+      <section className="bg-primary py-8 text-primary-foreground md:py-10">
         <div className="site-width">
           <p className="text-sm font-semibold tracking-[0.04em] text-secondary">Admissions</p>
-          <h1 className="mt-4 max-w-3xl text-4xl leading-tight md:text-6xl">
+          <h1 className="mt-2 max-w-3xl text-3xl leading-tight md:text-5xl">
             Admission application
           </h1>
-          <p className="mt-5 max-w-2xl text-base leading-8 text-primary-foreground/80">
+          <p className="mt-3 max-w-2xl text-sm leading-6 text-primary-foreground/80">
             Start your application enquiry for O’Level or A’Level at Mbale Progressive Secondary
             School.
           </p>

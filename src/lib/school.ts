@@ -29,6 +29,7 @@ const publicOrigin = (import.meta.env.VITE_PUBLIC_SITE_URL as string | undefined
 const knownPaths: Record<string, string> = {
   Home: "/",
   "About Mbale Progressive": "/about",
+  Alumni: "/alumni",
   Academics: "/academics",
   "e-Library": "/e-library",
   Admissions: "/admissions",

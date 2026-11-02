@@ -17,6 +17,8 @@ const pageDescriptions: Record<string, string> = {
   "/": "This is the home page. It introduces the mixed day and boarding school, its two campuses, UCE/UACE pathways, school numbers, sports, debate, and the main routes for admissions and enquiries.",
   "/about":
     "This is the school profile page. It covers Mbale Progressive’s history, identity, location, motto, and the kind of education families can expect.",
+  "/alumni":
+    "This is the Alumni page. Its message is ‘Once with Us, Always with Us’ and it helps former learners stay connected, share updates, and plan a return to the school.",
   "/academics":
     "This is the academics page. It lists the UCE/O-Level and UACE/A-Level pathways, subjects, candidate numbers, assessment approach, and the route from S.1 through UACE.",
   "/e-library":
