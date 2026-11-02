@@ -212,9 +212,9 @@ function Index() {
       </section>
 
       <section aria-label="School facts" className="border-b border-border bg-background">
-        <div className="site-width grid grid-cols-2 divide-y divide-border py-3 sm:grid-cols-4 sm:divide-x sm:divide-y-0">
+        <div className="site-width grid grid-cols-2 divide-y divide-border py-4 sm:grid-cols-4 sm:divide-x sm:divide-y-0">
           {schoolFacts.map((fact) => (
-            <div key={fact.label} className="px-4 py-5 first:pl-0 last:pr-0 sm:pl-6">
+            <div key={fact.label} className="px-4 py-6 first:pl-0 last:pr-0 sm:pl-6">
               <p className="font-display text-2xl font-semibold text-primary md:text-3xl">
                 {fact.value}
               </p>
@@ -228,7 +228,7 @@ function Index() {
         <div className="site-width">
           <div className="grid gap-8 md:grid-cols-[0.72fr_1.28fr] md:items-end">
             <div>
-              <p className="eyebrow text-primary">DAY & BOARDING</p>
+              <p className="text-sm font-semibold tracking-[0.04em] text-primary">Day & boarding</p>
               <h2
                 id="campuses-heading"
                 className="mt-3 max-w-sm text-4xl leading-tight md:text-5xl"
@@ -262,7 +262,9 @@ function Index() {
                   />
                 </Link>
                 <div className="p-6 md:p-7">
-                  <p className="eyebrow text-muted-foreground">0{index + 1} · CAMPUS</p>
+                  <p className="text-sm font-semibold tracking-[0.04em] text-muted-foreground">
+                    Campus 0{index + 1}
+                  </p>
                   <h3 className="mt-2 text-2xl">{campus.name}</h3>
                   <p className="mt-2 flex items-center gap-2 text-sm text-muted-foreground">
                     <MapPin size={14} />
@@ -288,7 +290,9 @@ function Index() {
       >
         <div className="site-width grid gap-10 md:grid-cols-[1fr_1.1fr] md:gap-20">
           <div>
-            <p className="eyebrow text-primary">LEARNING PATHWAYS</p>
+            <p className="text-sm font-semibold tracking-[0.04em] text-primary">
+              Learning pathways
+            </p>
             <h2 id="learning-heading" className="mt-4 max-w-md text-4xl leading-tight md:text-5xl">
               A clear route from O-Level to A-Level.
             </h2>
@@ -323,7 +327,9 @@ function Index() {
       <section className="py-20 md:py-28" aria-labelledby="life-heading">
         <div className="site-width grid gap-10 md:grid-cols-[1.2fr_0.8fr] md:items-center">
           <div>
-            <p className="eyebrow text-primary">SPORT · DEBATE · STUDENT LIFE</p>
+            <p className="text-sm font-semibold tracking-[0.04em] text-primary">
+              Sport · debate · student life
+            </p>
             <h2 id="life-heading" className="mt-3 max-w-2xl text-4xl leading-tight md:text-5xl">
               Serious about the work. Proud of the life around it.
             </h2>
