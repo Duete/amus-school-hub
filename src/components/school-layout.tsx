@@ -23,6 +23,7 @@ const navigation = [
       { name: "Academics", to: "/academics" },
       { name: "Performance", to: "/performance" },
       { name: "e-Library", to: "/e-library" },
+      { name: "Teaching Staff", to: "/faculty" },
     ],
   },
   {
@@ -34,7 +35,6 @@ const navigation = [
       { name: "Scholarships & sponsorships", to: "/scholarships" },
     ],
   },
-  { type: "link", name: "Faculty", to: "/faculty" },
   { type: "link", name: "Fees & clearance", to: "/finance" },
   { type: "link", name: "News", to: "/news" },
   { type: "link", name: "Contact", to: "/contact" },
@@ -323,7 +323,7 @@ export function SchoolFooter() {
             <Link to="/governance">Governance</Link>
             <Link to="/academics">Academics</Link>
             <Link to="/e-library">e-Library</Link>
-            <Link to="/faculty">Faculty</Link>
+            <Link to="/faculty">Teaching Staff</Link>
             <Link to="/performance">Performance</Link>
             <Link to="/finance">Fees & clearance</Link>
             <Link to="/sports">Sports & student life</Link>

@@ -30,7 +30,7 @@ const pageDescriptions: Record<string, string> = {
   "/campuses":
     "This is the campus directory. Day Campus is on Nyanza Road near Namatala in Mbale City. Mbale Progressive Annex is the boarding campus.",
   "/faculty":
-    "This is the faculty directory. It introduces subject heads, teachers, academic support, and the staff responsible for learner guidance and activities.",
+    "This is the Teaching Staff page under Academics. It introduces subject heads, teachers, academic support, and the staff responsible for learner guidance and activities.",
   "/finance":
     "This is Fees & clearance. It is a preview portal for checking a learner statement, seeing an outstanding balance, and creating a payment request.",
   "/governance":
