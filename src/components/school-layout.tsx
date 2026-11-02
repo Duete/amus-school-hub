@@ -203,8 +203,8 @@ export function SchoolHeader() {
               </Button>
             )}
             <Button asChild>
-              <Link to="/admissions">
-                Ask about admission <ArrowRight />
+              <Link to="/admissions/apply">
+                Apply now <ArrowRight />
               </Link>
             </Button>
           </div>
