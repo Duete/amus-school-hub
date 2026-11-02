@@ -20,7 +20,7 @@ const pageDescriptions: Record<string, string> = {
   "/alumni":
     "This is the Alumni page. Its message is ‘Once with Us, Always with Us’ and it helps former learners stay connected, share updates, and plan a return to the school.",
   "/academics":
-    "This is the academics page. It lists the UCE/O-Level and UACE/A-Level pathways, subjects, candidate numbers, assessment approach, and the route from S.1 through UACE.",
+    "This is the academics page. It lists the UCE/O-Level and UACE/A-Level pathways, subjects, candidate numbers, assessment approach, the route from S.1 through UACE, and Worasi Joel’s Best UACE 2025 result of 18 points in BCM / ICT.",
   "/e-library":
     "This is the e-Library. It groups learning shelves by O-Level classes S.1–S.4 and A-Level classes S.5–S.6, then organises each class into subject areas.",
   "/admissions":
@@ -89,6 +89,16 @@ function answerFor(message: string, pathname: string) {
   ) {
     return "Mbale Progressive’s table-tennis rise began around 2013 with talent development linked to Mbale Tigers Table Tennis Club. In 2016, the school won the women’s team event at the Kenya Thika Open, where Halima Nambozo retained the singles title and helped the team beat Mbale Tigers 3–2. Later that year, Captain Brian Bineni led the boys to the Kateregga Memorial Schools Championship title after wins over Kakungulu Memorial and defending champions Mbogo College. Sports scholarships and talent pathways have supported the programme since then, with training every evening after classes in the indoor sports hall. Open Sports & debate for the full feature and source links.";
   }
+  if (
+    query.includes("alumni") ||
+    query.includes("old student") ||
+    query.includes("former student")
+  ) {
+    return "The Alumni page carries the message ‘Once with Us, Always with Us.’ It covers networking, career mentorship, scholarship support, professional development, staying connected, giving back, reunion events, and access to school resources. Executive and notable alumni names will be added as Progressive confirms them.";
+  }
+  if (query.includes("worasi") || query.includes("best uace") || query.includes("18 points")) {
+    return "Worasi Joel was Mbale Progressive’s Best UACE 2025 student, earning 18 points with 2ABB3 in BCM / ICT. The achievement is featured under A’Level on the Academics page.";
+  }
   if (query.includes("debate") || query.includes("debating") || query.includes("orator")) {
     return "In 2025/2026, the Debate Society reached the national knockout rounds at the NIRA National Schools Debate Championship, finished First Runners-Up at the fourth 93.1 IUIU FM Inter-School Debate Championship, and performed strongly at the Mbale District UNSA Debate Championship. The News page includes public event links, including the IUIU FM championship video.";
   }
@@ -116,7 +126,7 @@ function answerFor(message: string, pathname: string) {
     return "The governance page lists the Board of Governors and campus leadership. Day Campus leaders include Mr. Ocukul Julius, Mr. Ssempala Nathan, Ms. Nabukwasi Patience, Mr. Sahamali Elias, and Mr. Gwire Muhammad. Boarding leaders include Mr. Mudebo Ali Masai, Mrs. Buyi Alice Lamwaka, Mr. Wamboga Asuman, and Mr. Wangota Joshua.";
   }
   if (query.includes("faculty") || query.includes("teacher") || query.includes("staff")) {
-    return "The Faculty page lists subject heads, teachers, and activity leadership across O-Level and A-Level. For a named subject lead or teacher, open Faculty and search the directory rather than relying on a general chat answer.";
+    return "The Teaching Staff page under Academics lists subject heads, teachers, and activity leadership across O-Level and A-Level. For a named subject lead or teacher, open Teaching Staff and search the directory rather than relying on a general chat answer.";
   }
   if (query.includes("location") || query.includes("address") || query.includes("office")) {
     return "The Day Campus is on Nyanza Road near Namatala in Mbale City. Mbale Progressive Annex is the boarding campus. The usual office window is Monday to Saturday, 08:00–17:00. Confirm term, holiday, and visitation arrangements before travelling.";
