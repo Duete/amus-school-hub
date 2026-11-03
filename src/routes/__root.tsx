@@ -16,11 +16,6 @@ import { AuthProvider } from "@/lib/auth";
 
 import appCss from "../styles.css?url";
 
-const publicOrigin = (import.meta.env.VITE_PUBLIC_SITE_URL as string | undefined)?.replace(
-  /\/$/,
-  "",
-);
-
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -83,52 +78,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Mbale Progressive Secondary School" },
-      {
-        name: "description",
-        content:
-          "A mixed day and boarding secondary school in Mbale City, Uganda, offering UCE/O-Level and UACE/A-Level education. Established in 1993.",
-      },
-      {
-        name: "keywords",
-        content: "Mbale secondary school, UCE, UACE, O-Level, A-Level, boarding school, Uganda",
-      },
-      { name: "robots", content: "index,follow" },
-      { property: "og:title", content: "Mbale Progressive Secondary School" },
-      {
-        property: "og:description",
-        content:
-          "A mixed day and boarding secondary school in Mbale City, offering UCE/O-Level and UACE/A-Level education. Established in 1993.",
-      },
-      { property: "og:type", content: "website" },
-      { property: "og:site_name", content: "Mbale Progressive Secondary School" },
-      ...(publicOrigin ? [{ property: "og:url", content: publicOrigin }] : []),
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:title", content: "Mbale Progressive Secondary School" },
-      {
-        name: "twitter:description",
-        content:
-          "A mixed day and boarding secondary school in Mbale City, Uganda, offering UCE/O-Level and UACE/A-Level education.",
-      },
-      {
-        "script:ld+json": {
-          "@context": "https://schema.org",
-          "@type": "EducationalOrganization",
-          name: "Mbale Progressive Secondary School",
-          description:
-            "A mixed day and boarding secondary school in Mbale City, Uganda, offering UCE/O-Level and UACE/A-Level education.",
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: "Mbale",
-            addressRegion: "Eastern Uganda",
-            addressCountry: "UG",
-          },
-          ...(publicOrigin ? { url: publicOrigin } : {}),
-        },
-      },
     ],
     links: [
-      ...(publicOrigin ? [{ rel: "canonical", href: publicOrigin }] : []),
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {

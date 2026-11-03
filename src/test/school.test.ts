@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { campuses } from "@/lib/school";
+import { campuses, schoolHead } from "@/lib/school";
 describe("School campus structure", () => {
   it("features exactly two distinct campuses", () => {
     expect(campuses).toHaveLength(2);
@@ -9,5 +9,28 @@ describe("School campus structure", () => {
       { name: "Mbale Progressive Annex", slug: "mbale-progressive-annex" },
     ]);
     expect(campuses[0].description).toContain("Nyanza Road, near Namatala");
+  });
+});
+
+describe("School SEO metadata", () => {
+  it("provides route metadata and answer-engine schemas", () => {
+    const head = schoolHead("Academics", "UCE and UACE curriculum information.", "/academics");
+    const meta = head.meta as Array<Record<string, unknown>>;
+    const schemas = meta
+      .filter((entry) => "script:ld+json" in entry)
+      .map((entry) => entry["script:ld+json"] as Record<string, unknown>);
+
+    expect(meta).toContainEqual({ title: "Academics | Mbale Progressive Secondary School" });
+    expect(meta).toContainEqual({ name: "robots", content: "index,follow" });
+    expect(schemas.map((schema) => schema["@type"])).toEqual([
+      "School",
+      "WebPage",
+      "BreadcrumbList",
+    ]);
+  });
+
+  it("keeps private portal pages out of search indexes", () => {
+    const head = schoolHead("Fees and financial clearance", "Private finance portal.", "/finance");
+    expect(head.meta).toContainEqual({ name: "robots", content: "noindex,nofollow" });
   });
 });
