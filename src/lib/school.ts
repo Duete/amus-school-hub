@@ -44,7 +44,7 @@ const knownPaths: Record<string, string> = {
   "News and updates": "/news",
   Performance: "/performance",
   Scholarships: "/scholarships",
-  "Sports & debate": "/sports",
+  "Co-Curricular": "/sports",
 };
 const privateTitles = new Set([
   "Sign in",
