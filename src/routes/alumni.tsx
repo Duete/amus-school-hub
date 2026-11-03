@@ -4,6 +4,7 @@ import {
   BookOpen,
   BriefcaseBusiness,
   CalendarDays,
+  ExternalLink,
   GraduationCap,
   Handshake,
   HeartHandshake,
@@ -11,6 +12,9 @@ import {
   Network,
   UsersRound,
 } from "lucide-react";
+import abduSwaibuKampanya from "@/assets/alumni-abdu-swaibu-kampanya.webp";
+import arikotRacheal from "@/assets/alumni-ariokot-racheal.jpg";
+import chrisArikoObore from "@/assets/alumni-chris-ariko-obore.webp";
 import { schoolHead } from "@/lib/school";
 
 export const Route = createFileRoute("/alumni")({
@@ -73,11 +77,34 @@ const executivePlaceholders = [
   "Welfare and Mobilisation Lead — name to be updated",
 ];
 
-const notablePlaceholders = [
-  "Education and research — name to be updated",
-  "Public service and leadership — name to be updated",
-  "Business and enterprise — name to be updated",
-  "Professional and community service — name to be updated",
+const notableAlumni = [
+  {
+    name: "Chris Ariko Obore",
+    classYear: "Class of 1998",
+    role: "Parliamentary communications leader and former journalist",
+    image: chrisArikoObore,
+    imageAlt: "Chris Ariko Obore",
+    source: "Biography",
+    href: "https://flashugnews.com/chris-ariko-obore-biography-age-education-family/",
+  },
+  {
+    name: "Ariokot Racheal",
+    classYear: "Class of 2015",
+    role: "Public service professional and sustainability researcher",
+    image: arikotRacheal,
+    imageAlt: "Ariokot Racheal",
+    source: "Professional profile",
+    href: "https://www.linkedin.com/in/racheal-ariokot?originalSubdomain=cz",
+  },
+  {
+    name: "Hon. Abdu Swaibu Kampanya",
+    classYear: "Class of 2016",
+    role: "Member of Parliament for Iki-Iki County, Budaka",
+    image: abduSwaibuKampanya,
+    imageAlt: "Hon. Abdu Swaibu Kampanya",
+    source: "Parliament profile",
+    href: "https://www.parliament.go.ug/sites/default/files/2026-06/MEMBERS_2026.pdf",
+  },
 ];
 
 function Alumni() {
@@ -185,16 +212,43 @@ function Alumni() {
             </p>
             <h2 className="mt-3 text-3xl">Notable alumni</h2>
             <p className="mt-4 max-w-lg text-sm leading-7 text-muted-foreground">
-              Names and profiles will be added here as alumni achievements are confirmed. The school
-              welcomes stories from every field, not only public profiles.
+              Progressive alumni are making their mark in public service, communications, research,
+              and community leadership. These profiles are a growing record of the people carrying
+              the school’s story forward.
             </p>
-            <ul className="mt-7 divide-y divide-border border-y border-border">
-              {notablePlaceholders.map((item) => (
-                <li key={item} className="py-4 text-sm font-semibold text-primary">
-                  {item}
-                </li>
+            <div className="mt-7 grid gap-4">
+              {notableAlumni.map((alumnus) => (
+                <article
+                  key={alumnus.name}
+                  className="grid gap-4 border border-border bg-background p-4 sm:grid-cols-[5rem_1fr] sm:items-center"
+                >
+                  <img
+                    src={alumnus.image}
+                    alt={alumnus.imageAlt}
+                    className="h-20 w-20 rounded-sm object-cover object-top"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div>
+                    <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+                      <h3 className="text-xl">{alumnus.name}</h3>
+                      <p className="text-xs font-bold uppercase tracking-[0.08em] text-primary">
+                        {alumnus.classYear}
+                      </p>
+                    </div>
+                    <p className="mt-1 text-sm leading-6 text-muted-foreground">{alumnus.role}</p>
+                    <a
+                      href={alumnus.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-2 inline-flex items-center gap-1 text-xs font-bold text-primary underline underline-offset-4"
+                    >
+                      {alumnus.source} <ExternalLink size={12} />
+                    </a>
+                  </div>
+                </article>
               ))}
-            </ul>
+            </div>
           </div>
         </section>
 
