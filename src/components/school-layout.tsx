@@ -1,5 +1,5 @@
 import { Link, useLocation } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowRight, BookOpen, ChevronDown, LogIn, Menu, UserCircle, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/lib/auth";
@@ -102,6 +102,10 @@ export function SchoolHeader() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const location = useLocation();
   const { user, signOut } = useAuth();
+  useEffect(() => {
+    setOpen(false);
+    setActiveMenu(null);
+  }, [location.pathname]);
   const isActive = (to: string) =>
     location.pathname === to || location.pathname.startsWith(`${to}/`);
   return (

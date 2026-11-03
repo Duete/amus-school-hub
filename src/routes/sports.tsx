@@ -108,6 +108,15 @@ function ActivityCard({
   text: string;
   href: string;
 }) {
+  const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    const target = document.querySelector<HTMLElement>(href);
+    if (!target) return;
+
+    event.preventDefault();
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+    window.history.replaceState(null, "", href);
+  };
+
   return (
     <article className="border border-border bg-background p-5">
       <p className="eyebrow text-primary">{label}</p>
@@ -116,6 +125,7 @@ function ActivityCard({
       <a
         className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary underline underline-offset-4"
         href={href}
+        onClick={handleClick}
       >
         Read the story <ExternalLink size={14} />
       </a>
@@ -149,7 +159,7 @@ function Sports() {
       </section>
 
       <section
-        className="border-y border-border bg-muted py-14 md:py-20"
+        className="scroll-mt-28 border-y border-border bg-muted py-14 md:py-20"
         id="football-history"
         aria-labelledby="football-heading"
       >
@@ -186,7 +196,7 @@ function Sports() {
       </section>
 
       <section
-        className="site-width py-14 md:py-20"
+        className="site-width scroll-mt-28 py-14 md:py-20"
         id="debate-story"
         aria-labelledby="debate-heading"
       >
@@ -248,7 +258,7 @@ function Sports() {
       </section>
 
       <section
-        className="border-y border-border bg-muted py-14 md:py-20"
+        className="scroll-mt-28 border-y border-border bg-muted py-14 md:py-20"
         id="table-tennis-history"
         aria-labelledby="table-tennis-heading"
       >
@@ -372,7 +382,13 @@ function Sports() {
         <div className="mt-8 grid gap-5 md:grid-cols-[1.2fr_0.8fr_0.8fr]">
           {gallery.map((item, index) => (
             <figure key={item.title} className={index === 0 ? "md:row-span-2" : ""}>
-              <img className="h-56 w-full object-cover md:h-64" src={item.image} alt={item.title} />
+              <img
+                className="h-56 w-full object-cover md:h-64"
+                src={item.image}
+                alt={item.title}
+                loading="lazy"
+                decoding="async"
+              />
               <figcaption className="border-b border-border py-4">
                 <h3 className="text-xl">{item.title}</h3>
                 <p className="mt-1 text-sm leading-6 text-muted-foreground">{item.text}</p>

@@ -164,7 +164,8 @@
     letter-spacing: -0.018em;
   }
   html {
-    scroll-behavior: smooth;
+    /* Keep router-driven page changes instant; in-page links opt into smooth scrolling. */
+    scroll-behavior: auto;
   }
 }
 .site-width {
