@@ -14,7 +14,7 @@ const navigation = [
     children: [
       { name: "Campus life", to: "/campus-life" },
       { name: "Our campuses", to: "/campuses" },
-      { name: "Sports & student life", to: "/sports" },
+      { name: "Co-Curricular", to: "/sports" },
     ],
   },
   {
@@ -328,7 +328,7 @@ export function SchoolFooter() {
             <Link to="/faculty">Teaching Staff</Link>
             <Link to="/performance">Performance</Link>
             <Link to="/finance">Fees & clearance</Link>
-            <Link to="/sports">Sports & student life</Link>
+            <Link to="/sports">Co-Curricular</Link>
             <Link to="/admissions">Admissions</Link>
             <Link to="/scholarships">Scholarships</Link>
             <Link to="/news">News</Link>

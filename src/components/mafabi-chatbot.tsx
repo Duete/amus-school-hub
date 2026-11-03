@@ -44,7 +44,7 @@ const pageDescriptions: Record<string, string> = {
   "/scholarships":
     "This is the scholarships page. It explains Galiwango Foundation sponsorship and merit-based awards for strong PLE, class, and UCE performance.",
   "/sports":
-    "This is Sports & debate. It covers the 2026 football championship, the Debate Society’s 2025/2026 results, the Galiwango support story, and Mbale Progressive’s table-tennis record.",
+    "This is the Co-Curricular page. It covers football, table tennis, debate, music, dance, drama, clubs, faith associations, houses, the Galiwango support story, and student activities.",
   "/contact":
     "This is the contact page. It gives the school location, office hours, visitation guidance, and the enquiry route for current details.",
 };
@@ -80,14 +80,14 @@ function answerFor(message: string, pathname: string) {
     return "The e-Library is organised in two levels: O-Level has S.1, S.2, S.3, and S.4 shelves; A-Level has S.5 and S.6 shelves. Open a class shelf to browse its core, elective, principal, or subsidiary subject areas. School-approved notes, reading lists, revision guides, and past papers can be attached to each subject shelf.";
   }
   if (query.includes("football") || query.includes("soccer")) {
-    return "Mbale Progressive’s football legacy grew from sports bursaries and local training in the Bugisu region. In the 2016 Mbale District Copa Qualifiers, the boys beat Nkoma SS 4–3 on penalties and the girls beat Mbale Comprehensive 2–0 to win both district trophies. The boys later beat Nyamitanga SS 3–2 at the 2022 National Championship. In 2026, Progressive drew 1–1 with Kisozi Seed, beat Ssaku SS 2–0, defeated Masindi SS 5–4 on penalties in the Round of 32, and reached the Round of 16 before a 4–2 shootout defeat to London College Nansana. The team finished 14th nationally. Open Sports & debate for the full history and scouting invitation for the boys’ and girls’ squads.";
+    return "Mbale Progressive’s football legacy grew from sports bursaries and local training in the Bugisu region. In the 2016 Mbale District Copa Qualifiers, the boys beat Nkoma SS 4–3 on penalties and the girls beat Mbale Comprehensive 2–0 to win both district trophies. The boys later beat Nyamitanga SS 3–2 at the 2022 National Championship. In 2026, Progressive drew 1–1 with Kisozi Seed, beat Ssaku SS 2–0, defeated Masindi SS 5–4 on penalties in the Round of 32, and reached the Round of 16 before a 4–2 shootout defeat to London College Nansana. The team finished 14th nationally. Open Co-Curricular for the full history and scouting invitation for the boys’ and girls’ squads.";
   }
   if (
     query.includes("table tennis") ||
     query.includes("ping pong") ||
     query.includes("ping-pong")
   ) {
-    return "Mbale Progressive’s table-tennis rise began around 2013 with talent development linked to Mbale Tigers Table Tennis Club. In 2016, the school won the women’s team event at the Kenya Thika Open, where Halima Nambozo retained the singles title and helped the team beat Mbale Tigers 3–2. Later that year, Captain Brian Bineni led the boys to the Kateregga Memorial Schools Championship title after wins over Kakungulu Memorial and defending champions Mbogo College. Sports scholarships and talent pathways have supported the programme since then, with training every evening after classes in the indoor sports hall. Open Sports & debate for the full feature and source links.";
+    return "Mbale Progressive’s table-tennis rise began around 2013 with talent development linked to Mbale Tigers Table Tennis Club. In 2016, the school won the women’s team event at the Kenya Thika Open, where Halima Nambozo retained the singles title and helped the team beat Mbale Tigers 3–2. Later that year, Captain Brian Bineni led the boys to the Kateregga Memorial Schools Championship title after wins over Kakungulu Memorial and defending champions Mbogo College. Sports scholarships and talent pathways have supported the programme since then, with training every evening after classes in the indoor sports hall. Open Co-Curricular for the full feature and source links.";
   }
   if (
     query.includes("alumni") ||
