@@ -22,10 +22,10 @@ export const campuses = [
 ];
 
 const schoolName = "Mbale Progressive Secondary School";
-const publicOrigin = (import.meta.env.VITE_PUBLIC_SITE_URL as string | undefined)?.replace(
-  /\/$/,
-  "",
-);
+const publicOrigin = (
+  (import.meta.env.VITE_PUBLIC_SITE_URL as string | undefined) ?? "https://mbaleprogressive.sc.ug"
+).replace(/\/$/, "");
+const shareImagePath = "/og-school.webp";
 const knownPaths: Record<string, string> = {
   Home: "/",
   "About Mbale Progressive": "/about",
@@ -65,6 +65,17 @@ export function schoolHead(
 ) {
   const resolvedPath = path ?? knownPaths[title];
   const pageUrl = publicOrigin && resolvedPath ? `${publicOrigin}${resolvedPath}` : undefined;
+  const pageTitle = `${title} | ${schoolName}`;
+  const keywords = [
+    "Mbale secondary school",
+    "Mbale Progressive Secondary School",
+    "UCE",
+    "UACE",
+    "O-Level",
+    "A-Level",
+    "day and boarding school",
+    "Uganda",
+  ];
   const schoolSchema: StructuredData = {
     "@context": "https://schema.org",
     "@type": "School",
@@ -79,28 +90,66 @@ export function schoolHead(
     areaServed: "Mbale City and the Eastern Region of Uganda",
     ...(pageUrl ? { url: pageUrl } : {}),
   };
+  const pageSchema: StructuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: pageTitle,
+    description,
+    ...(pageUrl ? { url: pageUrl } : {}),
+    isPartOf: {
+      "@type": "WebSite",
+      name: schoolName,
+      ...(publicOrigin ? { url: publicOrigin } : {}),
+    },
+    about: { "@type": "EducationalOrganization", name: schoolName },
+    ...(publicOrigin ? { primaryImageOfPage: `${publicOrigin}${shareImagePath}` } : {}),
+  };
+  const breadcrumbSchema: StructuredData | undefined =
+    pageUrl && resolvedPath && resolvedPath !== "/"
+      ? {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: schoolName,
+              item: publicOrigin,
+            },
+            { "@type": "ListItem", position: 2, name: title, item: pageUrl },
+          ],
+        }
+      : undefined;
 
   return {
     meta: [
-      { title: `${title} | ${schoolName}` },
+      { title: pageTitle },
       { name: "description", content: description },
-      {
-        name: "keywords",
-        content: "Mbale secondary school, UCE, UACE, day and boarding school, Uganda",
-      },
+      { name: "keywords", content: keywords.join(", ") },
       {
         name: "robots",
         content: indexable && !privateTitles.has(title) ? "index,follow" : "noindex,nofollow",
       },
-      { property: "og:title", content: `${title} | ${schoolName}` },
+      { property: "og:title", content: pageTitle },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: schoolName },
       ...(pageUrl ? [{ property: "og:url", content: pageUrl }] : []),
+      ...(publicOrigin
+        ? [{ property: "og:image", content: `${publicOrigin}${shareImagePath}` }]
+        : []),
+      ...(publicOrigin ? [{ property: "og:image:alt", content: `${schoolName} campus` }] : []),
+      { property: "og:locale", content: "en_UG" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:title", content: `${title} | ${schoolName}` },
+      { name: "twitter:title", content: pageTitle },
       { name: "twitter:description", content: description },
+      ...(publicOrigin
+        ? [{ name: "twitter:image", content: `${publicOrigin}${shareImagePath}` }]
+        : []),
+      ...(publicOrigin ? [{ name: "twitter:image:alt", content: `${schoolName} campus` }] : []),
       { "script:ld+json": schoolSchema },
+      { "script:ld+json": pageSchema },
+      ...(breadcrumbSchema ? [{ "script:ld+json": breadcrumbSchema }] : []),
       ...extraStructuredData.map((data) => ({ "script:ld+json": data })),
     ],
     ...(pageUrl ? { links: [{ rel: "canonical", href: pageUrl }] } : {}),
