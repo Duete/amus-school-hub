@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ExternalLink, ImagePlus, MessageCircle, Music2, Trophy, Users } from "lucide-react";
+import { ExternalLink, MessageCircle, Music2, Trophy, Users } from "lucide-react";
 import footballJuniorDuel from "@/assets/football-junior-duel.webp";
 import footballMatchAction from "@/assets/football-match-action.webp";
 import girlsWarmUp from "@/assets/girls-team-in-warm-up-before-the-match.webp";
@@ -197,24 +197,17 @@ function ActivityCard({
   );
 }
 
-function PhotoPlaceholder({ category, number }: { category: string; number: number }) {
+function PhotoFigure({ image, title, alt }: { image: string; title: string; alt: string }) {
   return (
-    <figure className="border border-dashed border-border bg-background">
-      <div className="flex aspect-[4/3] flex-col items-center justify-center bg-muted p-5 text-center">
-        <div className="flex items-center gap-2">
-          <ImagePlus
-            className="shrink-0 text-primary"
-            size={20}
-            strokeWidth={1.6}
-            aria-hidden="true"
-          />
-          <p className="text-sm font-semibold">Photo placeholder</p>
-        </div>
-        <p className="mt-3 text-xs text-muted-foreground">Image to be added</p>
-      </div>
-      <figcaption className="border-t border-border px-3 py-2 text-xs font-medium text-muted-foreground">
-        {category} · Photo {number}
-      </figcaption>
+    <figure>
+      <img
+        className="h-64 w-full border border-border object-cover"
+        src={image}
+        alt={alt}
+        loading="lazy"
+        decoding="async"
+      />
+      <figcaption className="pt-3 text-sm font-medium">{title}</figcaption>
     </figure>
   );
 }
