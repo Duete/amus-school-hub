@@ -201,7 +201,7 @@ function PhotoFigure({ image, title, alt }: { image: string; title: string; alt:
   return (
     <figure>
       <img
-        className="h-64 w-full border border-border object-cover"
+        className="h-64 w-full border border-border object-cover object-top"
         src={image}
         alt={alt}
         loading="lazy"
@@ -286,7 +286,7 @@ function Sports() {
                   className={
                     index === 0
                       ? "w-full border border-border"
-                      : "h-64 w-full border border-border object-cover"
+                      : "h-64 w-full border border-border object-cover object-top"
                   }
                   src={photo.image}
                   alt={photo.alt}
