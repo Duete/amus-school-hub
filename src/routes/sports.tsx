@@ -16,6 +16,8 @@ import ttHalimaTrophy from "@/assets/tt-halima-trophy-2016.webp";
 import reginaNakibuule from "@/assets/alumni-regina-nakibuule.jpg";
 import redCrossCleaning from "@/assets/red-cross-cleaning-activity.webp";
 import redCrossMembers from "@/assets/red-cross-members.webp";
+import bugisuFinalsCelebration from "@/assets/bugisu-regionals-finals-2023-celebration.webp";
+import bugisuRegionalChampions from "@/assets/bugisu-regionals-champions-2023.webp";
 import { PageIntro } from "@/components/school-layout";
 import { schoolHead } from "@/lib/school";
 
@@ -129,6 +131,21 @@ const girlsFootballPhotos = [
     image: girlsResting,
     title: "Resting between matches",
     alt: "Mbale Progressive girls' football team resting before another match",
+  },
+];
+
+const regionalChampionsPhotos = [
+  {
+    image: bugisuFinalsCelebration,
+    title: "The final whistle",
+    text: "Players celebrate on the pitch after the Bugisu Regionals Finals 2023.",
+    alt: "Mbale Progressive football players celebrating on the pitch after the Bugisu Regionals Finals 2023",
+  },
+  {
+    image: bugisuRegionalChampions,
+    title: "Regional Champions 2023",
+    text: "Progressive emerged as the Bugisu Regional Champions.",
+    alt: "Mbale Progressive football team celebrating as Bugisu Regional Champions 2023",
   },
 ];
 
