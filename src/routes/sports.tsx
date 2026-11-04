@@ -648,6 +648,11 @@ function Sports() {
                 "National knockout rounds at NIRA, First Runners-Up at the 93.1 IUIU FM championship, and strong district UNSA performance.",
               ],
               [
+                "2023",
+                "Bugisu Regionals",
+                "Regional Champions after winning the Bugisu Regionals Finals.",
+              ],
+              [
                 "2016 → today",
                 "Table tennis",
                 "International breakthrough at the Kenya Thika Open and the Kateregga Memorial Schools Championship title.",

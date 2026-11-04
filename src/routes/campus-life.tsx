@@ -13,6 +13,7 @@ import {
 import sendOff from "@/assets/boys-team-with-the-deputor-madam-alice-and-games-teacher-before-send-off-for-nationals-2024.webp";
 import arriving from "@/assets/team-ariving-for-the-finals.webp";
 import outreachNorthRoad from "@/assets/outreach-north-road-primary.webp";
+import karamojaSelfie from "@/assets/karamoja-association-selfie.webp";
 import { PageIntro } from "@/components/school-layout";
 import { schoolHead } from "@/lib/school";
 
