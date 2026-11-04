@@ -221,6 +221,42 @@ function CampusLife() {
       </section>
 
       <section
+        className="border-y border-border bg-muted py-14 md:py-20"
+        aria-labelledby="diversity-heading"
+      >
+        <div className="site-width grid gap-8 lg:grid-cols-[1fr_0.8fr] lg:items-center">
+          <div>
+            <p className="eyebrow text-primary">CULTURAL ASSOCIATIONS</p>
+            <h2 id="diversity-heading" className="mt-2 text-3xl md:text-4xl">
+              United in diversity.
+            </h2>
+            <p className="mt-4 max-w-2xl leading-7 text-muted-foreground">
+              Cultural associations give learners a home for their heritage and a chance to share it
+              with the whole school. The Karamoja Association is one of them, and its members
+              gathered for a selfie during one of the school's cultural events and galas.
+            </p>
+            <p className="mt-4 max-w-2xl leading-7 text-muted-foreground">
+              Traditional dance, music, and dress keep cultural expression visible at school and
+              community events, and every learner is welcome to take part.
+            </p>
+          </div>
+          <figure className="mx-auto w-full max-w-sm">
+            <img
+              className="w-full border border-border"
+              src={karamojaSelfie}
+              alt="Members of the Karamoja Association taking a selfie together during a school cultural event"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption className="pt-3 text-sm leading-6 text-muted-foreground">
+              A selfie with the members of the Karamoja Association during one of the cultural
+              events and galas.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section
         className="border-t border-border bg-muted py-14 md:py-20"
         aria-labelledby="outreach-heading"
       >
