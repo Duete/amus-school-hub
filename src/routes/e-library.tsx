@@ -138,13 +138,20 @@ function ClassCard({ shelf }: { shelf: ClassShelf }) {
   return (
     <details className="group border border-border bg-background">
       <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary [&::-webkit-details-marker]:hidden">
-        <div>
-          <p className="eyebrow text-primary">CLASS SHELF</p>
-          <h3 className="mt-2 text-3xl">{shelf.name}</h3>
-          <p className="mt-3 text-sm leading-6 text-muted-foreground">{shelf.description}</p>
+        <div className="flex min-w-0 items-start gap-3">
+          <Layers3
+            className="mt-1 shrink-0 text-primary"
+            size={20}
+            strokeWidth={1.6}
+            aria-hidden="true"
+          />
+          <div className="min-w-0">
+            <p className="eyebrow text-primary">CLASS SHELF</p>
+            <h3 className="mt-2 text-3xl">{shelf.name}</h3>
+            <p className="mt-3 text-sm leading-6 text-muted-foreground">{shelf.description}</p>
+          </div>
         </div>
         <div className="flex shrink-0 items-center gap-3 text-primary">
-          <Layers3 size={23} strokeWidth={1.6} aria-hidden="true" />
           <ChevronDown
             className="transition-transform group-open:rotate-180"
             size={18}

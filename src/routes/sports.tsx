@@ -247,8 +247,15 @@ function Sports() {
                 ],
               ].map(([title, text]) => (
                 <article key={title} className="border-t-4 border-primary bg-muted p-5">
-                  <Music2 className="text-primary" size={22} strokeWidth={1.5} />
-                  <h3 className="mt-4 text-xl">{title}</h3>
+                  <div className="flex items-start gap-3">
+                    <Music2
+                      className="mt-0.5 shrink-0 text-primary"
+                      size={20}
+                      strokeWidth={1.6}
+                      aria-hidden="true"
+                    />
+                    <h3 className="text-xl">{title}</h3>
+                  </div>
                   <p className="mt-2 text-sm leading-6 text-muted-foreground">{text}</p>
                 </article>
               ))}

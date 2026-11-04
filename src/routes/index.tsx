@@ -282,14 +282,19 @@ function Index() {
           <div className="mt-10 grid gap-5 md:grid-cols-3">
             {upcomingEvents.map((event) => (
               <article key={event.title} className="border border-border bg-background p-6">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <p className="text-sm font-bold tracking-[0.08em] text-primary">{event.date}</p>
-                    <p className="mt-1 text-xs text-muted-foreground">{event.label}</p>
-                  </div>
-                  <CalendarDays className="text-secondary-foreground" size={22} strokeWidth={1.6} />
+                <div>
+                  <p className="text-sm font-bold tracking-[0.08em] text-primary">{event.date}</p>
+                  <p className="mt-1 text-xs text-muted-foreground">{event.label}</p>
                 </div>
-                <h3 className="mt-8 text-2xl">{event.title}</h3>
+                <div className="mt-6 flex items-start gap-3">
+                  <CalendarDays
+                    className="mt-1 shrink-0 text-primary"
+                    size={20}
+                    strokeWidth={1.6}
+                    aria-hidden="true"
+                  />
+                  <h3 className="text-2xl">{event.title}</h3>
+                </div>
                 <p className="mt-3 min-h-20 text-sm leading-6 text-muted-foreground">
                   {event.text}
                 </p>
@@ -432,15 +437,29 @@ function Index() {
           </div>
           <div className="grid gap-8 sm:grid-cols-2">
             <article className="border-t-2 border-primary pt-5">
-              <BookOpen className="text-primary" size={28} strokeWidth={1.5} />
-              <h3 className="mt-5 text-2xl">O-Level / UCE</h3>
+              <div className="flex items-center gap-3">
+                <BookOpen
+                  className="shrink-0 text-primary"
+                  size={22}
+                  strokeWidth={1.6}
+                  aria-hidden="true"
+                />
+                <h3 className="text-2xl">O-Level / UCE</h3>
+              </div>
               <p className="mt-3 text-sm leading-6 text-muted-foreground">
                 20+ subject options and 800 learners enrolled at O-Level.
               </p>
             </article>
             <article className="border-t-2 border-secondary pt-5">
-              <BookOpen className="text-primary" size={28} strokeWidth={1.5} />
-              <h3 className="mt-5 text-2xl">A-Level / UACE</h3>
+              <div className="flex items-center gap-3">
+                <BookOpen
+                  className="shrink-0 text-primary"
+                  size={22}
+                  strokeWidth={1.6}
+                  aria-hidden="true"
+                />
+                <h3 className="text-2xl">A-Level / UACE</h3>
+              </div>
               <p className="mt-3 text-sm leading-6 text-muted-foreground">
                 17+ subject options and 400 learners enrolled at A-Level.
               </p>

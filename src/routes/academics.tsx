@@ -663,8 +663,15 @@ function Academics() {
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {academicProgramCards.map(({ title, text, icon: Icon }) => (
               <article key={title} className="border border-border bg-background p-6">
-                <Icon className="text-primary" size={25} strokeWidth={1.7} aria-hidden="true" />
-                <h3 className="mt-5 text-xl">{title}</h3>
+                <div className="flex items-start gap-3">
+                  <Icon
+                    className="mt-0.5 shrink-0 text-primary"
+                    size={20}
+                    strokeWidth={1.6}
+                    aria-hidden="true"
+                  />
+                  <h3 className="text-xl">{title}</h3>
+                </div>
                 <p className="mt-3 text-sm leading-6 text-muted-foreground">{text}</p>
               </article>
             ))}
@@ -689,8 +696,15 @@ function Academics() {
             <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {diyProjects.map(({ title, text, icon: Icon }) => (
                 <article key={title} className="border border-border bg-background p-6">
-                  <Icon className="text-primary" size={25} strokeWidth={1.7} aria-hidden="true" />
-                  <h3 className="mt-5 text-xl">{title}</h3>
+                  <div className="flex items-start gap-3">
+                    <Icon
+                      className="mt-0.5 shrink-0 text-primary"
+                      size={20}
+                      strokeWidth={1.6}
+                      aria-hidden="true"
+                    />
+                    <h3 className="text-xl">{title}</h3>
+                  </div>
                   <p className="mt-3 text-sm leading-6 text-muted-foreground">{text}</p>
                 </article>
               ))}

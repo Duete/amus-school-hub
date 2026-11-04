@@ -114,8 +114,15 @@ function CampusLife() {
               const ThreadIcon = Icon as typeof House;
               return (
                 <article key={title as string} className="bg-background p-6">
-                  <ThreadIcon className="text-primary" size={25} />
-                  <h3 className="mt-5 text-xl">{title as string}</h3>
+                  <div className="flex items-start gap-3">
+                    <ThreadIcon
+                      className="mt-0.5 shrink-0 text-primary"
+                      size={20}
+                      strokeWidth={1.6}
+                      aria-hidden="true"
+                    />
+                    <h3 className="text-xl">{title as string}</h3>
+                  </div>
                   <p className="mt-2 text-sm leading-6 text-muted-foreground">{text as string}</p>
                 </article>
               );
@@ -136,15 +143,29 @@ function CampusLife() {
             </p>
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               <div className="rounded-sm border border-border p-5">
-                <House className="text-primary" size={22} />
-                <h3 className="mt-4 text-xl">House community</h3>
+                <div className="flex items-center gap-3">
+                  <House
+                    className="shrink-0 text-primary"
+                    size={20}
+                    strokeWidth={1.6}
+                    aria-hidden="true"
+                  />
+                  <h3 className="text-xl">House community</h3>
+                </div>
                 <p className="mt-2 text-sm leading-6 text-muted-foreground">
                   Students build friendships and learn to care for shared spaces and one another.
                 </p>
               </div>
               <div className="rounded-sm border border-border p-5">
-                <BellRing className="text-primary" size={22} />
-                <h3 className="mt-4 text-xl">Supervised routines</h3>
+                <div className="flex items-center gap-3">
+                  <BellRing
+                    className="shrink-0 text-primary"
+                    size={20}
+                    strokeWidth={1.6}
+                    aria-hidden="true"
+                  />
+                  <h3 className="text-xl">Supervised routines</h3>
+                </div>
                 <p className="mt-2 text-sm leading-6 text-muted-foreground">
                   Study, meals, activities, rest, and movement are supported by clear routines.
                 </p>
@@ -152,9 +173,11 @@ function CampusLife() {
             </div>
           </div>
           <div className="rounded-sm bg-primary p-7 text-primary-foreground md:p-9">
-            <HeartPulse size={30} />
-            <p className="eyebrow mt-6 text-secondary">BOARDING ONLY</p>
-            <h2 className="mt-3 text-3xl">Health services</h2>
+            <p className="eyebrow text-secondary">BOARDING ONLY</p>
+            <div className="mt-3 flex items-center gap-3">
+              <HeartPulse size={24} strokeWidth={1.6} aria-hidden="true" />
+              <h2 className="text-3xl">Health services</h2>
+            </div>
             <p className="mt-5 leading-7 text-primary-foreground/80">
               Boarding students have access to health support for everyday wellbeing and illness
               management, with referral arrangements for care beyond the school setting.

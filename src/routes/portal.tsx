@@ -435,8 +435,15 @@ function PortalCard({
     <article
       className={`rounded-sm border border-border p-6 ${enabled ? "bg-background" : "bg-muted/60"}`}
     >
-      <Icon className="text-primary" size={23} />
-      <h3 className="mt-5 text-xl">{title}</h3>
+      <div className="flex items-start gap-3">
+        <Icon
+          className="mt-0.5 shrink-0 text-primary"
+          size={20}
+          strokeWidth={1.6}
+          aria-hidden="true"
+        />
+        <h3 className="text-xl">{title}</h3>
+      </div>
       <p className="mt-2 text-sm leading-6 text-muted-foreground">{text}</p>
       {href && enabled ? (
         <Button asChild variant="outline" className="mt-6">
