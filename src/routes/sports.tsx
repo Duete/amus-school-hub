@@ -242,7 +242,11 @@ function Sports() {
                 className={index === 0 ? "sm:col-span-2 lg:col-span-2" : ""}
               >
                 <img
-                  className="h-56 w-full border border-border object-cover lg:h-64"
+                  className={
+                    index === 0
+                      ? "w-full border border-border"
+                      : "h-64 w-full border border-border object-cover"
+                  }
                   src={photo.image}
                   alt={photo.alt}
                   loading="lazy"
