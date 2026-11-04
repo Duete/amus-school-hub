@@ -16,6 +16,7 @@ import abduSwaibuKampanya from "@/assets/alumni-abdu-swaibu-kampanya.webp";
 import arikotRacheal from "@/assets/alumni-ariokot-racheal.jpg";
 import chrisArikoObore from "@/assets/alumni-chris-ariko-obore.webp";
 import cindySanyu from "@/assets/alumni-cindy-sanyu.jpg";
+import reginaNakibuule from "@/assets/alumni-regina-nakibuule.jpg";
 import { schoolHead } from "@/lib/school";
 
 export const Route = createFileRoute("/alumni")({
@@ -126,6 +127,15 @@ const notableAlumni: NotableAlumnus[] = [
     source: "Wikipedia biography",
     href: "https://en.wikipedia.org/wiki/Cindy_Sanyu",
     imageCredit: "Photo: Kyakwera / Wikimedia Commons (CC BY-SA 4.0)",
+  },
+  {
+    name: "Nakibuule Regina",
+    classYear: "Class year not listed",
+    role: "FEASSSA Table Tennis commissar (2019 to date), referee and umpire, ITTF & PTT level 1 & 2 coach, USSSA Table Tennis coordinator, and director with Pickleball Africa",
+    image: reginaNakibuule,
+    imageAlt: "Regina Nakibuule",
+    source: "Kawowo profile",
+    href: "https://kawowo.com/2023/03/08/regina-nakibuule-a-multifaceted-female-sports-personality/",
   },
   {
     name: "Mukamba Robert",
