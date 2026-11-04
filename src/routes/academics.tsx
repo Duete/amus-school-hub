@@ -19,6 +19,11 @@ import {
   Users,
 } from "lucide-react";
 import scienceLabPracticals from "@/assets/science-lab-practicals.webp";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 import { PageIntro } from "@/components/school-layout";
 import { schoolHead } from "@/lib/school";
 
@@ -256,10 +261,25 @@ function SubjectList({ subjects }: { subjects: string[] }) {
 
 function SubjectGroup({ title, subjects }: { title: string; subjects: string[] }) {
   return (
-    <div>
-      <h4 className="mb-4 text-xl text-foreground">{title}</h4>
-      <SubjectList subjects={subjects} />
-    </div>
+    <Collapsible className="group border border-border bg-background">
+      <h4>
+        <CollapsibleTrigger className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition-colors hover:bg-muted/60">
+          <span className="text-xl text-foreground">{title}</span>
+          <span className="flex shrink-0 items-center gap-3">
+            <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+              {subjects.length} subjects
+            </span>
+            <ChevronDown
+              className="text-primary transition-transform duration-200 group-data-[state=open]:rotate-180"
+              size={18}
+            />
+          </span>
+        </CollapsibleTrigger>
+      </h4>
+      <CollapsibleContent className="border-t border-border px-5 py-5">
+        <SubjectList subjects={subjects} />
+      </CollapsibleContent>
+    </Collapsible>
   );
 }
 
