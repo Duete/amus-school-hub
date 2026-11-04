@@ -10,6 +10,10 @@ import teachersEleven from "@/assets/the-teacher-s-1st-eleven-before-a-game-with
 import teachersCaptain from "@/assets/the-teachers-captain-and-the-assistant.webp";
 import footballSquadCelebrationWide from "@/assets/football-squad-celebration-wide.webp";
 import footballTeamLineup from "@/assets/football-team-lineup.webp";
+import ttHalimaCommonwealth from "@/assets/tt-halima-commonwealth-2018.jpg";
+import ttHurseyNambozo from "@/assets/tt-hursey-nambozo-2018.jpg";
+import ttHalimaTrophy from "@/assets/tt-halima-trophy-2016.webp";
+import reginaNakibuule from "@/assets/alumni-regina-nakibuule.jpg";
 import { PageIntro } from "@/components/school-layout";
 import { schoolHead } from "@/lib/school";
 
@@ -426,6 +430,77 @@ function Sports() {
                 rel="noreferrer"
               >
                 NTV Uganda archive <ExternalLink size={14} />
+              </a>
+            </div>
+          </div>
+        </div>
+        <div className="site-width mt-10 grid gap-4 md:grid-cols-3">
+          {[
+            {
+              src: ttHalimaCommonwealth,
+              alt: "Halima Nambozo playing at the 2018 Commonwealth Games",
+              caption:
+                "Ugandan player Halima Nambozo (Mbale Progressive) competing with Wales' Anna Hursey at the 2018 Commonwealth Games, Gold Coast, Queensland, Australia.",
+            },
+            {
+              src: ttHurseyNambozo,
+              alt: "Anna Hursey and Halima Nambozo at the 2018 Commonwealth Games",
+              caption:
+                "Wales' Anna Hursey and Halima Nambozo in action — 2018 Commonwealth Games table tennis, Australia.",
+            },
+            {
+              src: ttHalimaTrophy,
+              alt: "Halima Nambozo presenting one of her trophies",
+              caption: "Halima Nambozo presenting one of her trophies in 2016.",
+            },
+          ].map((photo) => (
+            <figure key={photo.caption} className="border border-border bg-background">
+              <img
+                src={photo.src}
+                alt={photo.alt}
+                className="h-56 w-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption className="p-3 text-sm leading-6 text-muted-foreground">
+                {photo.caption}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+        <div className="site-width mt-8 grid gap-5 border border-border bg-background p-5 md:grid-cols-[12rem_1fr] md:items-center">
+          <img
+            src={reginaNakibuule}
+            alt="Regina Nakibuule"
+            className="h-48 w-full object-cover object-top md:h-40"
+            loading="lazy"
+            decoding="async"
+          />
+          <div>
+            <p className="eyebrow text-primary">TOP TALENT FROM OUR CLUB</p>
+            <h3 className="mt-2 text-2xl">Regina Nakibuule</h3>
+            <p className="mt-2 leading-7 text-muted-foreground">
+              Mbale Progressive table tennis club has also produced talents like Regina Nakibuule —
+              FEASSSA Table Tennis commissar from 2019 to date, referee and umpire, ITTF & PTT level
+              1 & 2 coach, Table Tennis coordinator for the Uganda Secondary Schools Sports
+              Association (USSSA), and director with Pickleball Africa.
+            </p>
+            <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold">
+              <a
+                className="inline-flex items-center gap-2 text-primary underline underline-offset-4"
+                href="https://kawowo.com/2023/03/08/regina-nakibuule-a-multifaceted-female-sports-personality/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                A multifaceted sports personality <ExternalLink size={14} />
+              </a>
+              <a
+                className="inline-flex items-center gap-2 text-primary underline underline-offset-4"
+                href="https://kawowo.com/2025/02/01/regina-nakibuule-ugandan-elevated-to-director-of-sports-development-role-on-continental-level-pickleball/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Pickleball Africa director role <ExternalLink size={14} />
               </a>
             </div>
           </div>
