@@ -15,6 +15,7 @@ import {
 import abduSwaibuKampanya from "@/assets/alumni-abdu-swaibu-kampanya.webp";
 import arikotRacheal from "@/assets/alumni-ariokot-racheal.jpg";
 import chrisArikoObore from "@/assets/alumni-chris-ariko-obore.webp";
+import cindySanyu from "@/assets/alumni-cindy-sanyu.jpg";
 import { schoolHead } from "@/lib/school";
 
 export const Route = createFileRoute("/alumni")({
@@ -77,7 +78,18 @@ const executivePlaceholders = [
   "Welfare and Mobilisation Lead — name to be updated",
 ];
 
-const notableAlumni = [
+type NotableAlumnus = {
+  name: string;
+  classYear: string;
+  role: string;
+  image?: string;
+  imageAlt?: string;
+  source?: string;
+  href?: string;
+  imageCredit?: string;
+};
+
+const notableAlumni: NotableAlumnus[] = [
   {
     name: "Chris Ariko Obore",
     classYear: "Class of 1998",
@@ -99,11 +111,26 @@ const notableAlumni = [
   {
     name: "Hon. Abdu Swaibu Kampanya",
     classYear: "Class of 2016",
-    role: "Member of Parliament for Iki-Iki County, Budaka",
+    role: "Lawyer and Member of Parliament for Iki-Iki County, Budaka",
     image: abduSwaibuKampanya,
     imageAlt: "Hon. Abdu Swaibu Kampanya",
     source: "Parliament profile",
     href: "https://www.parliament.go.ug/sites/default/files/2026-06/MEMBERS_2026.pdf",
+  },
+  {
+    name: "Sanyu Cinderella a.k.a Cindy",
+    classYear: "Class year not listed",
+    role: "Ugandan musician, original member of Blu*3, and solo artist",
+    image: cindySanyu,
+    imageAlt: "Cindy Sanyu",
+    source: "Wikipedia biography",
+    href: "https://en.wikipedia.org/wiki/Cindy_Sanyu",
+    imageCredit: "Photo: Kyakwera / Wikimedia Commons (CC BY-SA 4.0)",
+  },
+  {
+    name: "Mukamba Robert",
+    classYear: "Class year not listed",
+    role: "Politician and Director of Cream Nursery & Primary School, Mbale",
   },
 ];
 
@@ -222,13 +249,22 @@ function Alumni() {
                   key={alumnus.name}
                   className="grid gap-4 border border-border bg-background p-4 sm:grid-cols-[5rem_1fr] sm:items-center"
                 >
-                  <img
-                    src={alumnus.image}
-                    alt={alumnus.imageAlt}
-                    className="h-20 w-20 rounded-sm object-cover object-top"
-                    loading="lazy"
-                    decoding="async"
-                  />
+                  {alumnus.image ? (
+                    <img
+                      src={alumnus.image}
+                      alt={alumnus.imageAlt ?? alumnus.name}
+                      className="h-20 w-20 rounded-sm object-cover object-top"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  ) : (
+                    <div
+                      className="flex h-20 w-20 items-center justify-center rounded-sm bg-primary text-xl font-bold text-primary-foreground"
+                      aria-label={`Portrait unavailable for ${alumnus.name}`}
+                    >
+                      MR
+                    </div>
+                  )}
                   <div>
                     <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
                       <h3 className="text-xl">{alumnus.name}</h3>
@@ -237,14 +273,21 @@ function Alumni() {
                       </p>
                     </div>
                     <p className="mt-1 text-sm leading-6 text-muted-foreground">{alumnus.role}</p>
-                    <a
-                      href={alumnus.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="mt-2 inline-flex items-center gap-1 text-xs font-bold text-primary underline underline-offset-4"
-                    >
-                      {alumnus.source} <ExternalLink size={12} />
-                    </a>
+                    {alumnus.href && alumnus.source ? (
+                      <a
+                        href={alumnus.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-2 inline-flex items-center gap-1 text-xs font-bold text-primary underline underline-offset-4"
+                      >
+                        {alumnus.source} <ExternalLink size={12} />
+                      </a>
+                    ) : null}
+                    {alumnus.imageCredit ? (
+                      <p className="mt-2 text-[11px] leading-4 text-muted-foreground">
+                        {alumnus.imageCredit}
+                      </p>
+                    ) : null}
                   </div>
                 </article>
               ))}
