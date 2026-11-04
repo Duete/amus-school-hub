@@ -14,6 +14,8 @@ import ttHalimaCommonwealth from "@/assets/tt-halima-commonwealth-2018.jpg";
 import ttHurseyNambozo from "@/assets/tt-hursey-nambozo-2018.jpg";
 import ttHalimaTrophy from "@/assets/tt-halima-trophy-2016.webp";
 import reginaNakibuule from "@/assets/alumni-regina-nakibuule.jpg";
+import redCrossCleaning from "@/assets/red-cross-cleaning-activity.webp";
+import redCrossMembers from "@/assets/red-cross-members.webp";
 import { PageIntro } from "@/components/school-layout";
 import { schoolHead } from "@/lib/school";
 
@@ -127,6 +129,21 @@ const girlsFootballPhotos = [
     image: girlsResting,
     title: "Resting between matches",
     alt: "Mbale Progressive girls' football team resting before another match",
+  },
+];
+
+const redCrossPhotos = [
+  {
+    image: redCrossCleaning,
+    title: "After the cleaning activity",
+    text: "Red Cross members pose after a cleaning exercise, still in aprons and gloves.",
+    alt: "Red Cross Club members posing for a photo after a cleaning activity",
+  },
+  {
+    image: redCrossMembers,
+    title: "Ready to serve",
+    text: "Members in Uganda Red Cross Society aprons before the next task.",
+    alt: "Red Cross Club members in Uganda Red Cross Society aprons standing together",
   },
 ];
 
