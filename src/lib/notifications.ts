@@ -50,7 +50,7 @@ function buildMessage(event: NotificationEvent, payload: NotificationPayload) {
 
 export async function queueNotification(event: NotificationEvent, payload: NotificationPayload) {
   const message = buildMessage(event, payload);
-  const endpoint = import.meta.env.VITE_EMAIL_NOTIFICATION_ENDPOINT as string | undefined;
+  const endpoint = import.meta.env["VITE_EMAIL_NOTIFICATION_ENDPOINT"] as string | undefined;
   const record: NotificationRecord = {
     id: crypto.randomUUID(),
     event,

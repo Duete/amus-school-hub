@@ -84,8 +84,8 @@ const ucePassRateChart = uce2025Performance
   .filter((row) => row[8] && row[9])
   .map(([subject, , , , , , , , passAc, passAd]) => ({
     subject,
-    passAc: Number.parseFloat(passAc),
-    passAd: Number.parseFloat(passAd),
+    passAc: Number.parseFloat(passAc ?? "0"),
+    passAd: Number.parseFloat(passAd ?? "0"),
   }));
 
 const aLevelPrincipalSubjects = [
@@ -535,7 +535,9 @@ function Academics() {
                     </thead>
                     <tbody>
                       {uce2025Performance.map((row) => {
-                        const isSummary = ["Sub Total", "PROJECT", "Grand Total"].includes(row[0]);
+                        const isSummary = ["Sub Total", "PROJECT", "Grand Total"].includes(
+                          row[0] ?? "",
+                        );
                         return (
                           <tr
                             key={row[0]}
