@@ -202,8 +202,15 @@ function Alumni() {
           <div className="mt-8 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
             {memberBenefits.map(({ title, text, icon: Icon }) => (
               <article key={title} className="bg-background p-6">
-                <Icon className="text-primary" size={25} strokeWidth={1.5} />
-                <h3 className="mt-5 text-xl">{title}</h3>
+                <div className="flex items-start gap-3">
+                  <Icon
+                    className="mt-0.5 shrink-0 text-primary"
+                    size={20}
+                    strokeWidth={1.6}
+                    aria-hidden="true"
+                  />
+                  <h3 className="text-xl">{title}</h3>
+                </div>
                 <p className="mt-2 text-sm leading-6 text-muted-foreground">{text}</p>
               </article>
             ))}
@@ -297,8 +304,15 @@ function Alumni() {
 
         <section className="mt-20 grid gap-5 md:grid-cols-2" aria-label="Alumni next steps">
           <article className="border border-border bg-muted p-7">
-            <GraduationCap className="text-primary" size={30} strokeWidth={1.5} />
-            <h2 className="mt-6 text-2xl">Share your story</h2>
+            <div className="flex items-center gap-3">
+              <GraduationCap
+                className="shrink-0 text-primary"
+                size={23}
+                strokeWidth={1.6}
+                aria-hidden="true"
+              />
+              <h2 className="text-2xl">Share your story</h2>
+            </div>
             <p className="mt-3 text-sm leading-7 text-muted-foreground">
               Tell the school where life has taken you, what you remember, and how you would like to
               stay involved with Mbale Progressive.
@@ -311,8 +325,15 @@ function Alumni() {
             </Link>
           </article>
           <article className="border border-border bg-background p-7">
-            <BookOpen className="text-primary" size={30} strokeWidth={1.5} />
-            <h2 className="mt-6 text-2xl">Return to the school</h2>
+            <div className="flex items-center gap-3">
+              <BookOpen
+                className="shrink-0 text-primary"
+                size={23}
+                strokeWidth={1.6}
+                aria-hidden="true"
+              />
+              <h2 className="text-2xl">Return to the school</h2>
+            </div>
             <p className="mt-3 text-sm leading-7 text-muted-foreground">
               Plan a visit, reconnect with a teacher, support a school activity, or ask the office
               about an upcoming event.
