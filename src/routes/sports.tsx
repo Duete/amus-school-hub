@@ -479,6 +479,7 @@ function Sports() {
           <div>
             <p className="eyebrow text-primary">TOP TALENT FROM OUR CLUB</p>
             <h3 className="mt-2 text-2xl">Regina Nakibuule</h3>
+            <p className="mt-1 text-sm font-semibold text-primary">Class of 2010</p>
             <p className="mt-2 leading-7 text-muted-foreground">
               Mbale Progressive table tennis club has also produced talents like Regina Nakibuule —
               FEASSSA Table Tennis commissar from 2019 to date, referee and umpire, ITTF & PTT level
