@@ -1,8 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ExternalLink, ImagePlus, MessageCircle, Music2, Trophy, Users } from "lucide-react";
+import { ExternalLink, MessageCircle, Music2, Trophy, Users } from "lucide-react";
 import footballJuniorDuel from "@/assets/football-junior-duel.webp";
 import footballMatchAction from "@/assets/football-match-action.webp";
-import footballSquadCelebration from "@/assets/football-squad-celebration.webp";
+import girlsWarmUp from "@/assets/girls-team-in-warm-up-before-the-match.webp";
+import girlsResting from "@/assets/girls-team-resting-before-another-match.webp";
+import districtLineUp from "@/assets/line-up-before-the-district-finals-2024.webp";
+import teamWarmUp from "@/assets/team-warm-up.webp";
+import teachersEleven from "@/assets/the-teacher-s-1st-eleven-before-a-game-with-prefects.webp";
+import teachersCaptain from "@/assets/the-teachers-captain-and-the-assistant.webp";
 import footballSquadCelebrationWide from "@/assets/football-squad-celebration-wide.webp";
 import footballTeamLineup from "@/assets/football-team-lineup.webp";
 import { PageIntro } from "@/components/school-layout";
@@ -95,45 +100,64 @@ const footballPhotos = [
     alt: "Two football players, one in blue and one in white, contesting the ball",
   },
   {
-    image: footballSquadCelebration,
-    title: "After the whistle",
-    text: "The squad walks off with a tribute held aloft.",
-    alt: "Football squad walking off the pitch with arms raised and tribute cards held overhead",
-  },
-  {
     image: footballSquadCelebrationWide,
     title: "Walking off together",
-    text: "The same celebration from a wider angle.",
-    alt: "Wider view of the football squad celebrating on the pitch",
+    text: "The squad celebrates together on the pitch.",
+    alt: "Football squad celebrating on the pitch",
   },
   {
     image: footballJuniorDuel,
     title: "One on one",
-    text: "A junior fixture duel for possession.",
-    alt: "Two junior football players duelling for the ball",
+    text: "Mbale Progressive junior in blue on the duel to win possession.",
+    alt: "Mbale Progressive junior player in blue duelling an opponent for possession",
   },
 ];
 
-const photoPlaceholderGroups = [
+const girlsFootballPhotos = [
   {
-    title: "Girls’ football",
-    count: 3,
-    description: "Three photo slots for the girls’ football pictures.",
+    image: girlsWarmUp,
+    title: "Warm-up before the match",
+    alt: "Mbale Progressive girls' football team warming up before a match",
+  },
+  {
+    image: girlsResting,
+    title: "Resting between matches",
+    alt: "Mbale Progressive girls' football team resting before another match",
+  },
+];
+
+const galleryGroups = [
+  {
+    title: "Match days",
+    description: "Preparing for the big fixtures.",
+    photos: [
+      {
+        image: districtLineUp,
+        title: "Line-up before the District Finals 2024",
+        alt: "Mbale Progressive team lined up before the District Finals 2024",
+      },
+      {
+        image: teamWarmUp,
+        title: "Team warm-up",
+        alt: "Mbale Progressive football team warming up",
+      },
+    ],
   },
   {
     title: "Staff engaging in sports",
-    count: 2,
-    description: "Two photo slots for staff taking part in sports.",
-  },
-  {
-    title: "Staff outing",
-    count: 3,
-    description: "Three photo slots for pictures from a staff outing.",
-  },
-  {
-    title: "Additional photos",
-    count: 5,
-    description: "Five extra slots for other school sports and activity photos.",
+    description: "Teachers taking to the pitch alongside students.",
+    photos: [
+      {
+        image: teachersEleven,
+        title: "The teachers' first eleven with prefects",
+        alt: "The teachers' first eleven posing with prefects before a game",
+      },
+      {
+        image: teachersCaptain,
+        title: "The teachers' captain and assistant",
+        alt: "The teachers' football captain and assistant captain",
+      },
+    ],
   },
 ];
 
@@ -173,24 +197,17 @@ function ActivityCard({
   );
 }
 
-function PhotoPlaceholder({ category, number }: { category: string; number: number }) {
+function PhotoFigure({ image, title, alt }: { image: string; title: string; alt: string }) {
   return (
-    <figure className="border border-dashed border-border bg-background">
-      <div className="flex aspect-[4/3] flex-col items-center justify-center bg-muted p-5 text-center">
-        <div className="flex items-center gap-2">
-          <ImagePlus
-            className="shrink-0 text-primary"
-            size={20}
-            strokeWidth={1.6}
-            aria-hidden="true"
-          />
-          <p className="text-sm font-semibold">Photo placeholder</p>
-        </div>
-        <p className="mt-3 text-xs text-muted-foreground">Image to be added</p>
-      </div>
-      <figcaption className="border-t border-border px-3 py-2 text-xs font-medium text-muted-foreground">
-        {category} · Photo {number}
-      </figcaption>
+    <figure>
+      <img
+        className="h-64 w-full border border-border object-cover object-top"
+        src={image}
+        alt={alt}
+        loading="lazy"
+        decoding="async"
+      />
+      <figcaption className="pt-3 text-sm font-medium">{title}</figcaption>
     </figure>
   );
 }
@@ -269,7 +286,7 @@ function Sports() {
                   className={
                     index === 0
                       ? "w-full border border-border"
-                      : "h-64 w-full border border-border object-cover"
+                      : "h-64 w-full border border-border object-cover object-top"
                   }
                   src={photo.image}
                   alt={photo.alt}
@@ -281,6 +298,16 @@ function Sports() {
                   <p className="mt-1 text-sm leading-6 text-muted-foreground">{photo.text}</p>
                 </figcaption>
               </figure>
+            ))}
+          </div>
+        </div>
+
+        <div className="site-width mt-12">
+          <p className="eyebrow text-primary">FOOTBALL · GIRLS</p>
+          <h3 className="mt-2 text-2xl">Girls’ football</h3>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {girlsFootballPhotos.map((photo) => (
+              <PhotoFigure key={photo.title} {...photo} />
             ))}
           </div>
         </div>
@@ -473,31 +500,15 @@ function Sports() {
               More moments from school life
             </h2>
           </div>
-          <p className="hidden max-w-sm text-sm leading-6 text-muted-foreground md:block">
-            Thirteen labeled photo slots are ready for the additional pictures.
-          </p>
         </div>
         <div className="mt-8 space-y-10">
-          {photoPlaceholderGroups.map((group) => (
+          {galleryGroups.map((group) => (
             <div key={group.title}>
-              <div className="flex flex-wrap items-end justify-between gap-3">
-                <div>
-                  <h3 className="text-2xl">{group.title}</h3>
-                  <p className="mt-1 text-sm leading-6 text-muted-foreground">
-                    {group.description}
-                  </p>
-                </div>
-                <p className="eyebrow text-primary">
-                  {group.count} {group.count === 1 ? "photo slot" : "photo slots"}
-                </p>
-              </div>
+              <h3 className="text-2xl">{group.title}</h3>
+              <p className="mt-1 text-sm leading-6 text-muted-foreground">{group.description}</p>
               <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {Array.from({ length: group.count }, (_, index) => (
-                  <PhotoPlaceholder
-                    key={`${group.title}-${index + 1}`}
-                    category={group.title}
-                    number={index + 1}
-                  />
+                {group.photos.map((photo) => (
+                  <PhotoFigure key={photo.title} {...photo} />
                 ))}
               </div>
             </div>

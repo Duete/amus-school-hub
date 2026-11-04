@@ -10,6 +10,8 @@ import {
   Trophy,
   UsersRound,
 } from "lucide-react";
+import sendOff from "@/assets/boys-team-with-the-deputor-madam-alice-and-games-teacher-before-send-off-for-nationals-2024.webp";
+import arriving from "@/assets/team-ariving-for-the-finals.webp";
 import { PageIntro } from "@/components/school-layout";
 import { schoolHead } from "@/lib/school";
 
@@ -187,6 +189,32 @@ function CampusLife() {
               partners, families should confirm the latest guidance with the Boarding office.
             </p>
           </div>
+        </div>
+      </section>
+      <section className="site-width py-14 md:py-20" aria-labelledby="moments-heading">
+        <p className="eyebrow text-primary">MOMENTS TOGETHER</p>
+        <h2 id="moments-heading" className="mt-2 text-3xl md:text-4xl">
+          Cheering our teams on.
+        </h2>
+        <div className="mt-8 grid gap-6 md:grid-cols-2">
+          {[
+            [
+              sendOff,
+              "The boys' team with Deputy Madam Alice and the Games Teacher before the send-off for Nationals 2024.",
+            ],
+            [arriving, "The team arriving for the finals."],
+          ].map(([src, caption]) => (
+            <figure key={caption}>
+              <img
+                className="w-full border border-border"
+                src={src}
+                alt={caption}
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption className="pt-3 text-sm text-muted-foreground">{caption}</figcaption>
+            </figure>
+          ))}
         </div>
       </section>
     </>
