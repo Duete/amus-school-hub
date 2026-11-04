@@ -1,3 +1,4 @@
+import { useId, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   BadgeCheck,
@@ -19,11 +20,6 @@ import {
   Users,
 } from "lucide-react";
 import scienceLabPracticals from "@/assets/science-lab-practicals.webp";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
 import { PageIntro } from "@/components/school-layout";
 import { schoolHead } from "@/lib/school";
 
@@ -260,26 +256,35 @@ function SubjectList({ subjects }: { subjects: string[] }) {
 }
 
 function SubjectGroup({ title, subjects }: { title: string; subjects: string[] }) {
+  const [open, setOpen] = useState(false);
+  const panelId = useId();
+
   return (
-    <Collapsible className="group border border-border bg-background">
+    <div className="border border-border bg-background">
       <h4>
-        <CollapsibleTrigger className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition-colors hover:bg-muted/60">
+        <button
+          type="button"
+          aria-expanded={open}
+          aria-controls={panelId}
+          onClick={() => setOpen((value) => !value)}
+          className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition-colors hover:bg-muted/60"
+        >
           <span className="text-xl text-foreground">{title}</span>
           <span className="flex shrink-0 items-center gap-3">
             <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
               {subjects.length} subjects
             </span>
             <ChevronDown
-              className="text-primary transition-transform duration-200 group-data-[state=open]:rotate-180"
+              className={`text-primary transition-transform duration-200 ${open ? "rotate-180" : ""}`}
               size={18}
             />
           </span>
-        </CollapsibleTrigger>
+        </button>
       </h4>
-      <CollapsibleContent className="border-t border-border px-5 py-5">
+      <div id={panelId} hidden={!open} className="border-t border-border px-5 py-5">
         <SubjectList subjects={subjects} />
-      </CollapsibleContent>
-    </Collapsible>
+      </div>
+    </div>
   );
 }
 
