@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { Mail, Search, UsersRound } from "lucide-react";
 import { useMemo, useState } from "react";
 import { schoolHead } from "@/lib/school";
@@ -145,25 +145,6 @@ const departments = [
   ...Array.from(new Set(faculty.map((member) => member.department))),
 ];
 
-function AcademicTabs() {
-  return (
-    <nav className="flex flex-wrap gap-2" aria-label="Academic sections">
-      <a href="/academics#olevel" className="academic-tab">
-        O’Level
-      </a>
-      <a href="/academics#alevel" className="academic-tab">
-        A’Level
-      </a>
-      <Link to="/academics" className="academic-tab">
-        Academic programme
-      </Link>
-      <Link to="/faculty" className="academic-tab academic-tab-active" aria-current="page">
-        Teaching staff
-      </Link>
-    </nav>
-  );
-}
-
 function TeachingStaff() {
   const [query, setQuery] = useState("");
   const [department, setDepartment] = useState("All departments");
@@ -190,12 +171,6 @@ function TeachingStaff() {
           </p>
         </div>
       </section>
-
-      <div className="border-b border-border bg-background">
-        <div className="site-width py-5">
-          <AcademicTabs />
-        </div>
-      </div>
 
       <div className="site-width py-16 md:py-20">
         <section aria-labelledby="staff-overview-heading">

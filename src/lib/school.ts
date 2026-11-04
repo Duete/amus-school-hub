@@ -42,7 +42,6 @@ const knownPaths: Record<string, string> = {
   "Fees and clearance": "/finance",
   "Governance and leadership": "/governance",
   "News and updates": "/news",
-  Performance: "/performance",
   Scholarships: "/scholarships",
   "Co-Curricular": "/sports",
 };

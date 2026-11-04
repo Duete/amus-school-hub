@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, BookOpen, GraduationCap, Layers3 } from "lucide-react";
+import { ArrowRight, BookOpen, ChevronDown, GraduationCap, Layers3 } from "lucide-react";
 import { PageIntro } from "@/components/school-layout";
 import { schoolHead } from "@/lib/school";
 
@@ -45,6 +45,10 @@ const oLevelElectives = [
   "Kiswahili",
   "Literature",
   "Physical Education",
+  "Foreign Languages",
+  "Nutrition and Food Technology",
+  "Performing Arts",
+  "Technology and Design",
 ];
 
 const aLevelPrincipal = [
@@ -132,16 +136,24 @@ function SubjectShelf({ subject }: { subject: string }) {
 
 function ClassCard({ shelf }: { shelf: ClassShelf }) {
   return (
-    <article className="border border-border bg-background p-6">
-      <div className="flex items-start justify-between gap-4">
+    <details className="group border border-border bg-background">
+      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary [&::-webkit-details-marker]:hidden">
         <div>
           <p className="eyebrow text-primary">CLASS SHELF</p>
           <h3 className="mt-2 text-3xl">{shelf.name}</h3>
+          <p className="mt-3 text-sm leading-6 text-muted-foreground">{shelf.description}</p>
         </div>
-        <Layers3 className="text-primary" size={25} strokeWidth={1.6} />
-      </div>
-      <p className="mt-3 text-sm leading-6 text-muted-foreground">{shelf.description}</p>
-      <div className="mt-6 space-y-7">
+        <div className="flex shrink-0 items-center gap-3 text-primary">
+          <Layers3 size={23} strokeWidth={1.6} aria-hidden="true" />
+          <ChevronDown
+            className="transition-transform group-open:rotate-180"
+            size={18}
+            aria-hidden="true"
+          />
+          <span className="sr-only">Open {shelf.name} subjects</span>
+        </div>
+      </summary>
+      <div className="space-y-7 border-t border-border px-6 pb-6 pt-4">
         {shelf.groups.map((group) => (
           <div key={group.title}>
             <h4 className="mb-2 text-lg">{group.title}</h4>
@@ -153,7 +165,7 @@ function ClassCard({ shelf }: { shelf: ClassShelf }) {
           </div>
         ))}
       </div>
-    </article>
+    </details>
   );
 }
 
@@ -224,10 +236,8 @@ function ELibrary() {
             <p className="mt-1 text-sm text-muted-foreground">class shelves from S.1 to S.6</p>
           </div>
           <div className="border-l-2 border-secondary pl-4">
-            <p className="font-display text-3xl text-primary">30+</p>
-            <p className="mt-1 text-sm text-muted-foreground">
-              subject areas across the two levels
-            </p>
+            <p className="font-display text-3xl text-primary">20+ / 17+</p>
+            <p className="mt-1 text-sm text-muted-foreground">O-Level / A-Level subject options</p>
           </div>
         </div>
         <nav className="mt-12 flex flex-wrap gap-3" aria-label="e-Library level navigation">

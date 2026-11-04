@@ -24,7 +24,6 @@ describe("App routing", () => {
     ["/admissions/apply", "/admissions/apply"],
     ["/campus-life", "/campus-life"],
     ["/login", "/login"],
-    ["/performance", "/performance"],
     ["/contact", "/contact"],
     ["/database", "/database"],
     ["/e-library", "/e-library"],
