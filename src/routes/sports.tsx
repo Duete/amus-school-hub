@@ -303,6 +303,10 @@ function Sports() {
               disciplined, technically gifted pipeline.
             </p>
             <p>
+              In 2023, Progressive lifted the Bugisu Regionals Finals title to finish as Regional
+              Champions.
+            </p>
+            <p>
               In 2026, the boys drew 1–1 with Kisozi Seed, beat Ssaku SS 2–0, defeated Masindi SS
               5–4 on penalties in the Round of 32, and reached the Round of 16 in Lira. The campaign
               finished with a 4–2 shootout defeat to London College Nansana and a national ranking
@@ -346,6 +350,32 @@ function Sports() {
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {girlsFootballPhotos.map((photo) => (
               <PhotoFigure key={photo.title} {...photo} />
+            ))}
+          </div>
+        </div>
+
+        <div className="site-width mt-12">
+          <p className="eyebrow text-primary">FOOTBALL · BUGISU REGIONALS FINALS 2023</p>
+          <h3 className="mt-2 text-2xl">Regional Champions 🏆</h3>
+          <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">
+            Celebrations after the final whistle during the Bugisu Regionals Finals 2023, when
+            Progressive emerged as the Regional Champions.
+          </p>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+            {regionalChampionsPhotos.map((photo) => (
+              <figure key={photo.title}>
+                <img
+                  className="w-full border border-border"
+                  src={photo.image}
+                  alt={photo.alt}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption className="pt-3">
+                  <h4 className="text-lg">{photo.title}</h4>
+                  <p className="mt-1 text-sm leading-6 text-muted-foreground">{photo.text}</p>
+                </figcaption>
+              </figure>
             ))}
           </div>
         </div>
