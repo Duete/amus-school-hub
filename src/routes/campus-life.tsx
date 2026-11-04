@@ -221,7 +221,7 @@ function CampusLife() {
       </section>
 
       <section
-        className="border-y border-border bg-muted py-14 md:py-20"
+        className="border-t border-border py-14 md:py-20"
         aria-labelledby="diversity-heading"
       >
         <div className="site-width grid gap-8 lg:grid-cols-[1fr_0.8fr] lg:items-center">
