@@ -110,13 +110,13 @@ const notableAlumni = [
 function Alumni() {
   return (
     <>
-      <section className="bg-primary py-16 text-primary-foreground md:py-20">
+      <section className="bg-primary py-8 text-primary-foreground md:py-12">
         <div className="site-width">
           <p className="text-sm font-semibold tracking-[0.04em] text-secondary">Alumni</p>
-          <h1 className="mt-4 max-w-3xl text-4xl leading-tight md:text-6xl">
+          <h1 className="mt-2 max-w-none whitespace-nowrap text-xl leading-tight sm:text-3xl md:text-5xl">
             Once with Us, Always with Us
           </h1>
-          <p className="mt-5 max-w-2xl text-base leading-8 text-primary-foreground/80">
+          <p className="mt-3 max-w-2xl text-sm leading-6 text-primary-foreground/80 md:text-base md:leading-8">
             Mbale Progressive is part of the story of every learner who has passed through its
             classrooms, teams, clubs, and houses.
           </p>
