@@ -14,6 +14,8 @@ import ttHalimaCommonwealth from "@/assets/tt-halima-commonwealth-2018.jpg";
 import ttHurseyNambozo from "@/assets/tt-hursey-nambozo-2018.jpg";
 import ttHalimaTrophy from "@/assets/tt-halima-trophy-2016.webp";
 import reginaNakibuule from "@/assets/alumni-regina-nakibuule.jpg";
+import redCrossCleaning from "@/assets/red-cross-cleaning-activity.webp";
+import redCrossMembers from "@/assets/red-cross-members.webp";
 import { PageIntro } from "@/components/school-layout";
 import { schoolHead } from "@/lib/school";
 
@@ -127,6 +129,21 @@ const girlsFootballPhotos = [
     image: girlsResting,
     title: "Resting between matches",
     alt: "Mbale Progressive girls' football team resting before another match",
+  },
+];
+
+const redCrossPhotos = [
+  {
+    image: redCrossCleaning,
+    title: "After the cleaning activity",
+    text: "Red Cross members pose after a cleaning exercise, still in aprons and gloves.",
+    alt: "Red Cross Club members posing for a photo after a cleaning activity",
+  },
+  {
+    image: redCrossMembers,
+    title: "Ready to serve",
+    text: "Members in Uganda Red Cross Society aprons before the next task.",
+    alt: "Red Cross Club members in Uganda Red Cross Society aprons standing together",
   },
 ];
 
@@ -528,6 +545,37 @@ function Sports() {
               </p>
             </article>
           ))}
+        </div>
+
+        <div
+          className="mt-14 scroll-mt-28 border-t border-border pt-10 lg:grid lg:grid-cols-[0.42fr_1fr] lg:items-start lg:gap-10"
+          id="red-cross-story"
+        >
+          <div>
+            <p className="eyebrow text-primary">RED CROSS CLUB · SERVICE IN ACTION</p>
+            <h3 className="mt-2 text-2xl">Members at work</h3>
+            <p className="mt-3 text-sm leading-6 text-muted-foreground">
+              First aid, preparedness, and practical service — pictured here after a cleaning
+              activity.
+            </p>
+          </div>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:mt-0">
+            {redCrossPhotos.map((photo) => (
+              <figure key={photo.title}>
+                <img
+                  className="aspect-[3/4] w-full border border-border object-cover"
+                  src={photo.image}
+                  alt={photo.alt}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption className="pt-3">
+                  <h4 className="text-lg">{photo.title}</h4>
+                  <p className="mt-1 text-sm leading-6 text-muted-foreground">{photo.text}</p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
         </div>
       </section>
 
