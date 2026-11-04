@@ -73,11 +73,31 @@ const executivePlaceholders = [
   "Welfare and Mobilisation Lead — name to be updated",
 ];
 
-const notablePlaceholders = [
-  "Education and research — name to be updated",
-  "Public service and leadership — name to be updated",
-  "Business and enterprise — name to be updated",
-  "Professional and community service — name to be updated",
+const notableAlumni = [
+  {
+    name: "Ariokot Racheal",
+    role: "Chemical Engineer and PhD researcher",
+    detail: "Researching at the University of Chemistry and Technology in Prague, Czech Republic.",
+    href: "https://www.linkedin.com/in/racheal-ariokot/",
+  },
+  {
+    name: "Obore",
+    role: "Investigative watchdog journalist and public affairs leader",
+    detail:
+      "Investigative watchdog journalist at the Daily Monitor; appointed Director of Communication and Public Affairs for the Parliament of Uganda in 2015.",
+  },
+  {
+    name: "Business and enterprise",
+    role: "Progressive alumni profile",
+    detail:
+      "A future profile will be added as the school confirms the alumnus’s name and achievements.",
+  },
+  {
+    name: "Professional and community service",
+    role: "Progressive alumni profile",
+    detail:
+      "A future profile will be added as the school confirms the alumnus’s name and achievements.",
+  },
 ];
 
 function Alumni() {
@@ -185,13 +205,25 @@ function Alumni() {
             </p>
             <h2 className="mt-3 text-3xl">Notable alumni</h2>
             <p className="mt-4 max-w-lg text-sm leading-7 text-muted-foreground">
-              Names and profiles will be added here as alumni achievements are confirmed. The school
-              welcomes stories from every field, not only public profiles.
+              Progressive alumni are contributing to engineering, research, journalism, and public
+              service. These profiles will grow as the school confirms more stories.
             </p>
             <ul className="mt-7 divide-y divide-border border-y border-border">
-              {notablePlaceholders.map((item) => (
-                <li key={item} className="py-4 text-sm font-semibold text-primary">
-                  {item}
+              {notableAlumni.map((item) => (
+                <li key={item.name} className="py-4">
+                  <p className="text-base font-semibold text-primary">{item.name}</p>
+                  <p className="mt-1 text-sm font-semibold text-foreground">{item.role}</p>
+                  <p className="mt-1 text-sm leading-6 text-muted-foreground">{item.detail}</p>
+                  {item.href ? (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-2 inline-flex text-sm font-semibold text-primary underline-offset-4 hover:underline"
+                    >
+                      View LinkedIn profile
+                    </a>
+                  ) : null}
                 </li>
               ))}
             </ul>

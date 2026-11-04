@@ -18,7 +18,7 @@ const pageDescriptions: Record<string, string> = {
   "/about":
     "This is the school profile page. It covers Mbale Progressive’s history, identity, location, motto, and the kind of education families can expect.",
   "/alumni":
-    "This is the Alumni page. Its message is ‘Once with Us, Always with Us’ and it helps former learners stay connected, share updates, and plan a return to the school.",
+    "This is the Alumni page. Its message is ‘Once with Us, Always with Us’. It features Ariokot Racheal, a Chemical Engineer and PhD researcher at the University of Chemistry and Technology in Prague, and Obore, an investigative watchdog journalist at the Daily Monitor who was appointed Director of Communication and Public Affairs for the Parliament of Uganda in 2015. It also helps former learners stay connected, share updates, and plan a return to the school.",
   "/academics":
     "This is the academics page. It lists the UCE/O-Level and UACE/A-Level pathways, subjects, candidate numbers, assessment approach, the route from S.1 through UACE, and Worasi Joel’s Best UACE 2025 result of 18 points in BCM / ICT.",
   "/e-library":
@@ -94,7 +94,7 @@ function answerFor(message: string, pathname: string) {
     query.includes("old student") ||
     query.includes("former student")
   ) {
-    return "The Alumni page carries the message ‘Once with Us, Always with Us.’ It covers networking, career mentorship, scholarship support, professional development, staying connected, giving back, reunion events, and access to school resources. Executive and notable alumni names will be added as Progressive confirms them.";
+    return "The Alumni page carries the message ‘Once with Us, Always with Us.’ It covers networking, career mentorship, scholarship support, professional development, staying connected, giving back, reunion events, and access to school resources. Notable Progressive alumni include Ariokot Racheal, a Chemical Engineer and PhD researcher at the University of Chemistry and Technology in Prague, and Obore, an investigative watchdog journalist at the Daily Monitor who was appointed Director of Communication and Public Affairs for the Parliament of Uganda in 2015.";
   }
   if (query.includes("worasi") || query.includes("best uace") || query.includes("18 points")) {
     return "Worasi Joel was Mbale Progressive’s Best UACE 2025 student, earning 18 points with 2ABB3 in BCM / ICT. The achievement is featured under A’Level on the Academics page.";
