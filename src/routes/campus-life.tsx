@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import sendOff from "@/assets/boys-team-with-the-deputor-madam-alice-and-games-teacher-before-send-off-for-nationals-2024.webp";
 import arriving from "@/assets/team-ariving-for-the-finals.webp";
+import outreachNorthRoad from "@/assets/outreach-north-road-primary.webp";
 import { PageIntro } from "@/components/school-layout";
 import { schoolHead } from "@/lib/school";
 
@@ -215,6 +216,36 @@ function CampusLife() {
               <figcaption className="pt-3 text-sm text-muted-foreground">{caption}</figcaption>
             </figure>
           ))}
+        </div>
+      </section>
+
+      <section
+        className="border-t border-border bg-muted py-14 md:py-20"
+        aria-labelledby="outreach-heading"
+      >
+        <div className="site-width">
+          <p className="eyebrow text-primary">COMMUNITY OUTREACH</p>
+          <h2 id="outreach-heading" className="mt-2 text-3xl md:text-4xl">
+            Learning put to work in the community.
+          </h2>
+          <p className="mt-4 max-w-2xl leading-7 text-muted-foreground">
+            Learners take what they study beyond the school gate. Outreach visits combine guidance
+            and counselling, tree planting, and Music, Dance and Drama (MDD) with the schools and
+            communities we work with.
+          </p>
+          <figure className="mt-8">
+            <img
+              className="w-full border border-border"
+              src={outreachNorthRoad}
+              alt="Mbale Progressive Secondary School students carrying out an outreach at North Road Primary School"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption className="pt-3 text-sm leading-6 text-muted-foreground">
+              Students carrying out an outreach at North Road Primary School, which involved
+              guidance and counselling, tree planting, and MDD.
+            </figcaption>
+          </figure>
         </div>
       </section>
     </>

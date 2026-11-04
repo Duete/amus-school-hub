@@ -18,6 +18,7 @@ import {
   Utensils,
   Users,
 } from "lucide-react";
+import scienceLabPracticals from "@/assets/science-lab-practicals.webp";
 import { PageIntro } from "@/components/school-layout";
 import { schoolHead } from "@/lib/school";
 
@@ -678,6 +679,20 @@ function Academics() {
               </article>
             ))}
           </div>
+
+          <figure className="mt-12 border-t border-border pt-10">
+            <img
+              className="w-full border border-border"
+              src={scienceLabPracticals}
+              alt="Students carrying out practicals in one of the school science laboratories"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption className="pt-3 text-sm leading-6 text-muted-foreground">
+              Students carrying out practicals in one of the school science laboratories — a
+              testament to the school's commitment to excellence.
+            </figcaption>
+          </figure>
         </section>
 
         <section
