@@ -547,14 +547,19 @@ function Sports() {
           ))}
         </div>
 
-        <div className="mt-14 scroll-mt-28 border-t border-border pt-10" id="red-cross-story">
-          <p className="eyebrow text-primary">RED CROSS CLUB · SERVICE IN ACTION</p>
-          <h3 className="mt-2 text-2xl">Members at work</h3>
-          <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">
-            First aid, preparedness, and practical service — pictured here after a cleaning
-            activity.
-          </p>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:max-w-3xl">
+        <div
+          className="mt-14 scroll-mt-28 border-t border-border pt-10 lg:grid lg:grid-cols-[0.42fr_1fr] lg:items-start lg:gap-10"
+          id="red-cross-story"
+        >
+          <div>
+            <p className="eyebrow text-primary">RED CROSS CLUB · SERVICE IN ACTION</p>
+            <h3 className="mt-2 text-2xl">Members at work</h3>
+            <p className="mt-3 text-sm leading-6 text-muted-foreground">
+              First aid, preparedness, and practical service — pictured here after a cleaning
+              activity.
+            </p>
+          </div>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:mt-0">
             {redCrossPhotos.map((photo) => (
               <figure key={photo.title}>
                 <img
