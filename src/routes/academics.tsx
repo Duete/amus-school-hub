@@ -360,11 +360,6 @@ function UcePassRateChart() {
 function Academics() {
   return (
     <>
-      <PageIntro eyebrow="ACADEMICS" title="Learning with purpose, from UCE to UACE.">
-        O’Level enrols 800 learners across 20+ subjects and offers a good teacher–student ratio.
-        A’Level enrols 400 learners across 17+ subjects, with a 40:1 student-to-teacher ratio.
-      </PageIntro>
-
       <nav
         className="site-width flex flex-wrap gap-2 border-b border-border py-5"
         aria-label="Academic sections"
@@ -382,6 +377,11 @@ function Academics() {
           Teaching staff
         </Link>
       </nav>
+
+      <PageIntro eyebrow="ACADEMICS" title="Learning with purpose, from UCE to UACE.">
+        O’Level enrols 800 learners across 20+ subjects and offers a good teacher–student ratio.
+        A’Level enrols 400 learners across 17+ subjects, with a 40:1 student-to-teacher ratio.
+      </PageIntro>
 
       <section className="site-width grid gap-10 py-14 md:grid-cols-4 md:gap-8 md:py-16">
         <Stat value="800" label="O’Level learners enrolled" icon={Users} />
