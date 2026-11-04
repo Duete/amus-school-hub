@@ -2,7 +2,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ExternalLink, ImagePlus, MessageCircle, Music2, Trophy, Users } from "lucide-react";
 import footballJuniorDuel from "@/assets/football-junior-duel.webp";
 import footballMatchAction from "@/assets/football-match-action.webp";
-import footballSquadCelebration from "@/assets/football-squad-celebration.webp";
+import girlsWarmUp from "@/assets/girls-team-in-warm-up-before-the-match.webp";
+import girlsResting from "@/assets/girls-team-resting-before-another-match.webp";
+import districtLineUp from "@/assets/line-up-before-the-district-finals-2024.webp";
+import teamWarmUp from "@/assets/team-warm-up.webp";
+import teachersEleven from "@/assets/the-teacher-s-1st-eleven-before-a-game-with-prefects.webp";
+import teachersCaptain from "@/assets/the-teachers-captain-and-the-assistant.webp";
 import footballSquadCelebrationWide from "@/assets/football-squad-celebration-wide.webp";
 import footballTeamLineup from "@/assets/football-team-lineup.webp";
 import { PageIntro } from "@/components/school-layout";
@@ -95,45 +100,64 @@ const footballPhotos = [
     alt: "Two football players, one in blue and one in white, contesting the ball",
   },
   {
-    image: footballSquadCelebration,
-    title: "After the whistle",
-    text: "The squad walks off with a tribute held aloft.",
-    alt: "Football squad walking off the pitch with arms raised and tribute cards held overhead",
-  },
-  {
     image: footballSquadCelebrationWide,
     title: "Walking off together",
-    text: "The same celebration from a wider angle.",
-    alt: "Wider view of the football squad celebrating on the pitch",
+    text: "The squad celebrates together on the pitch.",
+    alt: "Football squad celebrating on the pitch",
   },
   {
     image: footballJuniorDuel,
     title: "One on one",
-    text: "A junior fixture duel for possession.",
-    alt: "Two junior football players duelling for the ball",
+    text: "Mbale Progressive junior in blue on the duel to win possession.",
+    alt: "Mbale Progressive junior player in blue duelling an opponent for possession",
   },
 ];
 
-const photoPlaceholderGroups = [
+const girlsFootballPhotos = [
   {
-    title: "Girls’ football",
-    count: 3,
-    description: "Three photo slots for the girls’ football pictures.",
+    image: girlsWarmUp,
+    title: "Warm-up before the match",
+    alt: "Mbale Progressive girls' football team warming up before a match",
+  },
+  {
+    image: girlsResting,
+    title: "Resting between matches",
+    alt: "Mbale Progressive girls' football team resting before another match",
+  },
+];
+
+const galleryGroups = [
+  {
+    title: "Match days",
+    description: "Preparing for the big fixtures.",
+    photos: [
+      {
+        image: districtLineUp,
+        title: "Line-up before the District Finals 2024",
+        alt: "Mbale Progressive team lined up before the District Finals 2024",
+      },
+      {
+        image: teamWarmUp,
+        title: "Team warm-up",
+        alt: "Mbale Progressive football team warming up",
+      },
+    ],
   },
   {
     title: "Staff engaging in sports",
-    count: 2,
-    description: "Two photo slots for staff taking part in sports.",
-  },
-  {
-    title: "Staff outing",
-    count: 3,
-    description: "Three photo slots for pictures from a staff outing.",
-  },
-  {
-    title: "Additional photos",
-    count: 5,
-    description: "Five extra slots for other school sports and activity photos.",
+    description: "Teachers taking to the pitch alongside students.",
+    photos: [
+      {
+        image: teachersEleven,
+        title: "The teachers' first eleven with prefects",
+        alt: "The teachers' first eleven posing with prefects before a game",
+      },
+      {
+        image: teachersCaptain,
+        title: "The teachers' captain and assistant",
+        alt: "The teachers' football captain and assistant captain",
+      },
+    ],
   },
 ];
 
