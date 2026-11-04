@@ -1,11 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ExternalLink, MessageCircle, Music2, Trophy, Users } from "lucide-react";
 import cityCampus from "@/assets/city-campus.webp";
-import footballJuniorDuel from "@/assets/football-junior-duel.webp.asset.json";
-import footballMatchAction from "@/assets/football-match-action.webp.asset.json";
-import footballSquadCelebration from "@/assets/football-squad-celebration.webp.asset.json";
-import footballSquadCelebrationWide from "@/assets/football-squad-celebration-wide.webp.asset.json";
-import footballTeamLineup from "@/assets/football-team-lineup.webp.asset.json";
+import footballJuniorDuel from "@/assets/football-junior-duel.webp";
+import footballMatchAction from "@/assets/football-match-action.webp";
+import footballSquadCelebration from "@/assets/football-squad-celebration.webp";
+import footballSquadCelebrationWide from "@/assets/football-squad-celebration-wide.webp";
+import footballTeamLineup from "@/assets/football-team-lineup.webp";
 import hillsideCampus from "@/assets/hillside-campus.webp";
 import schoolLife from "@/assets/school-life.webp";
 import { PageIntro } from "@/components/school-layout";
@@ -243,7 +243,7 @@ function Sports() {
               >
                 <img
                   className="h-56 w-full border border-border object-cover lg:h-64"
-                  src={photo.image.url}
+                  src={photo.image}
                   alt={photo.alt}
                   loading="lazy"
                   decoding="async"
