@@ -308,6 +308,16 @@ function Sports() {
             ))}
           </div>
         </div>
+
+        <div className="site-width mt-12">
+          <p className="eyebrow text-primary">FOOTBALL · GIRLS</p>
+          <h3 className="mt-2 text-2xl">Girls’ football</h3>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {girlsFootballPhotos.map((photo) => (
+              <PhotoFigure key={photo.title} {...photo} />
+            ))}
+          </div>
+        </div>
       </section>
 
       <section
@@ -497,31 +507,15 @@ function Sports() {
               More moments from school life
             </h2>
           </div>
-          <p className="hidden max-w-sm text-sm leading-6 text-muted-foreground md:block">
-            Thirteen labeled photo slots are ready for the additional pictures.
-          </p>
         </div>
         <div className="mt-8 space-y-10">
-          {photoPlaceholderGroups.map((group) => (
+          {galleryGroups.map((group) => (
             <div key={group.title}>
-              <div className="flex flex-wrap items-end justify-between gap-3">
-                <div>
-                  <h3 className="text-2xl">{group.title}</h3>
-                  <p className="mt-1 text-sm leading-6 text-muted-foreground">
-                    {group.description}
-                  </p>
-                </div>
-                <p className="eyebrow text-primary">
-                  {group.count} {group.count === 1 ? "photo slot" : "photo slots"}
-                </p>
-              </div>
+              <h3 className="text-2xl">{group.title}</h3>
+              <p className="mt-1 text-sm leading-6 text-muted-foreground">{group.description}</p>
               <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {Array.from({ length: group.count }, (_, index) => (
-                  <PhotoPlaceholder
-                    key={`${group.title}-${index + 1}`}
-                    category={group.title}
-                    number={index + 1}
-                  />
+                {group.photos.map((photo) => (
+                  <PhotoFigure key={photo.title} {...photo} />
                 ))}
               </div>
             </div>
