@@ -479,7 +479,7 @@ function Academics() {
                 Subject choices can be guided by learner interests, strengths, and future plans.
               </p>
             </div>
-            <div className="grid gap-10 lg:grid-cols-2">
+            <div className="grid items-start gap-10 lg:grid-cols-2">
               <SubjectGroup title="Compulsory subjects" subjects={oLevelCompulsorySubjects} />
               <SubjectGroup title="Elective subjects" subjects={oLevelElectiveSubjects} />
             </div>
@@ -649,7 +649,7 @@ function Academics() {
                   entrepreneurial ambitions.
                 </p>
               </div>
-              <div className="grid gap-10 lg:grid-cols-[1.35fr_0.65fr]">
+              <div className="grid items-start gap-10 lg:grid-cols-[1.35fr_0.65fr]">
                 <SubjectGroup title="Principal subjects" subjects={aLevelPrincipalSubjects} />
                 <SubjectGroup title="Subsidiary subjects" subjects={aLevelSubsidiarySubjects} />
               </div>
