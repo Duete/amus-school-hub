@@ -31,10 +31,10 @@ function ApplyForAdmission() {
   const [submissionError, setSubmissionError] = useState("");
 
   function validateStep(form: HTMLFormElement, currentStep: number) {
-    const missingField = requiredFieldsByStep[currentStep].find((name) => {
+    const missingField = (requiredFieldsByStep[currentStep] ?? []).find((name) => {
       const field = form.elements.namedItem(name) as HTMLInputElement | HTMLSelectElement | null;
       if (!field) return false;
-      return name === "consent" ? !field.checked : !field.value.trim();
+      return name === "consent" ? !(field as HTMLInputElement).checked : !field.value.trim();
     });
 
     if (!missingField) return true;

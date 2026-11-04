@@ -1,6 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ExternalLink, MessageCircle, Music2, Trophy, Users } from "lucide-react";
 import cityCampus from "@/assets/city-campus.webp";
+import footballJuniorDuel from "@/assets/football-junior-duel.webp";
+import footballMatchAction from "@/assets/football-match-action.webp";
+import footballSquadCelebration from "@/assets/football-squad-celebration.webp";
+import footballSquadCelebrationWide from "@/assets/football-squad-celebration-wide.webp";
+import footballTeamLineup from "@/assets/football-team-lineup.webp";
 import hillsideCampus from "@/assets/hillside-campus.webp";
 import schoolLife from "@/assets/school-life.webp";
 import { PageIntro } from "@/components/school-layout";
@@ -76,6 +81,39 @@ const clubs = [
     title: "Houses",
     text: "Galiwango, Mukongoni, Nantume, and Kaggwa bring learners together for healthy competition and belonging.",
     meta: "Galiwango · Mukongoni · Nantume · Kaggwa",
+  },
+];
+
+const footballPhotos = [
+  {
+    image: footballTeamLineup,
+    title: "Starting eleven",
+    text: "The match-day lineup before kick-off.",
+    alt: "Football starting eleven lined up on the pitch before kick-off",
+  },
+  {
+    image: footballMatchAction,
+    title: "In the contest",
+    text: "Blue and white kits battle for the ball.",
+    alt: "Two football players, one in blue and one in white, contesting the ball",
+  },
+  {
+    image: footballSquadCelebration,
+    title: "After the whistle",
+    text: "The squad walks off with a tribute held aloft.",
+    alt: "Football squad walking off the pitch with arms raised and tribute cards held overhead",
+  },
+  {
+    image: footballSquadCelebrationWide,
+    title: "Walking off together",
+    text: "The same celebration from a wider angle.",
+    alt: "Wider view of the football squad celebrating on the pitch",
+  },
+  {
+    image: footballJuniorDuel,
+    title: "One on one",
+    text: "A junior fixture duel for possession.",
+    alt: "Two junior football players duelling for the ball",
   },
 ];
 
@@ -191,6 +229,35 @@ function Sports() {
               finished with a 4–2 shootout defeat to London College Nansana and a national ranking
               of 14th.
             </p>
+          </div>
+        </div>
+
+        <div className="site-width mt-12">
+          <p className="eyebrow text-primary">FOOTBALL · PHOTOGRAPHS</p>
+          <h3 className="mt-2 text-2xl">Photographs from the pitch</h3>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {footballPhotos.map((photo, index) => (
+              <figure
+                key={photo.title}
+                className={index === 0 ? "sm:col-span-2 lg:col-span-2" : ""}
+              >
+                <img
+                  className={
+                    index === 0
+                      ? "w-full border border-border"
+                      : "h-64 w-full border border-border object-cover"
+                  }
+                  src={photo.image}
+                  alt={photo.alt}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption className="pt-3">
+                  <h4 className="text-lg">{photo.title}</h4>
+                  <p className="mt-1 text-sm leading-6 text-muted-foreground">{photo.text}</p>
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </div>
       </section>

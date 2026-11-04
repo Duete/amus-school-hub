@@ -148,6 +148,8 @@ function Index() {
     setPaused(true);
   };
 
+  if (!activeSlide) return null;
+
   return (
     <>
       <section
@@ -514,7 +516,8 @@ function Index() {
           </div>
           <div className="mt-10 grid gap-5 md:grid-cols-[1.25fr_0.75fr]">
             <Link
-              to="/campuses/day-campus"
+              to="/campuses/$campus"
+              params={{ campus: "day-campus" }}
               className="group relative min-h-80 overflow-hidden bg-primary"
             >
               <img
@@ -532,7 +535,8 @@ function Index() {
             </Link>
             <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-1">
               <Link
-                to="/campuses/day-campus"
+                to="/campuses/$campus"
+                params={{ campus: "day-campus" }}
                 className="group relative min-h-40 overflow-hidden bg-primary"
               >
                 <img
@@ -549,7 +553,8 @@ function Index() {
                 </p>
               </Link>
               <Link
-                to="/campuses/mbale-progressive-annex"
+                to="/campuses/$campus"
+                params={{ campus: "mbale-progressive-annex" }}
                 className="group relative min-h-40 overflow-hidden bg-primary"
               >
                 <img

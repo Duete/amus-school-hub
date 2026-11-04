@@ -50,6 +50,7 @@ function Portal() {
       window.addEventListener("notification-log-updated", refresh);
       return () => window.removeEventListener("notification-log-updated", refresh);
     }
+    return undefined;
   }, [user?.role]);
 
   useEffect(() => {
