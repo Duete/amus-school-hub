@@ -162,11 +162,11 @@ function StudentPortal({
     <div className="mt-8 space-y-8">
       <div className="grid gap-5 md:grid-cols-3">
         <PortalCard
-          icon={Gauge}
-          title="My performance"
-          text="Review attainment trends and subject progress."
-          href="/performance"
-          enabled={hasPermission("view:own-performance")}
+          icon={BookOpenCheck}
+          title="e-Library"
+          text="Browse class shelves and subject learning materials."
+          href="/e-library"
+          enabled={true}
         />
         <PortalCard
           icon={CreditCard}
@@ -232,10 +232,10 @@ function TeacherPortal({
       <div className="grid gap-5 md:grid-cols-3">
         <PortalCard
           icon={BookOpenCheck}
-          title="Class performance"
-          text="Use the analytics dashboard to spot progress and support needs."
-          href="/performance"
-          enabled={hasPermission("view:performance")}
+          title="Academic programmes"
+          text="Review O-Level, A-Level, and practical skills programmes."
+          href="/academics"
+          enabled={true}
         />
         <PortalCard
           icon={UsersRound}

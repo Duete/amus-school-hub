@@ -1,12 +1,21 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   BadgeCheck,
   BookOpen,
+  CalendarDays,
   CheckCircle2,
+  ChevronDown,
   ClipboardCheck,
+  Droplet,
+  FlaskConical,
   GraduationCap,
   Lightbulb,
+  Monitor,
+  Paintbrush,
   Scale,
+  Sparkles,
+  Sprout,
+  Utensils,
   Users,
 } from "lucide-react";
 import { PageIntro } from "@/components/school-layout";
@@ -42,6 +51,10 @@ const oLevelElectiveSubjects = [
   "Kiswahili",
   "Literature",
   "Physical Education",
+  "Foreign Languages",
+  "Nutrition and Food Technology",
+  "Performing Arts",
+  "Technology and Design",
 ];
 
 const uce2025Performance = [
@@ -146,6 +159,72 @@ const aLevelFocus = [
     "Modular assessment",
     "Under the UACE approach, learners can retake failed subjects instead of repeating the entire examination.",
   ],
+];
+
+const academicProgramCards = [
+  {
+    title: "School calendar",
+    text: "The academic year is organised into three terms, with continuous assessment and end-of-term examinations.",
+    icon: CalendarDays,
+  },
+  {
+    title: "Teaching methodology",
+    text: "Interactive lessons, practical work, and revision opportunities help learners build understanding.",
+    icon: BookOpen,
+  },
+  {
+    title: "Practical learning",
+    text: "Projects and hands-on activities help learners apply ideas from the classroom.",
+    icon: FlaskConical,
+  },
+  {
+    title: "Assessment and evaluation",
+    text: "Continuous assessment and project work complement examinations and help track learning progress.",
+    icon: ClipboardCheck,
+  },
+  {
+    title: "ICT integration",
+    text: "Computer skills and e-Library resources support digital learning, research, and revision.",
+    icon: Monitor,
+  },
+  {
+    title: "Skills development",
+    text: "DIY projects give learners opportunities to practise practical skills for self-reliance and enterprise.",
+    icon: Lightbulb,
+  },
+];
+
+const diyProjects = [
+  {
+    title: "Computer Skills",
+    text: "Build practical computer and digital skills.",
+    icon: Monitor,
+  },
+  {
+    title: "Agriculture",
+    text: "Develop practical knowledge through agricultural activities.",
+    icon: Sprout,
+  },
+  {
+    title: "Painting & Decor",
+    text: "Practise painting and decorative finishing skills.",
+    icon: Paintbrush,
+  },
+  {
+    title: "Soap Making",
+    text: "Learn the basics of making soap.",
+    icon: Sparkles,
+  },
+  {
+    title: "JIK Making",
+    text: "Learn the basics of making JIK cleaning product.",
+    icon: Droplet,
+  },
+  {
+    title: "Catering",
+    text: "Practise food preparation and catering skills.",
+    icon: Utensils,
+  },
 ];
 
 function Stat({ value, label, icon: Icon }: { value: string; label: string; icon: typeof Users }) {
@@ -256,20 +335,37 @@ function Academics() {
   return (
     <>
       <PageIntro eyebrow="ACADEMICS" title="Learning with purpose, from UCE to UACE.">
-        Mbale Progressive offers two stages of secondary education. O’level covers more than 17
-        subjects and leads to UCE; A’level covers more than 15 subjects and leads to UACE. More than
-        400 UCE and 300 UACE candidates complete their courses each year.
+        O’Level enrols 800 learners across 20+ subjects and offers a good teacher–student ratio.
+        A’Level enrols 400 learners across 17+ subjects, with a 40:1 student-to-teacher ratio.
       </PageIntro>
 
+      <nav
+        className="site-width flex flex-wrap gap-2 border-b border-border py-5"
+        aria-label="Academic sections"
+      >
+        <a href="#olevel" className="academic-tab">
+          O’Level
+        </a>
+        <a href="#alevel" className="academic-tab">
+          A’Level
+        </a>
+        <a href="#academic-programme" className="academic-tab">
+          Academic programme
+        </a>
+        <Link to="/faculty" className="academic-tab">
+          Teaching staff
+        </Link>
+      </nav>
+
       <section className="site-width grid gap-10 py-14 md:grid-cols-4 md:gap-8 md:py-16">
-        <Stat value="1,500+" label="students across both campuses" icon={Users} />
-        <Stat value="400+" label="UCE candidates each year" icon={GraduationCap} />
-        <Stat value="300+" label="UACE candidates each year" icon={Lightbulb} />
-        <Stat value="17+ / 15+" label="UCE / UACE subject areas" icon={BookOpen} />
+        <Stat value="800" label="O’Level learners enrolled" icon={Users} />
+        <Stat value="20+" label="O’Level subject options" icon={BookOpen} />
+        <Stat value="400" label="A’Level learners enrolled" icon={GraduationCap} />
+        <Stat value="17+" label="A’Level subject options" icon={Lightbulb} />
       </section>
 
       <div className="border-t border-border">
-        <section className="site-width py-16 md:py-20" id="olevel">
+        <section className="site-width scroll-mt-28 py-16 md:py-20" id="olevel">
           <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
             <div>
               <p className="eyebrow text-primary">LOWER SECONDARY · UCE</p>
@@ -284,7 +380,9 @@ function Academics() {
               <div className="mt-8 grid gap-5 sm:grid-cols-2">
                 <div className="rounded-sm bg-muted p-5">
                   <Users className="text-primary" size={22} />
-                  <p className="mt-4 font-display text-2xl text-primary">Good support</p>
+                  <p className="mt-4 font-display text-2xl text-primary">
+                    Good teacher–student ratio
+                  </p>
                   <p className="mt-2 text-sm leading-6 text-muted-foreground">
                     A good teacher–student ratio helps learners receive attention, guidance, and
                     encouragement.
@@ -294,8 +392,8 @@ function Academics() {
                   <Scale className="text-primary" size={22} />
                   <p className="mt-4 font-display text-2xl text-primary">Balanced choice</p>
                   <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                    More than 17 subject areas give learners room to explore academic, creative,
-                    practical, and personal strengths.
+                    20+ subject areas give learners room to explore academic, creative, practical,
+                    and personal strengths.
                   </p>
                 </div>
               </div>
@@ -395,68 +493,78 @@ function Academics() {
                   </p>
                 </aside>
               </div>
-              <div className="mt-8 overflow-x-auto border border-border">
-                <table className="min-w-[980px] w-full border-collapse text-xs tabular-nums">
-                  <caption className="sr-only">
-                    Mbale Progressive 2025 UCE subject performance
-                  </caption>
-                  <colgroup>
-                    <col className="w-[150px]" />
-                    {Array.from({ length: 7 }, (_, index) => (
-                      <col key={`grade-column-${index}`} className="w-[58px]" />
-                    ))}
-                    <col className="w-[105px]" />
-                    <col className="w-[115px]" />
-                  </colgroup>
-                  <thead className="bg-primary text-primary-foreground">
-                    <tr>
-                      <th scope="col" className="px-3 py-3 text-left font-bold">
-                        Subject
-                      </th>
-                      {["A", "B", "C", "D", "E", "X", "TTL", "% Pass A–C", "% Pass A–D"].map(
-                        (heading) => (
-                          <th
-                            key={heading}
-                            scope="col"
-                            className="whitespace-nowrap px-3 py-3 text-right font-bold"
-                          >
-                            {heading}
-                          </th>
-                        ),
-                      )}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {uce2025Performance.map((row) => {
-                      const isSummary = ["Sub Total", "PROJECT", "Grand Total"].includes(row[0]);
-                      return (
-                        <tr
-                          key={row[0]}
-                          className={
-                            isSummary
-                              ? "bg-muted font-bold text-foreground"
-                              : "border-t border-border text-muted-foreground"
-                          }
-                        >
-                          {row.map((value, index) => (
-                            <td
-                              key={`${row[0]}-${index}`}
-                              className={`whitespace-nowrap px-3 py-3 text-right ${index === 0 ? "text-left font-semibold text-primary" : ""}`}
+              <details className="group mt-8 border border-border bg-background">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 font-semibold text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary [&::-webkit-details-marker]:hidden">
+                  <span>View detailed 2025 grade table</span>
+                  <ChevronDown
+                    className="shrink-0 transition-transform group-open:rotate-180"
+                    size={18}
+                    aria-hidden="true"
+                  />
+                </summary>
+                <div className="overflow-x-auto border-t border-border">
+                  <table className="min-w-[980px] w-full border-collapse text-xs tabular-nums">
+                    <caption className="sr-only">
+                      Mbale Progressive 2025 UCE subject performance
+                    </caption>
+                    <colgroup>
+                      <col className="w-[150px]" />
+                      {Array.from({ length: 7 }, (_, index) => (
+                        <col key={`grade-column-${index}`} className="w-[58px]" />
+                      ))}
+                      <col className="w-[105px]" />
+                      <col className="w-[115px]" />
+                    </colgroup>
+                    <thead className="bg-primary text-primary-foreground">
+                      <tr>
+                        <th scope="col" className="px-3 py-3 text-left font-bold">
+                          Subject
+                        </th>
+                        {["A", "B", "C", "D", "E", "X", "TTL", "% Pass A–C", "% Pass A–D"].map(
+                          (heading) => (
+                            <th
+                              key={heading}
+                              scope="col"
+                              className="whitespace-nowrap px-3 py-3 text-right font-bold"
                             >
-                              {value || "—"}
-                            </td>
-                          ))}
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </div>
+                              {heading}
+                            </th>
+                          ),
+                        )}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {uce2025Performance.map((row) => {
+                        const isSummary = ["Sub Total", "PROJECT", "Grand Total"].includes(row[0]);
+                        return (
+                          <tr
+                            key={row[0]}
+                            className={
+                              isSummary
+                                ? "bg-muted font-bold text-foreground"
+                                : "border-t border-border text-muted-foreground"
+                            }
+                          >
+                            {row.map((value, index) => (
+                              <td
+                                key={`${row[0]}-${index}`}
+                                className={`whitespace-nowrap px-3 py-3 text-right ${index === 0 ? "text-left font-semibold text-primary" : ""}`}
+                              >
+                                {value || "—"}
+                              </td>
+                            ))}
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              </details>
             </section>
           </div>
         </section>
 
-        <section className="bg-muted" id="alevel">
+        <section className="scroll-mt-28 bg-muted" id="alevel">
           <div className="site-width py-16 md:py-20">
             <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-20">
               <div>
@@ -471,15 +579,15 @@ function Academics() {
                 </p>
                 <div className="mt-8 grid gap-4 sm:grid-cols-3">
                   <div className="bg-background p-5">
-                    <p className="font-display text-3xl text-primary">300+</p>
-                    <p className="mt-1 text-sm text-muted-foreground">UACE candidates each year</p>
+                    <p className="font-display text-3xl text-primary">400</p>
+                    <p className="mt-1 text-sm text-muted-foreground">A’Level learners enrolled</p>
                   </div>
                   <div className="bg-background p-5">
                     <p className="font-display text-3xl text-primary">40:1</p>
                     <p className="mt-1 text-sm text-muted-foreground">student-to-teacher ratio</p>
                   </div>
                   <div className="bg-background p-5">
-                    <p className="font-display text-3xl text-primary">15+</p>
+                    <p className="font-display text-3xl text-primary">17+</p>
                     <p className="mt-1 text-sm text-muted-foreground">
                       principal and subsidiary subjects
                     </p>
@@ -534,6 +642,58 @@ function Academics() {
                   </p>
                 </div>
               </article>
+            </div>
+          </div>
+        </section>
+        <section
+          className="site-width scroll-mt-28 py-16 md:py-20"
+          id="academic-programme"
+          aria-labelledby="academic-programme-heading"
+        >
+          <div className="max-w-3xl">
+            <p className="eyebrow text-primary">ACADEMIC PROGRAMME</p>
+            <h2 id="academic-programme-heading" className="mt-4 text-4xl leading-tight md:text-5xl">
+              Learning through study, practice, and steady feedback.
+            </h2>
+            <p className="mt-5 leading-7 text-muted-foreground">
+              The academic programme brings classroom learning together with practical activities,
+              digital skills, project work, and regular assessment across the school year.
+            </p>
+          </div>
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {academicProgramCards.map(({ title, text, icon: Icon }) => (
+              <article key={title} className="border border-border bg-background p-6">
+                <Icon className="text-primary" size={25} strokeWidth={1.7} aria-hidden="true" />
+                <h3 className="mt-5 text-xl">{title}</h3>
+                <p className="mt-3 text-sm leading-6 text-muted-foreground">{text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section
+          className="scroll-mt-28 border-t border-border bg-muted py-16 md:py-20"
+          id="diy-skills"
+          aria-labelledby="diy-skills-heading"
+        >
+          <div className="site-width">
+            <div className="max-w-3xl">
+              <p className="eyebrow text-primary">PROJECTS · DIY SKILLS</p>
+              <h2 id="diy-skills-heading" className="mt-4 text-4xl leading-tight md:text-5xl">
+                Practical skills for self-reliance.
+              </h2>
+              <p className="mt-5 leading-7 text-muted-foreground">
+                Learners can explore practical projects in the following areas.
+              </p>
+            </div>
+            <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {diyProjects.map(({ title, text, icon: Icon }) => (
+                <article key={title} className="border border-border bg-background p-6">
+                  <Icon className="text-primary" size={25} strokeWidth={1.7} aria-hidden="true" />
+                  <h3 className="mt-5 text-xl">{title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-muted-foreground">{text}</p>
+                </article>
+              ))}
             </div>
           </div>
         </section>

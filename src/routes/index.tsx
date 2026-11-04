@@ -24,7 +24,7 @@ const heroSlides = [
     eyebrow: "MBALE CITY · EASTERN UGANDA",
     title: "A school that knows where it is going.",
     subheading: "The Love of Education Brought Us Here.",
-    text: "Day and boarding education for more than 1,500 learners, from S.1 through UACE.",
+    text: "Day and boarding education for 800 O-Level and 400 A-Level learners.",
     primary: "See the school",
     to: "/about" as const,
     secondary: "Ask about admission",
@@ -33,7 +33,7 @@ const heroSlides = [
   {
     image: cityCampus,
     eyebrow: "ESTABLISHED 1993",
-    title: "Thirty years of steady work.",
+    title: "More than three decades of steady work.",
     subheading: "Built in Mbale. Open to the region.",
     text: "What began as Mbale Progressive Academy is now a full secondary school with day and boarding pathways.",
     primary: "Read our history",
@@ -55,10 +55,10 @@ const heroSlides = [
 ];
 
 const schoolFacts = [
-  { value: "1,500+", label: "learners across both campuses" },
-  { value: "400+", label: "UCE candidates each year" },
-  { value: "300+", label: "UACE candidates each year" },
-  { value: "1993", label: "school established" },
+  { value: "800", label: "O-Level learners enrolled" },
+  { value: "20+", label: "O-Level subject options" },
+  { value: "400", label: "A-Level learners enrolled" },
+  { value: "17+", label: "A-Level subject options" },
 ];
 
 const upcomingEvents = [
@@ -435,16 +435,14 @@ function Index() {
               <BookOpen className="text-primary" size={28} strokeWidth={1.5} />
               <h3 className="mt-5 text-2xl">O-Level / UCE</h3>
               <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                More than 17 subjects, with over 400 candidates registering and completing the
-                course each year.
+                20+ subject options and 800 learners enrolled at O-Level.
               </p>
             </article>
             <article className="border-t-2 border-secondary pt-5">
               <BookOpen className="text-primary" size={28} strokeWidth={1.5} />
               <h3 className="mt-5 text-2xl">A-Level / UACE</h3>
               <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                More than 15 subjects, with over 300 candidates completing the advanced level
-                pathway each year.
+                17+ subject options and 400 learners enrolled at A-Level.
               </p>
             </article>
           </div>

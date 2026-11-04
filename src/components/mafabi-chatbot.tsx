@@ -20,7 +20,7 @@ const pageDescriptions: Record<string, string> = {
   "/alumni":
     "This is the Alumni page. Its message is ‘Once with Us, Always with Us’ and it helps former learners stay connected, share updates, and plan a return to the school.",
   "/academics":
-    "This is the academics page. It lists the UCE/O-Level and UACE/A-Level pathways, subjects, candidate numbers, assessment approach, the route from S.1 through UACE, and Worasi Joel’s Best UACE 2025 result of 18 points in BCM / ICT.",
+    "This is the academics page. It covers O-Level and A-Level enrolment and subject options, teacher–student ratios, curriculum, assessment, the academic programme, DIY skills, and Worasi Joel’s Best UACE 2025 result of 18 points in BCM / ICT.",
   "/e-library":
     "This is the e-Library. It groups learning shelves by O-Level classes S.1–S.4 and A-Level classes S.5–S.6, then organises each class into subject areas.",
   "/admissions":
@@ -39,8 +39,6 @@ const pageDescriptions: Record<string, string> = {
     "This is the governance page. It explains the Board of Governors and lists Day Campus and Boarding leaders for academics, welfare, administration, and studies.",
   "/news":
     "This is the news page. It carries academic updates, leadership news, the 2025/2026 Debate Society report, the 2026 football result, and the table-tennis story.",
-  "/performance":
-    "This is the performance page. It presents the learner-performance dashboard concept and the academic measures the school can track.",
   "/scholarships":
     "This is the scholarships page. It explains Galiwango Foundation sponsorship and merit-based awards for strong PLE, class, and UCE performance.",
   "/sports":
@@ -74,7 +72,7 @@ function answerFor(message: string, pathname: string) {
     query.includes("founded") ||
     query.includes("motto")
   ) {
-    return "Mbale Progressive Secondary School is a mixed day and boarding school in Mbale City, Uganda. It was established in 1993 and serves more than 1,500 learners from S.1 through UACE. The Day Campus is on Nyanza Road near Namatala; Mbale Progressive Annex is the boarding campus. The school motto is ‘The Love of Education Brought Us Here.’ The footer taglines are ‘We Unlock the Future’ and ‘The Temple of Knowledge.’";
+    return "Mbale Progressive Secondary School is a mixed day and boarding school in Mbale City, Uganda. It was established in 1993 and has 800 O-Level learners and 400 A-Level learners. The Day Campus is on Nyanza Road near Namatala; Mbale Progressive Annex is the boarding campus. The school motto is ‘The Love of Education Brought Us Here.’ The footer taglines are ‘We Unlock the Future’ and ‘The Temple of Knowledge.’";
   }
   if (query.includes("e-library") || query.includes("e library") || query.includes("library")) {
     return "The e-Library is organised in two levels: O-Level has S.1, S.2, S.3, and S.4 shelves; A-Level has S.5 and S.6 shelves. Open a class shelf to browse its core, elective, principal, or subsidiary subject areas. School-approved notes, reading lists, revision guides, and past papers can be attached to each subject shelf.";
@@ -150,10 +148,10 @@ function answerFor(message: string, pathname: string) {
     return "Campus life includes houses, clubs, sports, music, dance and drama, student leadership, faith and reflection, plus a structured Boarding routine. Visit the Campus life page for the full overview.";
   }
   if (query.includes("uace") || query.includes("a level") || query.includes("alevel")) {
-    return "UACE principal subjects include Biology, Chemistry, Mathematics, Physics, History, Geography, Literature, Christian Religious Education, Local Languages, Kiswahili, Fine Art, Entrepreneurship, Islamic Religious Education, Agriculture, and Economics. Subsidiaries are General Paper, Subsidiary Mathematics, and Subsidiary ICT.";
+    return "A-Level enrols 400 learners, offers 17+ subject areas, and has a 40:1 student-to-teacher ratio. UACE principal subjects include Biology, Chemistry, Mathematics, Physics, History, Geography, Literature, Christian Religious Education, Local Languages, Kiswahili, Fine Art, Entrepreneurship, Islamic Religious Education, Agriculture, and Economics. Subsidiaries are General Paper, Subsidiary Mathematics, and Subsidiary ICT.";
   }
   if (query.includes("uce") || query.includes("o level") || query.includes("olevel")) {
-    return "UCE compulsory subjects are Biology, Chemistry, Mathematics, Physics, English, History and Political Education, and Geography. Electives include Agriculture, Art and Design, Religious Education, Entrepreneurship, ICT, Local Languages, Kiswahili, Literature, and Physical Education. The Academics page also includes the 2025 UCE subject-performance table, with grade distributions and pass rates for A–C and A–D.";
+    return "O-Level enrols 800 learners across 20+ subject areas and has a good teacher–student ratio. UCE compulsory subjects are Biology, Chemistry, Mathematics, Physics, English, History and Political Education, and Geography. Electives include Agriculture, Art and Design, Christian Religious Education, Islamic Religious Education, Entrepreneurship, ICT, Local Languages, Kiswahili, Literature, Physical Education, Foreign Languages, Nutrition and Food Technology, Performing Arts, and Technology and Design. The 2025 UCE results table is available in a collapsed section on the Academics page.";
   }
   if (
     query.includes("fee") ||
