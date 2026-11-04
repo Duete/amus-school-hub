@@ -130,7 +130,7 @@ const notableAlumni: NotableAlumnus[] = [
   },
   {
     name: "Nakibuule Regina",
-    classYear: "Class year not listed",
+    classYear: "Class of 2010",
     role: "FEASSSA Table Tennis commissar (2019 to date), referee and umpire, ITTF & PTT level 1 & 2 coach, USSSA Table Tennis coordinator, and director with Pickleball Africa",
     image: reginaNakibuule,
     imageAlt: "Regina Nakibuule",
