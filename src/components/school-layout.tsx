@@ -1,5 +1,5 @@
 import { Link, useLocation } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowRight, BookOpen, ChevronDown, LogIn, Menu, UserCircle, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/lib/auth";
@@ -102,8 +102,35 @@ export function SchoolHeader() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const location = useLocation();
   const { user, signOut } = useAuth();
+  const navigationRef = useRef<HTMLElement>(null);
   const isActive = (to: string) =>
     location.pathname === to || location.pathname.startsWith(`${to}/`);
+
+  useEffect(() => {
+    setOpen(false);
+    setActiveMenu(null);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (!activeMenu) return;
+
+    const closeOnOutsidePointer = (event: PointerEvent) => {
+      if (!navigationRef.current?.contains(event.target as Node)) {
+        setActiveMenu(null);
+      }
+    };
+
+    document.addEventListener("pointerdown", closeOnOutsidePointer);
+    return () => document.removeEventListener("pointerdown", closeOnOutsidePointer);
+  }, [activeMenu]);
+
+  const closeMenusOnEscape = (event: React.KeyboardEvent<HTMLElement>) => {
+    if (event.key === "Escape") {
+      setActiveMenu(null);
+      setOpen(false);
+    }
+  };
+
   return (
     <>
       <SchoolHighlightsMarquee />
@@ -137,34 +164,43 @@ export function SchoolHeader() {
               </span>
             </span>
           </Link>
-          <nav aria-label="Main navigation" className="hidden items-center gap-5 xl:flex">
+          <nav
+            ref={navigationRef}
+            aria-label="Main navigation"
+            className="hidden items-center gap-5 xl:flex"
+            onKeyDown={closeMenusOnEscape}
+          >
             {navigation.map((item) =>
               item.type === "link" ? (
                 <Link
                   key={item.to}
                   to={item.to}
+                  preload="intent"
+                  aria-current={isActive(item.to) ? "page" : undefined}
                   className={`border-b-2 py-3 text-sm font-semibold transition-colors ${isActive(item.to) ? "border-primary text-primary" : "border-transparent text-muted-foreground hover:text-primary"}`}
                 >
                   {item.name}
                 </Link>
               ) : (
-                <div
-                  key={item.name}
-                  className="relative"
-                  onMouseEnter={() => setActiveMenu(item.name)}
-                  onMouseLeave={() => setActiveMenu(null)}
-                >
+                <div key={item.name} className="relative">
                   <button
                     type="button"
+                    id={`${item.name.toLowerCase().replace(/\s+/g, "-")}-menu-button`}
                     className={`flex items-center gap-1 border-b-2 py-3 text-sm font-semibold transition-colors ${item.children.some((child) => isActive(child.to)) ? "border-primary text-primary" : "border-transparent text-muted-foreground hover:text-primary"}`}
                     aria-expanded={activeMenu === item.name}
+                    aria-controls={`${item.name.toLowerCase().replace(/\s+/g, "-")}-menu`}
                     onClick={() => setActiveMenu(activeMenu === item.name ? null : item.name)}
                   >
                     {item.name}
                     <ChevronDown size={15} />
                   </button>
                   {activeMenu === item.name && (
-                    <div className="absolute left-0 top-full z-40 min-w-56 border border-border bg-background p-2 shadow-xl">
+                    <div
+                      id={`${item.name.toLowerCase().replace(/\s+/g, "-")}-menu`}
+                      role="menu"
+                      aria-labelledby={`${item.name.toLowerCase().replace(/\s+/g, "-")}-menu-button`}
+                      className="absolute left-0 top-full z-40 min-w-56 border border-border bg-background p-2 shadow-xl"
+                    >
                       <p className="px-3 pb-2 pt-1 text-xs font-semibold tracking-[0.04em] text-muted-foreground">
                         Pages in {item.name}
                       </p>
@@ -172,6 +208,8 @@ export function SchoolHeader() {
                         <Link
                           key={child.to}
                           to={child.to}
+                          preload="intent"
+                          role="menuitem"
                           onClick={() => setActiveMenu(null)}
                           className={`block px-3 py-2 text-sm font-semibold ${isActive(child.to) ? "bg-muted text-primary" : "text-foreground hover:bg-muted hover:text-primary"}`}
                         >
@@ -226,17 +264,17 @@ export function SchoolHeader() {
             id="mobile-navigation"
             aria-label="Mobile navigation"
             className="site-width flex flex-col gap-1 pb-5"
-            onKeyDown={(e) => {
-              if (e.key === "Escape") setOpen(false);
-            }}
+            onKeyDown={closeMenusOnEscape}
           >
             {navigation.map((item) =>
               item.type === "link" ? (
                 <Link
                   key={item.to}
                   to={item.to}
+                  preload="intent"
+                  aria-current={isActive(item.to) ? "page" : undefined}
                   onClick={() => setOpen(false)}
-                  className="border-b border-border py-3 text-sm font-semibold"
+                  className={`border-b border-border py-3 text-sm font-semibold ${isActive(item.to) ? "text-primary" : "text-foreground"}`}
                 >
                   {item.name}
                 </Link>
@@ -249,8 +287,10 @@ export function SchoolHeader() {
                     <Link
                       key={child.to}
                       to={child.to}
+                      preload="intent"
+                      aria-current={isActive(child.to) ? "page" : undefined}
                       onClick={() => setOpen(false)}
-                      className="block py-2 pl-3 text-sm font-semibold text-muted-foreground"
+                      className={`block py-2 pl-3 text-sm font-semibold ${isActive(child.to) ? "text-primary" : "text-muted-foreground"}`}
                     >
                       {child.name}
                     </Link>
