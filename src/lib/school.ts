@@ -23,7 +23,8 @@ export const campuses = [
 
 const schoolName = "Mbale Progressive Secondary School";
 const publicOrigin = (
-  (import.meta.env["VITE_PUBLIC_SITE_URL"] as string | undefined) ?? "https://mbaleprogressive.sc.ug"
+  (import.meta.env["VITE_PUBLIC_SITE_URL"] as string | undefined) ??
+  "https://mbaleprogressive.sc.ug"
 ).replace(/\/$/, "");
 const shareImagePath = "/og-school.webp";
 const knownPaths: Record<string, string> = {

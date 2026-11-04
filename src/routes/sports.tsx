@@ -1,13 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ExternalLink, MessageCircle, Music2, Trophy, Users } from "lucide-react";
-import cityCampus from "@/assets/city-campus.webp";
+import { ExternalLink, ImagePlus, MessageCircle, Music2, Trophy, Users } from "lucide-react";
 import footballJuniorDuel from "@/assets/football-junior-duel.webp";
 import footballMatchAction from "@/assets/football-match-action.webp";
 import footballSquadCelebration from "@/assets/football-squad-celebration.webp";
 import footballSquadCelebrationWide from "@/assets/football-squad-celebration-wide.webp";
 import footballTeamLineup from "@/assets/football-team-lineup.webp";
-import hillsideCampus from "@/assets/hillside-campus.webp";
-import schoolLife from "@/assets/school-life.webp";
 import { PageIntro } from "@/components/school-layout";
 import { schoolHead } from "@/lib/school";
 
@@ -117,21 +114,26 @@ const footballPhotos = [
   },
 ];
 
-const gallery = [
+const photoPlaceholderGroups = [
   {
-    image: schoolLife,
-    title: "School life",
-    text: "Learning, friendship, and activity beyond the classroom.",
+    title: "Girls’ football",
+    count: 3,
+    description: "Three photo slots for the girls’ football pictures.",
   },
   {
-    image: cityCampus,
-    title: "Day Campus",
-    text: "A place for sport, clubs, leadership, and shared routines.",
+    title: "Staff engaging in sports",
+    count: 2,
+    description: "Two photo slots for staff taking part in sports.",
   },
   {
-    image: hillsideCampus,
-    title: "Boarding community",
-    text: "The Annex supports structured boarding life and student growth.",
+    title: "Staff outing",
+    count: 3,
+    description: "Three photo slots for pictures from a staff outing.",
+  },
+  {
+    title: "Additional photos",
+    count: 5,
+    description: "Five extra slots for other school sports and activity photos.",
   },
 ];
 
@@ -168,6 +170,28 @@ function ActivityCard({
         Read the story <ExternalLink size={14} />
       </a>
     </article>
+  );
+}
+
+function PhotoPlaceholder({ category, number }: { category: string; number: number }) {
+  return (
+    <figure className="border border-dashed border-border bg-background">
+      <div className="flex aspect-[4/3] flex-col items-center justify-center bg-muted p-5 text-center">
+        <div className="flex items-center gap-2">
+          <ImagePlus
+            className="shrink-0 text-primary"
+            size={20}
+            strokeWidth={1.6}
+            aria-hidden="true"
+          />
+          <p className="text-sm font-semibold">Photo placeholder</p>
+        </div>
+        <p className="mt-3 text-xs text-muted-foreground">Image to be added</p>
+      </div>
+      <figcaption className="border-t border-border px-3 py-2 text-xs font-medium text-muted-foreground">
+        {category} · Photo {number}
+      </figcaption>
+    </figure>
   );
 }
 
@@ -444,30 +468,39 @@ function Sports() {
       <section className="site-width py-14 md:py-20" aria-labelledby="gallery-heading">
         <div className="flex items-end justify-between gap-6 border-b border-border pb-6">
           <div>
-            <p className="eyebrow text-primary">ACTIVITY GALLERY</p>
+            <p className="eyebrow text-primary">SPORTS & ACTIVITY PHOTOS</p>
             <h2 id="gallery-heading" className="mt-2 text-3xl md:text-4xl">
-              Moments that make the school
+              More moments from school life
             </h2>
           </div>
           <p className="hidden max-w-sm text-sm leading-6 text-muted-foreground md:block">
-            A visual sample of the places where Progressive learners study, play, serve, and grow.
+            Thirteen labeled photo slots are ready for the additional pictures.
           </p>
         </div>
-        <div className="mt-8 grid gap-5 md:grid-cols-[1.2fr_0.8fr_0.8fr]">
-          {gallery.map((item, index) => (
-            <figure key={item.title} className={index === 0 ? "md:row-span-2" : ""}>
-              <img
-                className="h-56 w-full object-cover md:h-64"
-                src={item.image}
-                alt={item.title}
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption className="border-b border-border py-4">
-                <h3 className="text-xl">{item.title}</h3>
-                <p className="mt-1 text-sm leading-6 text-muted-foreground">{item.text}</p>
-              </figcaption>
-            </figure>
+        <div className="mt-8 space-y-10">
+          {photoPlaceholderGroups.map((group) => (
+            <div key={group.title}>
+              <div className="flex flex-wrap items-end justify-between gap-3">
+                <div>
+                  <h3 className="text-2xl">{group.title}</h3>
+                  <p className="mt-1 text-sm leading-6 text-muted-foreground">
+                    {group.description}
+                  </p>
+                </div>
+                <p className="eyebrow text-primary">
+                  {group.count} {group.count === 1 ? "photo slot" : "photo slots"}
+                </p>
+              </div>
+              <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {Array.from({ length: group.count }, (_, index) => (
+                  <PhotoPlaceholder
+                    key={`${group.title}-${index + 1}`}
+                    category={group.title}
+                    number={index + 1}
+                  />
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </section>
