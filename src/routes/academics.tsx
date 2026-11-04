@@ -1,3 +1,4 @@
+import { useId, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   BadgeCheck,
@@ -255,10 +256,34 @@ function SubjectList({ subjects }: { subjects: string[] }) {
 }
 
 function SubjectGroup({ title, subjects }: { title: string; subjects: string[] }) {
+  const [open, setOpen] = useState(false);
+  const panelId = useId();
+
   return (
-    <div>
-      <h4 className="mb-4 text-xl text-foreground">{title}</h4>
-      <SubjectList subjects={subjects} />
+    <div className="border border-border bg-background">
+      <h4>
+        <button
+          type="button"
+          aria-expanded={open}
+          aria-controls={panelId}
+          onClick={() => setOpen((value) => !value)}
+          className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition-colors hover:bg-muted/60"
+        >
+          <span className="text-xl text-foreground">{title}</span>
+          <span className="flex shrink-0 items-center gap-3">
+            <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+              {subjects.length} subjects
+            </span>
+            <ChevronDown
+              className={`text-primary transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+              size={18}
+            />
+          </span>
+        </button>
+      </h4>
+      <div id={panelId} hidden={!open} className="border-t border-border px-5 py-5">
+        <SubjectList subjects={subjects} />
+      </div>
     </div>
   );
 }
@@ -454,7 +479,7 @@ function Academics() {
                 Subject choices can be guided by learner interests, strengths, and future plans.
               </p>
             </div>
-            <div className="grid gap-10 lg:grid-cols-2">
+            <div className="grid items-start gap-10 lg:grid-cols-2">
               <SubjectGroup title="Compulsory subjects" subjects={oLevelCompulsorySubjects} />
               <SubjectGroup title="Elective subjects" subjects={oLevelElectiveSubjects} />
             </div>
@@ -624,7 +649,7 @@ function Academics() {
                   entrepreneurial ambitions.
                 </p>
               </div>
-              <div className="grid gap-10 lg:grid-cols-[1.35fr_0.65fr]">
+              <div className="grid items-start gap-10 lg:grid-cols-[1.35fr_0.65fr]">
                 <SubjectGroup title="Principal subjects" subjects={aLevelPrincipalSubjects} />
                 <SubjectGroup title="Subsidiary subjects" subjects={aLevelSubsidiarySubjects} />
               </div>
