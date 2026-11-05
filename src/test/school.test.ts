@@ -8,7 +8,7 @@ describe("School campus structure", () => {
       { name: "Day Campus", slug: "day-campus" },
       { name: "Mbale Progressive Annex", slug: "mbale-progressive-annex" },
     ]);
-    expect(campuses[0]?.description).toContain("Nyanza Road, near Namatala");
+    expect(campuses[0]?.description).toContain("Plot 8–15 Nabuyonga Rise");
   });
 });
 
