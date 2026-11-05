@@ -112,7 +112,7 @@ export const Route = createFileRoute("/")({
               name: "Where are the school campuses?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "The Day Campus is on Nyanza Road near Namatala in Mbale City. Mbale Progressive Annex is the school’s boarding campus.",
+                text: "The Day Campus is on Plot 8–15 Nabuyonga Rise, Northern City Division, Mbale City. Mbale Progressive Annex is the school’s boarding campus.",
               },
             },
             {
@@ -325,7 +325,7 @@ function Index() {
               </h2>
             </div>
             <p className="max-w-lg border-l-2 border-secondary pl-5 text-base leading-7 text-muted-foreground">
-              The Day Campus sits on Nyanza Road near Namatala. Mbale Progressive Annex provides the
+              The Day Campus sits on Plot 8–15 Nabuyonga Rise, Mbale City. Mbale Progressive Annex provides the
               boarding option. Both lead into the same academic programme.
             </p>
           </div>
@@ -544,12 +544,12 @@ function Index() {
                   width={1024}
                   height={768}
                   loading="lazy"
-                  alt="Day Campus setting near Namatala"
+                  alt="Day Campus setting on Nabuyonga Rise"
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent" />
                 <p className="absolute bottom-4 left-4 text-sm font-semibold text-white">
-                  Day Campus · Nyanza Road
+                  Day Campus · Nabuyonga Rise
                 </p>
               </Link>
               <Link
@@ -601,7 +601,7 @@ function Index() {
                 Where are the campuses?
               </summary>
               <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">
-                The Day Campus is on Nyanza Road near Namatala. Mbale Progressive Annex is the
+                The Day Campus is on Plot 8–15 Nabuyonga Rise, Mbale City. Mbale Progressive Annex is the
                 boarding campus.
               </p>
             </details>

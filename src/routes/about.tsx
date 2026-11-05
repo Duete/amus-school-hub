@@ -41,7 +41,7 @@ function About() {
             it is now known as Mbale Progressive Secondary School.
           </p>
           <p className="mt-4 leading-7 text-muted-foreground">
-            The school has a Day Campus on Nyanza Road near Namatala and a boarding campus known as
+            The school has a Day Campus on Plot 8–15 Nabuyonga Rise, Mbale City and a boarding campus known as
             Mbale Progressive Annex.
           </p>
           <Button asChild className="mt-6">

@@ -30,7 +30,7 @@ const pageDescriptions: Record<string, string> = {
   "/campus-life":
     "This is the campus-life page. It covers houses, clubs, faith associations, sports, music, dance and drama, leadership, boarding routines, and health services for boarding students.",
   "/campuses":
-    "This is the campus directory. Day Campus is on Nyanza Road near Namatala in Mbale City. Mbale Progressive Annex is the boarding campus.",
+    "This is the campus directory. Day Campus is on Plot 8–15 Nabuyonga Rise, Northern City Division, Mbale City. Mbale Progressive Annex is the boarding campus.",
   "/faculty":
     "This is the Teaching Staff page under Academics. It introduces subject heads, teachers, academic support, and the staff responsible for learner guidance and activities.",
   "/finance":
@@ -72,7 +72,7 @@ function answerFor(message: string, pathname: string) {
     query.includes("founded") ||
     query.includes("motto")
   ) {
-    return "Mbale Progressive Secondary School is a mixed day and boarding school in Mbale City, Uganda. It was established in 1993 and has 800 O-Level learners and 400 A-Level learners. The Day Campus is on Nyanza Road near Namatala; Mbale Progressive Annex is the boarding campus. The school motto is ‘The Love of Education Brought Us Here.’ The footer taglines are ‘We Unlock the Future’ and ‘The Temple of Knowledge.’";
+    return "Mbale Progressive Secondary School is a mixed day and boarding school in Mbale City, Uganda. It was established in 1993 and has 800 O-Level learners and 400 A-Level learners. The Day Campus is on Plot 8–15 Nabuyonga Rise, Mbale City; Mbale Progressive Annex is the boarding campus. The school motto is ‘The Love of Education Brought Us Here.’ The footer taglines are ‘We Unlock the Future’ and ‘The Temple of Knowledge.’";
   }
   if (query.includes("e-library") || query.includes("e library") || query.includes("library")) {
     return "The e-Library is organised in two levels: O-Level has S.1, S.2, S.3, and S.4 shelves; A-Level has S.5 and S.6 shelves. Open a class shelf to browse its core, elective, principal, or subsidiary subject areas. School-approved notes, reading lists, revision guides, and past papers can be attached to each subject shelf.";
@@ -127,7 +127,7 @@ function answerFor(message: string, pathname: string) {
     return "The Teaching Staff page under Academics lists subject heads, teachers, and activity leadership across O-Level and A-Level. For a named subject lead or teacher, open Teaching Staff and search the directory rather than relying on a general chat answer.";
   }
   if (query.includes("location") || query.includes("address") || query.includes("office")) {
-    return "The Day Campus is on Nyanza Road near Namatala in Mbale City. Mbale Progressive Annex is the boarding campus. The usual office window is Monday to Saturday, 08:00–17:00. Confirm term, holiday, and visitation arrangements before travelling.";
+    return "The Day Campus is on Plot 8–15 Nabuyonga Rise, Northern City Division, Mbale City. Mbale Progressive Annex is the boarding campus. The usual office window is Monday to Saturday, 08:00–17:00. Confirm term, holiday, and visitation arrangements before travelling.";
   }
   if (query.includes("health") || query.includes("sick") || query.includes("clinic")) {
     return "Health services are for Boarding students. They provide everyday wellbeing and illness support, with referral arrangements when care beyond school is needed. Families should confirm current clinic hours and emergency procedures with the Boarding office.";

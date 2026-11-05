@@ -25,7 +25,7 @@ function AdmissionsOverview() {
           {[
             {
               title: "Choose your setting",
-              text: "Day students attend the Day Campus on Nyanza Road near Namatala. Boarding students are based at Mbale Progressive Annex.",
+              text: "Day students attend the Day Campus on Plot 8–15 Nabuyonga Rise, Mbale City. Boarding students are based at Mbale Progressive Annex.",
             },
             {
               title: "Choose a study level",

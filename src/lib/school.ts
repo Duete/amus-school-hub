@@ -5,11 +5,11 @@ export const campuses = [
   {
     slug: "day-campus",
     name: "Day Campus",
-    setting: "Nyanza Road, near Namatala, Mbale City.",
+    setting: "Plot 8–15 Nabuyonga Rise, Northern City Division, Mbale City.",
     image: cityCampus,
     description:
-      "Mbale Progressive Secondary School’s Day Campus is located on Nyanza Road, near Namatala, in Mbale City.",
-    features: ["Day Campus", "Nyanza Road, near Namatala", "Mbale City"],
+      "Mbale Progressive Secondary School’s Day Campus is located on Plot 8–15 Nabuyonga Rise, Northern City Division, Mbale City.",
+    features: ["Day Campus", "Plot 8–15 Nabuyonga Rise", "Northern City Division, Mbale City"],
   },
   {
     slug: "mbale-progressive-annex",
