@@ -12,9 +12,9 @@ import dayScienceLab from "@/assets/day-campus-science-lab.jpg.asset.json";
 const dayCampusPhotos = [
   { image: dayGrounds, caption: "Day Campus grounds" },
   { image: dayClassrooms, caption: "Classroom block and green spaces" },
-  { image: dayArtDesign, caption: "Art and Design department" },
-  { image: dayBuilding, caption: "Two-storey campus building" },
-  { image: dayAdministration, caption: "Administration and bursar’s office" },
+  { image: dayArtDesign, caption: "S.6 Arts & Head Teacher's Block" },
+  { image: dayBuilding, caption: "A'Level Sciences Block" },
+  { image: dayAdministration, caption: "Administration Block" },
   { image: dayScienceLab, caption: "Science laboratory" },
 ];
 
