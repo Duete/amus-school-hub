@@ -14,6 +14,10 @@ import sendOff from "@/assets/boys-team-with-the-deputor-madam-alice-and-games-t
 import arriving from "@/assets/team-ariving-for-the-finals.webp";
 import outreachNorthRoad from "@/assets/outreach-north-road-primary.webp";
 import karamojaSelfie from "@/assets/karamoja-association-selfie.webp";
+import colourStudent from "@/assets/colour-festival-student.webp";
+import colourCrowd from "@/assets/colour-festival-crowd.webp";
+import colourGathering from "@/assets/colour-festival-gathering.webp";
+import colourPerformer from "@/assets/colour-festival-performer.webp";
 import { PageIntro } from "@/components/school-layout";
 import { schoolHead } from "@/lib/school";
 
@@ -217,6 +221,56 @@ function CampusLife() {
               <figcaption className="pt-3 text-sm text-muted-foreground">{caption}</figcaption>
             </figure>
           ))}
+        </div>
+      </section>
+
+      <section
+        className="border-t border-border py-14 md:py-20"
+        aria-labelledby="colour-festival-heading"
+      >
+        <div className="site-width">
+          <p className="eyebrow text-primary">COLOUR FESTIVAL</p>
+          <h2 id="colour-festival-heading" className="mt-2 text-3xl md:text-4xl">
+            Students having fun during the Colour Festival.
+          </h2>
+          <p className="mt-4 max-w-2xl leading-7 text-muted-foreground">
+            The Colour Festival is one of the liveliest days on the school calendar. Coloured
+            powder, music, and a full schoolyard give learners a chance to relax, celebrate, and
+            be together outside the classroom.
+          </p>
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              [
+                colourStudent,
+                "A student poses during the Colour Festival, with the school building behind the crowd.",
+              ],
+              [
+                colourCrowd,
+                "Students packed the schoolyard for the Colour Festival.",
+              ],
+              [
+                colourGathering,
+                "Students gathered on the field for the Colour Festival programme.",
+              ],
+              [
+                colourPerformer,
+                "A performer on stage kept the crowd moving during the Colour Festival.",
+              ],
+            ].map(([src, caption]) => (
+              <figure key={caption}>
+                <img
+                  className="w-full border border-border"
+                  src={src}
+                  alt={caption}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption className="pt-3 text-sm leading-6 text-muted-foreground">
+                  {caption}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
         </div>
       </section>
 
