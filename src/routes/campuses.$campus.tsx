@@ -72,6 +72,19 @@ function Campus() {
           <p className="eyebrow text-primary">SECONDARY EDUCATION IN MBALE CITY</p>
           <h2 className="mt-4 text-3xl">{campus.name}</h2>
           <p className="mt-5 leading-7 text-muted-foreground">{campus.description}</p>
+          {isDayCampus && (
+            <div className="mt-6 space-y-2 text-sm">
+              <p className="text-muted-foreground">GPS: 1.078571, 34.174396</p>
+              <a
+                href="https://maps.app.goo.gl/aBA1SektMqr14yBn6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 font-semibold text-primary underline underline-offset-4"
+              >
+                Open in Google Maps <ArrowRight size={16} />
+              </a>
+            </div>
+          )}
         </div>
         <ul className="space-y-5">
           {campus.features.map((feature) => (
