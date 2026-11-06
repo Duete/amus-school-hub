@@ -9,6 +9,8 @@ describe("School campus structure", () => {
       { name: "Mbale Progressive Annex", slug: "mbale-progressive-annex" },
     ]);
     expect(campuses[0]?.description).toContain("Plot 8–15 Nabuyonga Rise");
+    expect(campuses[0]?.image).toContain("hero-frontage.webp");
+    expect(campuses[1]?.image).toBeNull();
   });
 });
 

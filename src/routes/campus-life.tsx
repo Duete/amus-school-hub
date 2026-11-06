@@ -235,8 +235,8 @@ function CampusLife() {
           </h2>
           <p className="mt-4 max-w-2xl leading-7 text-muted-foreground">
             The Colour Festival is one of the liveliest days on the school calendar. Coloured
-            powder, music, and a full schoolyard give learners a chance to relax, celebrate, and
-            be together outside the classroom.
+            powder, music, and a full schoolyard give learners a chance to relax, celebrate, and be
+            together outside the classroom.
           </p>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
@@ -244,10 +244,7 @@ function CampusLife() {
                 colourStudent,
                 "A student poses during the Colour Festival, with the school building behind the crowd.",
               ],
-              [
-                colourCrowd,
-                "Students packed the schoolyard for the Colour Festival.",
-              ],
+              [colourCrowd, "Students packed the schoolyard for the Colour Festival."],
               [
                 colourGathering,
                 "Students gathered on the field for the Colour Festival programme.",

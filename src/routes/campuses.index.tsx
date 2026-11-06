@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ImageOff } from "lucide-react";
 import { PageIntro } from "@/components/school-layout";
 import { Button } from "@/components/ui/button";
 import { campuses, schoolHead } from "@/lib/school";
@@ -19,14 +19,25 @@ function Campuses() {
         {campuses.map((campus) => (
           <article key={campus.slug}>
             <div className="relative">
-              <img
-                src={campus.image}
-                width={1024}
-                height={768}
-                loading="lazy"
-                alt={`${campus.name} campus setting`}
-                className="aspect-[4/3] w-full rounded-md object-cover"
-              />
+              {campus.image ? (
+                <img
+                  src={campus.image}
+                  width={1024}
+                  height={768}
+                  loading="lazy"
+                  alt={`${campus.name} grounds and buildings`}
+                  className="aspect-[4/3] w-full rounded-md object-cover"
+                />
+              ) : (
+                <div
+                  className="flex aspect-[4/3] w-full flex-col items-center justify-center gap-3 rounded-md bg-muted p-6 text-center text-muted-foreground"
+                  role="img"
+                  aria-label={`${campus.name} photo not available`}
+                >
+                  <ImageOff aria-hidden="true" size={26} strokeWidth={1.6} />
+                  <span className="text-sm">No photo of this campus is available.</span>
+                </div>
+              )}
             </div>
             <h2 className="mt-6 text-3xl">{campus.name}</h2>
             <p className="mt-3 text-sm leading-7 text-muted-foreground">{campus.description}</p>
