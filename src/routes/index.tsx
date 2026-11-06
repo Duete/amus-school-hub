@@ -17,8 +17,56 @@ import cityCampus from "@/assets/city-campus.webp";
 import hillsideCampus from "@/assets/hillside-campus.webp";
 import schoolLife from "@/assets/school-life.webp";
 import headteacherPhoto from "@/assets/admin-ocukul-julius-web.jpg";
+import heroFrontage from "@/assets/hero-frontage.webp";
+import heroCourtyard from "@/assets/hero-courtyard.webp";
+import heroClassrooms from "@/assets/hero-classrooms.webp";
+import heroDriveway from "@/assets/hero-driveway.webp";
 
 const heroSlides = [
+  {
+    image: heroFrontage,
+    eyebrow: "NABUYONGA RISE · MBALE CITY",
+    title: "Welcome to Mbale Progressive.",
+    subheading: "The Love of Education Brought Us Here.",
+    text: "Our Day Campus sits on Plot 8–15 Nabuyonga Rise, Northern City Division, Mbale City.",
+    primary: "Visit the Day Campus",
+    to: "/campuses" as const,
+    secondary: "Contact the school",
+    secondaryTo: "/contact" as const,
+  },
+  {
+    image: heroCourtyard,
+    eyebrow: "LEARNING SPACES",
+    title: "Room to learn and grow.",
+    subheading: "Classrooms built around open courtyards.",
+    text: "Spacious blocks give learners bright, airy places to study every day.",
+    primary: "View academics",
+    to: "/academics" as const,
+    secondary: "Ask about admission",
+    secondaryTo: "/admissions" as const,
+  },
+  {
+    image: heroClassrooms,
+    eyebrow: "OUR CAMPUS",
+    title: "A calm place to focus.",
+    subheading: "Green grounds, steady routines.",
+    text: "Well-kept walkways and classrooms set the tone for serious, happy learning.",
+    primary: "See campus life",
+    to: "/campus-life" as const,
+    secondary: "See the school",
+    secondaryTo: "/about" as const,
+  },
+  {
+    image: heroDriveway,
+    eyebrow: "WELCOME",
+    title: "Come and see for yourself.",
+    subheading: "Visits every Saturday.",
+    text: "Families are welcome to tour the school. Confirm the schedule with the office before travelling.",
+    primary: "Plan a visit",
+    to: "/contact" as const,
+    secondary: "Ask about admission",
+    secondaryTo: "/admissions" as const,
+  },
   {
     image: schoolLife,
     eyebrow: "MBALE CITY · EASTERN UGANDA",
