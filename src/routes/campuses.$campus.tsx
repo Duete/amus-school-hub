@@ -1,21 +1,17 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, ImageOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { campuses, schoolHead } from "@/lib/school";
-import dayGrounds from "@/assets/day-campus-grounds.png.asset.json";
-import dayClassrooms from "@/assets/day-campus-classroom-block.jpg.asset.json";
-import dayArtDesign from "@/assets/day-campus-art-design.jpg.asset.json";
-import dayBuilding from "@/assets/day-campus-two-storey-building.jpg.asset.json";
-import dayAdministration from "@/assets/day-campus-administration.jpg.asset.json";
-import dayScienceLab from "@/assets/day-campus-science-lab.jpg.asset.json";
+import dayGrounds from "@/assets/hero-frontage.webp";
+import dayClassrooms from "@/assets/hero-classrooms.webp";
+import dayCourtyard from "@/assets/hero-courtyard.webp";
+import dayDriveway from "@/assets/hero-driveway.webp";
 
 const dayCampusPhotos = [
-  { image: dayGrounds, caption: "Day Campus grounds" },
-  { image: dayClassrooms, caption: "Classroom block and green spaces" },
-  { image: dayArtDesign, caption: "S.6 Arts & Head Teacher's Block" },
-  { image: dayBuilding, caption: "A'Level Sciences Block" },
-  { image: dayAdministration, caption: "Administration Block" },
-  { image: dayScienceLab, caption: "Science laboratory" },
+  { image: dayGrounds, caption: "School frontage and grounds" },
+  { image: dayClassrooms, caption: "Classroom buildings" },
+  { image: dayCourtyard, caption: "School courtyard" },
+  { image: dayDriveway, caption: "School grounds and driveway" },
 ];
 
 export const Route = createFileRoute("/campuses/$campus")({
@@ -32,7 +28,8 @@ export const Route = createFileRoute("/campuses/$campus")({
     return {
       ...head,
       meta: head.meta.filter(
-        (tag) => !("property" in tag && tag.property?.startsWith("og:image")) &&
+        (tag) =>
+          !("property" in tag && tag.property?.startsWith("og:image")) &&
           !("name" in tag && tag.name?.startsWith("twitter:image")),
       ),
     };
@@ -45,14 +42,18 @@ function Campus() {
   return (
     <>
       <section className="school-hero">
-        <img
-          src={isDayCampus ? dayGrounds.url : campus.image}
-          width={1024}
-          height={768}
-          className="hero-image"
-          alt={`${campus.name} campus setting`}
-        />
-        <div className="hero-overlay" />
+        {campus.image && (
+          <>
+            <img
+              src={campus.image}
+              width={1024}
+              height={768}
+              className="hero-image"
+              alt={`${campus.name} grounds and buildings`}
+            />
+            <div className="hero-overlay" />
+          </>
+        )}
         <div className="site-width relative text-hero-foreground">
           <p className="eyebrow">PROGRESSIVE</p>
           <h1 className="mt-5 text-4xl md:text-6xl">{campus.name}</h1>
@@ -62,8 +63,11 @@ function Campus() {
               Ask about admission <ArrowRight />
             </Link>
           </Button>
-          {!isDayCampus && (
-            <p className="mt-3 text-xs text-hero-muted">Representative campus image.</p>
+          {!isDayCampus && !campus.image && (
+            <p className="mt-4 inline-flex items-center gap-2 text-sm text-hero-muted">
+              <ImageOff aria-hidden="true" size={17} strokeWidth={1.6} />
+              Annex building photo is not available in this gallery.
+            </p>
           )}
         </div>
       </section>
@@ -98,13 +102,15 @@ function Campus() {
       {isDayCampus && (
         <section className="site-width pb-16" aria-labelledby="day-campus-gallery">
           <p className="eyebrow text-primary">DAY CAMPUS</p>
-          <h2 id="day-campus-gallery" className="mt-4 text-3xl">Around the campus</h2>
+          <h2 id="day-campus-gallery" className="mt-4 text-3xl">
+            School buildings and grounds
+          </h2>
           <div className="mt-8 grid gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
             {dayCampusPhotos.map(({ image, caption }) => (
-              <figure key={image.asset_id}>
+              <figure key={caption}>
                 <img
-                  src={image.url}
-                  alt={`${caption} at Mbale Progressive’s Day Campus`}
+                  src={image}
+                  alt={`${caption} at Mbale Progressive Secondary School`}
                   loading="lazy"
                   className="aspect-[4/3] w-full rounded-lg object-contain bg-muted"
                 />

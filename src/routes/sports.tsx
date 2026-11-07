@@ -356,7 +356,10 @@ function Sports() {
 
         <div className="site-width mt-12">
           <p className="eyebrow text-primary">FOOTBALL · BUGISU REGIONALS FINALS 2023</p>
-          <h3 className="mt-2 text-2xl">Regional Champions 🏆</h3>
+          <div className="mt-2 flex items-center gap-2">
+            <Trophy className="text-primary" size={21} strokeWidth={1.6} aria-hidden="true" />
+            <h3 className="text-2xl">Regional Champions</h3>
+          </div>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">
             Celebrations after the final whistle during the Bugisu Regionals Finals 2023, when
             Progressive emerged as the Regional Champions.

@@ -6,6 +6,7 @@ import {
   CalendarDays,
   ChevronLeft,
   ChevronRight,
+  ImageOff,
   MapPin,
   Pause,
   Play,
@@ -13,9 +14,6 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { campuses, schoolHead } from "@/lib/school";
-import cityCampus from "@/assets/city-campus.webp";
-import hillsideCampus from "@/assets/hillside-campus.webp";
-import schoolLife from "@/assets/school-life.webp";
 import headteacherPhoto from "@/assets/admin-ocukul-julius-web.jpg";
 import heroFrontage from "@/assets/hero-frontage.webp";
 import heroCourtyard from "@/assets/hero-courtyard.webp";
@@ -66,39 +64,6 @@ const heroSlides = [
     to: "/contact" as const,
     secondary: "Ask about admission",
     secondaryTo: "/admissions" as const,
-  },
-  {
-    image: schoolLife,
-    eyebrow: "MBALE CITY · EASTERN UGANDA",
-    title: "A school that knows where it is going.",
-    subheading: "The Love of Education Brought Us Here.",
-    text: "Day and boarding education for 800 O-Level and 400 A-Level learners.",
-    primary: "See the school",
-    to: "/about" as const,
-    secondary: "Ask about admission",
-    secondaryTo: "/admissions" as const,
-  },
-  {
-    image: cityCampus,
-    eyebrow: "ESTABLISHED 1993",
-    title: "More than three decades of steady work.",
-    subheading: "Built in Mbale. Open to the region.",
-    text: "What began as Mbale Progressive Academy is now a full secondary school with day and boarding pathways.",
-    primary: "Read our history",
-    to: "/about" as const,
-    secondary: "View academics",
-    secondaryTo: "/academics" as const,
-  },
-  {
-    image: hillsideCampus,
-    eyebrow: "DAY & BOARDING",
-    title: "Two settings. One standard.",
-    subheading: "Day Campus and Mbale Progressive Annex.",
-    text: "Find the campus that fits your family, then speak to the school office about places and requirements.",
-    primary: "View campuses",
-    to: "/campuses" as const,
-    secondary: "Contact the school",
-    secondaryTo: "/contact" as const,
   },
 ];
 
@@ -373,8 +338,8 @@ function Index() {
               </h2>
             </div>
             <p className="max-w-lg border-l-2 border-secondary pl-5 text-base leading-7 text-muted-foreground">
-              The Day Campus sits on Plot 8–15 Nabuyonga Rise, Mbale City. Mbale Progressive Annex provides the
-              boarding option. Both lead into the same academic programme.
+              The Day Campus sits on Plot 8–15 Nabuyonga Rise, Mbale City. Mbale Progressive Annex
+              provides the boarding option. Both lead into the same academic programme.
             </p>
           </div>
           <div className="mt-12 grid gap-8 md:grid-cols-2 md:gap-5 lg:gap-8">
@@ -388,14 +353,25 @@ function Index() {
                   params={{ campus: campus.slug }}
                   className="relative block overflow-hidden"
                 >
-                  <img
-                    src={campus.image}
-                    width={1024}
-                    height={768}
-                    loading="lazy"
-                    alt={`${campus.name} campus setting`}
-                    className="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
+                  {campus.image ? (
+                    <img
+                      src={campus.image}
+                      width={1024}
+                      height={768}
+                      loading="lazy"
+                      alt={`${campus.name} grounds and buildings`}
+                      className="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div
+                      className="flex aspect-[16/10] w-full flex-col items-center justify-center gap-3 bg-muted p-6 text-center text-muted-foreground"
+                      role="img"
+                      aria-label={`${campus.name} photo not available`}
+                    >
+                      <ImageOff aria-hidden="true" size={26} strokeWidth={1.6} />
+                      <span className="text-sm">No photo of this campus is available.</span>
+                    </div>
+                  )}
                 </Link>
                 <div className="p-6 md:p-7">
                   <p className="text-sm font-semibold tracking-[0.04em] text-muted-foreground">
@@ -553,9 +529,9 @@ function Index() {
         <div className="site-width">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
-              <p className="text-sm font-semibold tracking-[0.04em] text-primary">Around campus</p>
+              <p className="text-sm font-semibold tracking-[0.04em] text-primary">Day Campus</p>
               <h2 id="gallery-heading" className="mt-3 max-w-xl text-4xl leading-tight md:text-5xl">
-                A closer look at school life.
+                A closer look at the school buildings.
               </h2>
             </div>
             <Link to="/campuses" className="inline-flex items-center gap-2 font-bold text-primary">
@@ -569,16 +545,14 @@ function Index() {
               className="group relative min-h-80 overflow-hidden bg-primary"
             >
               <img
-                src={schoolLife}
-                width={1200}
-                height={800}
+                src={heroFrontage}
                 loading="lazy"
-                alt="Learners walking across the Mbale Progressive campus"
+                alt="Frontage and grounds of Mbale Progressive Secondary School"
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/10 to-transparent" />
               <p className="absolute bottom-5 left-5 text-lg font-semibold text-white">
-                Learners, purpose, and room to grow
+                School frontage and grounds
               </p>
             </Link>
             <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-1">
@@ -588,34 +562,30 @@ function Index() {
                 className="group relative min-h-40 overflow-hidden bg-primary"
               >
                 <img
-                  src={cityCampus}
-                  width={1024}
-                  height={768}
+                  src={heroClassrooms}
                   loading="lazy"
-                  alt="Day Campus setting on Nabuyonga Rise"
+                  alt="Classroom buildings at Mbale Progressive Secondary School"
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent" />
                 <p className="absolute bottom-4 left-4 text-sm font-semibold text-white">
-                  Day Campus · Nabuyonga Rise
+                  Classroom block
                 </p>
               </Link>
               <Link
                 to="/campuses/$campus"
-                params={{ campus: "mbale-progressive-annex" }}
+                params={{ campus: "day-campus" }}
                 className="group relative min-h-40 overflow-hidden bg-primary"
               >
                 <img
-                  src={hillsideCampus}
-                  width={1024}
-                  height={768}
+                  src={heroCourtyard}
                   loading="lazy"
-                  alt="Mbale Progressive Annex boarding campus setting"
+                  alt="School courtyard and classroom buildings at Mbale Progressive Secondary School"
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent" />
                 <p className="absolute bottom-4 left-4 text-sm font-semibold text-white">
-                  Mbale Progressive Annex · Boarding
+                  School courtyard
                 </p>
               </Link>
             </div>
@@ -649,8 +619,8 @@ function Index() {
                 Where are the campuses?
               </summary>
               <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">
-                The Day Campus is on Plot 8–15 Nabuyonga Rise, Mbale City. Mbale Progressive Annex is the
-                boarding campus.
+                The Day Campus is on Plot 8–15 Nabuyonga Rise, Mbale City. Mbale Progressive Annex
+                is the boarding campus.
               </p>
             </details>
             <details className="group py-5">

@@ -1,12 +1,11 @@
-import cityCampus from "@/assets/city-campus.webp";
-import hillsideCampus from "@/assets/hillside-campus.webp";
+import dayCampusFrontage from "@/assets/hero-frontage.webp";
 
 export const campuses = [
   {
     slug: "day-campus",
     name: "Day Campus",
     setting: "Plot 8–15 Nabuyonga Rise, Northern City Division, Mbale City.",
-    image: cityCampus,
+    image: dayCampusFrontage,
     description:
       "Mbale Progressive Secondary School’s Day Campus is located on Plot 8–15 Nabuyonga Rise, Northern City Division, Mbale City.",
     features: ["Day Campus", "Plot 8–15 Nabuyonga Rise", "Northern City Division, Mbale City"],
@@ -15,7 +14,7 @@ export const campuses = [
     slug: "mbale-progressive-annex",
     name: "Mbale Progressive Annex",
     setting: "Boarding campus.",
-    image: hillsideCampus,
+    image: null,
     description: "Mbale Progressive Annex is the school’s boarding campus.",
     features: ["Boarding campus", "Mbale Progressive Annex"],
   },
@@ -26,7 +25,7 @@ const publicOrigin = (
   (import.meta.env["VITE_PUBLIC_SITE_URL"] as string | undefined) ??
   "https://mbaleprogressive.sc.ug"
 ).replace(/\/$/, "");
-const shareImagePath = "/og-school.webp";
+const shareImagePath = "/og-school-campus.webp";
 const knownPaths: Record<string, string> = {
   Home: "/",
   "About Mbale Progressive": "/about",
