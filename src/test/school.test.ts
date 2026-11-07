@@ -40,7 +40,8 @@ describe("School campus structure", () => {
       "Annex entrance and grounds",
       "Administration block",
       "Main classroom block",
-      "Annex courtyard",
+      "Classrooms and Court Yard",
+      "Laboratory and Science Block",
       "Sick Bay and Library Block",
     ]);
     expect(
@@ -52,6 +53,13 @@ describe("School campus structure", () => {
     expect(
       campusPhotoGroups.annex.find((photo) => photo.caption === "Sick Bay and Library Block")?.src,
     ).toContain("hero-classrooms.webp");
+    expect(
+      campusPhotoGroups.annex.find((photo) => photo.caption === "Classrooms and Court Yard")?.src,
+    ).toContain("annex-classrooms-courtyard.png");
+    expect(
+      campusPhotoGroups.annex.find((photo) => photo.caption === "Laboratory and Science Block")
+        ?.src,
+    ).toContain("hero-courtyard.webp");
   });
 });
 
