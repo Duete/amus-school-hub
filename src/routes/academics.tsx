@@ -20,6 +20,7 @@ import {
   Users,
 } from "lucide-react";
 import scienceLabPracticals from "@/assets/science-lab-practicals.webp";
+import studentsDoingExams from "@/assets/students-doing-exams.jpg";
 import { PageIntro } from "@/components/school-layout";
 import { schoolHead } from "@/lib/school";
 
@@ -716,6 +717,18 @@ function Academics() {
             <figcaption className="pt-3 text-sm leading-6 text-muted-foreground">
               Students carrying out practicals in the Day Campus science laboratory — a testament to
               the school's commitment to excellence.
+            </figcaption>
+          </figure>
+          <figure className="mt-10 border-t border-border pt-10">
+            <img
+              className="mx-auto max-h-[40rem] w-full max-w-2xl border border-border object-contain"
+              src={studentsDoingExams}
+              alt="Students writing examination papers in a classroom at Mbale Progressive Secondary School"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption className="mx-auto max-w-2xl pt-3 text-sm leading-6 text-muted-foreground">
+              Students doing Exams
             </figcaption>
           </figure>
         </section>
