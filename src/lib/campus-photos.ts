@@ -1,3 +1,4 @@
+import annexAdministration from "@/assets/annex-administration-block.jpg";
 import heroClassrooms from "@/assets/hero-classrooms.webp";
 import heroCourtyard from "@/assets/hero-courtyard.webp";
 import heroDriveway from "@/assets/hero-driveway.webp";
@@ -35,6 +36,7 @@ export const campusImages = {
   annexFrontage: heroFrontage,
   annexCourtyard: heroCourtyard,
   annexClassrooms: heroClassrooms,
+  annexAdministration,
 } as const;
 
 export const campusPhotoGroups: Record<"dayCampus" | "annex", CampusPhoto[]> = {
@@ -80,6 +82,11 @@ export const campusPhotoGroups: Record<"dayCampus" | "annex", CampusPhoto[]> = {
       src: campusImages.annexFrontage,
       caption: "Annex entrance and grounds",
       alt: "Cream and maroon boarding-campus buildings at Mbale Progressive Annex",
+    },
+    {
+      src: campusImages.annexAdministration,
+      caption: "Administration block",
+      alt: "Administration block at Mbale Progressive Annex boarding campus",
     },
     {
       src: campusImages.annexCourtyard,
