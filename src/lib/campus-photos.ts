@@ -1,7 +1,8 @@
 import annexAdministration from "@/assets/annex-administration-block.jpg";
+import annexClassroomsCourtyard from "@/assets/annex-classrooms-courtyard.png";
 import annexMainClassroom from "@/assets/annex-main-classroom-block.png";
 import annexSickBayLibrary from "@/assets/hero-classrooms.webp";
-import heroCourtyard from "@/assets/hero-courtyard.webp";
+import annexLaboratoryScienceBlock from "@/assets/hero-courtyard.webp";
 import heroDriveway from "@/assets/hero-driveway.webp";
 import heroFrontage from "@/assets/hero-frontage.webp";
 
@@ -35,7 +36,8 @@ export const campusImages = {
     "day-campus-two-storey-building.jpg",
   ),
   annexFrontage: heroFrontage,
-  annexCourtyard: heroCourtyard,
+  annexLaboratoryScienceBlock,
+  annexClassroomsCourtyard,
   annexSickBayLibrary,
   annexAdministration,
   annexMainClassroom,
@@ -96,9 +98,14 @@ export const campusPhotoGroups: Record<"dayCampus" | "annex", CampusPhoto[]> = {
       alt: "Main classroom block at Mbale Progressive Annex boarding campus",
     },
     {
-      src: campusImages.annexCourtyard,
-      caption: "Annex courtyard",
-      alt: "Courtyard of the cream and maroon boarding-campus buildings at Mbale Progressive Annex",
+      src: campusImages.annexClassroomsCourtyard,
+      caption: "Classrooms and Court Yard",
+      alt: "Classrooms and Court Yard at Mbale Progressive Annex boarding campus",
+    },
+    {
+      src: campusImages.annexLaboratoryScienceBlock,
+      caption: "Laboratory and Science Block",
+      alt: "Laboratory and Science Block at Mbale Progressive Annex boarding campus",
     },
     {
       src: campusImages.annexSickBayLibrary,
