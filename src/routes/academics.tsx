@@ -709,13 +709,13 @@ function Academics() {
             <img
               className="w-full border border-border"
               src={scienceLabPracticals}
-              alt="Students carrying out practicals in one of the school science laboratories"
+              alt="Students carrying out practicals in the Day Campus science laboratory"
               loading="lazy"
               decoding="async"
             />
             <figcaption className="pt-3 text-sm leading-6 text-muted-foreground">
-              Students carrying out practicals in one of the school science laboratories — a
-              testament to the school's commitment to excellence.
+              Students carrying out practicals in the Day Campus science laboratory — a testament to
+              the school's commitment to excellence.
             </figcaption>
           </figure>
         </section>

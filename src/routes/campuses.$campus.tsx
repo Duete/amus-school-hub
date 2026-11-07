@@ -2,17 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowRight, Check, ImageOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { campuses, schoolHead } from "@/lib/school";
-import dayGrounds from "@/assets/hero-frontage.webp";
-import dayClassrooms from "@/assets/hero-classrooms.webp";
-import dayCourtyard from "@/assets/hero-courtyard.webp";
-import dayDriveway from "@/assets/hero-driveway.webp";
-
-const dayCampusPhotos = [
-  { image: dayGrounds, caption: "School frontage and grounds" },
-  { image: dayClassrooms, caption: "Classroom buildings" },
-  { image: dayCourtyard, caption: "School courtyard" },
-  { image: dayDriveway, caption: "School grounds and driveway" },
-];
+import { campusPhotoGroups } from "@/lib/campus-photos";
 
 export const Route = createFileRoute("/campuses/$campus")({
   loader: ({ params }) => {
@@ -39,6 +29,7 @@ export const Route = createFileRoute("/campuses/$campus")({
 function Campus() {
   const campus = Route.useLoaderData();
   const isDayCampus = campus.slug === "day-campus";
+  const photos = isDayCampus ? campusPhotoGroups.dayCampus : campusPhotoGroups.annex;
   return (
     <>
       <section className="school-hero">
@@ -99,18 +90,20 @@ function Campus() {
           ))}
         </ul>
       </section>
-      {isDayCampus && (
-        <section className="site-width pb-16" aria-labelledby="day-campus-gallery">
-          <p className="eyebrow text-primary">DAY CAMPUS</p>
-          <h2 id="day-campus-gallery" className="mt-4 text-3xl">
-            School buildings and grounds
+      {photos.length > 0 && (
+        <section className="site-width pb-16" aria-labelledby="campus-gallery">
+          <p className="eyebrow text-primary">
+            {isDayCampus ? "DAY CAMPUS" : "BOARDING CAMPUS · ANNEX"}
+          </p>
+          <h2 id="campus-gallery" className="mt-4 text-3xl">
+            {isDayCampus ? "Day Campus buildings and facilities" : "Annex buildings and grounds"}
           </h2>
           <div className="mt-8 grid gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
-            {dayCampusPhotos.map(({ image, caption }) => (
+            {photos.map(({ src, caption, alt }) => (
               <figure key={caption}>
                 <img
-                  src={image}
-                  alt={`${caption} at Mbale Progressive Secondary School`}
+                  src={src}
+                  alt={alt}
                   loading="lazy"
                   className="aspect-[4/3] w-full rounded-lg object-contain bg-muted"
                 />
