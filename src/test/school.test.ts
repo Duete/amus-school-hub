@@ -38,9 +38,13 @@ describe("School campus structure", () => {
     ]);
     expect(campusPhotoGroups.annex.map((photo) => photo.caption)).toEqual([
       "Annex entrance and grounds",
+      "Administration block",
       "Annex courtyard",
       "Annex classroom block",
     ]);
+    expect(
+      campusPhotoGroups.annex.find((photo) => photo.caption === "Administration block")?.src,
+    ).toContain("annex-administration-block.jpg");
   });
 });
 
