@@ -41,7 +41,7 @@ describe("School campus structure", () => {
       "Administration block",
       "Main classroom block",
       "Annex courtyard",
-      "Annex classroom block",
+      "Sick Bay and Library Block",
     ]);
     expect(
       campusPhotoGroups.annex.find((photo) => photo.caption === "Administration block")?.src,
@@ -49,6 +49,9 @@ describe("School campus structure", () => {
     expect(
       campusPhotoGroups.annex.find((photo) => photo.caption === "Main classroom block")?.src,
     ).toContain("annex-main-classroom-block.png");
+    expect(
+      campusPhotoGroups.annex.find((photo) => photo.caption === "Sick Bay and Library Block")?.src,
+    ).toContain("hero-classrooms.webp");
   });
 });
 

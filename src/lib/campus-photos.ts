@@ -1,6 +1,6 @@
 import annexAdministration from "@/assets/annex-administration-block.jpg";
 import annexMainClassroom from "@/assets/annex-main-classroom-block.png";
-import heroClassrooms from "@/assets/hero-classrooms.webp";
+import annexSickBayLibrary from "@/assets/hero-classrooms.webp";
 import heroCourtyard from "@/assets/hero-courtyard.webp";
 import heroDriveway from "@/assets/hero-driveway.webp";
 import heroFrontage from "@/assets/hero-frontage.webp";
@@ -36,7 +36,7 @@ export const campusImages = {
   ),
   annexFrontage: heroFrontage,
   annexCourtyard: heroCourtyard,
-  annexClassrooms: heroClassrooms,
+  annexSickBayLibrary,
   annexAdministration,
   annexMainClassroom,
 } as const;
@@ -101,9 +101,9 @@ export const campusPhotoGroups: Record<"dayCampus" | "annex", CampusPhoto[]> = {
       alt: "Courtyard of the cream and maroon boarding-campus buildings at Mbale Progressive Annex",
     },
     {
-      src: campusImages.annexClassrooms,
-      caption: "Annex classroom block",
-      alt: "Cream and maroon classroom block at Mbale Progressive Annex",
+      src: campusImages.annexSickBayLibrary,
+      caption: "Sick Bay and Library Block",
+      alt: "Sick Bay and Library Block at Mbale Progressive Annex boarding campus",
     },
   ],
 };
