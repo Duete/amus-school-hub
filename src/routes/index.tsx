@@ -14,52 +14,49 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { campuses, schoolHead } from "@/lib/school";
+import { campusImages, campusPhotoGroups } from "@/lib/campus-photos";
 import headteacherPhoto from "@/assets/admin-ocukul-julius-web.jpg";
-import heroFrontage from "@/assets/hero-frontage.webp";
-import heroCourtyard from "@/assets/hero-courtyard.webp";
-import heroClassrooms from "@/assets/hero-classrooms.webp";
-import heroDriveway from "@/assets/hero-driveway.webp";
 
 const heroSlides = [
   {
-    image: heroFrontage,
-    eyebrow: "NABUYONGA RISE · MBALE CITY",
+    image: campusImages.dayCampusDriveway,
+    eyebrow: "DAY CAMPUS · MBALE CITY",
     title: "Welcome to Mbale Progressive.",
     subheading: "The Love of Education Brought Us Here.",
-    text: "Our Day Campus sits on Plot 8–15 Nabuyonga Rise, Northern City Division, Mbale City.",
+    text: "The Day Campus is on Plot 8–15 Nabuyonga Rise, Northern City Division, Mbale City.",
     primary: "Visit the Day Campus",
     to: "/campuses" as const,
     secondary: "Contact the school",
     secondaryTo: "/contact" as const,
   },
   {
-    image: heroCourtyard,
-    eyebrow: "LEARNING SPACES",
+    image: campusImages.annexCourtyard,
+    eyebrow: "MBALE PROGRESSIVE ANNEX · BOARDING",
     title: "Room to learn and grow.",
-    subheading: "Classrooms built around open courtyards.",
-    text: "Spacious blocks give learners bright, airy places to study every day.",
-    primary: "View academics",
-    to: "/academics" as const,
+    subheading: "Learning spaces at the boarding campus.",
+    text: "Mbale Progressive Annex provides the school’s boarding option.",
+    primary: "Explore the campuses",
+    to: "/campuses" as const,
     secondary: "Ask about admission",
     secondaryTo: "/admissions" as const,
   },
   {
-    image: heroClassrooms,
-    eyebrow: "OUR CAMPUS",
+    image: campusImages.annexClassrooms,
+    eyebrow: "ANNEX · CLASSROOMS",
     title: "A calm place to focus.",
-    subheading: "Green grounds, steady routines.",
-    text: "Well-kept walkways and classrooms set the tone for serious, happy learning.",
-    primary: "See campus life",
-    to: "/campus-life" as const,
-    secondary: "See the school",
-    secondaryTo: "/about" as const,
+    subheading: "Classrooms at Mbale Progressive Annex.",
+    text: "The boarding campus brings learners together for study and daily school life.",
+    primary: "Explore the campuses",
+    to: "/campuses" as const,
+    secondary: "Ask about admission",
+    secondaryTo: "/admissions" as const,
   },
   {
-    image: heroDriveway,
-    eyebrow: "WELCOME",
+    image: campusImages.dayCampusDriveway,
+    eyebrow: "DAY CAMPUS · VISITS",
     title: "Come and see for yourself.",
-    subheading: "Visits every Saturday.",
-    text: "Families are welcome to tour the school. Confirm the schedule with the office before travelling.",
+    subheading: "Visit the Day Campus.",
+    text: "Families are welcome to tour the Day Campus. Confirm the schedule with the office before travelling.",
     primary: "Plan a visit",
     to: "/contact" as const,
     secondary: "Ask about admission",
@@ -525,69 +522,114 @@ function Index() {
         </div>
       </section>
 
-      <section className="py-20 md:py-28" aria-labelledby="gallery-heading">
-        <div className="site-width">
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <div>
-              <p className="text-sm font-semibold tracking-[0.04em] text-primary">Day Campus</p>
-              <h2 id="gallery-heading" className="mt-3 max-w-xl text-4xl leading-tight md:text-5xl">
-                A closer look at the school buildings.
-              </h2>
+      <section className="py-20 md:py-28" aria-label="Campus photographs">
+        <div className="site-width space-y-16">
+          <div>
+            <div className="flex flex-wrap items-end justify-between gap-6">
+              <div>
+                <p className="text-sm font-semibold tracking-[0.04em] text-primary">
+                  DAY CAMPUS · MBALE CITY
+                </p>
+                <h2
+                  id="day-campus-gallery-heading"
+                  className="mt-3 max-w-xl text-4xl leading-tight md:text-5xl"
+                >
+                  Day Campus buildings and learning spaces.
+                </h2>
+              </div>
+              <Link
+                to="/campuses/$campus"
+                params={{ campus: "day-campus" }}
+                className="inline-flex items-center gap-2 font-bold text-primary"
+              >
+                Visit the Day Campus <ArrowRight size={16} />
+              </Link>
             </div>
-            <Link to="/campuses" className="inline-flex items-center gap-2 font-bold text-primary">
-              Explore the campuses <ArrowRight size={16} />
-            </Link>
+            <div className="mt-10 grid gap-5 md:grid-cols-[1.25fr_0.75fr]">
+              {campusPhotoGroups.dayCampus.slice(0, 1).map(({ src, caption, alt }) => (
+                <Link
+                  key={caption}
+                  to="/campuses/$campus"
+                  params={{ campus: "day-campus" }}
+                  className="group relative min-h-80 overflow-hidden bg-primary"
+                >
+                  <img
+                    src={src}
+                    loading="lazy"
+                    alt={alt}
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/10 to-transparent" />
+                  <p className="absolute bottom-5 left-5 text-lg font-semibold text-white">
+                    {caption}
+                  </p>
+                </Link>
+              ))}
+              <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-1">
+                {campusPhotoGroups.dayCampus.slice(2, 4).map(({ src, caption, alt }) => (
+                  <Link
+                    key={caption}
+                    to="/campuses/$campus"
+                    params={{ campus: "day-campus" }}
+                    className="group relative min-h-40 overflow-hidden bg-primary"
+                  >
+                    <img
+                      src={src}
+                      loading="lazy"
+                      alt={alt}
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent" />
+                    <p className="absolute bottom-4 left-4 text-sm font-semibold text-white">
+                      {caption}
+                    </p>
+                  </Link>
+                ))}
+              </div>
+            </div>
           </div>
-          <div className="mt-10 grid gap-5 md:grid-cols-[1.25fr_0.75fr]">
-            <Link
-              to="/campuses/$campus"
-              params={{ campus: "day-campus" }}
-              className="group relative min-h-80 overflow-hidden bg-primary"
-            >
-              <img
-                src={heroFrontage}
-                loading="lazy"
-                alt="Frontage and grounds of Mbale Progressive Secondary School"
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/10 to-transparent" />
-              <p className="absolute bottom-5 left-5 text-lg font-semibold text-white">
-                School frontage and grounds
-              </p>
-            </Link>
-            <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-1">
+
+          <div>
+            <div className="flex flex-wrap items-end justify-between gap-6">
+              <div>
+                <p className="text-sm font-semibold tracking-[0.04em] text-primary">
+                  BOARDING CAMPUS · MBALE PROGRESSIVE ANNEX
+                </p>
+                <h2
+                  id="annex-gallery-heading"
+                  className="mt-3 max-w-xl text-4xl leading-tight md:text-5xl"
+                >
+                  Buildings and grounds at the Annex.
+                </h2>
+              </div>
               <Link
                 to="/campuses/$campus"
-                params={{ campus: "day-campus" }}
-                className="group relative min-h-40 overflow-hidden bg-primary"
+                params={{ campus: "mbale-progressive-annex" }}
+                className="inline-flex items-center gap-2 font-bold text-primary"
               >
-                <img
-                  src={heroClassrooms}
-                  loading="lazy"
-                  alt="Classroom buildings at Mbale Progressive Secondary School"
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent" />
-                <p className="absolute bottom-4 left-4 text-sm font-semibold text-white">
-                  Classroom block
-                </p>
+                View Annex details <ArrowRight size={16} />
               </Link>
-              <Link
-                to="/campuses/$campus"
-                params={{ campus: "day-campus" }}
-                className="group relative min-h-40 overflow-hidden bg-primary"
-              >
-                <img
-                  src={heroCourtyard}
-                  loading="lazy"
-                  alt="School courtyard and classroom buildings at Mbale Progressive Secondary School"
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent" />
-                <p className="absolute bottom-4 left-4 text-sm font-semibold text-white">
-                  School courtyard
-                </p>
-              </Link>
+            </div>
+            <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {campusPhotoGroups.annex.map(({ src, caption, alt }) => (
+                <Link
+                  key={caption}
+                  to="/campuses/$campus"
+                  params={{ campus: "mbale-progressive-annex" }}
+                  className="group relative min-h-64 overflow-hidden bg-primary"
+                >
+                  <img
+                    src={src}
+                    loading="lazy"
+                    alt={alt}
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/10 to-transparent" />
+                  <p className="absolute bottom-4 left-4 text-sm font-semibold text-white">
+                    {caption}
+                  </p>
+                </Link>
+              ))}
             </div>
           </div>
         </div>

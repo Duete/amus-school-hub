@@ -1,11 +1,11 @@
-import dayCampusFrontage from "@/assets/hero-frontage.webp";
+import { campusImages } from "./campus-photos";
 
 export const campuses = [
   {
     slug: "day-campus",
     name: "Day Campus",
     setting: "Plot 8–15 Nabuyonga Rise, Northern City Division, Mbale City.",
-    image: dayCampusFrontage,
+    image: campusImages.dayCampusDriveway,
     description:
       "Mbale Progressive Secondary School’s Day Campus is located on Plot 8–15 Nabuyonga Rise, Northern City Division, Mbale City.",
     features: ["Day Campus", "Plot 8–15 Nabuyonga Rise", "Northern City Division, Mbale City"],
@@ -14,7 +14,7 @@ export const campuses = [
     slug: "mbale-progressive-annex",
     name: "Mbale Progressive Annex",
     setting: "Boarding campus.",
-    image: null,
+    image: campusImages.annexFrontage,
     description: "Mbale Progressive Annex is the school’s boarding campus.",
     features: ["Boarding campus", "Mbale Progressive Annex"],
   },
