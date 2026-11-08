@@ -11,7 +11,7 @@ const quickPrompts = [
   "Campus life",
 ];
 
-type ChatMessage = { from: "mafabi" | "visitor"; text: string };
+type ChatMessage = { from: "galiwango" | "visitor"; text: string };
 
 const pageDescriptions: Record<string, string> = {
   "/": "This is the home page. It introduces the mixed day and boarding school, its two campuses, UCE/UACE pathways, school numbers, sports, debate, and the main routes for admissions and enquiries.",
@@ -168,17 +168,17 @@ function answerFor(message: string, pathname: string) {
   if (query.includes("hours") || query.includes("open")) {
     return "The school information strip lists the usual office window as Monday to Saturday, 08:00–17:00. Please confirm holiday and term-time arrangements before visiting.";
   }
-  return "I’m Mafabi, the Mbale Progressive School Hub assistant. I can explain the page you are viewing, school history and locations, UCE/UACE subjects, the e-Library, admissions, fees, scholarships, governance, faculty, houses, clubs, faith associations, football, debate, table tennis, and boarding health services.";
+  return "I’m Galiwango, the Mbale Progressive School Hub assistant. I can explain the page you are viewing, school history and locations, UCE/UACE subjects, the e-Library, admissions, fees, scholarships, governance, faculty, houses, clubs, faith associations, football, debate, table tennis, and boarding health services.";
 }
 
-export function MafabiChatbot() {
+export function GaliwangoChatbot() {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
-      from: "mafabi",
-      text: "Hello, I’m Mafabi. How can I help you explore Mbale Progressive Secondary School?",
+      from: "galiwango",
+      text: "Hello, I’m Galiwango. How can I help you explore Mbale Progressive Secondary School?",
     },
   ]);
   const suggestedPrompts = useMemo(
@@ -196,7 +196,7 @@ export function MafabiChatbot() {
     setMessages((current) => [
       ...current,
       { from: "visitor", text: trimmed },
-      { from: "mafabi", text: answerFor(trimmed, pathname) },
+      { from: "galiwango", text: answerFor(trimmed, pathname) },
     ]);
     setInput("");
   }
@@ -211,7 +211,7 @@ export function MafabiChatbot() {
       {open && (
         <section
           className="w-[min(360px,calc(100vw-2rem))] overflow-hidden rounded-sm border border-border bg-background shadow-2xl"
-          aria-label="Mafabi chat window"
+          aria-label="Galiwango chat window"
         >
           <div className="flex items-center justify-between bg-primary p-4 text-primary-foreground">
             <div className="flex items-center gap-3">
@@ -219,7 +219,7 @@ export function MafabiChatbot() {
                 <Bot size={19} />
               </span>
               <div>
-                <p className="font-semibold">Mafabi</p>
+                <p className="font-semibold">Galiwango</p>
                 <p className="text-xs text-primary-foreground/70">School Hub assistant</p>
               </div>
             </div>
@@ -227,7 +227,7 @@ export function MafabiChatbot() {
               type="button"
               onClick={() => setOpen(false)}
               className="rounded-sm p-1 hover:bg-primary-foreground/10"
-              aria-label="Close Mafabi"
+              aria-label="Close Galiwango"
             >
               <X size={18} />
             </button>
@@ -261,8 +261,8 @@ export function MafabiChatbot() {
               value={input}
               onChange={(event) => setInput(event.target.value)}
               className="form-input min-w-0 flex-1"
-              placeholder="Ask Mafabi..."
-              aria-label="Message Mafabi"
+              placeholder="Ask Galiwango..."
+              aria-label="Message Galiwango"
             />
             <button
               type="submit"
@@ -279,9 +279,9 @@ export function MafabiChatbot() {
         onClick={() => setOpen((current) => !current)}
         className="flex items-center gap-2 rounded-full bg-primary px-4 py-3 text-sm font-bold text-primary-foreground shadow-lg transition-transform hover:-translate-y-0.5"
         aria-expanded={open}
-        aria-label="Open Mafabi chat"
+        aria-label="Open Galiwango chat"
       >
-        <MessageCircle size={19} /> Chat with Mafabi
+        <MessageCircle size={19} /> Chat with Galiwango
       </button>
     </div>
   );
