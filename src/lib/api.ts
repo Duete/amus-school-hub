@@ -57,7 +57,7 @@ export type TeacherDashboardData = {
   }>;
 };
 
-const apiBaseUrl = (import.meta.env.VITE_API_BASE_URL as string | undefined)?.replace(/\/$/, "");
+const apiBaseUrl = (import.meta.env["VITE_API_BASE_URL"] as string | undefined)?.replace(/\/$/, "");
 
 async function post<T>(path: string, body: unknown): Promise<T> {
   if (!apiBaseUrl) throw new Error("API base URL is not configured");

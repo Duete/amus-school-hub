@@ -20,10 +20,10 @@ import { Route as DatabaseRouteImport } from './routes/database'
 import { Route as ELibraryRouteImport } from './routes/e-library'
 import { Route as FacultyRouteImport } from './routes/faculty'
 import { Route as FinanceRouteImport } from './routes/finance'
+import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as GovernanceRouteImport } from './routes/governance'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as NewsRouteImport } from './routes/news'
-import { Route as PerformanceRouteImport } from './routes/performance'
 import { Route as PortalRouteImport } from './routes/portal'
 import { Route as ScholarshipsRouteImport } from './routes/scholarships'
 import { Route as SportsRouteImport } from './routes/sports'
@@ -87,6 +87,11 @@ const FinanceRoute = FinanceRouteImport.update({
   path: '/finance',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GovernanceRoute = GovernanceRouteImport.update({
   id: '/governance',
   path: '/governance',
@@ -100,11 +105,6 @@ const LoginRoute = LoginRouteImport.update({
 const NewsRoute = NewsRouteImport.update({
   id: '/news',
   path: '/news',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PerformanceRoute = PerformanceRouteImport.update({
-  id: '/performance',
-  path: '/performance',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PortalRoute = PortalRouteImport.update({
@@ -155,10 +155,10 @@ export interface FileRoutesByFullPath {
   '/e-library': typeof ELibraryRoute
   '/faculty': typeof FacultyRoute
   '/finance': typeof FinanceRoute
+  '/gallery': typeof GalleryRoute
   '/governance': typeof GovernanceRoute
   '/login': typeof LoginRoute
   '/news': typeof NewsRoute
-  '/performance': typeof PerformanceRoute
   '/portal': typeof PortalRoute
   '/scholarships': typeof ScholarshipsRoute
   '/sports': typeof SportsRoute
@@ -178,10 +178,10 @@ export interface FileRoutesByTo {
   '/e-library': typeof ELibraryRoute
   '/faculty': typeof FacultyRoute
   '/finance': typeof FinanceRoute
+  '/gallery': typeof GalleryRoute
   '/governance': typeof GovernanceRoute
   '/login': typeof LoginRoute
   '/news': typeof NewsRoute
-  '/performance': typeof PerformanceRoute
   '/portal': typeof PortalRoute
   '/scholarships': typeof ScholarshipsRoute
   '/sports': typeof SportsRoute
@@ -203,10 +203,10 @@ export interface FileRoutesById {
   '/e-library': typeof ELibraryRoute
   '/faculty': typeof FacultyRoute
   '/finance': typeof FinanceRoute
+  '/gallery': typeof GalleryRoute
   '/governance': typeof GovernanceRoute
   '/login': typeof LoginRoute
   '/news': typeof NewsRoute
-  '/performance': typeof PerformanceRoute
   '/portal': typeof PortalRoute
   '/scholarships': typeof ScholarshipsRoute
   '/sports': typeof SportsRoute
@@ -229,10 +229,10 @@ export interface FileRouteTypes {
     | '/e-library'
     | '/faculty'
     | '/finance'
+    | '/gallery'
     | '/governance'
     | '/login'
     | '/news'
-    | '/performance'
     | '/portal'
     | '/scholarships'
     | '/sports'
@@ -252,10 +252,10 @@ export interface FileRouteTypes {
     | '/e-library'
     | '/faculty'
     | '/finance'
+    | '/gallery'
     | '/governance'
     | '/login'
     | '/news'
-    | '/performance'
     | '/portal'
     | '/scholarships'
     | '/sports'
@@ -276,10 +276,10 @@ export interface FileRouteTypes {
     | '/e-library'
     | '/faculty'
     | '/finance'
+    | '/gallery'
     | '/governance'
     | '/login'
     | '/news'
-    | '/performance'
     | '/portal'
     | '/scholarships'
     | '/sports'
@@ -301,10 +301,10 @@ export interface RootRouteChildren {
   ELibraryRoute: typeof ELibraryRoute
   FacultyRoute: typeof FacultyRoute
   FinanceRoute: typeof FinanceRoute
+  GalleryRoute: typeof GalleryRoute
   GovernanceRoute: typeof GovernanceRoute
   LoginRoute: typeof LoginRoute
   NewsRoute: typeof NewsRoute
-  PerformanceRoute: typeof PerformanceRoute
   PortalRoute: typeof PortalRoute
   ScholarshipsRoute: typeof ScholarshipsRoute
   SportsRoute: typeof SportsRoute
@@ -391,6 +391,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FinanceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/governance': {
       id: '/governance'
       path: '/governance'
@@ -410,13 +417,6 @@ declare module '@tanstack/react-router' {
       path: '/news'
       fullPath: '/news'
       preLoaderRoute: typeof NewsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/performance': {
-      id: '/performance'
-      path: '/performance'
-      fullPath: '/performance'
-      preLoaderRoute: typeof PerformanceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/portal': {
@@ -497,10 +497,10 @@ const rootRouteChildren: RootRouteChildren = {
   ELibraryRoute: ELibraryRoute,
   FacultyRoute: FacultyRoute,
   FinanceRoute: FinanceRoute,
+  GalleryRoute: GalleryRoute,
   GovernanceRoute: GovernanceRoute,
   LoginRoute: LoginRoute,
   NewsRoute: NewsRoute,
-  PerformanceRoute: PerformanceRoute,
   PortalRoute: PortalRoute,
   ScholarshipsRoute: ScholarshipsRoute,
   SportsRoute: SportsRoute,

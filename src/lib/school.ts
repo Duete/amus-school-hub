@@ -1,31 +1,36 @@
-import cityCampus from "@/assets/city-campus.webp";
-import hillsideCampus from "@/assets/hillside-campus.webp";
+import { campusImages } from "./campus-photos";
+
+export const boardingCampusMapUrl = "https://maps.app.goo.gl/MtCo3saXVfs4Lf698";
 
 export const campuses = [
   {
     slug: "day-campus",
     name: "Day Campus",
-    setting: "Nyanza Road, near Namatala, Mbale City.",
-    image: cityCampus,
+    setting: "Plot 8–15 Nabuyonga Rise, Northern City Division, Mbale City.",
+    image: campusImages.dayCampusDriveway,
+    mapUrl: "https://maps.app.goo.gl/aBA1SektMqr14yBn6",
     description:
-      "Mbale Progressive Secondary School’s Day Campus is located on Nyanza Road, near Namatala, in Mbale City.",
-    features: ["Day Campus", "Nyanza Road, near Namatala", "Mbale City"],
+      "Mbale Progressive Secondary School’s Day Campus is located on Plot 8–15 Nabuyonga Rise, Northern City Division, Mbale City.",
+    features: ["Day Campus", "Plot 8–15 Nabuyonga Rise", "Northern City Division, Mbale City"],
   },
   {
     slug: "mbale-progressive-annex",
     name: "Mbale Progressive Annex",
-    setting: "Boarding campus.",
-    image: hillsideCampus,
-    description: "Mbale Progressive Annex is the school’s boarding campus.",
-    features: ["Boarding campus", "Mbale Progressive Annex"],
+    setting: "Nyanza Road, Industrial City Division, Mbale City.",
+    image: campusImages.annexFrontage,
+    mapUrl: boardingCampusMapUrl,
+    description:
+      "Mbale Progressive Annex, the school’s boarding campus, is located on Nyanza Road in Industrial City Division, Mbale City.",
+    features: ["Boarding campus", "Nyanza Road", "Industrial City Division, Mbale City"],
   },
 ];
 
 const schoolName = "Mbale Progressive Secondary School";
 const publicOrigin = (
-  (import.meta.env.VITE_PUBLIC_SITE_URL as string | undefined) ?? "https://mbaleprogressive.sc.ug"
+  (import.meta.env["VITE_PUBLIC_SITE_URL"] as string | undefined) ??
+  "https://mbaleprogressive.sc.ug"
 ).replace(/\/$/, "");
-const shareImagePath = "/og-school.webp";
+const shareImagePath = "/og-school-campus.webp";
 const knownPaths: Record<string, string> = {
   Home: "/",
   "About Mbale Progressive": "/about",
@@ -42,7 +47,6 @@ const knownPaths: Record<string, string> = {
   "Fees and clearance": "/finance",
   "Governance and leadership": "/governance",
   "News and updates": "/news",
-  Performance: "/performance",
   Scholarships: "/scholarships",
   "Co-Curricular": "/sports",
 };

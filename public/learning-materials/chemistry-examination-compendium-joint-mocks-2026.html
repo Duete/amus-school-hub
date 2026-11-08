@@ -1,0 +1,1753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemistry Examination Compendium — Joint Mocks 2026</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: #e8e4df;
+            color: #1a1a1a;
+            line-height: 1.75;
+            font-size: 16px;
+            padding: 20px;
+        }
+
+        /* ===== TEXTBOOK WRAPPER ===== */
+        .textbook {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #fdfcf9;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.15);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        /* ===== COVER PAGE ===== */
+        .cover {
+            background: linear-gradient(135deg, #1a2a6c 0%, #2a4a8a 50%, #1a2a6c 100%);
+            color: #fff;
+            padding: 80px 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 40%, rgba(255, 215, 0, 0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .cover h1 {
+            font-size: 2.8em;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .cover .subtitle {
+            font-size: 1.3em;
+            font-style: italic;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .cover .divider {
+            width: 120px;
+            height: 3px;
+            background: #ffd700;
+            margin: 0 auto 30px;
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .cover .edition {
+            font-size: 1em;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0.8;
+            position: relative;
+        }
+
+        /* ===== TABLE OF CONTENTS ===== */
+        .toc {
+            padding: 50px 60px;
+            background: #f5f2ec;
+            border-bottom: 3px solid #1a2a6c;
+        }
+
+        .toc h2 {
+            font-size: 1.8em;
+            color: #1a2a6c;
+            margin-bottom: 25px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .toc-section {
+            background: #fff;
+            padding: 20px 25px;
+            border-radius: 6px;
+            border-left: 5px solid #1a2a6c;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .toc-section h3 {
+            font-size: 1.1em;
+            color: #1a2a6c;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 8px;
+        }
+
+        .toc-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .toc-section ul li {
+            padding: 4px 0;
+            font-size: 0.95em;
+            color: #333;
+            border-bottom: 1px dotted #e0ddd8;
+        }
+
+        .toc-section ul li:last-child {
+            border-bottom: none;
+        }
+
+        .toc-section ul li::before {
+            content: '▸ ';
+            color: #c9a84c;
+            font-weight: bold;
+        }
+
+        /* ===== CONTENT AREA ===== */
+        .content {
+            padding: 50px 60px;
+        }
+
+        /* ===== PART / SECTION HEADINGS ===== */
+        .part-heading {
+            background: linear-gradient(90deg, #1a2a6c, #2a4a8a);
+            color: #fff;
+            padding: 18px 30px;
+            margin: 50px -60px 35px -60px;
+            font-size: 1.5em;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-left: 8px solid #ffd700;
+        }
+
+        .part-heading:first-of-type {
+            margin-top: 0;
+        }
+
+        .section-heading {
+            font-size: 1.35em;
+            color: #1a2a6c;
+            margin: 40px 0 20px 0;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #1a2a6c;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-heading .section-label {
+            color: #c9a84c;
+            font-weight: 400;
+        }
+
+        /* ===== ITEM / TASK HEADINGS ===== */
+        .item-heading {
+            font-size: 1.2em;
+            color: #8b1a1a;
+            margin: 35px 0 15px 0;
+            padding: 12px 20px;
+            background: #fdf2f2;
+            border-left: 5px solid #8b1a1a;
+            border-radius: 0 4px 4px 0;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .item-heading .item-number {
+            color: #1a2a6c;
+        }
+
+        /* ===== PARAGRAPH TEXT ===== */
+        .content p {
+            margin-bottom: 16px;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        .content p.intro {
+            font-size: 1.05em;
+            color: #2a2a2a;
+        }
+
+        /* ===== DATA LISTS ===== */
+        .data-list {
+            margin: 15px 0 20px 20px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .data-list li {
+            padding: 5px 0 5px 25px;
+            position: relative;
+            font-size: 0.97em;
+            color: #333;
+        }
+
+        .data-list li::before {
+            content: '•';
+            position: absolute;
+            left: 5px;
+            color: #c9a84c;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        /* ===== TABLES ===== */
+        .data-table-wrapper {
+            margin: 20px 0 25px 0;
+            overflow-x: auto;
+            border-radius: 6px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95em;
+            background: #fff;
+        }
+
+        table thead {
+            background: #1a2a6c;
+            color: #fff;
+        }
+
+        table thead th {
+            padding: 12px 16px;
+            text-align: center;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border-right: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        table thead th:last-child {
+            border-right: none;
+        }
+
+        table tbody td {
+            padding: 10px 16px;
+            text-align: center;
+            border-bottom: 1px solid #e8e4df;
+            border-right: 1px solid #f0ede8;
+        }
+
+        table tbody td:last-child {
+            border-right: none;
+        }
+
+        table tbody tr:nth-child(even) {
+            background: #f8f6f2;
+        }
+
+        table tbody tr:hover {
+            background: #f0ede6;
+            transition: background 0.2s;
+        }
+
+        table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* ===== TASK BOX ===== */
+        .task-box {
+            background: #f0f4ff;
+            border: 2px solid #1a2a6c;
+            border-radius: 6px;
+            padding: 20px 25px;
+            margin: 25px 0;
+            position: relative;
+        }
+
+        .task-box::before {
+            content: 'TASK';
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: #1a2a6c;
+            color: #fff;
+            padding: 2px 16px;
+            font-size: 0.75em;
+            letter-spacing: 3px;
+            font-weight: 700;
+            border-radius: 3px;
+        }
+
+        .task-box p {
+            margin-bottom: 8px;
+            font-size: 1em;
+            color: #1a2a6c;
+            font-weight: 500;
+        }
+
+        .task-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ===== HINT BOX ===== */
+        .hint-box {
+            background: #fffbf0;
+            border-left: 5px solid #c9a84c;
+            padding: 15px 20px;
+            margin: 18px 0;
+            border-radius: 0 4px 4px 0;
+            font-style: italic;
+            color: #6b5a2a;
+        }
+
+        .hint-box strong {
+            color: #8b6a1a;
+            font-style: normal;
+        }
+
+        /* ===== OBSERVATION BOX ===== */
+        .observation-box {
+            background: #f5f0f5;
+            border: 1px dashed #8b5a8b;
+            border-radius: 6px;
+            padding: 18px 22px;
+            margin: 20px 0;
+            color: #4a2a4a;
+        }
+
+        .observation-box strong {
+            color: #6a1a6a;
+        }
+
+        /* ===== EQUATION BLOCK ===== */
+        .equation-block {
+            background: #f8f8f8;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 12px 20px;
+            margin: 12px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            text-align: center;
+            letter-spacing: 1px;
+            color: #1a2a6c;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #1a2a6c;
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            padding: 25px 40px;
+            font-size: 0.85em;
+            letter-spacing: 1px;
+        }
+
+        .footer strong {
+            color: #ffd700;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            .cover {
+                padding: 50px 25px;
+            }
+
+            .cover h1 {
+                font-size: 1.8em;
+            }
+
+            .toc {
+                padding: 30px 25px;
+            }
+
+            .toc-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content {
+                padding: 30px 25px;
+            }
+
+            .part-heading {
+                margin: 40px -25px 25px -25px;
+                padding: 14px 20px;
+                font-size: 1.15em;
+            }
+
+            .section-heading {
+                font-size: 1.1em;
+            }
+
+            .item-heading {
+                font-size: 1.05em;
+                padding: 10px 15px;
+            }
+
+            table {
+                font-size: 0.82em;
+            }
+
+            table thead th,
+            table tbody td {
+                padding: 8px 10px;
+            }
+        }
+
+        @media print {
+            body {
+                background: #fff;
+                padding: 0;
+            }
+
+            .textbook {
+                box-shadow: none;
+                border-radius: 0;
+            }
+
+            .cover {
+                background: #1a2a6c !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .part-heading {
+                background: #1a2a6c !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .item-heading {
+                background: #fdf2f2 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .task-box {
+                background: #f0f4ff !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            table thead {
+                background: #1a2a6c !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+/* One subtle school contact watermark per page. */
+.watermark-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-28deg);
+  pointer-events: none;
+  user-select: none;
+  color: rgba(26, 42, 108, 0.075);
+  font-family: Arial, sans-serif;
+  font-size: clamp(12px, 1.35vw, 17px);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  white-space: nowrap;
+}
+.watermark-layer span { text-shadow: 0 1px 2px rgba(255, 255, 255, 0.2); }
+.document-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 22px;
+  position: relative;
+}
+.document-actions a {
+  display: inline-block;
+  padding: 9px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 4px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.85em;
+  letter-spacing: 0.04em;
+}
+.document-actions a:hover, .document-actions a:focus-visible { background: rgba(255, 255, 255, 0.14); }
+.toc-section a { color: inherit; text-decoration: none; }
+.toc-section a:hover, .toc-section a:focus-visible { color: #1a2a6c; text-decoration: underline; }
+@media print {
+  .watermark-layer {
+    color: rgba(26, 42, 108, 0.075) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .document-actions { display: none; }
+}
+    </style>
+</head>
+<body>
+<div class="watermark-layer" aria-hidden="true"><span>0706575374</span></div>
+
+<div class="textbook">
+
+    <!-- ==================== COVER ==================== -->
+    <div class="cover">
+        <h1>Chemistry Examination Compendium</h1>
+        <div class="divider"></div>
+        <div class="subtitle">A Comprehensive Collection of Examination Items and Tasks for Discussion</div>
+        <div class="edition">JJEB &bull; UMTA &bull; UNNASE &bull; UTEC &bull; WAKISSHA · 2026</div>
+        <div class="document-actions"><a href="/learning-materials/chemistry-examination-compendium-joint-mocks-2026.pdf" download>Download PDF</a></div>
+    </div>
+
+    <!-- ==================== TABLE OF CONTENTS ==================== -->
+    <div class="toc">
+        <h2>Table of Contents</h2>
+        <div class="toc-grid">
+            <div class="toc-section">
+                <h3><a href="#group-1">JJEB Joint Mocks 2026</a></h3>
+                <ul>
+                    <li><a href="#group-1-item-1">Item 1: Electrochemical Cells — Copper and Zinc</a></li>
+                    <li><a href="#group-1-item-2">Item 2: Compound X — Steam Distillation and Molar Mass</a></li>
+                    <li><a href="#group-1-item-3">Item 3: Chemistry of Period 3 Elements</a></li>
+                    <li><a href="#group-1-item-4">Item 4: Chemistry of Group 17 Elements</a></li>
+                    <li><a href="#group-1-item-5">Item 5: Polymers and Nail Polish Remover</a></li>
+                    <li><a href="#group-1-item-6">Item 6: Benzaldehyde Hydrazone and Propanone</a></li>
+                </ul>
+            </div>
+            <div class="toc-section">
+                <h3><a href="#group-2">UMTA Joint Mocks 2026</a></h3>
+                <ul>
+                    <li><a href="#group-2-item-1">Item 1: Portable Electrochemical Power Units and Disinfectants</a></li>
+                    <li><a href="#group-2-item-2">Item 2: Thermal Extraction Using Steam and pH Regulating Mixtures</a></li>
+                    <li><a href="#group-2-item-3">Item 3: Disinfectants and Surface-Cleaning Agents</a></li>
+                    <li><a href="#group-2-item-4">Item 4: Metals for Laboratory Tools and Equipment</a></li>
+                    <li><a href="#group-2-item-5">Item 5: Aromatic Compounds in Pharmaceutical Manufacturing</a></li>
+                    <li><a href="#group-2-item-6">Item 6: Polymer-Processing Additives and Industrial Coating Modifiers</a></li>
+                </ul>
+            </div>
+            <div class="toc-section">
+                <h3><a href="#group-3">UNNASE Joint Mock Examinations 2026</a></h3>
+                <ul>
+                    <li><a href="#group-3-item-1">Item 1: Electrochemical Cell Generating More Than 1.2 Volts</a></li>
+                    <li><a href="#group-3-item-2">Item 2: Steam Purification in Pharmaceutical Industries</a></li>
+                    <li><a href="#group-3-item-3">Item 3: Metals for Portable, Durable Electronic Equipment</a></li>
+                    <li><a href="#group-3-item-4">Item 4: Improving Properties of Iron Through Alloying</a></li>
+                    <li><a href="#group-3-item-5">Item 5: Polymers from Ethanoyl Chloride</a></li>
+                    <li><a href="#group-3-item-6">Item 6: Perfumes from Ethanoic Acid</a></li>
+                </ul>
+            </div>
+            <div class="toc-section">
+                <h3><a href="#group-4">UTEC / Additional Exam Questions 2026</a></h3>
+                <ul>
+                    <li><a href="#group-4-item-1">Item 1: Zinc-Copper Electrochemical Cell</a></li>
+                    <li><a href="#group-4-item-2">Item 2: Miscible Liquids — Alcohols and Water</a></li>
+                    <li><a href="#group-4-item-3">Item 3: Radioactive Elements and Decay</a></li>
+                    <li><a href="#group-4-item-4">Item 4: Dioxides of Group (IV) Elements</a></li>
+                    <li><a href="#group-4-item-5">Item 5: Phenol and Ethanoyl Chloride from Benzene and Propene</a></li>
+                    <li><a href="#group-4-item-6">Item 6: Propanone Hydrazone and N-ethyl-N-phenylamine</a></li>
+                </ul>
+            </div>
+            <div class="toc-section">
+                <h3><a href="#group-5">WAKISSHA Joint Mock Examinations 2026</a></h3>
+                <ul>
+                    <li><a href="#group-5-item-1">Item 2: Freezing Point Depression — Sodium Chloride vs Calcium Chloride</a></li>
+                    <li><a href="#group-5-item-2">Item 3: Halogen Acids in Industrial Chambers</a></li>
+                    <li><a href="#group-5-item-3">Item 4: Hydroxides of Group II Elements</a></li>
+                    <li><a href="#group-5-item-4">Item 5: EDB Fumigant and Mitigation Strategies</a></li>
+                    <li><a href="#group-5-item-5">Item 6: Science Club Chemical Manufacturing Enterprise</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CONTENT ==================== -->
+    <div class="content">
+
+        <!-- ============================================================ -->
+        <!-- INDEPENDENCE DAY DISCUSSION                              -->
+        <!-- ============================================================ -->
+
+        <div class="part-heading" id="group-1">Combined Paper 1 Items for Discussion</div>
+
+        <!-- ---------- Item 1 ---------- -->
+        <div class="item-heading" id="group-1-item-1"><span class="item-number">Item 1:</span> Electrochemical Cells — Copper and Zinc</div>
+
+        <p class="intro">Electrochemical cells generate energy from spontaneous redox reactions. Their importance lies in driving modern technology through energy storage, industrial manufacturing, etc. A group of S.5 students under their science club have undertaken a project to select the strongest oxidizing and reducing agents between Copper and Zinc, construct an electrochemical cell, and apply quantitative chemical principles to make recommendations, but they could not proceed. When they consulted their chemistry teacher, he provided them with the following thermochemical and electrochemical data:</p>
+
+        <ul class="data-list">
+            <li>First ionization energy of Zn:       906kJmol-1</li>
+            <li>Second ionization energy of Zn:      1733.3kJmol-1</li>
+            <li>Hydration energy of Zn<sup>2+</sup>: 2046kJmol-1</li>
+            <li>First ionization energy of Cu:       754kJmol-1</li>
+            <li>Second ionization energy of Cu:      1958kJmol-1</li>
+            <li>Hydration energy of Cu<sup>2+</sup>:  2100kJmol-1</li>
+        </ul>
+
+        <div class="data-table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Half cell</th>
+                        <th>E° (V)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Zn<sup>2+</sup>/Zn</td>
+                        <td>-0.76</td>
+                    </tr>
+                    <tr>
+                        <td>Cu<sup>2+</sup>/Cu</td>
+                        <td>+0.34</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="task-box">
+            <p><strong>Task:</strong> The S.5 students are now challenged and have approached you. As a chemistry student, analyze and interpret the data to address the S.5 issues.</p>
+        </div>
+
+        <!-- ---------- Item 2 ---------- -->
+        <div class="item-heading" id="group-1-item-2"><span class="item-number">Item 2:</span> Compound X — Steam Distillation and Molar Mass</div>
+
+        <p class="intro">A manufacturing company in Uganda uses compound X as a primary intermediate for making a dye which gives blue jeans their iconic color. The laboratory attendant for the company, after her analysis, discovered that X is immiscible with water, contains 77.3% C, 7.58% H and the rest nitrogen, and that a mixture of X (boiling point 184 °C) and water (boiling point 100 °C) when steam distilled at 98 °C and 97.5 kPa gave a distillate which contained 85% by mass water.</p>
+
+        <p>The composition identifies X as aniline, C<sub>6</sub>H<sub>7</sub>N, with molar mass 93.13 g mol<sup>-1</sup>. Management of the company is now interested in the molar mass of X, the molecular formula of X, and the associated applications of steam distillation. <em>(Hint: Saturated vapor pressure of water at is ).</em></p>
+
+        <p>The laboratory attendant is now challenged. Your teacher came across this information.</p>
+
+        <div class="task-box">
+            <p><strong>Task:</strong> As a student of chemistry, analyze and interpret the available data to address management concerns.</p>
+        </div>
+
+        <!-- ---------- Section B Part I ---------- -->
+        <div class="section-heading">Section B &mdash; Part I</div>
+
+        <p><em>(Attempt only one Item from this part)</em></p>
+
+        <!-- ---------- Item 3 ---------- -->
+        <div class="item-heading" id="group-1-item-3"><span class="item-number">Item 3:</span> Chemistry of Period 3 Elements</div>
+
+        <p class="intro">The chemistry of period 3 elements is vital to the foundation of modern technology, biology, and industry. A telecom engineer advised that how periodic trends affect reactivity and reactions of the elements with water, alkalis, and dilute acids is very important in modern technology.</p>
+
+        <p>A manufacturing plant dealing in modern technology equipment is interested in how periodic properties of elements affect reactivity, reactions of elements, and the health implications of any of the elements. An industrial chemist provided the plant management with the following data:</p>
+
+        <div class="data-table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Element</th>
+                        <th>Na</th>
+                        <th>Mg</th>
+                        <th>Al</th>
+                        <th>Si</th>
+                        <th>P</th>
+                        <th>S</th>
+                        <th>Cl</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Electron affinity (kJ/mol)</td>
+                        <td>-20</td>
+                        <td>+67</td>
+                        <td>-30</td>
+                        <td>-135</td>
+                        <td>-60</td>
+                        <td>-200</td>
+                        <td>-364</td>
+                    </tr>
+                    <tr>
+                        <td>Ionization Energy (kJ/mol)</td>
+                        <td>492</td>
+                        <td>743</td>
+                        <td>579</td>
+                        <td>791</td>
+                        <td>1060</td>
+                        <td>1003</td>
+                        <td>1254</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>Your laboratory technician came across this information, but he is challenged.</p>
+
+        <div class="task-box">
+            <p><strong>Task:</strong> As a student of Chemistry, prepare a write-up to address the management's concerns.</p>
+        </div>
+
+        <!-- ---------- Item 4 ---------- -->
+        <div class="item-heading" id="group-1-item-4"><span class="item-number">Item 4:</span> Chemistry of Group 17 Elements</div>
+
+        <p class="intro">The chemistry of Group 17 elements is important for water sanitation, health, and industrial manufacturing. An environmental chemist advised that how periodic properties affect reactivity of the elements, reactions of elements with water and alkalis play a great role in their applications in daily life and provided the following data:</p>
+
+        <div class="data-table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Element</th>
+                        <th>F</th>
+                        <th>Cl</th>
+                        <th>Br</th>
+                        <th>I</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Atomic radius (nm)</td>
+                        <td>0.072</td>
+                        <td>0.09</td>
+                        <td>0.114</td>
+                        <td>0.133</td>
+                    </tr>
+                    <tr>
+                        <td>Boiling point (°C)</td>
+                        <td>-188</td>
+                        <td>-35</td>
+                        <td>59</td>
+                        <td>184</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>A manufacturing company dealing in antiseptics is interested in how periodic trends affect reactivity, reactions of the elements, and health implications, if any, of any element. Your teacher came across this information.</p>
+
+        <div class="task-box">
+            <p><strong>Task:</strong> As a Chemistry student, analyze and interpret the available data to address the company's issues.</p>
+        </div>
+
+        <!-- ---------- Part II ---------- -->
+        <div class="section-heading">Part II</div>
+
+        <p><em>(Attempt only one Item from this part)</em></p>
+
+        <!-- ---------- Item 5 ---------- -->
+        <div class="item-heading" id="group-1-item-5"><span class="item-number">Item 5:</span> Polymers and Nail Polish Remover</div>
+
+        <p class="intro">Use of nail polish removers and polymers is increasing in Uganda. A chemical plant makes polythene and ethyl acetate, a nail polish remover, from propene and methane respectively. As a way of mitigation, excess raw propene is reacted with bromine water while excess methane is reacted with chlorine gas in UV light.</p>
+
+        <p>The plant Management is interested in the suitability of its products for their applications, analysis of its mitigation reactions with equations, an evaluation of its synthetic pathways, and the possible health implications of its products. Your chemistry teacher came across this information.</p>
+
+        <div class="task-box">
+            <p><strong>Task:</strong> As a student of chemistry, make a write-up to address the plant management concerns.</p>
+        </div>
+
+        <!-- ---------- Item 6 ---------- -->
+        <div class="item-heading" id="group-1-item-6"><span class="item-number">Item 6:</span> Benzaldehyde Hydrazone and Propanone</div>
+
+        <p class="intro">A school science club wants to produce benzaldehyde hydrazone from ethane and propanone (solvent) from propan-1-ol. One student raised the issue of managing excess propan-1-ol and the product propanone. The chairperson proposed reacting propanone with 2,4-dinitrophenylhydrazine and propan-1-ol with hot concentrated sulphuric acid as a mitigation measure.</p>
+
+        <p>The report was subjected to the patron of the science club who is interested in the suitability of propan-1-ol for its application, analysis of mitigation reaction with equations, an evaluation of synthetic pathways with associated health implications.</p>
+
+        <div class="task-box">
+            <p><strong>Task:</strong> As a student of chemistry, analyze and interpret the data to address the club's issues.</p>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- UMTA JOINT MOCKS 2026                                      -->
+        <!-- ============================================================ -->
+
+        <div class="part-heading" id="group-2">UMTA Joint Mocks 2026</div>
+
+        <!-- ---------- Section A ---------- -->
+        <div class="section-heading">Section A</div>
+
+        <p><em>Respond to all items in this section.</em></p>
+
+        <!-- ---------- Item 1 ---------- -->
+        <div class="item-heading" id="group-2-item-1"><span class="item-number">Item 1:</span> Portable Electrochemical Power Units and Disinfectants</div>
+
+        <p class="intro">Portable electrochemical power units and oxidizing disinfectants are essential in rural health centers for sterilizing reusable medical instruments and providing emergency electrical power during immunization outreaches.</p>
+
+        <p>To improve these services, the research team of a secondary school in Mityana developed a portable acidified dichromate(VI) based disinfectant for sterilization and power unit for a nearby health center, and a power unit was constructed using the dichromate(VI)/chromium(III) and chlorine/chloride half-cell.</p>
+
+        <div class="observation-box">
+            <p>During field trials, health workers observed that disinfectant stored in the outreach box during hot afternoons became ineffective much sooner than samples kept in a refrigerator at the health center. They also found that a change in the energy associated with dissolving gaseous ions changes electrode potential value at each electrode affecting the operation of the sterilizer. To investigate these observations, their supervisor provided them with the required electrochemical data while the students monitored the concentration of dichromate(VI) ions remaining in the disinfectant and obtained the following data.</p>
+        </div>
+
+        <div class="data-table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Time (minutes)</th>
+                        <th>0</th>
+                        <th>10</th>
+                        <th>20</th>
+                        <th>30</th>
+                        <th>40</th>
+                        <th>50</th>
+                        <th>60</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Concentration (M) of dichromate(VI) ions</td>
+                        <td>2.500</td>
+                        <td>1.581</td>
+                        <td>1.090</td>
+                        <td>0.631</td>
+                        <td>0.420</td>
+                        <td>0.250</td>
+                        <td>0.160</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p><strong>Electrochemical data:</strong></p>
+
+        <div class="data-table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Half-cell reaction</th>
+                        <th>Electrode potential, E° (V)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Cr<sub>2</sub>O<sub>7</sub><sup>2-</sup>/Cr<sup>3+</sup></td>
+                        <td>+1.53V</td>
+                    </tr>
+                    <tr>
+                        <td>Cl<sub>2</sub>/Cl<sup>-</sup></td>
+                        <td>+1.36V</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>The project being developed was not understood by the health workers and they sought help from the research team, and the team has selected you to help in analyzing and interpreting the concentration data on a suitable concentration logarithm graph to estimate the storage efficacy by determining the half-life, considering a half-life of at least 10 minutes makes the disinfectant more efficient; interpreting disinfectant behavior during trials; constructing the cell representation to evaluate the free energy change; and justifying optimal storage and electrode choices.</p>
+
+        <div class="task-box">
+            <p><strong>Task:</strong> As the selected project team member, make a write-up of the presentation to the health workers to make them understand and use the project being developed by the research team.</p>
+        </div>
+
+        <!-- ---------- Item 2 ---------- -->
+        <div class="item-heading" id="group-2-item-2"><span class="item-number">Item 2:</span> Thermal Extraction Using Steam and pH Regulating Mixtures</div>
+
+        <p class="intro">Thermal extraction using steam and pH regulating mixtures are commonly used in manufacturing industries to preserve product quality during processing and storage.</p>
+
+        <p>To address a production problem, chemical engineers collaborated with an essential oils factory in Gulu to improve eucalyptus oil extraction for antiseptic formulations. During production, the team observed that increasing the heating temperature reduced both the yield and aroma of the oil, while fluctuations in the acidity of the blending tank caused variations in the quality and shelf life of the final antiseptic product. The factory therefore proposed steam extraction of the oil, Q, in eucalyptus and introducing a suitable buffer solution during blending. The students collected the following data for steam extraction of a mixture containing 3.43% of Q at :</p>
+
+        <div class="data-table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Temperature (°C)</th>
+                        <th>70</th>
+                        <th>80</th>
+                        <th>90</th>
+                        <th>100</th>
+                        <th>110</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Vapor pressure of Q (kPa)</td>
+                        <td>1.4</td>
+                        <td>2.4</td>
+                        <td>3.9</td>
+                        <td>6.1</td>
+                        <td>9.2</td>
+                    </tr>
+                    <tr>
+                        <td>Vapor pressure of water (kPa)</td>
+                        <td>19.0</td>
+                        <td>47.0</td>
+                        <td>72.0</td>
+                        <td>104.0</td>
+                        <td>132.0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>In the laboratory, the team weighed a sample of Q known to contain carbon, hydrogen, and nitrogen only and subjected it to complete combustion where of carbon dioxide and of water were collected and measured while a significant amount of soot was also observed.</p>
+
+        <p>On further analysis, they added of hydrochloric acid to of solution of Q to prepare the blending solution. However, during one production run, a little sodium hydroxide accidentally poured into the mixture before packaging and this worried the workers. However, the laboratory technician guided that this should not worry them as the solution's pH will not be affected, and the laboratory technician informed them that the dissociation constant of Q was .</p>
+
+        <p>Before approving the new production system, the factory management requested the engineers, who lack sufficient theoretical principles, to justify the change in oil quality by predicting the outcome if direct heating or no buffer is used, analyze the steam distillation data on a suitable graph and use the data to deduce the structural formula of Q and the pH of the blending solution, justify the laboratory technician's guidance on the stability of pH after accidental addition of sodium hydroxide, and understand the applications of the system in the factory.</p>
+
+        <p>Your brother, being the main chemist in the company, has a very busy schedule and has requested you as a senior chemistry student to help him write a detailed report you will use to guide the engineers.</p>
+
+        <div class="task-box">
+            <p><strong>Task:</strong> Write the report.</p>
+        </div>
+
+        <!-- ---------- Section II Part 1 ---------- -->
+        <div class="section-heading">Section II &mdash; Part 1</div>
+
+        <p><em>Respond to any one item from this part.</em></p>
+
+        <!-- ---------- Item 3 ---------- -->
+        <div class="item-heading" id="group-2-item-3"><span class="item-number">Item 3:</span> Disinfectants and Surface-Cleaning Agents</div>
+
+        <p class="intro">Certain chemical elements play a vital role as raw materials in the production of substances that enhance hygiene and sanitation in everyday life.</p>
+
+        <p>A group of Senior Three students at a secondary school in Mbarara is participating in an innovation project to produce disinfectants and surface-cleaning agents using organic substances as solvents for use within the school and for sale to the surrounding community. The best disinfectant or surface-cleaning agent is one with the most oxidizing ingredient. To help them select a suitable active ingredient, the laboratory technician provided information about three elements and the data shown below.</p>
+
+        <div class="data-table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Element</th>
+                        <th>Fluorine</th>
+                        <th>Chlorine</th>
+                        <th>Iodine</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Action with water</td>
+                        <td>Reacts vigorously</td>
+                        <td>Reacts slowly</td>
+                        <td>Slightly soluble</td>
+                    </tr>
+                    <tr>
+                        <td>Boiling point (°C)</td>
+                        <td>-188</td>
+                        <td>-35</td>
+                        <td>184</td>
+                    </tr>
+                    <tr>
+                        <td>Standard electrode potential, E° (V)</td>
+                        <td>+2.87</td>
+                        <td>+1.36</td>
+                        <td>+0.54</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>The technician hinted that a suitable choice might emerge only after carefully weighing the given information against less obvious considerations such as environmental consequences and the differing ways each substance interacts with water and aqueous sodium hydroxide. Despite this guidance, the students found it difficult to draw meaningful connections from the data or to construct a well-reasoned justification for any particular option.</p>
+
+        <p>They have therefore sought your guidance to help them make an informed decision.</p>
+
+        <div class="task-box">
+            <p><strong>Task:</strong> Help the learners address their challenge.</p>
+        </div>
+
+        <!-- ---------- Item 4 ---------- -->
+        <div class="item-heading" id="group-2-item-4"><span class="item-number">Item 4:</span> Metals for Laboratory Tools and Equipment</div>
+
+        <p class="intro">The relevance of some metals as raw materials for making different laboratory tools depends on their ability to withstand and respond to varying thermal conditions, their densities, and how their chemical properties influence performance under practical laboratory conditions.</p>
+
+        <p>An engineer at a metal fabrication company is helping two teams of senior five students at a secondary school in Iganga to select metals for laboratory equipment. One team studied selected transition metals for heating apparatus, while another examined some Group 2 elements for lightweight fittings recoverable with alkalis and analyzed the action of the selected alkaline earth metals on water.</p>
+
+        <p>To support their recommendations, the students compiled the following experimental data.</p>
+
+        <p><strong>Group 2 Elements:</strong></p>
+
+        <div class="data-table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Element</th>
+                        <th>Be</th>
+                        <th>Mg</th>
+                        <th>Ca</th>
+                        <th>Ba</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Atomic number</td>
+                        <td>4</td>
+                        <td>12</td>
+                        <td>20</td>
+                        <td>56</td>
+                    </tr>
+                    <tr>
+                        <td>Density (g/cm³)</td>
+                        <td>1.85</td>
+                        <td>1.74</td>
+                        <td>1.55</td>
+                        <td>3.54</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p><strong>Transition Metals:</strong></p>
+
+        <div class="data-table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Element</th>
+                        <th>Sc</th>
+                        <th>Ti</th>
+                        <th>V</th>
+                        <th>Cr</th>
+                        <th>Mn</th>
+                        <th>Fe</th>
+                        <th>Co</th>
+                        <th>Ni</th>
+                        <th>Cu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Atomic number</td>
+                        <td>21</td>
+                        <td>22</td>
+                        <td>23</td>
+                        <td>24</td>
+                        <td>25</td>
+                        <td>26</td>
+                        <td>27</td>
+                        <td>28</td>
+                        <td>29</td>
+                    </tr>
+                    <tr>
+                        <td>Melting Point (°C)</td>
+                        <td>1541</td>
+                        <td>1668</td>
+                        <td>1910</td>
+                        <td>1907</td>
+                        <td>1247</td>
+                        <td>1538</td>
+                        <td>1495</td>
+                        <td>1455</td>
+                        <td>1085</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>Each section was required to interpret the data independently to identify the most suitable element for each assigned application with appropriate justification, taking environmental concerns into consideration and elaborating on the action of alkali and water on the elements in the identified group.</p>
+
+        <p>The students, after confessing not to know Alkaline earth and transition chemistry, have pleaded for guidance from the engineer.</p>
+
+        <p>As the class coordinator of the Senior Six chemistry class, you have been requested by the engineer to write a report that he will use to guide the senior five class.</p>
+
+        <div class="task-box">
+            <p><strong>Task:</strong> Write the report, clearly highlighting all the issues and evaluating any environmental impacts arising from the process.</p>
+        </div>
+
+        <!-- ---------- Part II ---------- -->
+        <div class="section-heading">Part II</div>
+
+        <p><em>Respond to any one item from this part.</em></p>
+
+        <!-- ---------- Item 5 ---------- -->
+        <div class="item-heading" id="group-2-item-5"><span class="item-number">Item 5:</span> Aromatic Compounds in Pharmaceutical Manufacturing</div>
+
+        <p class="intro">The production of pharmaceuticals, disinfectants, and other industrial chemicals relies heavily on aromatic compounds because they serve as versatile intermediates in the synthesis of a wide range of valuable products.</p>
+
+        <p>A pharmaceutical manufacturing company in Kampala is expanding its production line to dyes, pharmaceutical intermediates, and household cleaning products. During the planning stage, the research chemists recommended using benzene as the starting material for preparing an intermediate compound X through nitration, which would undergo further chemical transformations to produce one of the target pharmaceutical intermediates. However, the company's environmental management team warned that compound X is considerably more toxic than benzene. They therefore advised that any excess quantity remaining after production should be chemically converted back into benzene before storage or disposal in order to minimize health and environmental risks.</p>
+
+        <p>The research team also established that benzene could be converted into another aromatic compound, , by chlorination and it can react with an alkyl halide in the presence of a halogen carrier to produce an intermediate required for the manufacture of biodegradable household detergents. Before commencing production, the company management requested a detailed explanation of the reaction pathways, operating conditions, properties of the intermediates produced, and the environmental implications associated with each stage of the manufacturing process.</p>
+
+        <p>As the senior chemistry student attached to the project, you have been requested to prepare a technical report that explains, using reaction schemes with arrows, how compounds X and are synthesized from benzene, how excess compound X can be converted back into benzene, how can be converted to the intermediate for manufacture of the biodegradable household detergent, the applications of the compounds formed, and the environmental hazards associated with the various processes.</p>
+
+        <div class="task-box">
+            <p><strong>Task:</strong> Prepare the technical report that will be used during the company's production planning workshop.</p>
+        </div>
+
+        <!-- ---------- Item 6 ---------- -->
+        <div class="item-heading" id="group-2-item-6"><span class="item-number">Item 6:</span> Polymer-Processing Additives and Industrial Coating Modifiers</div>
+
+        <p class="intro">A medium-sized specialty chemical company in Jinja plans to diversify its operations by manufacturing polymer-processing additives and industrial coating modifiers for use in the plastics and surface-engineering industries. After extensive product evaluation, the research and development team identified propanone hydrazone as a key raw material for the synthesis of polymer stabilizing additives, while cyclohexene was selected as an important raw material for producing coating-performance modifiers.</p>
+
+        <p>To improve production efficiency and reduce procurement costs, the company resolved to manufacture these compounds in-house. Following consultation with industrial chemists, propanone and cyclohexanol were selected as the immediate cheaper precursor compounds required for the respective production pathways. Since ethanol is readily available from local bioethanol producers, it was chosen as the principal feedstock from which both intermediates would first be synthesized before conversion into the desired products.</p>
+
+        <p>During pilot-scale process design, the technical team also recognized that large-scale production could generate excess unreacted reagents, undesirable side products, and chemical wastes capable of increasing production costs and environmental pollution if not properly managed. Consequently, emphasis was placed on selecting efficient synthetic routes, maximizing atom economy, recovering recyclable materials, and adopting sustainable manufacturing practices to minimize waste generation throughout the production process.</p>
+
+        <p>Before commissioning the production line, the management team requires a technical evaluation of the proposed manufacturing strategy to determine the suitability of the selected raw materials, critically assess the methods for converting ethanol into the required intermediates, and using arrows to analyze the subsequent transformations leading to the target intermediates for industrial production.</p>
+
+        <div class="task-box">
+            <p><strong>Task:</strong> As a Senior Chemistry student, prepare a concise technical write-up that addresses the company's concerns.</p>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- UNNASE JOINT MOCK EXAMINATIONS 2026                         -->
+        <!-- ============================================================ -->
+
+        <div class="part-heading" id="group-3">UNNASE Joint Mock Examinations 2026</div>
+
+        <!-- ---------- Section A ---------- -->
+        <div class="section-heading">Section A</div>
+
+        <p><em>Answer all the items in this section.</em></p>
+
+        <!-- ---------- Item 1 ---------- -->
+        <div class="item-heading" id="group-3-item-1"><span class="item-number">Item 1:</span> Electrochemical Cell Generating More Than 1.2 Volts</div>
+
+        <p class="intro">The values of enthalpy changes in chemical reactions can be used to predict the feasibility of reactions, hence the establishment of some chemical processes for use in society.</p>
+
+        <p>A group of students from the science club wanted to venture into a project of making an electrochemical cell that can generate more than 1.2 volts for use. They wanted to use metal M and zinc; however, they were not certain whether they could be able to achieve their objective. They decided to consult the laboratory technician for guidance. He provided them with thermochemical data and some other information to use.</p>
+
+        <p><strong>Thermochemical data:</strong></p>
+
+        <ul class="data-list">
+            <li>Enthalpy of atomization of zinc = +126 kJmol-1</li>
+            <li>First and second ionization energies of zinc are +906 and +1733 kJmol-1 respectively</li>
+            <li>Bond dissociation energy of oxygen = +498 kJmol-1</li>
+            <li>First electron affinity of oxygen = -142 kJmol-1</li>
+            <li>Second electron affinity of oxygen = +731 kJmol-1</li>
+            <li>Enthalpy of formation of metal oxide,MO = -602 kJmol-1 </li>
+            <li>Lattice energy of zinc oxide = 4010 kJmol-1</li>
+                    </ul>
+
+        <p><strong>ZnO(s) M(s) -------> MO(s) + Zn(s) </strong></p>
+
+        <p>He told them they should use the information provided and equation of reaction given in order to overcome their challenge. In addition, he said it's important to have knowledge on factors affecting lattice energy.</p>
+
+        <p>The students lacked sufficient knowledge to address their challenge. The laboratory technician has identified you as a potential learner who can help the students and has asked you to give guidance to the students to address their challenge.</p>
+
+        <div class="task-box">
+            <p><strong>Task:</strong> Write a report to help the students overcome their challenge, and make recommendations.</p>
+        </div>
+
+        <!-- ---------- Item 2 ---------- -->
+        <div class="item-heading" id="group-3-item-2"><span class="item-number">Item 2:</span> Steam Purification in Pharmaceutical Industries</div>
+
+        <p class="intro">Pharmaceutical industries employ essential processes in the purification of products for use in society.</p>
+
+        <p>A group of senior five students in the science club under their chemistry teacher went for a study tour in a pharmaceutical industry. They were informed by the production manager that some of the raw materials used are aromatic organic substances from plant extracts while others are synthesized. The substances are purified using steam, and the process works under a principle that enables it to be achievable. She further said the process also helps in determining molar masses of the organic extracts and the specific conditions under which the process operates, such as pressure, is also identified. She also said the composition of the organic substance in the distillate obtained during the purification exercise is usually determined to monitor the effectiveness of the process. She said the process is more effective in purifying organic compounds with molar mass between and . The process has some advantages over other methods employed in purification processes. The students were grateful but remained not fully contented since they did not clearly understand some processes.</p>
+
+        <p>After the tour, the teacher gave a follow-up exercise. He said that the data obtained from the industrial process indicated that when the process was carried out at 98 °C, a distillate that contained 85% by mass of water and 15% by mass of the organic substance was obtained. In addition, the data in the table was also provided:</p>
+
+        <div class="data-table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Temp / °C</th>
+                        <th>92</th>
+                        <th>94</th>
+                        <th>96</th>
+                        <th>98</th>
+                        <th>100</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>V.P. of organic substance / kPa</td>
+                        <td>6</td>
+                        <td>8</td>
+                        <td>12</td>
+                        <td>15</td>
+                        <td>17</td>
+                    </tr>
+                    <tr>
+                        <td>V.P. of water / kPa</td>
+                        <td>74</td>
+                        <td>80</td>
+                        <td>88</td>
+                        <td>94</td>
+                        <td>101</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>Data analysis of the organic substance indicated that it contains by mass 77.42% carbon, 15.05% nitrogen, and the rest hydrogen.</p>
+
+        <p>The learners were challenged and have approached you for guidance.</p>
+
+        <div class="task-box">
+            <p><strong>Task:</strong> Write a report to help the learners: (a) understand the principle of the process. (b) (i) analyze the data and the process. (ii) evaluate the molecular formula of the compound.</p>
+        </div>
+
+        <!-- ---------- Section B Part I ---------- -->
+        <div class="section-heading">Section B &mdash; Part I</div>
+
+        <p><em>Answer one item from each of the parts I and II.</em></p>
+
+        <!-- ---------- Item 3 ---------- -->
+        <div class="item-heading" id="group-3-item-3"><span class="item-number">Item 3:</span> Metals for Portable, Durable Electronic Equipment</div>
+
+        <p class="intro">Metals are essential materials for use in the manufacture of basic items for use in the community.</p>
+
+        <p>A group of investors in a community wanted to start a project of making portable, durable electronic equipment for use. They consulted the project planner who provided them with some information and materials to choose from.</p>
+
+        <div class="data-table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Elements</th>
+                        <th>Be</th>
+                        <th>Sr</th>
+                        <th>Ba</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Atomic radius / nm</td>
+                        <td>0.112</td>
+                        <td>0.215</td>
+                        <td>0.222</td>
+                    </tr>
+                    <tr>
+                        <td>Melting point / °C</td>
+                        <td>1280</td>
+                        <td>850</td>
+                        <td>714</td>
+                    </tr>
+                    <tr>
+                        <td>Density / g/cm³</td>
+                        <td>1.85</td>
+                        <td>2.64</td>
+                        <td>3.51</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>He told them that in order to make the correct choice of material, they should base it on the information given and its impact on health. They should also have knowledge on their differences in atomic radii. It's also important to have knowledge on how the elements interact with water and sulphuric acid. The investors lacked sufficient knowledge and therefore approached the chemistry teacher for guidance. The teacher has asked you to write a report to guide the entrepreneurs.</p>
+
+        <div class="task-box">
+            <p><strong>Task:</strong> Write a report for guidance to the entrepreneurs.</p>
+        </div>
+
+        <!-- ---------- Item 4 ---------- -->
+        <div class="item-heading" id="group-3-item-4"><span class="item-number">Item 4:</span> Improving Properties of Iron Through Alloying</div>
+
+        <p class="intro">Physical properties of elements can be improved by integrating them with others depending on the desired property.</p>
+
+        <p>A group of members from a community near areas where iron is extracted decided to improve on the properties of iron by making alloys that can be used in the community. They consulted their project planner who provided them with some materials together with information to use in identifying the materials as shown in the table.</p>
+
+        <div class="data-table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Element</th>
+                        <th>Iron</th>
+                        <th>Carbon (Graphite)</th>
+                        <th>Silicon</th>
+                        <th>Lead</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Atomic radius / nm</td>
+                        <td>0.116</td>
+                        <td>0.077</td>
+                        <td>0.117</td>
+                        <td>0.194</td>
+                    </tr>
+                    <tr>
+                        <td>Melting point / °C</td>
+                        <td>1538</td>
+                        <td>3600</td>
+                        <td>1410</td>
+                        <td>327</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>She said the choice of the element should be based on the information provided and its impact on the environment. In order to implement the project, the members should have knowledge on differences in melting points among the elements provided to be combined with iron, and how these elements interact with water and chlorine.</p>
+
+        <p>The community members failed to implement the project because they lacked adequate knowledge and therefore approached the laboratory technician for guidance. The laboratory technician has asked you to write a report for guidance.</p>
+
+        <div class="task-box">
+            <p><strong>Task:</strong> Write a report that you will use to give guidance to the community members.</p>
+        </div>
+
+        <!-- ---------- Part II ---------- -->
+        <div class="section-heading">Part II</div>
+
+        <!-- ---------- Item 5 ---------- -->
+        <div class="item-heading" id="group-3-item-5"><span class="item-number">Item 5:</span> Polymers from Ethanoyl Chloride</div>
+
+        <p class="intro">Organic compounds are important materials used in the manufacture of some items for use in society.</p>
+
+        <p>A group of investors in a community want to produce polymers for making materials for sale to the society. They decided to use ethanoyl chloride as the raw material from one of their service providers. They consulted the project planner, and she suggested they should prepare polyphenylethene as the major product in their project. She also said they can transform some of the raw material by reacting it with benzene in the presence of a halogen carrier to form compound W that can be used to prepare another compound Z, which is the immediate compound in the manufacture of polyphenylethene. She also suggested that in case they have generated an excess amount of Z, they can transform it into phenylethanoic acid that can be reacted with the product formed from the fermentation of carbohydrates from the society to produce perfumes.</p>
+
+        <p>The investors had partial knowledge and therefore approached the chemistry teacher for a better write-up. The teacher has approached you and asked you to make a write-up to help the investors. For better understanding, the investors should have knowledge on the physical properties of the polymer in relation to its formation, its application, and its impact on health. They should also have knowledge on writing equations using arrows to show how compound W is formed from the raw material and how the perfume is formed. It's also important for them to have knowledge on writing equations showing reaction pathways leading to the formation of the polymer from the raw material, and the perfume from compound Z.</p>
+
+        <div class="task-box">
+            <p><strong>Task:</strong> Write a report to guide the investors.</p>
+        </div>
+
+        <!-- ---------- Item 6 ---------- -->
+        <div class="item-heading" id="group-3-item-6"><span class="item-number">Item 6:</span> Perfumes from Ethanoic Acid</div>
+
+        <p class="intro">Organic compounds are essential materials used to produce a variety of products used in the community.</p>
+
+        <p>Community members around a school in Masaka city developed the idea of producing perfumes for use in the community using ethanoic acid as a raw material available from their supplier. They consulted the laboratory technician for help. He advised them to reduce some of the raw material and form a compound which they should react with the remaining raw material in order to form the perfume. He also suggested that in case they produced an excess amount of compound, they can transform it into propanone and use it to prepare propan-1-ol, which is an important industrial organic solvent. He further told them that in order to be certain that propanone has been formed, they should add 2,4-dinitrophenylhydrazine in acidic media and see whether a yellow precipitate is formed. He further suggested that in case they remained with some raw material unused, they can also use it to prepare propylamine, a product used in the pharmaceutical industry.</p>
+
+        <p>The community members failed to understand clearly the laboratory technician's guidance and requested a write-up for better understanding. The laboratory technician has chosen you as a potential learner to help the community members. For better understanding, the investors should have knowledge on the physical properties of the perfume in relation to its formation, its application, and its impact on health. Furthermore, the community members should have knowledge on writing equations using arrows to show how the perfume is formed from the raw material, and how the yellow precipitate is formed. It's also important for them to have knowledge on writing equations showing reaction pathways of how propylamine and propan-1-ol are formed from the raw material.</p>
+
+        <div class="task-box">
+            <p><strong>Task:</strong> Write a report to guide the community members.</p>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- ADDITIONAL EXAM QUESTIONS                                    -->
+        <!-- ============================================================ -->
+
+        <div class="part-heading" id="group-4">Additional Exam Questions</div>
+
+        <!-- ---------- Section A ---------- -->
+        <div class="section-heading">Section A</div>
+
+        <p><em>Respond to both items from this section.</em></p>
+
+        <!-- ---------- Item 1 ---------- -->
+        <div class="item-heading" id="group-4-item-1"><span class="item-number">Item 1:</span> Zinc-Copper Electrochemical Cell</div>
+
+        <p class="intro">A group of S.5 chemistry students in their science club want to construct an electrochemical cell that generates electrical energy from spontaneous chemical reactions between Zinc and Copper electrodes. When they consulted their chemistry teacher, he gave them the following data after advising them that they needed the second ionization energy of Copper.</p>
+
+        <p><strong>Thermochemical data:</strong></p>
+<ul class="data-list">
+    <li>Δ<i>H</i><sub>f</sub>° CuCl<sub>2</sub> = -220 kJ mol<sup>-1</sup></li>
+    <li>Cu(s) → Cu(g) = +338 kJ mol<sup>-1</sup></li>
+    <li>Cu(g) → Cu<sup>+</sup>(g) + e<sup>-</sup> = +754 kJ mol<sup>-1</sup></li>
+    <li>Cl(g) + e<sup>-</sup> → Cl<sup>-</sup>(g) = -364 kJ mol<sup>-1</sup></li>
+    <li>½Cl<sub>2</sub>(g) → Cl(g) = +121 kJ mol<sup>-1</sup></li>
+    <li>Lattice energy of CuCl<sub>2</sub> = +2824 kJ mol<sup>-1</sup></li>
+    <li>Zn(g) → Zn<sup>+</sup>(g) + e<sup>-</sup> = +906 kJ mol<sup>-1</sup></li>
+    <li>Zn<sup>+</sup>(g) → Zn<sup>2+</sup>(g) + e<sup>-</sup> = +1733 kJ mol<sup>-1</sup></li>
+</ul>
+
+        <div class="data-table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Half Cell</th>
+                        <th>E° (V)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Zn<sup>2+</sup>/Zn</td>
+                        <td>-0.76</td>
+                    </tr>
+                    <tr>
+                        <td>Cu<sup>2+</sup>/Cu</td>
+                        <td>+0.34</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="task-box">
+            <p><strong>Task:</strong> As a chemistry student, analyze and interpret the data provided for the S.5 chemistry students and make any recommendations if possible.</p>
+        </div>
+
+        <!-- ---------- Item 2 ---------- -->
+        <div class="item-heading" id="group-4-item-2"><span class="item-number">Item 2:</span> Miscible Liquids — Alcohols and Water</div>
+
+        <p class="intro">Miscible liquids of alcohols and water are commonly being used for medical disinfection and surface cleaning. A manufacturing company intends to use substance Q labeled 52.14% C, 13.13% H, and 34.73% oxygen. In the mass spectrum of Q, the peak at the largest value of m/z occurs at 46. Q is ethanol, C<sub>2</sub>H<sub>5</sub>OH, with molar mass 46.07 g mol<sup>-1</sup>. At 25 °C, the vapor pressure of a solution containing 1 mole of Q and 4 moles of water is 4.11 kPa for ideal behavior; the vapor pressures of pure Q and water are 7.87 kPa and 3.17 kPa respectively at the same temperature.</p>
+
+        <p>The company's management wants to know: the molecular formula of Q, how a mixture of Q and water deviates from ideal behavior, and an analysis of the applications of the mixture in real life. Your laboratory attendant was given this information but he is challenged.</p>
+
+        <div class="task-box">
+            <p><strong>Task:</strong> As a student of Chemistry, analyze and interpret the data to address the concerns of the company's management.</p>
+        </div>
+
+        <!-- ---------- Section B Part I ---------- -->
+        <div class="section-heading">Section B &mdash; Part I</div>
+
+        <p><em>Respond to any one item in this part.</em></p>
+
+        <!-- ---------- Item 3 ---------- -->
+        <div class="item-heading" id="group-4-item-3"><span class="item-number">Item 3:</span> Radioactive Elements and Decay</div>
+
+        <p class="intro">A nuclear plant in Uganda is undertaking pilot studies for the use of various radioactive elements to generate clean and safe energy. In one of the studies, the plant's technical team discovered that on storage:</p>
+
+        <ul class="data-list">
+    <li><sup>226</sup><sub>88</sub>Ra → P + <sup>4</sup><sub>2</sub>He (α)</li>
+    <li><sup>210</sup><sub>83</sub>Bi → Q + <sup>0</sup><sub>-1</sub>e (β)</li>
+    <li><sup>234</sup><sub>92</sub>U → R + 5 <sup>4</sup><sub>2</sub>He</li>
+    <li><sup>231</sup><sub>91</sub>Pa → S + <sup>4</sup><sub>2</sub>He + particle</li>
+    <li><sup>226</sup><sub>88</sub>Ra → T + two particles</li>
+</ul>
+
+        <p>In another parallel study, the technical team obtained the following data for the two radioactive elements Y and Z:</p>
+
+        <div class="data-table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Time (minutes)</th>
+                        <th>0</th>
+                        <th>10</th>
+                        <th>20</th>
+                        <th>30</th>
+                        <th>50</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Disintegrations (s⁻¹) of Y</td>
+                        <td>200</td>
+                        <td>161</td>
+                        <td>135</td>
+                        <td>110</td>
+                        <td>76</td>
+                    </tr>
+                    <tr>
+                        <td>Disintegrations (s⁻¹) of Z</td>
+                        <td>11.3</td>
+                        <td>8.3</td>
+                        <td>6.0</td>
+                        <td>4.4</td>
+                        <td>2.35</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>The plant's management is interested in the identity of elements P, Q, R, S, T and the decay constants of Y and Z and the associated health implications of radioactivity. Your chemistry teacher was given this information.</p>
+
+        <div class="task-box">
+            <p><strong>Task:</strong> As a student of Chemistry, analyze and interpret the data to address the concerns of the plant's management.</p>
+        </div>
+
+        <!-- ---------- Item 4 ---------- -->
+        <div class="item-heading" id="group-4-item-4"><span class="item-number">Item 4:</span> Dioxides of Group (IV) Elements</div>
+
+        <p class="intro">A newly constructed factory in town is carrying out a feasibility study on using dioxides of group (IV) elements as raw materials for glass and ceramics. The structural engineer advised that periodic trends, reactions of elements with water and halogens, and reactions of the dioxides with alkalis play a vital role in deciding the raw material, and provided the following data:</p>
+
+        <div class="data-table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Element</th>
+                        <th>C</th>
+                        <th>Si</th>
+                        <th>Ge</th>
+                        <th>Sn</th>
+                        <th>Pb</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Melting Point (°C)</td>
+                        <td>3800</td>
+                        <td>1863</td>
+                        <td>1211</td>
+                        <td>505</td>
+                        <td>601</td>
+                    </tr>
+                    <tr>
+                        <td>Boiling point of dioxide (°C)</td>
+                        <td>-78.5 (sublimes)</td>
+                        <td>2590</td>
+                        <td>1200</td>
+                        <td>1900</td>
+                        <td>Decomposes on heating</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>The Management of the factory is now interested in periodic trends, the reactions of the elements and their compounds, and the possible environmental implications if any. Your laboratory attendant came across this information.</p>
+
+        <div class="task-box">
+            <p><strong>Task:</strong> As a student of chemistry, analyze and interpret the data to address the raised concerns by the Management of the factory.</p>
+        </div>
+
+        <!-- ---------- Part II ---------- -->
+        <div class="section-heading">Part II</div>
+
+        <p><em>Respond to any one item from this part.</em></p>
+
+        <!-- ---------- Item 5 ---------- -->
+        <div class="item-heading" id="group-4-item-5"><span class="item-number">Item 5:</span> Phenol and Ethanoyl Chloride from Benzene and Propene</div>
+
+        <p class="intro">A school Science club has engaged its chemistry students to make phenol and ethanoyl chloride from benzene and propene respectively. The chairperson of the club suggested that as a mitigation measure, excess propene can be safely reacted with bromine water but excess benzene requires fuming sulphuric acid. The Headteacher of the School is interested in the suitability of the products for their applications, an analysis of mitigation reactions with equations, evaluation of the synthetic pathway routes, and the possible environmental implications of their products. Members of the School Science Club are challenged and have approached you for help.</p>
+
+        <div class="task-box">
+            <p><strong>Task:</strong> As a student of chemistry, make a write-up you would present to address the Headteacher's concerns.</p>
+        </div>
+
+        <!-- ---------- Item 6 ---------- -->
+        <div class="item-heading" id="group-4-item-6"><span class="item-number">Item 6:</span> Propanone Hydrazone and N-ethyl-N-phenylamine</div>
+
+        <p class="intro">A chemical plant for dyes and solvents makes propanone hydrazone from propan-1-ol and N-ethyl-N-phenylamine from benzene. As a mitigation measure, the excess propan-1-ol is reacted with hot concentrated sulphuric acid and excess benzene with bromine in the presence of an iron catalyst. The Management of the Plant is interested in the suitability of propanone hydrazone for its functions, an analysis of the mitigation reactions with equations, an evaluation of the synthetic pathways for its operations, and the possible health implications of its operations. Your teacher came across the information.</p>
+
+        <div class="task-box">
+            <p><strong>Task:</strong> As a learner of the subject, analyze the data to address Management's issue.</p>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- WAKISSHA JOINT MOCK EXAMINATIONS 2026                       -->
+        <!-- ============================================================ -->
+
+        <div class="part-heading" id="group-5">WAKISSHA Joint Mock Examinations 2026</div>
+
+        <!-- ---------- Item 2 ---------- -->
+        <div class="item-heading" id="group-5-item-1"><span class="item-number">Item 2:</span> Freezing Point Depression — Sodium Chloride vs Calcium Chloride</div>
+
+        <p class="intro">A highway engineer is charged with the responsibility of maintaining a road in a mountainous region where temperatures frequently drop to . The engineer is considering whether to use granular sodium chloride or calcium chloride to prevent water on the road from freezing. The more effective salt is the one for which a smaller mass is required to lower the freezing point of of water to .</p>
+
+        <p>To resolve this, technicians on the engineer's team dissolved different masses of pure glucose () in a fixed of water from that area and measured the freezing point of the resultant solutions to determine the freezing point of water and its cryoscopic constant.</p>
+
+        <p>The results were summarized in a table 3 below and analysed.</p>
+
+        <div class="data-table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mass of glucose in 360 g of water (g)</th>
+                        <th>1.80</th>
+                        <th>3.60</th>
+                        <th>9.00</th>
+                        <th>18.00</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Freezing point of solution (°C)</td>
+                        <td>-0.052</td>
+                        <td>-0.103</td>
+                        <td>-0.258</td>
+                        <td>-0.517</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>Despite the effectiveness of the salt chosen, state-level environmental agencies are concerned about the use of the salt near local waterways.</p>
+
+        <p>Given the following additional data:</p>
+        <ul class="data-list">
+            <li>Molar mass of NaCl = 58.4 g/mol</li>
+            <li>Molar mass of CaCl<sub>2</sub> = 110.8 g/mol</li>
+        </ul>
+
+        <div class="task-box">
+            <p><strong>Task:</strong></p>
+            <p>(a) Analyse the data to help the engineer make a choice.</p>
+            <p>(b) Address the concerns of the state-level environmental agencies.</p>
+        </div>
+
+        <!-- ---------- Item 3 ---------- -->
+        <div class="item-heading" id="group-5-item-2"><span class="item-number">Item 3:</span> Halogen Acids in Industrial Chambers</div>
+
+        <p class="intro">An industrial manufacturing plant utilizes three different halogen acids; HF, HCl and HI in separate specialized chambers to produce different commercial products.</p>
+
+        <p><strong>Chamber A:</strong> The halogen acid is used to frost glass and the chamber has plastic (Teflon) piping instead of the standard glass-lined vessels used in B and C.</p>
+
+        <p><strong>Chamber B:</strong> Metalworkers use highly concentrated halogen acid which is stable, cheap and enough for mass industrial use to remove rust from the surface of manufactured steel sheets before they are galvanized.</p>
+
+        <p><strong>Chamber C:</strong> Chemists use the halogen acid as strong reducing agent and catalyst to make specific pharmaceutical precursors.</p>
+
+        <p>During safety inspection, engineers made the following observations:</p>
+
+        <ul class="data-list">
+            <li>The cylinder of halogen acid used in chamber A liquefies easily under minimum pressure at room temperature while the cylinders for chambers B and C required deep refrigeration and high pressure.</li>
+            <li>A red-hot wire plunged into the halogen acid of chamber C produced dense purple vapour.</li>
+            <li>Halogen acid in chamber A dissolves in water to produce an aqueous solution that sluggishly reacts with Magnesium while aqueous solutions of B and C aggressively corrode Magnesium with rapid effervescence.</li>
+        </ul>
+
+        <p>Additional data was presented in table 4 below.</p>
+
+        <div class="data-table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Halogen acid</th>
+                        <th>Boiling point (°C)</th>
+                        <th>Bond energy (kJ mol<sup>-1</sup>)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>HF</td>
+                        <td>+19.9</td>
+                        <td>568</td>
+                    </tr>
+                    <tr>
+                        <td>HCl</td>
+                        <td>-85.1</td>
+                        <td>431</td>
+                    </tr>
+                    <tr>
+                        <td>HI</td>
+                        <td>-35.8</td>
+                        <td>299</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="task-box">
+            <p><strong>Task:</strong></p>
+            <p>(a) Analyse the data and observations to explain the choice of halogen acids in their respective chambers.</p>
+            <p>(b) Assess the health and environmental impacts of the industrial manufacturing plant.</p>
+        </div>
+
+        <!-- ---------- Item 4 ---------- -->
+        <div class="item-heading" id="group-5-item-3"><span class="item-number">Item 4:</span> Hydroxides of Group II Elements</div>
+
+        <p class="intro">The hydroxides of group II elements are widely used in everyday life, e.g. soil pH restoration, antacid medicines, fire retardants and manufacture of soap greases in high temperature conditions by the alkaline hydrolysis of fatty acids.</p>
+
+        <p>After studying group II elements of the Periodic Table, a group of A-level students carried out a research activity to investigate the properties of the hydroxides and obtained the data in table 5 below.</p>
+
+        <div class="data-table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Compound</th>
+                        <th>Decomposition temperature (°C)</th>
+                        <th>Solubility (mol of water)/100g</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Be(OH)<sub>2</sub></td>
+                        <td>138</td>
+                        <td>insoluble</td>
+                    </tr>
+                    <tr>
+                        <td>Mg(OH)<sub>2</sub></td>
+                        <td>330</td>
+                        <td>2.0 × 10<sup>-1</sup></td>
+                    </tr>
+                    <tr>
+                        <td>Ca(OH)<sub>2</sub></td>
+                        <td>450</td>
+                        <td>1.5 × 10<sup>-3</sup></td>
+                    </tr>
+                    <tr>
+                        <td>Sr(OH)<sub>2</sub></td>
+                        <td>540</td>
+                        <td>3.4 × 10<sup>-1</sup></td>
+                    </tr>
+                    <tr>
+                        <td>Ba(OH)<sub>2</sub></td>
+                        <td>780</td>
+                        <td>1.52 × 10<sup>-2</sup></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>However, the students were unable to interpret the data because they did not understand the variation in decomposition temperatures, solubility and the interaction of the hydroxides with sulphuric acid and sodium hydroxide.</p>
+
+        <p>You have been approached for guidance about the choice of hydroxide(s) and their health and environmental impacts.</p>
+
+        <div class="task-box">
+            <p><strong>Task:</strong> Make a write up of your presentation to the group of the A-level students.</p>
+        </div>
+
+        <!-- ---------- Item 5 ---------- -->
+        <div class="item-heading" id="group-5-item-4"><span class="item-number">Item 5:</span> EDB Fumigant and Mitigation Strategies</div>
+
+        <p class="intro">Bukoola Agrochemicals Uganda synthesizes a fumigant for citrus fruits and post-harvest grain preservation. The active ingredient in this formulation is 1,2-dibromoethane (EDB) which is dissolved in propan-2-ol as a co-solvent.</p>
+
+        <p>The industrial chemists at Bukoola explained that 1,2-dibromoethane is a more effective active ingredient than 1,2-dichloroethane due to its volatility.</p>
+
+        <p>During a workshop organized by National Agricultural Research Organisation (NARO), farmers were discouraged from using EDB due its significant health and environmental impacts which affected its demand.</p>
+
+        <p>To mitigate environmental effects, the industry has been advised to chemically transform EDB into 2-methylphenol (a disinfectant) while propan-2-ol converted to 2-methylpropan-2-ol which is a better solvent.</p>
+
+        <p>An industrial chemistry intern suggested that EDB can easily react with sodium hydroxide to form ethane-1,2-diol, a coolant in petrol engines, and propan-2-ol reacts with ethanoic acid to form a common fragrance.</p>
+
+        <div class="task-box">
+            <p><strong>Task:</strong> Help the industry's production team to;</p>
+            <p>(a) understand how the mitigation of environmental effects and suggestions of the industrial chemistry intern can be achieved.</p>
+            <p>(b) assess the potential health and environmental hazards associated with fumigation as guided by NARO.</p>
+        </div>
+
+        <!-- ---------- Item 6 ---------- -->
+        <div class="item-heading" id="group-5-item-5"><span class="item-number">Item 6:</span> Science Club Chemical Manufacturing Enterprise</div>
+
+        <p class="intro">The Science Club of your school plans to establish a small chemical manufacturing enterprise which intends to produce and market a range of products including: a cleaning solvent (nail polish remover), a fragrance additive for perfumes, soaps and lotions, a preservative for dairy products and an antiskining agent as paint additive.</p>
+
+        <p>Before production begins, the club must select suitable compounds as raw materials and production methods considering their safety, health and environmental impacts.</p>
+
+        <p>The laboratory technician guided the club members that the available materials are propanone and ethanal whose properties were summarized in table 6 below.</p>
+
+        <div class="data-table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Raw material/compound</th>
+                        <th>Properties</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Propanone (CH<sub>3</sub>COCH<sub>3</sub>)</td>
+                        <td>• flammable with sweet fruity odour<br>• boils at 56°C and resistant to oxidation</td>
+                    </tr>
+                    <tr>
+                        <td>Ethanal (CH<sub>3</sub>CHO)</td>
+                        <td>• boils at 20.2°C<br>• highly flammable and readily oxidised</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>The club membership includes students from all classes who may lack the necessary knowledge. They would like to understand;</p>
+
+        <ul class="data-list">
+            <li>(a) why the available compounds have different boiling points and one of them is a better solvent.</li>
+            <li>(b) how ethanal can be converted to phenylethanone which is a fragrance additive to soaps and lotions and how propanone is synthesized from ethanol which is more readily available in the laboratory.</li>
+            <li>(c) how propanone reacts to form propanone oxime that acts as an antiskining agent in paints and ethanal reacts with acidified potassium cyanide to form an intermediate during the synthesis of 2-hydroxypropanoic acid which is a preservative in dairy products.</li>
+            <li>(d) safety, health and environmental assessment impacts of the entire process.</li>
+        </ul>
+
+        <div class="task-box">
+            <p><strong>Task:</strong> Make a write-up you will present to your teacher addressing the challenges of the science club members.</p>
+        </div>
+
+    </div>
+    <!-- ==================== END CONTENT ==================== -->
+
+    <!-- ==================== FOOTER ==================== -->
+    <div class="footer">
+        <strong>Chemistry Examination Compendium</strong> &mdash; JJEB, UMTA, UNNASE, UTEC &amp; WAKISSHA
+    </div>
+
+</div>
+
+</body>
+</html>

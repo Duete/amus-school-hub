@@ -15,6 +15,8 @@ import {
 import abduSwaibuKampanya from "@/assets/alumni-abdu-swaibu-kampanya.webp";
 import arikotRacheal from "@/assets/alumni-ariokot-racheal.jpg";
 import chrisArikoObore from "@/assets/alumni-chris-ariko-obore.webp";
+import cindySanyu from "@/assets/alumni-cindy-sanyu.jpg";
+import reginaNakibuule from "@/assets/alumni-regina-nakibuule.jpg";
 import { schoolHead } from "@/lib/school";
 
 export const Route = createFileRoute("/alumni")({
@@ -77,33 +79,68 @@ const executivePlaceholders = [
   "Welfare and Mobilisation Lead — name to be updated",
 ];
 
-const notableAlumni = [
+type NotableAlumnus = {
+  name: string;
+  classYear: string;
+  role: string;
+  image?: string;
+  imageAlt?: string;
+  source?: string;
+  href?: string;
+  imageCredit?: string;
+};
+
+const notableAlumni: NotableAlumnus[] = [
   {
     name: "Chris Ariko Obore",
     classYear: "Class of 1998",
-    role: "Parliamentary communications leader and former journalist",
+    role: "Investigative watchdog journalist at the Daily Monitor; appointed Director of Communication and Public Affairs for the Parliament of Uganda in 2015",
     image: chrisArikoObore,
     imageAlt: "Chris Ariko Obore",
     source: "Biography",
-    href: "https://flashugnews.com/chris-ariko-obore-biography-age-education-family/",
+    href: "https://flashugnews.com/chris-ariko-obore-biography-age-education-family-wife/",
   },
   {
     name: "Ariokot Racheal",
     classYear: "Class of 2015",
-    role: "Public service professional and sustainability researcher",
+    role: "Chemical Engineer and PhD researcher at the University of Chemistry and Technology in Prague, Czech Republic",
     image: arikotRacheal,
     imageAlt: "Ariokot Racheal",
     source: "Professional profile",
-    href: "https://www.linkedin.com/in/racheal-ariokot?originalSubdomain=cz",
+    href: "https://www.linkedin.com/in/racheal-ariokot/",
   },
   {
     name: "Hon. Abdu Swaibu Kampanya",
     classYear: "Class of 2016",
-    role: "Member of Parliament for Iki-Iki County, Budaka",
+    role: "Lawyer and Member of Parliament for Iki-Iki County, Budaka",
     image: abduSwaibuKampanya,
     imageAlt: "Hon. Abdu Swaibu Kampanya",
     source: "Parliament profile",
     href: "https://www.parliament.go.ug/sites/default/files/2026-06/MEMBERS_2026.pdf",
+  },
+  {
+    name: "Sanyu Cinderella a.k.a Cindy",
+    classYear: "Class year not listed",
+    role: "Ugandan musician, original member of Blu*3, and solo artist",
+    image: cindySanyu,
+    imageAlt: "Cindy Sanyu",
+    source: "Wikipedia biography",
+    href: "https://en.wikipedia.org/wiki/Cindy_Sanyu",
+    imageCredit: "Photo: Kyakwera / Wikimedia Commons (CC BY-SA 4.0)",
+  },
+  {
+    name: "Nakibuule Regina",
+    classYear: "Class of 2010",
+    role: "FEASSSA Table Tennis commissar (2019 to date), referee and umpire, ITTF & PTT level 1 & 2 coach, USSSA Table Tennis coordinator, and director with Pickleball Africa",
+    image: reginaNakibuule,
+    imageAlt: "Regina Nakibuule",
+    source: "Kawowo profile",
+    href: "https://kawowo.com/2023/03/08/regina-nakibuule-a-multifaceted-female-sports-personality/",
+  },
+  {
+    name: "Mukamba Robert",
+    classYear: "Class year not listed",
+    role: "Politician and Director of Cream Nursery & Primary School, Mbale",
   },
 ];
 
@@ -175,8 +212,15 @@ function Alumni() {
           <div className="mt-8 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
             {memberBenefits.map(({ title, text, icon: Icon }) => (
               <article key={title} className="bg-background p-6">
-                <Icon className="text-primary" size={25} strokeWidth={1.5} />
-                <h3 className="mt-5 text-xl">{title}</h3>
+                <div className="flex items-start gap-3">
+                  <Icon
+                    className="mt-0.5 shrink-0 text-primary"
+                    size={20}
+                    strokeWidth={1.6}
+                    aria-hidden="true"
+                  />
+                  <h3 className="text-xl">{title}</h3>
+                </div>
                 <p className="mt-2 text-sm leading-6 text-muted-foreground">{text}</p>
               </article>
             ))}
@@ -222,13 +266,22 @@ function Alumni() {
                   key={alumnus.name}
                   className="grid gap-4 border border-border bg-background p-4 sm:grid-cols-[5rem_1fr] sm:items-center"
                 >
-                  <img
-                    src={alumnus.image}
-                    alt={alumnus.imageAlt}
-                    className="h-20 w-20 rounded-sm object-cover object-top"
-                    loading="lazy"
-                    decoding="async"
-                  />
+                  {alumnus.image ? (
+                    <img
+                      src={alumnus.image}
+                      alt={alumnus.imageAlt ?? alumnus.name}
+                      className="h-20 w-20 rounded-sm object-cover object-top"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  ) : (
+                    <div
+                      className="flex h-20 w-20 items-center justify-center rounded-sm bg-primary text-xl font-bold text-primary-foreground"
+                      aria-label={`Portrait unavailable for ${alumnus.name}`}
+                    >
+                      MR
+                    </div>
+                  )}
                   <div>
                     <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
                       <h3 className="text-xl">{alumnus.name}</h3>
@@ -237,14 +290,21 @@ function Alumni() {
                       </p>
                     </div>
                     <p className="mt-1 text-sm leading-6 text-muted-foreground">{alumnus.role}</p>
-                    <a
-                      href={alumnus.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="mt-2 inline-flex items-center gap-1 text-xs font-bold text-primary underline underline-offset-4"
-                    >
-                      {alumnus.source} <ExternalLink size={12} />
-                    </a>
+                    {alumnus.href && alumnus.source ? (
+                      <a
+                        href={alumnus.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-2 inline-flex items-center gap-1 text-xs font-bold text-primary underline underline-offset-4"
+                      >
+                        {alumnus.source} <ExternalLink size={12} />
+                      </a>
+                    ) : null}
+                    {alumnus.imageCredit ? (
+                      <p className="mt-2 text-[11px] leading-4 text-muted-foreground">
+                        {alumnus.imageCredit}
+                      </p>
+                    ) : null}
                   </div>
                 </article>
               ))}
@@ -254,8 +314,15 @@ function Alumni() {
 
         <section className="mt-20 grid gap-5 md:grid-cols-2" aria-label="Alumni next steps">
           <article className="border border-border bg-muted p-7">
-            <GraduationCap className="text-primary" size={30} strokeWidth={1.5} />
-            <h2 className="mt-6 text-2xl">Share your story</h2>
+            <div className="flex items-center gap-3">
+              <GraduationCap
+                className="shrink-0 text-primary"
+                size={23}
+                strokeWidth={1.6}
+                aria-hidden="true"
+              />
+              <h2 className="text-2xl">Share your story</h2>
+            </div>
             <p className="mt-3 text-sm leading-7 text-muted-foreground">
               Tell the school where life has taken you, what you remember, and how you would like to
               stay involved with Mbale Progressive.
@@ -268,8 +335,15 @@ function Alumni() {
             </Link>
           </article>
           <article className="border border-border bg-background p-7">
-            <BookOpen className="text-primary" size={30} strokeWidth={1.5} />
-            <h2 className="mt-6 text-2xl">Return to the school</h2>
+            <div className="flex items-center gap-3">
+              <BookOpen
+                className="shrink-0 text-primary"
+                size={23}
+                strokeWidth={1.6}
+                aria-hidden="true"
+              />
+              <h2 className="text-2xl">Return to the school</h2>
+            </div>
             <p className="mt-3 text-sm leading-7 text-muted-foreground">
               Plan a visit, reconnect with a teacher, support a school activity, or ask the office
               about an upcoming event.

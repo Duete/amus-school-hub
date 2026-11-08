@@ -117,8 +117,15 @@ function Governance() {
             const FeatureIcon = Icon as typeof ShieldCheck;
             return (
               <div key={title as string} className="border-l-2 border-secondary pl-5">
-                <FeatureIcon className="text-primary" size={22} />
-                <h3 className="mt-4 text-xl">{title as string}</h3>
+                <div className="flex items-start gap-3">
+                  <FeatureIcon
+                    className="mt-0.5 shrink-0 text-primary"
+                    size={20}
+                    strokeWidth={1.6}
+                    aria-hidden="true"
+                  />
+                  <h3 className="text-xl">{title as string}</h3>
+                </div>
                 <p className="mt-2 text-sm leading-6 text-muted-foreground">{text as string}</p>
               </div>
             );

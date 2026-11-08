@@ -1,7 +1,17 @@
+import {
+  ArrowRight,
+  ArrowUpRight,
+  BookOpen,
+  ChevronDown,
+  FileText,
+  FlaskConical,
+  GraduationCap,
+  Layers3,
+} from "lucide-react";
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, BookOpen, FlaskConical, GraduationCap, Layers3 } from "lucide-react";
 import { PageIntro } from "@/components/school-layout";
 import { schoolHead } from "@/lib/school";
+import { aLevelClassResources, type LearningResource } from "@/lib/learning-resources";
 
 export const Route = createFileRoute("/e-library")({
   head: () =>
@@ -22,6 +32,7 @@ type ClassShelf = {
   name: string;
   description: string;
   groups: SubjectGroup[];
+  resources?: Record<string, LearningResource[]>;
 };
 
 const oLevelCore = [
@@ -45,6 +56,10 @@ const oLevelElectives = [
   "Kiswahili",
   "Literature",
   "Physical Education",
+  "Foreign Languages",
+  "Nutrition and Food Technology",
+  "Performing Arts",
+  "Technology and Design",
 ];
 
 const aLevelPrincipal = [
@@ -106,6 +121,7 @@ const aLevelClasses: ClassShelf[] = [
   {
     name: "S.5",
     description: "Settle into subject combinations and develop independent study habits.",
+    resources: aLevelClassResources["S.5"],
     groups: [
       { title: "Principal subject shelves", subjects: aLevelPrincipal },
       { title: "Subsidiary shelves", subjects: aLevelSubsidiary },
@@ -114,6 +130,7 @@ const aLevelClasses: ClassShelf[] = [
   {
     name: "S.6",
     description: "Focus revision around UACE preparation, examination technique, and next steps.",
+    resources: aLevelClassResources["S.6"],
     groups: [
       { title: "Principal subject shelves", subjects: aLevelPrincipal },
       { title: "Subsidiary shelves", subjects: aLevelSubsidiary },
@@ -121,39 +138,87 @@ const aLevelClasses: ClassShelf[] = [
   },
 ];
 
-function SubjectShelf({ subject }: { subject: string }) {
+function SubjectShelf({ subject, resources }: { subject: string; resources?: LearningResource[] }) {
   return (
     <li className="flex items-start gap-3 border-t border-border py-3 text-sm leading-6">
       <BookOpen className="mt-1 shrink-0 text-primary" size={16} strokeWidth={1.7} />
-      <span>{subject}</span>
+      <div className="min-w-0 flex-1">
+        <span>{subject}</span>
+        {resources?.map((resource) => (
+          <a
+            key={resource.href}
+            href={resource.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Open ${resource.title} in a new tab`}
+            className="mt-3 flex max-w-xl items-start gap-3 border border-border bg-card p-3 transition-colors hover:border-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          >
+            <FileText
+              className="mt-0.5 shrink-0 text-primary"
+              size={17}
+              strokeWidth={1.7}
+              aria-hidden="true"
+            />
+            <span className="min-w-0 flex-1">
+              <span className="block font-semibold">{resource.title}</span>
+              <span className="mt-1 block text-xs leading-5 text-muted-foreground">
+                {resource.description}
+              </span>
+              <span className="mt-2 block text-xs font-semibold text-primary">
+                Open learning item
+              </span>
+            </span>
+            <ArrowUpRight className="mt-0.5 shrink-0 text-primary" size={16} aria-hidden="true" />
+          </a>
+        ))}
+      </div>
     </li>
   );
 }
 
 function ClassCard({ shelf }: { shelf: ClassShelf }) {
   return (
-    <article className="border border-border bg-background p-6">
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <p className="eyebrow text-primary">CLASS SHELF</p>
-          <h3 className="mt-2 text-3xl">{shelf.name}</h3>
+    <details className="group border border-border bg-background">
+      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary [&::-webkit-details-marker]:hidden">
+        <div className="flex min-w-0 items-start gap-3">
+          <Layers3
+            className="mt-1 shrink-0 text-primary"
+            size={20}
+            strokeWidth={1.6}
+            aria-hidden="true"
+          />
+          <div className="min-w-0">
+            <p className="eyebrow text-primary">CLASS SHELF</p>
+            <h3 className="mt-2 text-3xl">{shelf.name}</h3>
+            <p className="mt-3 text-sm leading-6 text-muted-foreground">{shelf.description}</p>
+          </div>
         </div>
-        <Layers3 className="text-primary" size={25} strokeWidth={1.6} />
-      </div>
-      <p className="mt-3 text-sm leading-6 text-muted-foreground">{shelf.description}</p>
-      <div className="mt-6 space-y-7">
+        <div className="flex shrink-0 items-center gap-3 text-primary">
+          <ChevronDown
+            className="transition-transform group-open:rotate-180"
+            size={18}
+            aria-hidden="true"
+          />
+          <span className="sr-only">Open {shelf.name} subjects</span>
+        </div>
+      </summary>
+      <div className="space-y-7 border-t border-border px-6 pb-6 pt-4">
         {shelf.groups.map((group) => (
           <div key={group.title}>
             <h4 className="mb-2 text-lg">{group.title}</h4>
             <ul>
               {group.subjects.map((subject) => (
-                <SubjectShelf key={subject} subject={subject} />
+                <SubjectShelf
+                  key={subject}
+                  subject={subject}
+                  resources={shelf.resources?.[subject]}
+                />
               ))}
             </ul>
           </div>
         ))}
       </div>
-    </article>
+    </details>
   );
 }
 
@@ -224,10 +289,8 @@ function ELibrary() {
             <p className="mt-1 text-sm text-muted-foreground">class shelves from S.1 to S.6</p>
           </div>
           <div className="border-l-2 border-secondary pl-4">
-            <p className="font-display text-3xl text-primary">30+</p>
-            <p className="mt-1 text-sm text-muted-foreground">
-              subject areas across the two levels
-            </p>
+            <p className="font-display text-3xl text-primary">20+ / 17+</p>
+            <p className="mt-1 text-sm text-muted-foreground">O-Level / A-Level subject options</p>
           </div>
         </div>
         <nav className="mt-12 flex flex-wrap gap-3" aria-label="e-Library level navigation">

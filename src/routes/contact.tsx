@@ -32,6 +32,16 @@ function Contact() {
                   View campus details <ArrowRight />
                 </Link>
               </Button>
+              {campus.mapUrl && (
+                <a
+                  href={campus.mapUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 inline-flex items-center gap-2 font-semibold text-primary underline underline-offset-4"
+                >
+                  Open in Google Maps <ArrowRight size={16} />
+                </a>
+              )}
             </div>
           ))}
         </div>

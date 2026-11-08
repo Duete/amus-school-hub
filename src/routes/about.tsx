@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageIntro } from "@/components/school-layout";
 import { Button } from "@/components/ui/button";
 import { schoolHead } from "@/lib/school";
-import schoolLife from "@/assets/school-life.webp";
+import schoolCourtyard from "@/assets/hero-courtyard.webp";
 export const Route = createFileRoute("/about")({
   head: () =>
     schoolHead(
@@ -22,15 +22,13 @@ function About() {
       <section className="site-width grid items-center gap-12 py-16 md:grid-cols-2">
         <figure>
           <img
-            src={schoolLife}
-            alt="Students during a school-life activity"
-            width={1920}
-            height={1024}
+            src={schoolCourtyard}
+            alt="School courtyard and classroom buildings at Mbale Progressive"
             loading="lazy"
             className="aspect-[4/3] w-full rounded-md object-cover"
           />
           <figcaption className="mt-2 text-xs text-muted-foreground">
-            Representative school-life image.
+            School courtyard and classroom buildings.
           </figcaption>
         </figure>
         <div>
@@ -41,8 +39,8 @@ function About() {
             it is now known as Mbale Progressive Secondary School.
           </p>
           <p className="mt-4 leading-7 text-muted-foreground">
-            The school has a Day Campus on Nyanza Road near Namatala and a boarding campus known as
-            Mbale Progressive Annex.
+            The school has a Day Campus on Plot 8–15 Nabuyonga Rise, Mbale City and a boarding
+            campus known as Mbale Progressive Annex.
           </p>
           <Button asChild className="mt-6">
             <Link to="/campuses">View campus details</Link>

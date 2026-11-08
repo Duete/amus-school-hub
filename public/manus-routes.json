@@ -13,11 +13,11 @@
     { "path": "/database", "title": "Database architecture" },
     { "path": "/e-library", "title": "e-Library" },
     { "path": "/faculty", "title": "Teaching staff" },
+    { "path": "/gallery", "title": "Campus photo gallery" },
     { "path": "/finance", "title": "Fees and financial clearance" },
     { "path": "/governance", "title": "Governance and leadership" },
     { "path": "/login", "title": "Sign in" },
     { "path": "/news", "title": "News and updates" },
-    { "path": "/performance", "title": "Student performance" },
     { "path": "/portal", "title": "My portal" },
     { "path": "/scholarships", "title": "Scholarships and sponsorships" },
     { "path": "/sports", "title": "Co-Curricular" }

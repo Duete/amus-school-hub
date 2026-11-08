@@ -77,7 +77,7 @@ function Login() {
           </div>
           <p className="mt-4 leading-7 text-muted-foreground">
             Students see their own learning and finance information. Teachers see classroom and
-            performance tools. Administrators manage admissions, finance, notifications, and users.
+            staff tools. Administrators manage admissions, finance, notifications, and users.
           </p>
           <div className="mt-8 space-y-3 text-sm text-muted-foreground">
             {roles.map((item) => (

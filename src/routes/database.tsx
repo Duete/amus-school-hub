@@ -102,8 +102,15 @@ function DatabaseArchitecture() {
             </ul>
           </section>
           <section className="rounded-sm border border-border bg-accent p-6 md:p-8">
-            <KeyRound className="text-primary" size={22} />
-            <h2 className="mt-4 text-2xl">Implementation status</h2>
+            <div className="flex items-start gap-3">
+              <KeyRound
+                className="mt-0.5 shrink-0 text-primary"
+                size={20}
+                strokeWidth={1.6}
+                aria-hidden="true"
+              />
+              <h2 className="text-2xl">Implementation status</h2>
+            </div>
             <p className="mt-3 text-sm leading-6 text-muted-foreground">
               The Express API and migration/seed commands are in the repository. Connect
               `DATABASE_URL`, run the migration, seed development data, and set `VITE_API_BASE_URL`

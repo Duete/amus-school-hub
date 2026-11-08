@@ -6,6 +6,7 @@ import {
   CalendarDays,
   ChevronLeft,
   ChevronRight,
+  ImageOff,
   MapPin,
   Pause,
   Play,
@@ -13,52 +14,55 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { campuses, schoolHead } from "@/lib/school";
-import cityCampus from "@/assets/city-campus.webp";
-import hillsideCampus from "@/assets/hillside-campus.webp";
-import schoolLife from "@/assets/school-life.webp";
+import { annexBuildingPhotos, campusImages, campusPhotoGroups } from "@/lib/campus-photos";
 import headteacherPhoto from "@/assets/admin-ocukul-julius-web.jpg";
+
+const annexBuildingSlides = annexBuildingPhotos.map(({ src, caption, alt }) => ({
+  id: `annex-${caption}`,
+  image: src,
+  eyebrow: "BOARDING CAMPUS · MBALE PROGRESSIVE ANNEX",
+  title: caption,
+  subheading: "Nyanza Road, Industrial City Division, Mbale City.",
+  text: alt,
+  primary: "View the photo gallery",
+  to: "/gallery" as const,
+  secondary: "Explore the campuses",
+  secondaryTo: "/campuses" as const,
+}));
 
 const heroSlides = [
   {
-    image: schoolLife,
-    eyebrow: "MBALE CITY · EASTERN UGANDA",
-    title: "A school that knows where it is going.",
+    id: "day-campus-welcome",
+    image: campusImages.dayCampusDriveway,
+    eyebrow: "DAY CAMPUS · MBALE CITY",
+    title: "Welcome to Mbale Progressive.",
     subheading: "The Love of Education Brought Us Here.",
-    text: "Day and boarding education for more than 1,500 learners, from S.1 through UACE.",
-    primary: "See the school",
-    to: "/about" as const,
-    secondary: "Ask about admission",
-    secondaryTo: "/admissions" as const,
-  },
-  {
-    image: cityCampus,
-    eyebrow: "ESTABLISHED 1993",
-    title: "Thirty years of steady work.",
-    subheading: "Built in Mbale. Open to the region.",
-    text: "What began as Mbale Progressive Academy is now a full secondary school with day and boarding pathways.",
-    primary: "Read our history",
-    to: "/about" as const,
-    secondary: "View academics",
-    secondaryTo: "/academics" as const,
-  },
-  {
-    image: hillsideCampus,
-    eyebrow: "DAY & BOARDING",
-    title: "Two settings. One standard.",
-    subheading: "Day Campus and Mbale Progressive Annex.",
-    text: "Find the campus that fits your family, then speak to the school office about places and requirements.",
-    primary: "View campuses",
+    text: "The Day Campus is on Plot 8–15 Nabuyonga Rise, Northern City Division, Mbale City.",
+    primary: "Visit the Day Campus",
     to: "/campuses" as const,
     secondary: "Contact the school",
     secondaryTo: "/contact" as const,
   },
+  ...annexBuildingSlides,
+  {
+    id: "day-campus-visits",
+    image: campusImages.dayCampusDriveway,
+    eyebrow: "DAY CAMPUS · VISITS",
+    title: "Come and see for yourself.",
+    subheading: "Visit the Day Campus.",
+    text: "Families are welcome to tour the Day Campus. Confirm the schedule with the office before travelling.",
+    primary: "Plan a visit",
+    to: "/contact" as const,
+    secondary: "Ask about admission",
+    secondaryTo: "/admissions" as const,
+  },
 ];
 
 const schoolFacts = [
-  { value: "1,500+", label: "learners across both campuses" },
-  { value: "400+", label: "UCE candidates each year" },
-  { value: "300+", label: "UACE candidates each year" },
-  { value: "1993", label: "school established" },
+  { value: "800", label: "O-Level learners enrolled" },
+  { value: "20+", label: "O-Level subject options" },
+  { value: "400", label: "A-Level learners enrolled" },
+  { value: "17+", label: "A-Level subject options" },
 ];
 
 const upcomingEvents = [
@@ -112,7 +116,7 @@ export const Route = createFileRoute("/")({
               name: "Where are the school campuses?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "The Day Campus is on Nyanza Road near Namatala in Mbale City. Mbale Progressive Annex is the school’s boarding campus.",
+                text: "The Day Campus is on Plot 8–15 Nabuyonga Rise, Northern City Division, Mbale City. Mbale Progressive Annex, the boarding campus, is located on Nyanza Road in Industrial City Division, Mbale City.",
               },
             },
             {
@@ -147,6 +151,8 @@ function Index() {
     setActiveIndex((index + heroSlides.length) % heroSlides.length);
     setPaused(true);
   };
+
+  if (!activeSlide) return null;
 
   return (
     <>
@@ -205,10 +211,10 @@ function Index() {
               </button>
               {heroSlides.map((slide, index) => (
                 <button
-                  key={slide.eyebrow}
+                  key={slide.id}
                   type="button"
                   onClick={() => selectSlide(index)}
-                  aria-label={`Show highlight ${index + 1}: ${slide.eyebrow}`}
+                  aria-label={`Show highlight ${index + 1}: ${slide.title}`}
                   aria-pressed={activeIndex === index}
                   className={`h-2.5 rounded-full transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary ${activeIndex === index ? "w-8 bg-secondary" : "w-2.5 bg-white/60 hover:bg-white"}`}
                 />
@@ -282,14 +288,19 @@ function Index() {
           <div className="mt-10 grid gap-5 md:grid-cols-3">
             {upcomingEvents.map((event) => (
               <article key={event.title} className="border border-border bg-background p-6">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <p className="text-sm font-bold tracking-[0.08em] text-primary">{event.date}</p>
-                    <p className="mt-1 text-xs text-muted-foreground">{event.label}</p>
-                  </div>
-                  <CalendarDays className="text-secondary-foreground" size={22} strokeWidth={1.6} />
+                <div>
+                  <p className="text-sm font-bold tracking-[0.08em] text-primary">{event.date}</p>
+                  <p className="mt-1 text-xs text-muted-foreground">{event.label}</p>
                 </div>
-                <h3 className="mt-8 text-2xl">{event.title}</h3>
+                <div className="mt-6 flex items-start gap-3">
+                  <CalendarDays
+                    className="mt-1 shrink-0 text-primary"
+                    size={20}
+                    strokeWidth={1.6}
+                    aria-hidden="true"
+                  />
+                  <h3 className="text-2xl">{event.title}</h3>
+                </div>
                 <p className="mt-3 min-h-20 text-sm leading-6 text-muted-foreground">
                   {event.text}
                 </p>
@@ -318,8 +329,9 @@ function Index() {
               </h2>
             </div>
             <p className="max-w-lg border-l-2 border-secondary pl-5 text-base leading-7 text-muted-foreground">
-              The Day Campus sits on Nyanza Road near Namatala. Mbale Progressive Annex provides the
-              boarding option. Both lead into the same academic programme.
+              The Day Campus sits on Plot 8–15 Nabuyonga Rise, Mbale City. Mbale Progressive Annex
+              is on Nyanza Road in Industrial City Division, Mbale City. Both lead into the same
+              academic programme.
             </p>
           </div>
           <div className="mt-12 grid gap-8 md:grid-cols-2 md:gap-5 lg:gap-8">
@@ -333,14 +345,25 @@ function Index() {
                   params={{ campus: campus.slug }}
                   className="relative block overflow-hidden"
                 >
-                  <img
-                    src={campus.image}
-                    width={1024}
-                    height={768}
-                    loading="lazy"
-                    alt={`${campus.name} campus setting`}
-                    className="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
+                  {campus.image ? (
+                    <img
+                      src={campus.image}
+                      width={1024}
+                      height={768}
+                      loading="lazy"
+                      alt={`${campus.name} grounds and buildings`}
+                      className="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div
+                      className="flex aspect-[16/10] w-full flex-col items-center justify-center gap-3 bg-muted p-6 text-center text-muted-foreground"
+                      role="img"
+                      aria-label={`${campus.name} photo not available`}
+                    >
+                      <ImageOff aria-hidden="true" size={26} strokeWidth={1.6} />
+                      <span className="text-sm">No photo of this campus is available.</span>
+                    </div>
+                  )}
                 </Link>
                 <div className="p-6 md:p-7">
                   <p className="text-sm font-semibold tracking-[0.04em] text-muted-foreground">
@@ -432,19 +455,31 @@ function Index() {
           </div>
           <div className="grid gap-8 sm:grid-cols-2">
             <article className="border-t-2 border-primary pt-5">
-              <BookOpen className="text-primary" size={28} strokeWidth={1.5} />
-              <h3 className="mt-5 text-2xl">O-Level / UCE</h3>
+              <div className="flex items-center gap-3">
+                <BookOpen
+                  className="shrink-0 text-primary"
+                  size={22}
+                  strokeWidth={1.6}
+                  aria-hidden="true"
+                />
+                <h3 className="text-2xl">O-Level / UCE</h3>
+              </div>
               <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                More than 17 subjects, with over 400 candidates registering and completing the
-                course each year.
+                20+ subject options and 800 learners enrolled at O-Level.
               </p>
             </article>
             <article className="border-t-2 border-secondary pt-5">
-              <BookOpen className="text-primary" size={28} strokeWidth={1.5} />
-              <h3 className="mt-5 text-2xl">A-Level / UACE</h3>
+              <div className="flex items-center gap-3">
+                <BookOpen
+                  className="shrink-0 text-primary"
+                  size={22}
+                  strokeWidth={1.6}
+                  aria-hidden="true"
+                />
+                <h3 className="text-2xl">A-Level / UACE</h3>
+              </div>
               <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                More than 15 subjects, with over 300 candidates completing the advanced level
-                pathway each year.
+                17+ subject options and 400 learners enrolled at A-Level.
               </p>
             </article>
           </div>
@@ -482,72 +517,114 @@ function Index() {
         </div>
       </section>
 
-      <section className="py-20 md:py-28" aria-labelledby="gallery-heading">
-        <div className="site-width">
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <div>
-              <p className="text-sm font-semibold tracking-[0.04em] text-primary">Around campus</p>
-              <h2 id="gallery-heading" className="mt-3 max-w-xl text-4xl leading-tight md:text-5xl">
-                A closer look at school life.
-              </h2>
+      <section className="py-20 md:py-28" aria-label="Campus photographs">
+        <div className="site-width space-y-16">
+          <div>
+            <div className="flex flex-wrap items-end justify-between gap-6">
+              <div>
+                <p className="text-sm font-semibold tracking-[0.04em] text-primary">
+                  DAY CAMPUS · MBALE CITY
+                </p>
+                <h2
+                  id="day-campus-gallery-heading"
+                  className="mt-3 max-w-xl text-4xl leading-tight md:text-5xl"
+                >
+                  Day Campus buildings and learning spaces.
+                </h2>
+              </div>
+              <Link
+                to="/campuses/$campus"
+                params={{ campus: "day-campus" }}
+                className="inline-flex items-center gap-2 font-bold text-primary"
+              >
+                Visit the Day Campus <ArrowRight size={16} />
+              </Link>
             </div>
-            <Link to="/campuses" className="inline-flex items-center gap-2 font-bold text-primary">
-              Explore the campuses <ArrowRight size={16} />
-            </Link>
+            <div className="mt-10 grid gap-5 md:grid-cols-[1.25fr_0.75fr]">
+              {campusPhotoGroups.dayCampus.slice(0, 1).map(({ src, caption, alt }) => (
+                <Link
+                  key={caption}
+                  to="/campuses/$campus"
+                  params={{ campus: "day-campus" }}
+                  className="group relative min-h-80 overflow-hidden bg-primary"
+                >
+                  <img
+                    src={src}
+                    loading="lazy"
+                    alt={alt}
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/10 to-transparent" />
+                  <p className="absolute bottom-5 left-5 text-lg font-semibold text-white">
+                    {caption}
+                  </p>
+                </Link>
+              ))}
+              <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-1">
+                {campusPhotoGroups.dayCampus.slice(2, 4).map(({ src, caption, alt }) => (
+                  <Link
+                    key={caption}
+                    to="/campuses/$campus"
+                    params={{ campus: "day-campus" }}
+                    className="group relative min-h-40 overflow-hidden bg-primary"
+                  >
+                    <img
+                      src={src}
+                      loading="lazy"
+                      alt={alt}
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent" />
+                    <p className="absolute bottom-4 left-4 text-sm font-semibold text-white">
+                      {caption}
+                    </p>
+                  </Link>
+                ))}
+              </div>
+            </div>
           </div>
-          <div className="mt-10 grid gap-5 md:grid-cols-[1.25fr_0.75fr]">
-            <Link
-              to="/campuses/day-campus"
-              className="group relative min-h-80 overflow-hidden bg-primary"
-            >
-              <img
-                src={schoolLife}
-                width={1200}
-                height={800}
-                loading="lazy"
-                alt="Learners walking across the Mbale Progressive campus"
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/10 to-transparent" />
-              <p className="absolute bottom-5 left-5 text-lg font-semibold text-white">
-                Learners, purpose, and room to grow
-              </p>
-            </Link>
-            <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-1">
-              <Link
-                to="/campuses/day-campus"
-                className="group relative min-h-40 overflow-hidden bg-primary"
-              >
-                <img
-                  src={cityCampus}
-                  width={1024}
-                  height={768}
-                  loading="lazy"
-                  alt="Day Campus setting near Namatala"
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent" />
-                <p className="absolute bottom-4 left-4 text-sm font-semibold text-white">
-                  Day Campus · Nyanza Road
+
+          <div>
+            <div className="flex flex-wrap items-end justify-between gap-6">
+              <div>
+                <p className="text-sm font-semibold tracking-[0.04em] text-primary">
+                  BOARDING CAMPUS · MBALE PROGRESSIVE ANNEX
                 </p>
-              </Link>
+                <h2
+                  id="annex-gallery-heading"
+                  className="mt-3 max-w-xl text-4xl leading-tight md:text-5xl"
+                >
+                  Buildings and grounds at the Annex.
+                </h2>
+              </div>
               <Link
-                to="/campuses/mbale-progressive-annex"
-                className="group relative min-h-40 overflow-hidden bg-primary"
+                to="/campuses/$campus"
+                params={{ campus: "mbale-progressive-annex" }}
+                className="inline-flex items-center gap-2 font-bold text-primary"
               >
-                <img
-                  src={hillsideCampus}
-                  width={1024}
-                  height={768}
-                  loading="lazy"
-                  alt="Mbale Progressive Annex boarding campus setting"
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent" />
-                <p className="absolute bottom-4 left-4 text-sm font-semibold text-white">
-                  Mbale Progressive Annex · Boarding
-                </p>
+                View Annex details <ArrowRight size={16} />
               </Link>
+            </div>
+            <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {campusPhotoGroups.annex.map(({ src, caption, alt }) => (
+                <Link
+                  key={caption}
+                  to="/campuses/$campus"
+                  params={{ campus: "mbale-progressive-annex" }}
+                  className="group relative min-h-64 overflow-hidden bg-primary"
+                >
+                  <img
+                    src={src}
+                    loading="lazy"
+                    alt={alt}
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/10 to-transparent" />
+                  <p className="absolute bottom-4 left-4 text-sm font-semibold text-white">
+                    {caption}
+                  </p>
+                </Link>
+              ))}
             </div>
           </div>
         </div>
@@ -579,8 +656,8 @@ function Index() {
                 Where are the campuses?
               </summary>
               <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">
-                The Day Campus is on Nyanza Road near Namatala. Mbale Progressive Annex is the
-                boarding campus.
+                The Day Campus is on Plot 8–15 Nabuyonga Rise, Mbale City. Mbale Progressive Annex,
+                the boarding campus, is on Nyanza Road in Industrial City Division, Mbale City.
               </p>
             </details>
             <details className="group py-5">

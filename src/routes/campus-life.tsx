@@ -10,6 +10,14 @@ import {
   Trophy,
   UsersRound,
 } from "lucide-react";
+import sendOff from "@/assets/boys-team-with-the-deputor-madam-alice-and-games-teacher-before-send-off-for-nationals-2024.webp";
+import arriving from "@/assets/team-ariving-for-the-finals.webp";
+import outreachNorthRoad from "@/assets/outreach-north-road-primary.webp";
+import karamojaSelfie from "@/assets/karamoja-association-selfie.webp";
+import colourStudent from "@/assets/colour-festival-student.webp";
+import colourCrowd from "@/assets/colour-festival-crowd.webp";
+import colourGathering from "@/assets/colour-festival-gathering.webp";
+import colourPerformer from "@/assets/colour-festival-performer.webp";
 import { PageIntro } from "@/components/school-layout";
 import { schoolHead } from "@/lib/school";
 
@@ -114,8 +122,15 @@ function CampusLife() {
               const ThreadIcon = Icon as typeof House;
               return (
                 <article key={title as string} className="bg-background p-6">
-                  <ThreadIcon className="text-primary" size={25} />
-                  <h3 className="mt-5 text-xl">{title as string}</h3>
+                  <div className="flex items-start gap-3">
+                    <ThreadIcon
+                      className="mt-0.5 shrink-0 text-primary"
+                      size={20}
+                      strokeWidth={1.6}
+                      aria-hidden="true"
+                    />
+                    <h3 className="text-xl">{title as string}</h3>
+                  </div>
                   <p className="mt-2 text-sm leading-6 text-muted-foreground">{text as string}</p>
                 </article>
               );
@@ -136,15 +151,29 @@ function CampusLife() {
             </p>
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               <div className="rounded-sm border border-border p-5">
-                <House className="text-primary" size={22} />
-                <h3 className="mt-4 text-xl">House community</h3>
+                <div className="flex items-center gap-3">
+                  <House
+                    className="shrink-0 text-primary"
+                    size={20}
+                    strokeWidth={1.6}
+                    aria-hidden="true"
+                  />
+                  <h3 className="text-xl">House community</h3>
+                </div>
                 <p className="mt-2 text-sm leading-6 text-muted-foreground">
                   Students build friendships and learn to care for shared spaces and one another.
                 </p>
               </div>
               <div className="rounded-sm border border-border p-5">
-                <BellRing className="text-primary" size={22} />
-                <h3 className="mt-4 text-xl">Supervised routines</h3>
+                <div className="flex items-center gap-3">
+                  <BellRing
+                    className="shrink-0 text-primary"
+                    size={20}
+                    strokeWidth={1.6}
+                    aria-hidden="true"
+                  />
+                  <h3 className="text-xl">Supervised routines</h3>
+                </div>
                 <p className="mt-2 text-sm leading-6 text-muted-foreground">
                   Study, meals, activities, rest, and movement are supported by clear routines.
                 </p>
@@ -152,9 +181,11 @@ function CampusLife() {
             </div>
           </div>
           <div className="rounded-sm bg-primary p-7 text-primary-foreground md:p-9">
-            <HeartPulse size={30} />
-            <p className="eyebrow mt-6 text-secondary">BOARDING ONLY</p>
-            <h2 className="mt-3 text-3xl">Health services</h2>
+            <p className="eyebrow text-secondary">BOARDING ONLY</p>
+            <div className="mt-3 flex items-center gap-3">
+              <HeartPulse size={24} strokeWidth={1.6} aria-hidden="true" />
+              <h2 className="text-3xl">Health services</h2>
+            </div>
             <p className="mt-5 leading-7 text-primary-foreground/80">
               Boarding students have access to health support for everyday wellbeing and illness
               management, with referral arrangements for care beyond the school setting.
@@ -164,6 +195,145 @@ function CampusLife() {
               partners, families should confirm the latest guidance with the Boarding office.
             </p>
           </div>
+        </div>
+      </section>
+      <section className="site-width py-14 md:py-20" aria-labelledby="moments-heading">
+        <p className="eyebrow text-primary">MOMENTS TOGETHER</p>
+        <h2 id="moments-heading" className="mt-2 text-3xl md:text-4xl">
+          Cheering our teams on.
+        </h2>
+        <div className="mt-8 grid gap-6 md:grid-cols-2">
+          {[
+            [
+              sendOff,
+              "The boys' team with Deputy Madam Alice and the Games Teacher before the send-off for Nationals 2024.",
+            ],
+            [arriving, "The team arriving for the finals."],
+          ].map(([src, caption]) => (
+            <figure key={caption}>
+              <img
+                className="w-full border border-border"
+                src={src}
+                alt={caption}
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption className="pt-3 text-sm text-muted-foreground">{caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
+      <section
+        className="border-t border-border py-14 md:py-20"
+        aria-labelledby="colour-festival-heading"
+      >
+        <div className="site-width">
+          <p className="eyebrow text-primary">COLOUR FESTIVAL</p>
+          <h2 id="colour-festival-heading" className="mt-2 text-3xl md:text-4xl">
+            Students having fun during the Colour Festival.
+          </h2>
+          <p className="mt-4 max-w-2xl leading-7 text-muted-foreground">
+            The Colour Festival is one of the liveliest days on the school calendar. Coloured
+            powder, music, and a full schoolyard give learners a chance to relax, celebrate, and be
+            together outside the classroom.
+          </p>
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              [
+                colourStudent,
+                "A student poses during the Colour Festival, with the school building behind the crowd.",
+              ],
+              [colourCrowd, "Students packed the schoolyard for the Colour Festival."],
+              [
+                colourGathering,
+                "Students gathered on the field for the Colour Festival programme.",
+              ],
+              [
+                colourPerformer,
+                "A performer on stage kept the crowd moving during the Colour Festival.",
+              ],
+            ].map(([src, caption]) => (
+              <figure key={caption}>
+                <img
+                  className="w-full border border-border"
+                  src={src}
+                  alt={caption}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption className="pt-3 text-sm leading-6 text-muted-foreground">
+                  {caption}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section
+        className="border-t border-border py-14 md:py-20"
+        aria-labelledby="diversity-heading"
+      >
+        <div className="site-width grid gap-8 lg:grid-cols-[1fr_0.8fr] lg:items-center">
+          <div>
+            <p className="eyebrow text-primary">CULTURAL ASSOCIATIONS</p>
+            <h2 id="diversity-heading" className="mt-2 text-3xl md:text-4xl">
+              United in diversity.
+            </h2>
+            <p className="mt-4 max-w-2xl leading-7 text-muted-foreground">
+              Cultural associations give learners a home for their heritage and a chance to share it
+              with the whole school. The Karamoja Association is one of them, and its members
+              gathered for a selfie during one of the school's cultural events and galas.
+            </p>
+            <p className="mt-4 max-w-2xl leading-7 text-muted-foreground">
+              Traditional dance, music, and dress keep cultural expression visible at school and
+              community events, and every learner is welcome to take part.
+            </p>
+          </div>
+          <figure className="mx-auto w-full max-w-sm">
+            <img
+              className="w-full border border-border"
+              src={karamojaSelfie}
+              alt="Members of the Karamoja Association taking a selfie together during a school cultural event"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption className="pt-3 text-sm leading-6 text-muted-foreground">
+              A selfie with the members of the Karamoja Association during one of the cultural
+              events and galas.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section
+        className="border-t border-border bg-muted py-14 md:py-20"
+        aria-labelledby="outreach-heading"
+      >
+        <div className="site-width">
+          <p className="eyebrow text-primary">COMMUNITY OUTREACH</p>
+          <h2 id="outreach-heading" className="mt-2 text-3xl md:text-4xl">
+            Learning put to work in the community.
+          </h2>
+          <p className="mt-4 max-w-2xl leading-7 text-muted-foreground">
+            Learners take what they study beyond the school gate. Outreach visits combine guidance
+            and counselling, tree planting, and Music, Dance and Drama (MDD) with the schools and
+            communities we work with.
+          </p>
+          <figure className="mt-8">
+            <img
+              className="w-full border border-border"
+              src={outreachNorthRoad}
+              alt="Mbale Progressive Secondary School students carrying out an outreach at North Road Primary School"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption className="pt-3 text-sm leading-6 text-muted-foreground">
+              Students carrying out an outreach at North Road Primary School, which involved
+              guidance and counselling, tree planting, and MDD.
+            </figcaption>
+          </figure>
         </div>
       </section>
     </>

@@ -50,6 +50,7 @@ function Portal() {
       window.addEventListener("notification-log-updated", refresh);
       return () => window.removeEventListener("notification-log-updated", refresh);
     }
+    return undefined;
   }, [user?.role]);
 
   useEffect(() => {
@@ -162,11 +163,11 @@ function StudentPortal({
     <div className="mt-8 space-y-8">
       <div className="grid gap-5 md:grid-cols-3">
         <PortalCard
-          icon={Gauge}
-          title="My performance"
-          text="Review attainment trends and subject progress."
-          href="/performance"
-          enabled={hasPermission("view:own-performance")}
+          icon={BookOpenCheck}
+          title="e-Library"
+          text="Browse class shelves and subject learning materials."
+          href="/e-library"
+          enabled={true}
         />
         <PortalCard
           icon={CreditCard}
@@ -232,10 +233,10 @@ function TeacherPortal({
       <div className="grid gap-5 md:grid-cols-3">
         <PortalCard
           icon={BookOpenCheck}
-          title="Class performance"
-          text="Use the analytics dashboard to spot progress and support needs."
-          href="/performance"
-          enabled={hasPermission("view:performance")}
+          title="Academic programmes"
+          text="Review O-Level, A-Level, and practical skills programmes."
+          href="/academics"
+          enabled={true}
         />
         <PortalCard
           icon={UsersRound}
@@ -435,8 +436,15 @@ function PortalCard({
     <article
       className={`rounded-sm border border-border p-6 ${enabled ? "bg-background" : "bg-muted/60"}`}
     >
-      <Icon className="text-primary" size={23} />
-      <h3 className="mt-5 text-xl">{title}</h3>
+      <div className="flex items-start gap-3">
+        <Icon
+          className="mt-0.5 shrink-0 text-primary"
+          size={20}
+          strokeWidth={1.6}
+          aria-hidden="true"
+        />
+        <h3 className="text-xl">{title}</h3>
+      </div>
       <p className="mt-2 text-sm leading-6 text-muted-foreground">{text}</p>
       {href && enabled ? (
         <Button asChild variant="outline" className="mt-6">

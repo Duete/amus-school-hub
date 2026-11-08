@@ -14,6 +14,7 @@ const navigation = [
     children: [
       { name: "Campus life", to: "/campus-life" },
       { name: "Our campuses", to: "/campuses" },
+      { name: "Gallery", to: "/gallery" },
       { name: "Co-Curricular", to: "/sports" },
     ],
   },
@@ -22,7 +23,6 @@ const navigation = [
     name: "Academics",
     children: [
       { name: "Academics", to: "/academics" },
-      { name: "Performance", to: "/performance" },
       { name: "e-Library", to: "/e-library" },
       { name: "Teaching Staff", to: "/faculty" },
     ],
@@ -63,7 +63,7 @@ function SchoolHighlightsMarquee() {
   const items = [...schoolHighlights, ...schoolHighlights];
   return (
     <aside
-      className="sticky top-0 z-40 overflow-hidden border-b border-primary-foreground/15 bg-primary text-primary-foreground"
+      className="overflow-hidden border-b border-primary-foreground/15 bg-primary text-primary-foreground"
       aria-label="School information"
     >
       <div className="marquee-track flex min-w-max gap-10 whitespace-nowrap py-2 text-xs">
@@ -102,6 +102,7 @@ export function SchoolHeader() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const location = useLocation();
   const { user, signOut } = useAuth();
+  const showHighlights = location.pathname === "/" || location.pathname === "/about";
   useEffect(() => {
     setOpen(false);
     setActiveMenu(null);
@@ -110,7 +111,7 @@ export function SchoolHeader() {
     location.pathname === to || location.pathname.startsWith(`${to}/`);
   return (
     <>
-      <SchoolHighlightsMarquee />
+      {showHighlights && <SchoolHighlightsMarquee />}
       <div className="bg-primary text-primary-foreground">
         <div className="site-width flex min-h-9 items-center justify-between gap-3 text-xs">
           <span>Mixed day and boarding secondary education in Mbale City.</span>
@@ -119,7 +120,7 @@ export function SchoolHeader() {
           </Link>
         </div>
       </div>
-      <header className="border-b border-border bg-background">
+      <header className="sticky top-0 z-40 border-b border-border bg-background shadow-sm">
         <div className="site-width flex h-24 items-center justify-between gap-6">
           <Link
             to="/"
@@ -324,13 +325,13 @@ export function SchoolFooter() {
             className="flex max-w-xl flex-wrap gap-x-6 gap-y-3 text-sm"
           >
             <Link to="/campuses">Our campuses</Link>
+            <Link to="/gallery">Gallery</Link>
             <Link to="/campus-life">Campus life</Link>
             <Link to="/governance">Governance</Link>
             <Link to="/alumni">Alumni</Link>
             <Link to="/academics">Academics</Link>
             <Link to="/e-library">e-Library</Link>
             <Link to="/faculty">Teaching Staff</Link>
-            <Link to="/performance">Performance</Link>
             <Link to="/finance">Fees & clearance</Link>
             <Link to="/sports">Co-Curricular</Link>
             <Link to="/admissions">Admissions</Link>
@@ -342,7 +343,7 @@ export function SchoolFooter() {
         <div className="mt-9 flex flex-wrap justify-between gap-3 border-t border-primary-foreground/20 pt-5 text-xs text-primary-foreground/60">
           <span>© {new Date().getFullYear()} Mbale Progressive Secondary School</span>
           <span>Designed and developed by BlackRock Technologies · +256785691259</span>
-          <span>Campus images are representative.</span>
+          <span>Photos feature Mbale Progressive Secondary School.</span>
         </div>
       </div>
     </footer>

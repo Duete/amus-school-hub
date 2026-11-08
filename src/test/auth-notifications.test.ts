@@ -6,7 +6,8 @@ describe("role-based access", () => {
   it("keeps permissions scoped by role", () => {
     expect(rolePermissions.student).toContain("view:own-finance");
     expect(rolePermissions.student).not.toContain("manage:users");
-    expect(rolePermissions.teacher).toContain("view:performance");
+    expect(rolePermissions.student).not.toContain("view:own-performance");
+    expect(rolePermissions.teacher).not.toContain("view:performance");
     expect(rolePermissions.teacher).toContain("view:admissions-records");
     expect(rolePermissions.teacher).toContain("view:fee-records");
     expect(rolePermissions.administrator).toContain("manage:notifications");
