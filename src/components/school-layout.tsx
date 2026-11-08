@@ -1,6 +1,6 @@
 import { Link, useLocation } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ArrowRight, BookOpen, ChevronDown, LogIn, Menu, UserCircle, X } from "lucide-react";
+import { ArrowRight, ChevronDown, LogIn, Menu, UserCircle, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/lib/auth";
 
@@ -127,9 +127,14 @@ export function SchoolHeader() {
             className="flex shrink-0 items-center gap-3"
             aria-label="Mbale Progressive Secondary School home"
           >
-            <span className="flex h-12 w-11 items-center justify-center rounded-b-xl border-2 border-primary text-primary">
-              <BookOpen size={25} strokeWidth={1.5} />
-            </span>
+            <img
+              src="/assets/mbale-progressive-crest.webp"
+              alt=""
+              width="56"
+              height="56"
+              className="h-14 w-14 shrink-0 object-contain"
+              aria-hidden="true"
+            />
             <span>
               <span className="block font-display text-lg font-semibold text-primary sm:text-xl">
                 MBALE PROGRESSIVE
