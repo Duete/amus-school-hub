@@ -17,6 +17,18 @@ import { campuses, schoolHead } from "@/lib/school";
 import { campusImages, campusPhotoGroups } from "@/lib/campus-photos";
 import headteacherPhoto from "@/assets/admin-ocukul-julius-web.jpg";
 
+const annexHeroSlides = campusPhotoGroups.annex.map(({ src, caption, alt }) => ({
+  image: src,
+  eyebrow: "BOARDING CAMPUS · MBALE PROGRESSIVE ANNEX",
+  title: caption,
+  subheading: "Mbale Progressive Annex · Boarding Campus.",
+  text: alt,
+  primary: "View the photo gallery",
+  to: "/gallery" as const,
+  secondary: "Explore the campuses",
+  secondaryTo: "/campuses" as const,
+}));
+
 const heroSlides = [
   {
     image: campusImages.dayCampusDriveway,
@@ -29,28 +41,7 @@ const heroSlides = [
     secondary: "Contact the school",
     secondaryTo: "/contact" as const,
   },
-  {
-    image: campusImages.annexLaboratoryScienceBlock,
-    eyebrow: "LABORATORY AND SCIENCE · ANNEX",
-    title: "Spaces for practical learning.",
-    subheading: "Laboratory and Science Block.",
-    text: "Mbale Progressive Annex provides dedicated space for practical science learning.",
-    primary: "Explore the campuses",
-    to: "/campuses" as const,
-    secondary: "Ask about admission",
-    secondaryTo: "/admissions" as const,
-  },
-  {
-    image: campusImages.annexSickBayLibrary,
-    eyebrow: "SICK BAY AND LIBRARY · ANNEX",
-    title: "A block for learning and wellbeing.",
-    subheading: "Sick Bay and Library Block at Mbale Progressive Annex.",
-    text: "The block houses the school’s sick bay and library on the boarding campus.",
-    primary: "Explore the campuses",
-    to: "/campuses" as const,
-    secondary: "Ask about admission",
-    secondaryTo: "/admissions" as const,
-  },
+  ...annexHeroSlides,
   {
     image: campusImages.dayCampusDriveway,
     eyebrow: "DAY CAMPUS · VISITS",
@@ -217,10 +208,10 @@ function Index() {
               </button>
               {heroSlides.map((slide, index) => (
                 <button
-                  key={slide.eyebrow}
+                  key={slide.image}
                   type="button"
                   onClick={() => selectSlide(index)}
-                  aria-label={`Show highlight ${index + 1}: ${slide.eyebrow}`}
+                  aria-label={`Show highlight ${index + 1}: ${slide.title}`}
                   aria-pressed={activeIndex === index}
                   className={`h-2.5 rounded-full transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary ${activeIndex === index ? "w-8 bg-secondary" : "w-2.5 bg-white/60 hover:bg-white"}`}
                 />
