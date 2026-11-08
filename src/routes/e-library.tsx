@@ -9,7 +9,6 @@ import {
   Layers3,
 } from "lucide-react";
 import { createFileRoute } from "@tanstack/react-router";
-import { PageIntro } from "@/components/school-layout";
 import { schoolHead } from "@/lib/school";
 import { aLevelClassResources, type LearningResource } from "@/lib/learning-resources";
 
@@ -176,24 +175,24 @@ function SubjectShelf({ subject, resources }: { subject: string; resources?: Lea
   );
 }
 
-function ClassCard({ shelf }: { shelf: ClassShelf }) {
+function ClassCard({ shelf, index }: { shelf: ClassShelf; index: number }) {
+  const subjectCount = shelf.groups.reduce((count, group) => count + group.subjects.length, 0);
+
   return (
-    <details className="group border border-border bg-background">
-      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary [&::-webkit-details-marker]:hidden">
+    <details className="group border-t-4 border-primary bg-background shadow-sm transition-shadow hover:shadow-md">
+      <summary className="flex cursor-pointer list-none items-start justify-between gap-4 p-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary [&::-webkit-details-marker]:hidden">
         <div className="flex min-w-0 items-start gap-3">
-          <Layers3
-            className="mt-1 shrink-0 text-primary"
-            size={20}
-            strokeWidth={1.6}
-            aria-hidden="true"
-          />
+          <div className="flex size-10 shrink-0 items-center justify-center bg-primary text-sm font-bold text-primary-foreground">
+            {String(index + 1).padStart(2, "0")}
+          </div>
           <div className="min-w-0">
-            <p className="eyebrow text-primary">CLASS SHELF</p>
+            <p className="eyebrow text-primary">CLASS SHELF · {subjectCount} SUBJECT AREAS</p>
             <h3 className="mt-2 text-3xl">{shelf.name}</h3>
             <p className="mt-3 text-sm leading-6 text-muted-foreground">{shelf.description}</p>
           </div>
         </div>
         <div className="flex shrink-0 items-center gap-3 text-primary">
+          <Layers3 size={20} strokeWidth={1.6} aria-hidden="true" />
           <ChevronDown
             className="transition-transform group-open:rotate-180"
             size={18}
@@ -260,8 +259,8 @@ function LevelSection({
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
-            {classes.map((shelf) => (
-              <ClassCard key={shelf.name} shelf={shelf} />
+            {classes.map((shelf, index) => (
+              <ClassCard key={shelf.name} shelf={shelf} index={index} />
             ))}
           </div>
         </div>
@@ -273,15 +272,25 @@ function LevelSection({
 function ELibrary() {
   return (
     <>
-      <PageIntro eyebrow="E-LIBRARY" title="A subject shelf for every class.">
-        Browse learning materials by pathway, class, and subject. The e-Library gives learners a
-        clear route from their class shelf to the topics they are studying.
-      </PageIntro>
+      <section
+        className="bg-primary py-10 text-primary-foreground md:py-14"
+        aria-labelledby="e-library-heading"
+      >
+        <div className="site-width">
+          <p className="eyebrow text-secondary">E-LIBRARY</p>
+          <h1 id="e-library-heading" className="mt-3 max-w-2xl text-4xl leading-tight md:text-5xl">
+            A subject shelf for every class.
+          </h1>
+          <p className="mt-4 max-w-xl text-sm leading-7 text-primary-foreground/80 md:text-base">
+            Browse class shelves, learning resources, and simulations in one clear route.
+          </p>
+        </div>
+      </section>
 
       <section className="site-width py-12 md:py-16" aria-label="e-Library overview">
         <div className="grid gap-6 md:grid-cols-3">
           <div className="border-l-2 border-secondary pl-4">
-            <p className="font-display text-3xl text-primary">2</p>
+            <p className="font-display text-3xl text-primary">3</p>
             <p className="mt-1 text-sm text-muted-foreground">learning pathways</p>
           </div>
           <div className="border-l-2 border-secondary pl-4">
