@@ -112,7 +112,7 @@ function answerFor(message: string, pathname: string) {
     query.includes("faith") ||
     query.includes("religion")
   ) {
-    return "The houses are Galiwango, Mukongoni, Nantume, and Kaggwa. Clubs include Red Cross, Writers’ Club, Science Club, Interact Club, and Debate Society. Faith associations are the Muslim Students Association, Young Catholics Association, and Scripture Union.";
+    return "The houses are Galiwango, Mukongoni, Nantume, and Kaggwa. Their colours are Galiwango yellow, Nantume coffee brown, Kaggwa blue, and Mukongoni green. Clubs include Red Cross, Writers’ Club, Science Club, Interact Club, and Debate Society. Faith associations are the Muslim Students Association, Young Catholics Association, and Scripture Union.";
   }
   if (
     query.includes("leader") ||

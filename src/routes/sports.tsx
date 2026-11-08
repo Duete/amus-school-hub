@@ -89,8 +89,8 @@ const clubs = [
   },
   {
     title: "Houses",
-    text: "Galiwango, Mukongoni, Nantume, and Kaggwa bring learners together for healthy competition and belonging.",
-    meta: "Galiwango · Mukongoni · Nantume · Kaggwa",
+    text: "Galiwango, Mukongoni, Nantume, and Kaggwa bring learners together for healthy competition and belonging. Their house colours are Galiwango yellow, Nantume coffee brown, Kaggwa blue, and Mukongoni green.",
+    meta: "Galiwango · Yellow | Nantume · Coffee brown | Kaggwa · Blue | Mukongoni · Green",
   },
 ];
 
