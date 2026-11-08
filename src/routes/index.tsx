@@ -14,11 +14,25 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { campuses, schoolHead } from "@/lib/school";
-import { campusImages, campusPhotoGroups } from "@/lib/campus-photos";
+import { annexBuildingPhotos, campusImages, campusPhotoGroups } from "@/lib/campus-photos";
 import headteacherPhoto from "@/assets/admin-ocukul-julius-web.jpg";
+
+const annexBuildingSlides = annexBuildingPhotos.map(({ src, caption, alt }) => ({
+  id: `annex-${caption}`,
+  image: src,
+  eyebrow: "BOARDING CAMPUS · MBALE PROGRESSIVE ANNEX",
+  title: caption,
+  subheading: "Nyanza Road, Industrial City Division, Mbale City.",
+  text: alt,
+  primary: "View the photo gallery",
+  to: "/gallery" as const,
+  secondary: "Explore the campuses",
+  secondaryTo: "/campuses" as const,
+}));
 
 const heroSlides = [
   {
+    id: "day-campus-welcome",
     image: campusImages.dayCampusDriveway,
     eyebrow: "DAY CAMPUS · MBALE CITY",
     title: "Welcome to Mbale Progressive.",
@@ -29,29 +43,9 @@ const heroSlides = [
     secondary: "Contact the school",
     secondaryTo: "/contact" as const,
   },
+  ...annexBuildingSlides,
   {
-    image: campusImages.annexLaboratoryScienceBlock,
-    eyebrow: "LABORATORY AND SCIENCE · ANNEX",
-    title: "Spaces for practical learning.",
-    subheading: "Laboratory and Science Block.",
-    text: "Mbale Progressive Annex provides dedicated space for practical science learning.",
-    primary: "Explore the campuses",
-    to: "/campuses" as const,
-    secondary: "Ask about admission",
-    secondaryTo: "/admissions" as const,
-  },
-  {
-    image: campusImages.annexSickBayLibrary,
-    eyebrow: "SICK BAY AND LIBRARY · ANNEX",
-    title: "A block for learning and wellbeing.",
-    subheading: "Sick Bay and Library Block at Mbale Progressive Annex.",
-    text: "The block houses the school’s sick bay and library on the boarding campus.",
-    primary: "Explore the campuses",
-    to: "/campuses" as const,
-    secondary: "Ask about admission",
-    secondaryTo: "/admissions" as const,
-  },
-  {
+    id: "day-campus-visits",
     image: campusImages.dayCampusDriveway,
     eyebrow: "DAY CAMPUS · VISITS",
     title: "Come and see for yourself.",
@@ -122,7 +116,7 @@ export const Route = createFileRoute("/")({
               name: "Where are the school campuses?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "The Day Campus is on Plot 8–15 Nabuyonga Rise, Northern City Division, Mbale City. Mbale Progressive Annex is the school’s boarding campus.",
+                text: "The Day Campus is on Plot 8–15 Nabuyonga Rise, Northern City Division, Mbale City. Mbale Progressive Annex, the boarding campus, is located on Nyanza Road in Industrial City Division, Mbale City.",
               },
             },
             {
@@ -217,10 +211,10 @@ function Index() {
               </button>
               {heroSlides.map((slide, index) => (
                 <button
-                  key={slide.eyebrow}
+                  key={slide.id}
                   type="button"
                   onClick={() => selectSlide(index)}
-                  aria-label={`Show highlight ${index + 1}: ${slide.eyebrow}`}
+                  aria-label={`Show highlight ${index + 1}: ${slide.title}`}
                   aria-pressed={activeIndex === index}
                   className={`h-2.5 rounded-full transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary ${activeIndex === index ? "w-8 bg-secondary" : "w-2.5 bg-white/60 hover:bg-white"}`}
                 />
@@ -336,7 +330,8 @@ function Index() {
             </div>
             <p className="max-w-lg border-l-2 border-secondary pl-5 text-base leading-7 text-muted-foreground">
               The Day Campus sits on Plot 8–15 Nabuyonga Rise, Mbale City. Mbale Progressive Annex
-              provides the boarding option. Both lead into the same academic programme.
+              is on Nyanza Road in Industrial City Division, Mbale City. Both lead into the same
+              academic programme.
             </p>
           </div>
           <div className="mt-12 grid gap-8 md:grid-cols-2 md:gap-5 lg:gap-8">
@@ -661,8 +656,8 @@ function Index() {
                 Where are the campuses?
               </summary>
               <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">
-                The Day Campus is on Plot 8–15 Nabuyonga Rise, Mbale City. Mbale Progressive Annex
-                is the boarding campus.
+                The Day Campus is on Plot 8–15 Nabuyonga Rise, Mbale City. Mbale Progressive Annex,
+                the boarding campus, is on Nyanza Road in Industrial City Division, Mbale City.
               </p>
             </details>
             <details className="group py-5">

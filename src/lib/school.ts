@@ -13,10 +13,11 @@ export const campuses = [
   {
     slug: "mbale-progressive-annex",
     name: "Mbale Progressive Annex",
-    setting: "Boarding campus.",
+    setting: "Nyanza Road, Industrial City Division, Mbale City.",
     image: campusImages.annexFrontage,
-    description: "Mbale Progressive Annex is the school’s boarding campus.",
-    features: ["Boarding campus", "Mbale Progressive Annex"],
+    description:
+      "Mbale Progressive Annex, the school’s boarding campus, is located on Nyanza Road in Industrial City Division, Mbale City.",
+    features: ["Boarding campus", "Nyanza Road", "Industrial City Division, Mbale City"],
   },
 ];
 
