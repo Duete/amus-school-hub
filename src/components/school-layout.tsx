@@ -14,6 +14,7 @@ const navigation = [
     children: [
       { name: "Campus life", to: "/campus-life" },
       { name: "Our campuses", to: "/campuses" },
+      { name: "Gallery", to: "/gallery" },
       { name: "Co-Curricular", to: "/sports" },
     ],
   },
@@ -323,6 +324,7 @@ export function SchoolFooter() {
             className="flex max-w-xl flex-wrap gap-x-6 gap-y-3 text-sm"
           >
             <Link to="/campuses">Our campuses</Link>
+            <Link to="/gallery">Gallery</Link>
             <Link to="/campus-life">Campus life</Link>
             <Link to="/governance">Governance</Link>
             <Link to="/alumni">Alumni</Link>
