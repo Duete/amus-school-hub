@@ -14,12 +14,21 @@ describe("e-Library Chemistry resources", () => {
 
   it("serves the local Chemistry compendium as a static HTML resource", () => {
     const filePath = resolve(process.cwd(), "public", chemistryCompendiumHref.slice(1));
+    const pdfPath = resolve(
+      process.cwd(),
+      "public",
+      "learning-materials/chemistry-examination-compendium.pdf",
+    );
     expect(existsSync(filePath)).toBe(true);
+    expect(existsSync(pdfPath)).toBe(true);
 
     const html = readFileSync(filePath, "utf8");
     expect(html).toContain("<title>Chemistry Examination Compendium");
     expect(html).toContain('<div class="watermark-layer" aria-hidden="true">');
-    expect(html.match(/<span>0706575374<\/span>/g) ?? []).toHaveLength(50);
+    expect(html.match(/<span>0706575374<\/span>/g) ?? []).toHaveLength(1);
+    expect(html).toContain('href="/learning-materials/chemistry-examination-compendium.pdf" download');
+    expect(html).toContain('href="#section-1-item-1"');
+    expect(html).toContain('id="section-1-item-1"');
     expect(html).toContain("pointer-events: none;");
     expect(html).not.toMatch(/<script\b/i);
   });

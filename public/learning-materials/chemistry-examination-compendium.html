@@ -481,92 +481,72 @@
             }
         }
 
-/* Repeating, low-contrast school contact watermark. */
+/* One subtle school contact watermark per page. */
 .watermark-layer {
   position: fixed;
-  inset: -42%;
-  z-index: 99999;
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  grid-template-rows: repeat(10, minmax(0, 1fr));
+  inset: 0;
+  z-index: 1;
+  display: flex;
   align-items: center;
-  justify-items: center;
+  justify-content: center;
   transform: rotate(-28deg);
   pointer-events: none;
   user-select: none;
-  color: rgba(26, 42, 108, 0.13);
+  color: rgba(26, 42, 108, 0.075);
   font-family: Arial, sans-serif;
-  font-size: clamp(14px, 2vw, 24px);
+  font-size: clamp(12px, 1.35vw, 17px);
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   line-height: 1;
   white-space: nowrap;
 }
 .watermark-layer span {
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.28);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.2);
+}
+.document-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 22px;
+  position: relative;
+}
+.document-actions a {
+  display: inline-block;
+  padding: 9px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 4px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.85em;
+  letter-spacing: 0.04em;
+}
+.document-actions a:hover,
+.document-actions a:focus-visible {
+  background: rgba(255, 255, 255, 0.14);
+}
+.toc-section a {
+  color: inherit;
+  text-decoration: none;
+}
+.toc-section a:hover,
+.toc-section a:focus-visible {
+  color: #1a2a6c;
+  text-decoration: underline;
 }
 @media print {
   .watermark-layer {
-    color: rgba(26, 42, 108, 0.13) !important;
+    color: rgba(26, 42, 108, 0.075) !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
+  }
+  .document-actions {
+    display: none;
   }
 }
     </style>
 </head>
 <body>
-<div class="watermark-layer" aria-hidden="true">
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-<span>0706575374</span>
-</div>
+<div class="watermark-layer" aria-hidden="true"><span>0706575374</span></div>
 
 
 <div class="textbook">
@@ -577,6 +557,9 @@
         <div class="divider"></div>
         <div class="subtitle">Mbale Progressive Secondary — A Level Chemistry Seminar</div>
         <div class="edition">1st November, 2026 &bull; Section A &amp; Section B Items</div>
+        <div class="document-actions">
+            <a href="/learning-materials/chemistry-examination-compendium.pdf" download>Download PDF</a>
+        </div>
     </div>
 
     <!-- ==================== TABLE OF CONTENTS ==================== -->
@@ -584,47 +567,47 @@
         <h2>Table of Contents</h2>
         <div class="toc-grid">
             <div class="toc-section">
-                <h3>Section A (Number 1)</h3>
+                <h3><a href="#section-1">Section A (Number 1)</a></h3>
                 <ul>
-                    <li>Item 1: Copper Processing — Electrochemistry &amp; Thermochemistry</li>
-                    <li>Item 2: Thermochemistry — Battery Systems &amp; Heat Generation</li>
-                    <li>Item 3: Kinetics &amp; Thermochemistry — Hydrogen Fuel Production</li>
-                    <li>Item 4: Electrochemistry — Battery Systems &amp; Zinc Electrode Efficiency</li>
-                    <li>Item 5: Equilibria &amp; Kinetics — Ammonia Production (Haber Process)</li>
+                    <li><a href="#section-1-item-1">Item 1: Copper Processing — Electrochemistry &amp; Thermochemistry</a></li>
+                    <li><a href="#section-1-item-2">Item 2: Thermochemistry — Battery Systems &amp; Heat Generation</a></li>
+                    <li><a href="#section-1-item-3">Item 3: Kinetics &amp; Thermochemistry — Hydrogen Fuel Production</a></li>
+                    <li><a href="#section-1-item-4">Item 4: Electrochemistry — Battery Systems &amp; Zinc Electrode Efficiency</a></li>
+                    <li><a href="#section-1-item-5">Item 5: Equilibria &amp; Kinetics — Ammonia Production (Haber Process)</a></li>
                 </ul>
             </div>
             <div class="toc-section">
-                <h3>Section A (Number 2)</h3>
+                <h3><a href="#section-2">Section A (Number 2)</a></h3>
                 <ul>
-                    <li>Item 1: Organic Acid Identity &amp; Buffer Formulation</li>
-                    <li>Item 2: Buffer Formulations &amp; Solubility Equilibria</li>
-                    <li>Item 3: Solubility Equilibria &amp; Solvent Extraction</li>
-                    <li>Item 4: Steam Distillation &amp; Molar Mass Determination</li>
+                    <li><a href="#section-2-item-1">Item 1: Organic Acid Identity &amp; Buffer Formulation</a></li>
+                    <li><a href="#section-2-item-2">Item 2: Buffer Formulations &amp; Solubility Equilibria</a></li>
+                    <li><a href="#section-2-item-3">Item 3: Solubility Equilibria &amp; Solvent Extraction</a></li>
+                    <li><a href="#section-2-item-4">Item 4: Steam Distillation &amp; Molar Mass Determination</a></li>
                 </ul>
             </div>
             <div class="toc-section">
-                <h3>Section B (Number 3 or 4)</h3>
+                <h3><a href="#section-3">Section B (Number 3 or 4)</a></h3>
                 <ul>
-                    <li>Item 1: Graphite, Silicon Dioxide &amp; Sodium Oxide</li>
-                    <li>Item 2: Aluminium Oxide, Chlorine &amp; Carbon Dioxide</li>
-                    <li>Item 3: Halogens &amp; Group II Carbonates</li>
-                    <li>Item 4: Group II Oxides &amp; Hydrogen Halides</li>
-                    <li>Item 5: Period 3 Elements — Properties &amp; Applications</li>
-                    <li>Item 6: Chlorine-Containing Compounds in Water Treatment</li>
-                    <li>Item 7: Period 3 Oxides — Industrial &amp; Environmental Implications</li>
-                    <li>Item 8: Elements in Everyday Life — Magnesium, Aluminium, Silicon, Phosphorus, Chlorine</li>
+                    <li><a href="#section-3-item-1">Item 1: Graphite, Silicon Dioxide &amp; Sodium Oxide</a></li>
+                    <li><a href="#section-3-item-2">Item 2: Aluminium Oxide, Chlorine &amp; Carbon Dioxide</a></li>
+                    <li><a href="#section-3-item-3">Item 3: Halogens &amp; Group II Carbonates</a></li>
+                    <li><a href="#section-3-item-4">Item 4: Group II Oxides &amp; Hydrogen Halides</a></li>
+                    <li><a href="#section-3-item-5">Item 5: Period 3 Elements — Properties &amp; Applications</a></li>
+                    <li><a href="#section-3-item-6">Item 6: Chlorine-Containing Compounds in Water Treatment</a></li>
+                    <li><a href="#section-3-item-7">Item 7: Period 3 Oxides — Industrial &amp; Environmental Implications</a></li>
+                    <li><a href="#section-3-item-8">Item 8: Elements in Everyday Life — Magnesium, Aluminium, Silicon, Phosphorus, Chlorine</a></li>
                 </ul>
             </div>
             <div class="toc-section">
-                <h3>Section B (Number 5 or 6)</h3>
+                <h3><a href="#section-4">Section B (Number 5 or 6)</a></h3>
                 <ul>
-                    <li>Item 1: Ethanol, Ethene, Benzene &amp; Benzoic Acid Conversions</li>
-                    <li>Item 2: Ethene &amp; Benzene to Polymers and Aromatic Intermediates</li>
-                    <li>Item 3: 1,2-Dichloroethane Fumigant &amp; Propanone Solvent</li>
-                    <li>Item 4: Propanone to Perspex Monomer &amp; Ethene</li>
-                    <li>Item 5: Propan-1-ol &amp; Ethyne to Industrial Products</li>
-                    <li>Item 6: Agro-processing &amp; Chemical Manufacturing Enterprise</li>
-                    <li>Item 7: Agrochemicals — Green Chemistry Proposals</li>
+                    <li><a href="#section-4-item-1">Item 1: Ethanol, Ethene, Benzene &amp; Benzoic Acid Conversions</a></li>
+                    <li><a href="#section-4-item-2">Item 2: Ethene &amp; Benzene to Polymers and Aromatic Intermediates</a></li>
+                    <li><a href="#section-4-item-3">Item 3: 1,2-Dichloroethane Fumigant &amp; Propanone Solvent</a></li>
+                    <li><a href="#section-4-item-4">Item 4: Propanone to Perspex Monomer &amp; Ethene</a></li>
+                    <li><a href="#section-4-item-5">Item 5: Propan-1-ol &amp; Ethyne to Industrial Products</a></li>
+                    <li><a href="#section-4-item-6">Item 6: Agro-processing &amp; Chemical Manufacturing Enterprise</a></li>
+                    <li><a href="#section-4-item-7">Item 7: Agrochemicals — Green Chemistry Proposals</a></li>
                 </ul>
             </div>
         </div>
@@ -633,10 +616,10 @@
     <!-- ==================== CONTENT ==================== -->
     <div class="content">
 
-        <div class="part-heading">Section A (Number 1)</div>
+        <div class="part-heading" id="section-1">Section A (Number 1)</div>
 
         <!-- ---------- Item 1 ---------- -->
-        <div class="item-heading"><span class="item-number">Item 1:</span> Copper Processing — Electrochemistry &amp; Thermochemistry</div>
+        <div class="item-heading" id="section-1-item-1"><span class="item-number">Item 1:</span> Copper Processing — Electrochemistry &amp; Thermochemistry</div>
 
         <p class="intro">A metal-processing company in Uganda produces copper components used in electrical equipment. The company is reviewing its production processes to reduce energy costs while maintaining the required output. Its operations involve electrochemical cells, electrolytic recovery of copper, and chemical reduction of copper compounds.</p>
 
@@ -719,7 +702,7 @@
         </div>
 
         <!-- ---------- Item 2 ---------- -->
-        <div class="item-heading"><span class="item-number">Item 2:</span> Thermochemistry — Battery Systems &amp; Heat Generation</div>
+        <div class="item-heading" id="section-1-item-2"><span class="item-number">Item 2:</span> Thermochemistry — Battery Systems &amp; Heat Generation</div>
 
         <p class="intro">Thermochemistry deals with heat changes during chemical processes, which is essential for controlling temperatures and managing thermal safety in extreme environments.</p>
 
@@ -803,7 +786,7 @@
         </div>
 
         <!-- ---------- Item 3 ---------- -->
-        <div class="item-heading"><span class="item-number">Item 3:</span> Kinetics &amp; Thermochemistry — Hydrogen Fuel Production</div>
+        <div class="item-heading" id="section-1-item-3"><span class="item-number">Item 3:</span> Kinetics &amp; Thermochemistry — Hydrogen Fuel Production</div>
 
         <p class="intro">As part of efforts to reduce greenhouse gas emissions and increase the use of clean energy technologies, a renewable-energy company is investigating the production of hydrogen fuel for use in fuel-cell-powered charging stations. Hydrogen is considered a promising alternative fuel because it can generate electricity without producing carbon dioxide.</p>
 
@@ -899,7 +882,7 @@
         </div>
 
         <!-- ---------- Item 4 ---------- -->
-        <div class="item-heading"><span class="item-number">Item 4:</span> Electrochemistry — Battery Systems &amp; Zinc Electrode Efficiency</div>
+        <div class="item-heading" id="section-1-item-4"><span class="item-number">Item 4:</span> Electrochemistry — Battery Systems &amp; Zinc Electrode Efficiency</div>
 
         <p class="intro">Uganda's transition to electric mobility has increased demand for rechargeable batteries. A new factory in a certain town manufactures batteries for electric motorcycles powered by solar charging stations. Engineers are comparing two battery systems while also optimizing the heat released during electrode manufacture. A negative enthalpy of solution of the metal electrode salt represents an efficient electrode.</p>
 
@@ -969,7 +952,7 @@
         </div>
 
         <!-- ---------- Item 5 ---------- -->
-        <div class="item-heading"><span class="item-number">Item 5:</span> Equilibria &amp; Kinetics — Ammonia Production (Haber Process)</div>
+        <div class="item-heading" id="section-1-item-5"><span class="item-number">Item 5:</span> Equilibria &amp; Kinetics — Ammonia Production (Haber Process)</div>
 
         <p class="intro">Many homes in western Uganda survive on farming but face a problem of low crop yield which is related to lack of nitrogen in the soil and have been advised to add an artificial fertilizer whose main component is ammonium nitrate; manufactured from nitric acid and ammonia gas. Ammonia gas availability affects production rate and is obtained following the equation:</p>
 
@@ -1051,10 +1034,10 @@
         <!-- SECTION A (NUMBER 2)                                         -->
         <!-- ============================================================ -->
 
-        <div class="part-heading">Section A (Number 2)</div>
+        <div class="part-heading" id="section-2">Section A (Number 2)</div>
 
         <!-- ---------- Item 1 ---------- -->
-        <div class="item-heading"><span class="item-number">Item 1:</span> Organic Acid Identity &amp; Buffer Formulation</div>
+        <div class="item-heading" id="section-2-item-1"><span class="item-number">Item 1:</span> Organic Acid Identity &amp; Buffer Formulation</div>
 
         <p class="intro">A food-processing company in Uganda manufactures fruit-based products that require controlled acidity for acceptable taste and shelf life. The company uses organic acids as acidity regulators and prepares buffer solutions to maintain the pH of its products during processing and storage.</p>
 
@@ -1087,7 +1070,7 @@
         </div>
 
         <!-- ---------- Item 2 ---------- -->
-        <div class="item-heading"><span class="item-number">Item 2:</span> Buffer Formulations &amp; Solubility Equilibria</div>
+        <div class="item-heading" id="section-2-item-2"><span class="item-number">Item 2:</span> Buffer Formulations &amp; Solubility Equilibria</div>
 
         <p class="intro">A pharmaceutical company supplying regional hospitals in Uganda manufactures an intravenous antibiotic that is highly effective only within a narrow pH range of 4.8–5.3. Clinical trials showed that small changes in pH accelerated decomposition of the active ingredient, reducing its therapeutic value. To improve stability, chemists needed to develop formulations to use. However, during long-term storage, some batches developed white precipitates that blocked intravenous tubing. Further investigations showed that calcium ions in the formulation reacted with carbonate ions introduced through poor storage conditions, forming insoluble calcium carbonate.</p>
 
@@ -1161,7 +1144,7 @@
         </div>
 
         <!-- ---------- Item 3 ---------- -->
-        <div class="item-heading"><span class="item-number">Item 3:</span> Solubility Equilibria &amp; Solvent Extraction</div>
+        <div class="item-heading" id="section-2-item-3"><span class="item-number">Item 3:</span> Solubility Equilibria &amp; Solvent Extraction</div>
 
         <p class="intro">A bottled mineral water company sources its water from underground limestone layers. The water naturally contains dissolved calcium hydrogen carbonate formed through the interaction of rainwater, carbon dioxide, and limestone rocks. Recently, customers have complained that some bottled water develops a white precipitate after prolonged storage, particularly in bottles stored in warm environments. The company's quality assurance team suspects that changes in the equilibria involving calcium carbonate are responsible. The company carried out investigations under different storage conditions.</p>
 
@@ -1208,7 +1191,7 @@
         </div>
 
         <!-- ---------- Item 4 ---------- -->
-        <div class="item-heading"><span class="item-number">Item 4:</span> Steam Distillation &amp; Molar Mass Determination</div>
+        <div class="item-heading" id="section-2-item-4"><span class="item-number">Item 4:</span> Steam Distillation &amp; Molar Mass Determination</div>
 
         <p class="intro">A pharmaceutical company uses steam distillation to purify some aromatic organic substances obtained from plant extracts. During a study visit, a group of Senior Five Chemistry learners were attached to the quality-control section, where they were challenged to investigate the purification of one of the substances. The quality-control officer explained that the success of the process depends on conditions such as temperature, pressure and the vapour pressures of the substances involved. She also told the learners that the company uses steam distillation mainly for suitable organic substances with molar masses between 100 and 300 g mol<sup>-1</sup>, and that determining the composition and molar mass of the substance was important in identifying it and assessing its suitability for the process.</p>
 
@@ -1260,10 +1243,10 @@
         <!-- SECTION B (NUMBER 3 OR 4)                                    -->
         <!-- ============================================================ -->
 
-        <div class="part-heading">Section B (Number 3 or 4)</div>
+        <div class="part-heading" id="section-3">Section B (Number 3 or 4)</div>
 
         <!-- ---------- Item 1 ---------- -->
-        <div class="item-heading"><span class="item-number">Item 1:</span> Graphite, Silicon Dioxide &amp; Sodium Oxide</div>
+        <div class="item-heading" id="section-3-item-1"><span class="item-number">Item 1:</span> Graphite, Silicon Dioxide &amp; Sodium Oxide</div>
 
         <p class="intro">A local processing company in Uganda uses inorganic substances in the manufacture of industrial equipment, construction materials and chemical products. The company is assessing three materials containing mainly graphite (C), silicon dioxide (SiO<sub>2</sub>), and sodium oxide (Na<sub>2</sub>O) to determine their suitability for different industrial applications.</p>
 
@@ -1310,7 +1293,7 @@
         </div>
 
         <!-- ---------- Item 2 ---------- -->
-        <div class="item-heading"><span class="item-number">Item 2:</span> Aluminium Oxide, Chlorine &amp; Carbon Dioxide</div>
+        <div class="item-heading" id="section-3-item-2"><span class="item-number">Item 2:</span> Aluminium Oxide, Chlorine &amp; Carbon Dioxide</div>
 
         <p class="intro">A local science and environmental safety team in Uganda is examining three substances, aluminium oxide (Al<sub>2</sub>O<sub>3</sub>), chlorine (Cl<sub>2</sub>), and carbon dioxide (CO<sub>2</sub>). The substances have very different physical and chemical characteristics, and the team wants to establish how these differences influence their behaviour and determine where each substance could be appropriately used.</p>
 
@@ -1359,7 +1342,7 @@
         </div>
 
         <!-- ---------- Item 3 ---------- -->
-        <div class="item-heading"><span class="item-number">Item 3:</span> Halogens &amp; Group II Carbonates</div>
+        <div class="item-heading" id="section-3-item-3"><span class="item-number">Item 3:</span> Halogens &amp; Group II Carbonates</div>
 
         <p class="intro">A company which manufactures cleaning agents use halogens such as chlorine because of its unique properties while a nearby factory uses carbonates of group II as its raw material. S.5 students visited the company and factory during a tour, and realized that different halogens behave differently when dissolved in water and alkalis which enable them to become useful in manufacturing useful products while the carbonates dissolved in hydrochloric acid. The tour guide also told them that using these halogens also have great impact especially to water bodies and this can be mitigated using soda ash. The tour guide told them to find more information about the bond energies of halogens and the solubility of the carbonates in order to understand them fully. The information for bond energy was provided below.</p>
 
@@ -1398,7 +1381,7 @@
         </div>
 
         <!-- ---------- Item 4 ---------- -->
-        <div class="item-heading"><span class="item-number">Item 4:</span> Group II Oxides &amp; Hydrogen Halides</div>
+        <div class="item-heading" id="section-3-item-4"><span class="item-number">Item 4:</span> Group II Oxides &amp; Hydrogen Halides</div>
 
         <p class="intro">A cement manufacturing company located near a rapidly growing municipality plans to diversify its products by establishing a chemical processing unit that utilizes locally available limestone and imported sea salt. The proposed plant will manufacture Beryllium oxide, calcium oxide, hydrofluoric acid, hydrochloric acid, hydrobromic acid, and chlorine. During the feasibility study, engineers observed that the oxides of Group II metals behave differently when exposed to water, acids and alkalis.</p>
 
@@ -1413,7 +1396,7 @@
         </div>
 
         <!-- ---------- Item 5 ---------- -->
-        <div class="item-heading"><span class="item-number">Item 5:</span> Period 3 Elements — Properties &amp; Applications</div>
+        <div class="item-heading" id="section-3-item-5"><span class="item-number">Item 5:</span> Period 3 Elements — Properties &amp; Applications</div>
 
         <p class="intro">Period 3 elements are widely used in everyday life because of their different physical and chemical properties. During a community industrial and environmental awareness exhibition organized by a nearby university, learners from your school visited different demonstration stalls. At the metallurgy stall, workers demonstrated how sodium hydroxide solution cleans aluminium containers and pipes during recycling and maintenance. At another stall, emergency response officers demonstrated how magnesium flares are used to produce bright light during rescue operations. In the agriculture section, researchers explained that phosphorus compounds dissolve in rainwater after application on farms and are absorbed by crops to improve growth. At the public health stall, chlorine gas was dissolved in water to demonstrate the purification of drinking water.</p>
 
@@ -1459,7 +1442,7 @@
         </div>
 
         <!-- ---------- Item 6 ---------- -->
-        <div class="item-heading"><span class="item-number">Item 6:</span> Chlorine-Containing Compounds in Water Treatment</div>
+        <div class="item-heading" id="section-3-item-6"><span class="item-number">Item 6:</span> Chlorine-Containing Compounds in Water Treatment</div>
 
         <p class="intro">Water treatment and waste management systems are key in improving public health and environmental sustainability. A rapidly growing municipality in Uganda relies on chlorine for disinfecting drinking water, but recent expansion plans have raised concerns about the safe handling, storage, and disposal of chemicals used in water treatment and nearby industries. Several industries operating within the municipality use or produce substances containing chlorine. These include:</p>
 
@@ -1479,7 +1462,7 @@
         </div>
 
         <!-- ---------- Item 7 ---------- -->
-        <div class="item-heading"><span class="item-number">Item 7:</span> Period 3 Oxides — Industrial &amp; Environmental Implications</div>
+        <div class="item-heading" id="section-3-item-7"><span class="item-number">Item 7:</span> Period 3 Oxides — Industrial &amp; Environmental Implications</div>
 
         <p class="intro">Different oxides are used in industries such as cement, fertilisers, and ceramics, where their properties affect heating, safety, and environmental pollution. Farmers near a certain factory reported crop damage and faster corrosion of iron sheets, while workers and engineers raised concerns about irritating oxide fumes and the high temperatures required to process some oxide materials. Concerned about the increasing complaints, the district science and environment committee organised a joint industrial inspection involving chemists, environmental officers, and Senior Six chemistry learners from neighbouring schools. Samples of oxides formed by Period 3 elements were collected from different industrial processes and analysed in the laboratory.</p>
 
@@ -1520,7 +1503,7 @@
         </div>
 
         <!-- ---------- Item 8 ---------- -->
-        <div class="item-heading"><span class="item-number">Item 8:</span> Elements in Everyday Life — Magnesium, Aluminium, Silicon, Phosphorus, Chlorine</div>
+        <div class="item-heading" id="section-3-item-8"><span class="item-number">Item 8:</span> Elements in Everyday Life — Magnesium, Aluminium, Silicon, Phosphorus, Chlorine</div>
 
         <p class="intro">Many elements are widely used in everyday life because of their different physical and chemical properties. During a community industrial and environmental awareness exhibition organized by a nearby university, learners from a certain school visited different demonstration stalls. At one of the stalls, workers demonstrated how aluminium containers and phosphorous are cleaned using sodium hydroxide solution during recycling and maintenance processes. At another stall, emergency response officers demonstrated how magnesium flares are burnt to produce bright light during rescue operations. At the public health stall, chlorine gas was dissolved in water to demonstrate the purification of drinking water and lead is also dissolved in water to demonstrate how lead pipes dissolve to contaminate water. At another stall, the elements were heated strongly to obtain their melting points.</p>
 
@@ -1559,10 +1542,10 @@
         <!-- SECTION B (NUMBER 5 OR 6)                                    -->
         <!-- ============================================================ -->
 
-        <div class="part-heading">Section B (Number 5 or 6)</div>
+        <div class="part-heading" id="section-4">Section B (Number 5 or 6)</div>
 
         <!-- ---------- Item 1 ---------- -->
-        <div class="item-heading"><span class="item-number">Item 1:</span> Ethanol, Ethene, Benzene &amp; Benzoic Acid Conversions</div>
+        <div class="item-heading" id="section-4-item-1"><span class="item-number">Item 1:</span> Ethanol, Ethene, Benzene &amp; Benzoic Acid Conversions</div>
 
         <p class="intro">A chemical company produces organic compounds used as solvents, pharmaceutical intermediates and preservatives. The company has stocks of ethanol, ethene, benzene and benzoic acid that can be used as raw materials and is investigating ways of converting them into more useful products.</p>
 
@@ -1584,7 +1567,7 @@
         </div>
 
         <!-- ---------- Item 2 ---------- -->
-        <div class="item-heading"><span class="item-number">Item 2:</span> Ethene &amp; Benzene to Polymers and Aromatic Intermediates</div>
+        <div class="item-heading" id="section-4-item-2"><span class="item-number">Item 2:</span> Ethene &amp; Benzene to Polymers and Aromatic Intermediates</div>
 
         <p class="intro">A chemical and textile company manufactures packaging materials, synthetic fibres and aromatic intermediates. The company has stocks of ethene and benzene as major organic raw materials and is exploring ways of converting them into higher-value products.</p>
 
@@ -1604,7 +1587,7 @@
         </div>
 
         <!-- ---------- Item 3 ---------- -->
-        <div class="item-heading"><span class="item-number">Item 3:</span> 1,2-Dichloroethane Fumigant &amp; Propanone Solvent</div>
+        <div class="item-heading" id="section-4-item-3"><span class="item-number">Item 3:</span> 1,2-Dichloroethane Fumigant &amp; Propanone Solvent</div>
 
         <p class="intro">An agrochemical manufacturing plant located at Luzira Industrial Area synthesises a fumigant used in post-harvest grain preservation. The active ingredient in this formulation is 1,2-dichloroethane and is dissolved in high-purity propanone as the industrial solvent to completely dissolve the pesticide.</p>
 
@@ -1623,7 +1606,7 @@
         </div>
 
         <!-- ---------- Item 4 ---------- -->
-        <div class="item-heading"><span class="item-number">Item 4:</span> Propanone to Perspex Monomer &amp; Ethene</div>
+        <div class="item-heading" id="section-4-item-4"><span class="item-number">Item 4:</span> Propanone to Perspex Monomer &amp; Ethene</div>
 
         <p class="intro">A certain company that manufactures alcohols and polymer-based packaging materials has recently expanded its production.</p>
 
@@ -1636,7 +1619,7 @@
         </div>
 
         <!-- ---------- Item 5 ---------- -->
-        <div class="item-heading"><span class="item-number">Item 5:</span> Propan-1-ol &amp; Ethyne to Industrial Products</div>
+        <div class="item-heading" id="section-4-item-5"><span class="item-number">Item 5:</span> Propan-1-ol &amp; Ethyne to Industrial Products</div>
 
         <p class="intro">Many useful substances are obtained from organic compounds and are often converted into other useful substances through different chemical reactions. Recently, a chemical manufacturing company which uses propan-1-ol and ethyne as raw materials to produce products required by their customers complained about their different behaviors when heated. The quality assurance team advised that the boiling points of the raw materials and the products formed should always be analysed to avoid likely explosions, but the company lacked expertise.</p>
 
@@ -1650,7 +1633,7 @@
         </div>
 
         <!-- ---------- Item 6 ---------- -->
-        <div class="item-heading"><span class="item-number">Item 6:</span> Agro-processing &amp; Chemical Manufacturing Enterprise</div>
+        <div class="item-heading" id="section-4-item-6"><span class="item-number">Item 6:</span> Agro-processing &amp; Chemical Manufacturing Enterprise</div>
 
         <p class="intro">A cooperative of young entrepreneurs in Uganda plans to establish a small agroprocessing and chemical manufacturing enterprise. The enterprise intends to produce and market a range of products, including: a fruit-flavored beverage made from locally grown pineapples and mangoes, a fragrance additive for soaps and cosmetics, a cleaning solvent for industrial and laboratory use, and a biofuel additive to improve fuel combustion efficiency.</p>
 
@@ -1678,7 +1661,7 @@
         </div>
 
         <!-- ---------- Item 7 ---------- -->
-        <div class="item-heading"><span class="item-number">Item 7:</span> Agrochemicals — Green Chemistry Proposals</div>
+        <div class="item-heading" id="section-4-item-7"><span class="item-number">Item 7:</span> Agrochemicals — Green Chemistry Proposals</div>
 
         <p class="intro">An Agrochemicals industry manufactures herbicides, insecticides and plastic irrigation pipes used by commercial farmers. The industry recently partnered with researchers from a certain University to develop environmentally safer products after several farming communities reported contamination of groundwater and accumulation of plastic wastes in agricultural fields.</p>
 
