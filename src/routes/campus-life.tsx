@@ -132,6 +132,26 @@ function CampusLife() {
                     <h3 className="text-xl">{title as string}</h3>
                   </div>
                   <p className="mt-2 text-sm leading-6 text-muted-foreground">{text as string}</p>
+                  {title === "Houses" && (
+                    <div className="mt-5 flex flex-wrap gap-2" aria-label="House colours">
+                      <span className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1 text-xs font-semibold">
+                        <span className="size-3 rounded-full bg-yellow-400" aria-hidden="true" />
+                        Galiwango · Yellow
+                      </span>
+                      <span className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1 text-xs font-semibold">
+                        <span className="size-3 rounded-full bg-amber-950" aria-hidden="true" />
+                        Nantume · Coffee brown
+                      </span>
+                      <span className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1 text-xs font-semibold">
+                        <span className="size-3 rounded-full bg-blue-600" aria-hidden="true" />
+                        Kaggwa · Blue
+                      </span>
+                      <span className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1 text-xs font-semibold">
+                        <span className="size-3 rounded-full bg-green-600" aria-hidden="true" />
+                        Mukongoni · Green
+                      </span>
+                    </div>
+                  )}
                 </article>
               );
             })}
