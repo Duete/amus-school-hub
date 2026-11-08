@@ -11,7 +11,7 @@ import {
 import { type ReactNode } from "react";
 
 import { SchoolHeader, SchoolFooter } from "@/components/school-layout";
-import { MafabiChatbot } from "@/components/mafabi-chatbot";
+import { GaliwangoChatbot } from "@/components/galiwango-chatbot";
 import { AuthProvider } from "@/lib/auth";
 
 import appCss from "../styles.css?url";
@@ -120,7 +120,7 @@ function RootComponent() {
         <main>
           <Outlet />
         </main>
-        <MafabiChatbot />
+        <GaliwangoChatbot />
         <SchoolFooter />
       </AuthProvider>
     </QueryClientProvider>
