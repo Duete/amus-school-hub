@@ -87,10 +87,36 @@ const clubs = [
     text: "A student-led space for Bible study, prayer, encouragement, and practical Christian living.",
     meta: "Faith and fellowship",
   },
+];
+
+const houses = [
   {
-    title: "Houses",
-    text: "Galiwango, Mukongoni, Nantume, and Kaggwa bring learners together for healthy competition and belonging. Their house colours are Galiwango yellow, Nantume coffee brown, Kaggwa blue, and Mukongoni green.",
-    meta: "Galiwango · Yellow | Nantume · Coffee brown | Kaggwa · Blue | Mukongoni · Green",
+    title: "Galiwango House",
+    colour: "Yellow",
+    text: "A bright house identity built around energy, teamwork, and friendly competition.",
+    border: "border-yellow-400",
+    swatch: "bg-yellow-400",
+  },
+  {
+    title: "Nantume House",
+    colour: "Coffee brown",
+    text: "A grounded community where students build belonging through shared responsibility.",
+    border: "border-amber-950",
+    swatch: "bg-amber-950",
+  },
+  {
+    title: "Kaggwa House",
+    colour: "Blue",
+    text: "A spirited house that brings focus, discipline, and pride to every contest.",
+    border: "border-blue-600",
+    swatch: "bg-blue-600",
+  },
+  {
+    title: "Mukongoni House",
+    colour: "Green",
+    text: "A house shaped by growth, cooperation, and the confidence to contribute.",
+    border: "border-green-600",
+    swatch: "bg-green-600",
   },
 ];
 
@@ -595,6 +621,34 @@ function Sports() {
               </p>
             </article>
           ))}
+        </div>
+
+        <div className="mt-16 border-t border-border pt-10" aria-labelledby="houses-heading">
+          <div className="max-w-2xl">
+            <p className="eyebrow text-primary">HOUSE COMMUNITY</p>
+            <h2 id="houses-heading" className="mt-2 text-3xl md:text-4xl">
+              Houses
+            </h2>
+            <p className="mt-3 leading-7 text-muted-foreground">
+              Four house communities give learners a strong sense of belonging and a reason to show
+              up for one another in sport, service, and school life.
+            </p>
+          </div>
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {houses.map((house) => (
+              <article
+                key={house.title}
+                className={`border-t-4 ${house.border} bg-background p-5 shadow-sm`}
+              >
+                <div className="flex items-center gap-3">
+                  <span className={`size-4 rounded-full ${house.swatch}`} aria-hidden="true" />
+                  <p className="eyebrow text-primary">{house.colour}</p>
+                </div>
+                <h3 className="mt-4 text-xl">{house.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-muted-foreground">{house.text}</p>
+              </article>
+            ))}
+          </div>
         </div>
 
         <div
