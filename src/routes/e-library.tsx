@@ -1,7 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, BookOpen, ChevronDown, GraduationCap, Layers3 } from "lucide-react";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  BookOpen,
+  ChevronDown,
+  FileText,
+  GraduationCap,
+  Layers3,
+} from "lucide-react";
 import { PageIntro } from "@/components/school-layout";
 import { schoolHead } from "@/lib/school";
+import { aLevelClassResources, type LearningResource } from "@/lib/learning-resources";
 
 export const Route = createFileRoute("/e-library")({
   head: () =>
@@ -22,6 +31,7 @@ type ClassShelf = {
   name: string;
   description: string;
   groups: SubjectGroup[];
+  resources?: Record<string, LearningResource[]>;
 };
 
 const oLevelCore = [
@@ -110,6 +120,7 @@ const aLevelClasses: ClassShelf[] = [
   {
     name: "S.5",
     description: "Settle into subject combinations and develop independent study habits.",
+    resources: aLevelClassResources["S.5"],
     groups: [
       { title: "Principal subject shelves", subjects: aLevelPrincipal },
       { title: "Subsidiary shelves", subjects: aLevelSubsidiary },
@@ -118,6 +129,7 @@ const aLevelClasses: ClassShelf[] = [
   {
     name: "S.6",
     description: "Focus revision around UACE preparation, examination technique, and next steps.",
+    resources: aLevelClassResources["S.6"],
     groups: [
       { title: "Principal subject shelves", subjects: aLevelPrincipal },
       { title: "Subsidiary shelves", subjects: aLevelSubsidiary },
@@ -125,11 +137,40 @@ const aLevelClasses: ClassShelf[] = [
   },
 ];
 
-function SubjectShelf({ subject }: { subject: string }) {
+function SubjectShelf({ subject, resources }: { subject: string; resources?: LearningResource[] }) {
   return (
     <li className="flex items-start gap-3 border-t border-border py-3 text-sm leading-6">
       <BookOpen className="mt-1 shrink-0 text-primary" size={16} strokeWidth={1.7} />
-      <span>{subject}</span>
+      <div className="min-w-0 flex-1">
+        <span>{subject}</span>
+        {resources?.map((resource) => (
+          <a
+            key={resource.href}
+            href={resource.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Open ${resource.title} in a new tab`}
+            className="mt-3 flex max-w-xl items-start gap-3 border border-border bg-card p-3 transition-colors hover:border-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          >
+            <FileText
+              className="mt-0.5 shrink-0 text-primary"
+              size={17}
+              strokeWidth={1.7}
+              aria-hidden="true"
+            />
+            <span className="min-w-0 flex-1">
+              <span className="block font-semibold">{resource.title}</span>
+              <span className="mt-1 block text-xs leading-5 text-muted-foreground">
+                {resource.description}
+              </span>
+              <span className="mt-2 block text-xs font-semibold text-primary">
+                Open learning item
+              </span>
+            </span>
+            <ArrowUpRight className="mt-0.5 shrink-0 text-primary" size={16} aria-hidden="true" />
+          </a>
+        ))}
+      </div>
     </li>
   );
 }
@@ -166,7 +207,11 @@ function ClassCard({ shelf }: { shelf: ClassShelf }) {
             <h4 className="mb-2 text-lg">{group.title}</h4>
             <ul>
               {group.subjects.map((subject) => (
-                <SubjectShelf key={subject} subject={subject} />
+                <SubjectShelf
+                  key={subject}
+                  subject={subject}
+                  resources={shelf.resources?.[subject]}
+                />
               ))}
             </ul>
           </div>
