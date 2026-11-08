@@ -67,11 +67,15 @@ function Campus() {
           <p className="eyebrow text-primary">SECONDARY EDUCATION IN MBALE CITY</p>
           <h2 className="mt-4 text-3xl">{campus.name}</h2>
           <p className="mt-5 leading-7 text-muted-foreground">{campus.description}</p>
-          {isDayCampus && (
+          {campus.mapUrl && (
             <div className="mt-6 space-y-2 text-sm">
-              <p className="text-muted-foreground">GPS: 1.078571, 34.174396</p>
+              <p className="text-muted-foreground">
+                {isDayCampus
+                  ? "GPS: 1.078571, 34.174396"
+                  : "Use Google Maps for boarding-campus directions."}
+              </p>
               <a
-                href="https://maps.app.goo.gl/aBA1SektMqr14yBn6"
+                href={campus.mapUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 font-semibold text-primary underline underline-offset-4"
