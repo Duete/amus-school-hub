@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { campuses, schoolHead } from "@/lib/school";
+import { boardingCampusMapUrl, campuses, schoolHead } from "@/lib/school";
 import { annexBuildingPhotos, campusPhotoGroups } from "@/lib/campus-photos";
 describe("School campus structure", () => {
   it("features exactly two distinct campuses", () => {
@@ -16,6 +16,8 @@ describe("School campus structure", () => {
     expect(campuses[1]?.description).toContain(
       "Nyanza Road in Industrial City Division, Mbale City",
     );
+    expect(boardingCampusMapUrl).toBe("https://maps.app.goo.gl/MtCo3saXVfs4Lf698");
+    expect(campuses[1]?.mapUrl).toBe(boardingCampusMapUrl);
   });
 
   it("assigns Day Campus facility photos and Annex building photos to the right galleries", () => {

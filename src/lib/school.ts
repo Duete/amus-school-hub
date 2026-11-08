@@ -1,11 +1,14 @@
 import { campusImages } from "./campus-photos";
 
+export const boardingCampusMapUrl = "https://maps.app.goo.gl/MtCo3saXVfs4Lf698";
+
 export const campuses = [
   {
     slug: "day-campus",
     name: "Day Campus",
     setting: "Plot 8–15 Nabuyonga Rise, Northern City Division, Mbale City.",
     image: campusImages.dayCampusDriveway,
+    mapUrl: "https://maps.app.goo.gl/aBA1SektMqr14yBn6",
     description:
       "Mbale Progressive Secondary School’s Day Campus is located on Plot 8–15 Nabuyonga Rise, Northern City Division, Mbale City.",
     features: ["Day Campus", "Plot 8–15 Nabuyonga Rise", "Northern City Division, Mbale City"],
@@ -15,6 +18,7 @@ export const campuses = [
     name: "Mbale Progressive Annex",
     setting: "Nyanza Road, Industrial City Division, Mbale City.",
     image: campusImages.annexFrontage,
+    mapUrl: boardingCampusMapUrl,
     description:
       "Mbale Progressive Annex, the school’s boarding campus, is located on Nyanza Road in Industrial City Division, Mbale City.",
     features: ["Boarding campus", "Nyanza Road", "Industrial City Division, Mbale City"],
