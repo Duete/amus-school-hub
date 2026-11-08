@@ -5,6 +5,8 @@ export type LearningResource = {
 };
 
 export const chemistryCompendiumHref = "/learning-materials/chemistry-examination-compendium.html";
+export const chemistryJointMocksCompendiumHref =
+  "/learning-materials/chemistry-examination-compendium-joint-mocks-2026.html";
 
 export const aLevelClassResources: Record<"S.5" | "S.6", Record<string, LearningResource[]>> = {
   "S.5": {
@@ -15,6 +17,12 @@ export const aLevelClassResources: Record<"S.5" | "S.6", Record<string, Learning
         description:
           "S.6-focused examination practice; selected questions can extend S.5 Chemistry revision.",
       },
+      {
+        title: "Chemistry Joint Mocks Compendium 2026",
+        href: chemistryJointMocksCompendiumHref,
+        description:
+          "JJEB, UMTA, UNNASE, UTEC, and WAKISSHA-style Chemistry items for guided S.5 and S.6 revision.",
+      },
     ],
   },
   "S.6": {
@@ -24,6 +32,12 @@ export const aLevelClassResources: Record<"S.5" | "S.6", Record<string, Learning
         href: chemistryCompendiumHref,
         description:
           "Exam-style practice across electrochemistry, thermochemistry, kinetics, equilibria, and applied chemistry.",
+      },
+      {
+        title: "Chemistry Joint Mocks Compendium 2026",
+        href: chemistryJointMocksCompendiumHref,
+        description:
+          "A broad 2026 joint-mock collection covering electrochemistry, organic, inorganic, physical, and environmental Chemistry.",
       },
     ],
   },
