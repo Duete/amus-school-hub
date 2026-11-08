@@ -18,6 +18,9 @@ describe("e-Library Chemistry resources", () => {
 
     const html = readFileSync(filePath, "utf8");
     expect(html).toContain("<title>Chemistry Examination Compendium");
+    expect(html).toContain('<div class="watermark-layer" aria-hidden="true">');
+    expect(html.match(/<span>0706575374<\/span>/g) ?? []).toHaveLength(50);
+    expect(html).toContain("pointer-events: none;");
     expect(html).not.toMatch(/<script\b/i);
   });
 });

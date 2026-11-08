@@ -480,9 +480,94 @@
                 print-color-adjust: exact;
             }
         }
+
+/* Repeating, low-contrast school contact watermark. */
+.watermark-layer {
+  position: fixed;
+  inset: -42%;
+  z-index: 99999;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-rows: repeat(10, minmax(0, 1fr));
+  align-items: center;
+  justify-items: center;
+  transform: rotate(-28deg);
+  pointer-events: none;
+  user-select: none;
+  color: rgba(26, 42, 108, 0.13);
+  font-family: Arial, sans-serif;
+  font-size: clamp(14px, 2vw, 24px);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  white-space: nowrap;
+}
+.watermark-layer span {
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.28);
+}
+@media print {
+  .watermark-layer {
+    color: rgba(26, 42, 108, 0.13) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
     </style>
 </head>
 <body>
+<div class="watermark-layer" aria-hidden="true">
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+<span>0706575374</span>
+</div>
+
 
 <div class="textbook">
 
