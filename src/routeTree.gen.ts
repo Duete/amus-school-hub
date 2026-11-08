@@ -20,6 +20,7 @@ import { Route as DatabaseRouteImport } from './routes/database'
 import { Route as ELibraryRouteImport } from './routes/e-library'
 import { Route as FacultyRouteImport } from './routes/faculty'
 import { Route as FinanceRouteImport } from './routes/finance'
+import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as GovernanceRouteImport } from './routes/governance'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as NewsRouteImport } from './routes/news'
@@ -86,6 +87,11 @@ const FinanceRoute = FinanceRouteImport.update({
   path: '/finance',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GovernanceRoute = GovernanceRouteImport.update({
   id: '/governance',
   path: '/governance',
@@ -149,6 +155,7 @@ export interface FileRoutesByFullPath {
   '/e-library': typeof ELibraryRoute
   '/faculty': typeof FacultyRoute
   '/finance': typeof FinanceRoute
+  '/gallery': typeof GalleryRoute
   '/governance': typeof GovernanceRoute
   '/login': typeof LoginRoute
   '/news': typeof NewsRoute
@@ -171,6 +178,7 @@ export interface FileRoutesByTo {
   '/e-library': typeof ELibraryRoute
   '/faculty': typeof FacultyRoute
   '/finance': typeof FinanceRoute
+  '/gallery': typeof GalleryRoute
   '/governance': typeof GovernanceRoute
   '/login': typeof LoginRoute
   '/news': typeof NewsRoute
@@ -195,6 +203,7 @@ export interface FileRoutesById {
   '/e-library': typeof ELibraryRoute
   '/faculty': typeof FacultyRoute
   '/finance': typeof FinanceRoute
+  '/gallery': typeof GalleryRoute
   '/governance': typeof GovernanceRoute
   '/login': typeof LoginRoute
   '/news': typeof NewsRoute
@@ -220,6 +229,7 @@ export interface FileRouteTypes {
     | '/e-library'
     | '/faculty'
     | '/finance'
+    | '/gallery'
     | '/governance'
     | '/login'
     | '/news'
@@ -242,6 +252,7 @@ export interface FileRouteTypes {
     | '/e-library'
     | '/faculty'
     | '/finance'
+    | '/gallery'
     | '/governance'
     | '/login'
     | '/news'
@@ -265,6 +276,7 @@ export interface FileRouteTypes {
     | '/e-library'
     | '/faculty'
     | '/finance'
+    | '/gallery'
     | '/governance'
     | '/login'
     | '/news'
@@ -289,6 +301,7 @@ export interface RootRouteChildren {
   ELibraryRoute: typeof ELibraryRoute
   FacultyRoute: typeof FacultyRoute
   FinanceRoute: typeof FinanceRoute
+  GalleryRoute: typeof GalleryRoute
   GovernanceRoute: typeof GovernanceRoute
   LoginRoute: typeof LoginRoute
   NewsRoute: typeof NewsRoute
@@ -376,6 +389,13 @@ declare module '@tanstack/react-router' {
       path: '/finance'
       fullPath: '/finance'
       preLoaderRoute: typeof FinanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/governance': {
@@ -477,6 +497,7 @@ const rootRouteChildren: RootRouteChildren = {
   ELibraryRoute: ELibraryRoute,
   FacultyRoute: FacultyRoute,
   FinanceRoute: FinanceRoute,
+  GalleryRoute: GalleryRoute,
   GovernanceRoute: GovernanceRoute,
   LoginRoute: LoginRoute,
   NewsRoute: NewsRoute,

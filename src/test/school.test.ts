@@ -41,6 +41,7 @@ describe("School campus structure", () => {
       "School buses at the Boarding Campus",
       "Administration block",
       "Main classroom block",
+      "A’Level Arts Block",
       "Classrooms and Court Yard",
       "Laboratory and Science Block",
       "Sick Bay and Library Block",
@@ -56,6 +57,9 @@ describe("School campus structure", () => {
     expect(
       campusPhotoGroups.annex.find((photo) => photo.caption === "Main classroom block")?.src,
     ).toContain("annex-main-classroom-block.png");
+    expect(
+      campusPhotoGroups.annex.find((photo) => photo.caption === "A’Level Arts Block")?.src,
+    ).toContain("annex-a-level-arts-block.png");
     expect(
       campusPhotoGroups.annex.find((photo) => photo.caption === "Sick Bay and Library Block")?.src,
     ).toContain("hero-classrooms.webp");

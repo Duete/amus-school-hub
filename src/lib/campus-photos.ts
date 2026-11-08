@@ -1,4 +1,5 @@
 import annexAdministration from "@/assets/annex-administration-block.jpg";
+import annexAlevelArtsBlock from "@/assets/annex-a-level-arts-block.png";
 import annexClassroomsCourtyard from "@/assets/annex-classrooms-courtyard.png";
 import annexMainClassroom from "@/assets/annex-main-classroom-block.png";
 import annexSickBayLibrary from "@/assets/hero-classrooms.webp";
@@ -43,6 +44,7 @@ export const campusImages = {
   annexSickBayLibrary,
   annexAdministration,
   annexMainClassroom,
+  annexAlevelArtsBlock,
 } as const;
 
 export const campusPhotoGroups: Record<"dayCampus" | "annex", CampusPhoto[]> = {
@@ -103,6 +105,11 @@ export const campusPhotoGroups: Record<"dayCampus" | "annex", CampusPhoto[]> = {
       src: campusImages.annexMainClassroom,
       caption: "Main classroom block",
       alt: "Main classroom block at Mbale Progressive Annex boarding campus",
+    },
+    {
+      src: campusImages.annexAlevelArtsBlock,
+      caption: "A’Level Arts Block",
+      alt: "A’Level Arts Block at Mbale Progressive Annex boarding campus",
     },
     {
       src: campusImages.annexClassroomsCourtyard,
