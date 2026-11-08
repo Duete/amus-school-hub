@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, BookOpen, GraduationCap, Layers3 } from "lucide-react";
+import { ArrowRight, BookOpen, FlaskConical, GraduationCap, Layers3 } from "lucide-react";
 import { PageIntro } from "@/components/school-layout";
 import { schoolHead } from "@/lib/school";
 
@@ -7,7 +7,7 @@ export const Route = createFileRoute("/e-library")({
   head: () =>
     schoolHead(
       "e-Library",
-      "Browse Mbale Progressive Secondary School e-Library shelves by O-Level and A-Level class and subject.",
+      "Browse Mbale Progressive Secondary School e-Library shelves by O-Level and A-Level class, subject, and simulation.",
       "/e-library",
     ),
   component: ELibrary,
@@ -243,6 +243,12 @@ function ELibrary() {
           >
             A-Level shelves <ArrowRight size={15} />
           </a>
+          <a
+            href="#simulations"
+            className="inline-flex items-center gap-2 rounded-full border border-primary px-4 py-2 text-sm font-bold text-primary"
+          >
+            Simulations <ArrowRight size={15} />
+          </a>
         </nav>
       </section>
 
@@ -262,6 +268,50 @@ function ELibrary() {
         icon={GraduationCap}
         classes={aLevelClasses}
       />
+      <section
+        id="simulations"
+        className="scroll-mt-28 border-t border-border bg-muted py-16 md:py-20"
+        aria-labelledby="simulations-heading"
+      >
+        <div className="site-width">
+          <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:gap-16">
+            <div>
+              <div className="flex items-center gap-3 text-primary">
+                <FlaskConical size={25} strokeWidth={1.7} />
+                <p className="eyebrow">SIMULATIONS</p>
+              </div>
+              <h2 id="simulations-heading" className="mt-4 text-4xl leading-tight md:text-5xl">
+                See difficult ideas in motion.
+              </h2>
+              <p className="mt-5 max-w-md leading-7 text-muted-foreground">
+                Use interactive models to explore science and mathematics concepts, test variables,
+                and connect classroom explanations to observable results.
+              </p>
+            </div>
+            <article className="border border-border bg-background p-6 md:p-8">
+              <p className="eyebrow text-primary">EXTERNAL LEARNING RESOURCE</p>
+              <h3 className="mt-3 text-3xl">PhET Interactive Simulations</h3>
+              <p className="mt-4 max-w-2xl leading-7 text-muted-foreground">
+                Explore free, research-based simulations for physics, chemistry, mathematics, and
+                other science topics. Learners should use the simulations alongside class notes and
+                teacher guidance.
+              </p>
+              <a
+                href="https://phet.colorado.edu/"
+                target="_blank"
+                rel="noreferrer"
+                className="mt-6 inline-flex items-center gap-2 font-bold text-primary underline underline-offset-4"
+              >
+                Open PhET simulations <ArrowRight size={16} />
+              </a>
+              <p className="mt-4 text-xs leading-5 text-muted-foreground">
+                Opens the PhET website in a new tab. Mbale Progressive Secondary School does not
+                host or control the external resource.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

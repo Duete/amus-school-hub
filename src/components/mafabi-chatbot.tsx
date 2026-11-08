@@ -22,7 +22,7 @@ const pageDescriptions: Record<string, string> = {
   "/academics":
     "This is the academics page. It lists the UCE/O-Level and UACE/A-Level pathways, subjects, candidate numbers, assessment approach, the route from S.1 through UACE, and Worasi Joel’s Best UACE 2025 result of 18 points in BCM / ICT.",
   "/e-library":
-    "This is the e-Library. It groups learning shelves by O-Level classes S.1–S.4 and A-Level classes S.5–S.6, then organises each class into subject areas.",
+    "This is the e-Library. It groups learning shelves by O-Level classes S.1–S.4 and A-Level classes S.5–S.6, then organises each class into subject areas. The Simulations section links learners to PhET Interactive Simulations for interactive science and mathematics learning.",
   "/admissions":
     "This is the admissions page. It explains Day Campus and boarding at Mbale Progressive Annex, entry guidance, application steps, and how to ask the school about places and fees.",
   "/admissions/apply":
@@ -77,7 +77,7 @@ function answerFor(message: string, pathname: string) {
     return "Mbale Progressive Secondary School is a mixed day and boarding school in Mbale City, Uganda. It was established in 1993 and serves more than 1,500 learners from S.1 through UACE. The Day Campus is on Nyanza Road near Namatala; Mbale Progressive Annex is the boarding campus. The school motto is ‘The Love of Education Brought Us Here.’ The footer taglines are ‘We Unlock the Future’ and ‘The Temple of Knowledge.’";
   }
   if (query.includes("e-library") || query.includes("e library") || query.includes("library")) {
-    return "The e-Library is organised in two levels: O-Level has S.1, S.2, S.3, and S.4 shelves; A-Level has S.5 and S.6 shelves. Open a class shelf to browse its core, elective, principal, or subsidiary subject areas. School-approved notes, reading lists, revision guides, and past papers can be attached to each subject shelf.";
+    return "The e-Library is organised in two levels: O-Level has S.1, S.2, S.3, and S.4 shelves; A-Level has S.5 and S.6 shelves. Open a class shelf to browse its core, elective, principal, or subsidiary subject areas. The Simulations section links to PhET Interactive Simulations at https://phet.colorado.edu/ for interactive science and mathematics learning. School-approved notes, reading lists, revision guides, and past papers can be attached to each subject shelf.";
   }
   if (query.includes("football") || query.includes("soccer")) {
     return "Mbale Progressive’s football legacy grew from sports bursaries and local training in the Bugisu region. In the 2016 Mbale District Copa Qualifiers, the boys beat Nkoma SS 4–3 on penalties and the girls beat Mbale Comprehensive 2–0 to win both district trophies. The boys later beat Nyamitanga SS 3–2 at the 2022 National Championship. In 2026, Progressive drew 1–1 with Kisozi Seed, beat Ssaku SS 2–0, defeated Masindi SS 5–4 on penalties in the Round of 32, and reached the Round of 16 before a 4–2 shootout defeat to London College Nansana. The team finished 14th nationally. Open Co-Curricular for the full history and scouting invitation for the boys’ and girls’ squads.";
