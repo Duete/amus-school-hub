@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { campuses, schoolHead } from "@/lib/school";
-import { campusPhotoGroups } from "@/lib/campus-photos";
+import { annexBuildingPhotos, campusPhotoGroups } from "@/lib/campus-photos";
 describe("School campus structure", () => {
   it("features exactly two distinct campuses", () => {
     expect(campuses).toHaveLength(2);
@@ -12,6 +12,10 @@ describe("School campus structure", () => {
     expect(campuses[0]?.description).toContain("Plot 8–15 Nabuyonga Rise");
     expect(campuses[0]?.image).toContain("hero-driveway.webp");
     expect(campuses[1]?.image).toContain("hero-frontage.webp");
+    expect(campuses[1]?.setting).toBe("Nyanza Road, Industrial City Division, Mbale City.");
+    expect(campuses[1]?.description).toContain(
+      "Nyanza Road in Industrial City Division, Mbale City",
+    );
   });
 
   it("assigns Day Campus facility photos and Annex building photos to the right galleries", () => {
@@ -46,6 +50,10 @@ describe("School campus structure", () => {
       "Laboratory and Science Block",
       "Sick Bay and Library Block",
     ]);
+    expect(annexBuildingPhotos.map((photo) => photo.caption)).not.toContain(
+      "School buses at the Boarding Campus",
+    );
+    expect(annexBuildingPhotos.map((photo) => photo.caption)).toContain("A’Level Arts Block");
     expect(
       campusPhotoGroups.annex.find((photo) => photo.caption === "Administration block")?.src,
     ).toContain("annex-administration-block.jpg");
