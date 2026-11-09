@@ -34,25 +34,25 @@ type FacultyMember = {
 const directorsOfStudies = [
   {
     name: "Mr. Sahamali Elias",
-    role: "Director of Studies I",
+    role: "Director of Studies I (DOS I)",
     campus: "Day Campus",
     photo: sahamaliElias,
   },
   {
     name: "Mr. Gwire Muhammad",
-    role: "Director of Studies II",
+    role: "Assistant Director of Studies (DOS II)",
     campus: "Day Campus",
     photo: gwireMuhammad,
   },
   {
     name: "Mr. Wamboga Asuman",
-    role: "Director of Studies I",
+    role: "Director of Studies I (DOS I)",
     campus: "Boarding",
     photo: wambogaAsuman,
   },
   {
     name: "Mr. Wangota Joshua",
-    role: "Director of Studies II",
+    role: "Assistant Director of Studies (DOS II)",
     campus: "Boarding",
     photo: wangotaJoshua,
   },
@@ -284,11 +284,11 @@ function TeachingStaff() {
               across both settings.
             </p>
           </div>
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid gap-5 sm:grid-cols-2">
             {directorsOfStudies.map((leader) => (
               <article
                 key={leader.name}
-                className="overflow-hidden border border-border bg-background"
+                className="flex items-center gap-4 bg-primary p-4 text-left text-primary-foreground"
               >
                 <img
                   src={leader.photo}
@@ -296,12 +296,16 @@ function TeachingStaff() {
                   width={800}
                   height={800}
                   loading="lazy"
-                  className="aspect-square w-full object-cover"
+                  className="size-24 shrink-0 object-cover sm:size-28"
                 />
-                <div className="border-t-4 border-primary p-4">
-                  <h3 className="text-lg">{leader.name}</h3>
-                  <p className="mt-1 text-sm font-semibold text-primary">{leader.role}</p>
-                  <p className="mt-1 text-xs text-muted-foreground">{leader.campus}</p>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.08em] text-secondary">
+                    {leader.campus}
+                  </p>
+                  <h3 className="mt-2 text-lg">{leader.name}</h3>
+                  <p className="mt-1 text-sm font-semibold text-primary-foreground/80">
+                    {leader.role}
+                  </p>
                 </div>
               </article>
             ))}
