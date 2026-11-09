@@ -1,13 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Mail, Search, UsersRound } from "lucide-react";
 import { useMemo, useState } from "react";
-import gwireMuhammad from "@/assets/admin-gwire-muhammad-web.jpg";
-import sahamaliElias from "@/assets/admin-sahamali-elias-web.jpg";
-import wambogaAsuman from "@/assets/admin-wamboga-asuman-web.jpg";
-import wangotaJoshua from "@/assets/admin-wangota-joshua-web.jpg";
-import abwochJanet from "@/assets/staff-abwoch-janet.jpg.asset.json";
-import nabusayiKanah from "@/assets/staff-nabusayi-kanah.jpg.asset.json";
 import { schoolHead } from "@/lib/school";
+import { directorsOfStudies, faculty, type FacultyMember } from "@/lib/faculty";
 
 export const Route = createFileRoute("/faculty")({
   head: () =>
@@ -18,181 +13,6 @@ export const Route = createFileRoute("/faculty")({
     ),
   component: TeachingStaff,
 });
-
-type FacultyMember = {
-  name: string;
-  role: string;
-  department: string;
-  subjects: string;
-  campus: string;
-  bio: string;
-  email: string;
-  head?: boolean;
-  photo?: string;
-};
-
-const directorsOfStudies = [
-  {
-    name: "Mr. Sahamali Elias",
-    role: "Director of Studies I (DOS I)",
-    campus: "Day Campus",
-    photo: sahamaliElias,
-  },
-  {
-    name: "Mr. Gwire Muhammad",
-    role: "Assistant Director of Studies (DOS II)",
-    campus: "Day Campus",
-    photo: gwireMuhammad,
-  },
-  {
-    name: "Mr. Wamboga Asuman",
-    role: "Director of Studies I (DOS I)",
-    campus: "Boarding",
-    photo: wambogaAsuman,
-  },
-  {
-    name: "Mr. Wangota Joshua",
-    role: "Assistant Director of Studies (DOS II)",
-    campus: "Boarding",
-    photo: wangotaJoshua,
-  },
-];
-
-export const faculty: FacultyMember[] = [
-  {
-    name: "Ms. Sarah Namukasa",
-    role: "Head of Mathematics",
-    department: "Mathematics & Sciences",
-    subjects: "Mathematics · Further Mathematics",
-    campus: "Day Campus",
-    bio: "Leads numeracy planning across both levels and mentors learners through problem-solving clinics.",
-    email: "s.namukasa@mbaleprogressive.sc.ug",
-    head: true,
-  },
-  {
-    name: "Mr. Isaac Waiswa",
-    role: "Head of Science",
-    department: "Mathematics & Sciences",
-    subjects: "Chemistry · Integrated Science",
-    campus: "Boarding",
-    bio: "Coordinates practical learning, laboratory safety, and science enrichment activities.",
-    email: "i.waiswa@mbaleprogressive.sc.ug",
-    head: true,
-  },
-  {
-    name: "Ms. Agnes Nakitto",
-    role: "Head of Languages",
-    department: "Languages & Humanities",
-    subjects: "English Language · Literature",
-    campus: "Day Campus",
-    bio: "Supports confident communication through reading, writing, debate, and performance.",
-    email: "a.nakitto@mbaleprogressive.sc.ug",
-    head: true,
-  },
-  {
-    name: "Mr. Daniel Kato",
-    role: "Head of Humanities",
-    department: "Languages & Humanities",
-    subjects: "History · Geography",
-    campus: "Day Campus",
-    bio: "Connects classroom learning to Uganda’s history, place, culture, and civic responsibility.",
-    email: "d.kato@mbaleprogressive.sc.ug",
-    head: true,
-  },
-  {
-    name: "Ms. Ruth Atim",
-    role: "Head of ICT & Innovation",
-    department: "Technology & Enterprise",
-    subjects: "ICT · Computer Studies · Entrepreneurship",
-    campus: "Boarding",
-    bio: "Guides digital fluency, research skills, and enterprise projects for modern readiness.",
-    email: "r.atim@mbaleprogressive.sc.ug",
-    head: true,
-  },
-  {
-    name: "Mr. Peter Ssenyonjo",
-    role: "Senior Teacher",
-    department: "Mathematics & Sciences",
-    subjects: "Physics · Mathematics",
-    campus: "Boarding",
-    bio: "Uses practical demonstrations to make abstract ideas visible and memorable.",
-    email: "p.ssenyonjo@mbaleprogressive.sc.ug",
-  },
-  {
-    name: "Ms. Esther Nalubega",
-    role: "Senior Teacher",
-    department: "Mathematics & Sciences",
-    subjects: "Biology · Agriculture",
-    campus: "Day Campus",
-    bio: "Champions fieldwork, environmental awareness, and learner wellbeing.",
-    email: "e.nalubega@mbaleprogressive.sc.ug",
-  },
-  {
-    name: "Mr. Joseph Mugisha",
-    role: "Teacher",
-    department: "Languages & Humanities",
-    subjects: "Kiswahili · French",
-    campus: "Day Campus",
-    bio: "Builds language confidence and cultural curiosity through conversation-led learning.",
-    email: "j.mugisha@mbaleprogressive.sc.ug",
-  },
-  {
-    name: "Ms. Lydia Achieng",
-    role: "Teacher",
-    department: "Languages & Humanities",
-    subjects: "Christian Religious Education · General Paper",
-    campus: "Boarding",
-    bio: "Helps learners examine ideas, values, and contemporary issues with care and clarity.",
-    email: "l.achieng@mbaleprogressive.sc.ug",
-  },
-  {
-    name: "Mr. Robert Ouma",
-    role: "Teacher",
-    department: "Technology & Enterprise",
-    subjects: "Technology & Design · Technical Drawing",
-    campus: "Boarding",
-    bio: "Develops hands-on making, design thinking, and safe workshop practice.",
-    email: "r.ouma@mbaleprogressive.sc.ug",
-  },
-  {
-    name: "Ms. Fiona Nambassa",
-    role: "Learner Support Lead",
-    department: "Learner Support",
-    subjects: "Guidance · Study Skills · Careers",
-    campus: "Day Campus",
-    bio: "Coordinates mentoring, study habits, and pathways conversations for learners and families.",
-    email: "f.nambassa@mbaleprogressive.sc.ug",
-  },
-  {
-    name: "Mr. Michael Okello",
-    role: "Sports & Activities Lead",
-    department: "Learner Support",
-    subjects: "Physical Education · Sports Leadership",
-    campus: "Day Campus",
-    bio: "Uses sport and co-curricular activities to grow teamwork, confidence, and belonging.",
-    email: "m.okello@mbaleprogressive.sc.ug",
-  },
-  {
-    name: "Madam Nabusayi Kanah Nangayo",
-    role: "Teacher",
-    department: "Languages & Humanities",
-    subjects: "English · Literature in English",
-    campus: "Day Campus",
-    bio: "Builds reading, writing, and analytical confidence through close study of set texts.",
-    email: "n.nabusayi@mbaleprogressive.sc.ug",
-    photo: nabusayiKanah.url,
-  },
-  {
-    name: "Madam Abwoch Janet",
-    role: "Teacher",
-    department: "Languages & Humanities",
-    subjects: "English · Literature in English (A'Level)",
-    campus: "Day Campus",
-    bio: "Guides A'Level learners through critical reading, essay craft, and examination technique.",
-    email: "j.abwoch@mbaleprogressive.sc.ug",
-    photo: abwochJanet.url,
-  },
-];
 
 const departments = [
   "All departments",
@@ -225,6 +45,20 @@ function TeachingStaff() {
           </p>
         </div>
       </section>
+
+      <nav className="border-b border-border bg-background" aria-label="Campus staff pages">
+        <div className="site-width flex flex-wrap gap-2 py-5">
+          <Link to="/faculty" className="academic-tab academic-tab-active" aria-current="page">
+            Staff overview
+          </Link>
+          <Link to="/faculty/day" className="academic-tab">
+            Day Campus staff
+          </Link>
+          <Link to="/faculty/boarding" className="academic-tab">
+            Boarding staff
+          </Link>
+        </div>
+      </nav>
 
       <div className="site-width py-16 md:py-20">
         <section aria-labelledby="staff-overview-heading">
