@@ -10,7 +10,7 @@ import nabusayiKanah from "@/assets/staff-nabusayi-kanah.jpg.asset.json";
 import enguluDaniel from "@/assets/staff-engulu-daniel.jpg.asset.json";
 import muguloJoseph from "@/assets/staff-mugulo-joseph.jpg.asset.json";
 import buyiAliceLamwaka from "@/assets/staff-buyi-alice-lamwaka.jpg.asset.json";
-import katendeEmmanuel from "@/assets/staff-katende-emmanuel.jpg";
+import katendeEmmanuel from "@/assets/staff-katende-emmanuel.webp";
 import kediYefusa from "@/assets/staff-kedi-yefusa.png";
 import boozaAzaliaAshraf from "@/assets/staff-booza-azalia-ashraf.png";
 
@@ -24,6 +24,7 @@ export type FacultyMember = {
   email?: string;
   head?: boolean;
   photo?: string;
+  photoPosition?: string;
 };
 
 export const staffInitials = (name: string) => {
@@ -80,6 +81,7 @@ export const faculty: FacultyMember[] = [
     campus: "Boarding",
     bio: "Leads the Science Department at the Boarding Campus.",
     photo: katendeEmmanuel,
+    photoPosition: "50% 11%",
     head: true,
   },
   {

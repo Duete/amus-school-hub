@@ -265,6 +265,7 @@ function StaffCard({ member, highlight = false }: { member: FacultyMember; highl
             height={800}
             loading="lazy"
             className="size-32 rounded-full border-4 border-secondary bg-background object-cover object-top sm:size-36"
+            style={member.photoPosition ? { objectPosition: member.photoPosition } : undefined}
           />
         ) : (
           <div className="flex size-32 items-center justify-center rounded-full border-4 border-secondary bg-primary text-2xl font-semibold text-primary-foreground sm:size-36">
