@@ -9,6 +9,7 @@ import mukoyaFirdaus from "@/assets/staff-mukoya-firdaus.jpg.asset.json";
 import nabusayiKanah from "@/assets/staff-nabusayi-kanah.jpg.asset.json";
 import katendeEmmanuel from "@/assets/staff-katende-emmanuel.jpg";
 import kediYefusa from "@/assets/staff-kedi-yefusa.png";
+import boozaAzaliaAshraf from "@/assets/staff-booza-azalia-ashraf.png";
 
 export type FacultyMember = {
   name: string;
@@ -99,12 +100,13 @@ export const faculty: FacultyMember[] = [
     head: true,
   },
   {
-    name: "Booza Azalia Ashraf",
+    name: "Mr. Booza Azalia Ashraf",
     role: "Head of History Department",
     department: "History Department",
     subjects: "History",
     campus: "Boarding",
     bio: "Leads the History Department at the Boarding Campus.",
+    photo: boozaAzaliaAshraf,
     head: true,
   },
   {
