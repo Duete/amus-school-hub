@@ -3,6 +3,7 @@ import { Mail, Search, UsersRound } from "lucide-react";
 import { useMemo, useState } from "react";
 import { schoolHead } from "@/lib/school";
 import nabusayiKanahNangayo from "@/assets/staff-nabusayi-kanah-nangayo-web.jpg";
+import abwochJanet from "@/assets/staff-abwoch-janet-web.jpg";
 
 export const Route = createFileRoute("/faculty")({
   head: () =>
@@ -113,6 +114,16 @@ const faculty: FacultyMember[] = [
     bio: "Guides learners through reading, writing, and literary analysis in English and Literature in English.",
     email: "n.nabusayi@mbaleprogressive.sc.ug",
     photo: nabusayiKanahNangayo,
+  },
+  {
+    name: "Madam Abwoch Janet",
+    role: "Teacher",
+    department: "Languages & Humanities",
+    subjects: "English · Literature in English (A’Level)",
+    campus: "Mbale Progressive Annex",
+    bio: "Teaches English and Literature in English to A’Level learners, building close reading, critical response, and confident written argument.",
+    email: "a.janet@mbaleprogressive.sc.ug",
+    photo: abwochJanet,
   },
   {
     name: "Ms. Lydia Achieng",
