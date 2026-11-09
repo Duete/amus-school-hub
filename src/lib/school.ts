@@ -43,6 +43,8 @@ const knownPaths: Record<string, string> = {
   "Our campuses": "/campuses",
   Contact: "/contact",
   "Teaching Staff": "/faculty",
+  "Day Campus Teaching Staff": "/faculty/day",
+  "Boarding Campus Teaching Staff": "/faculty/boarding",
   Faculty: "/faculty",
   "Fees and clearance": "/finance",
   "Governance and leadership": "/governance",

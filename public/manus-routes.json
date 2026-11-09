@@ -13,6 +13,8 @@
     { "path": "/database", "title": "Database architecture" },
     { "path": "/e-library", "title": "e-Library" },
     { "path": "/faculty", "title": "Teaching staff" },
+    { "path": "/faculty/day", "title": "Day Campus Teaching Staff" },
+    { "path": "/faculty/boarding", "title": "Boarding Campus Teaching Staff" },
     { "path": "/gallery", "title": "Campus photo gallery" },
     { "path": "/finance", "title": "Fees and financial clearance" },
     { "path": "/governance", "title": "Governance and leadership" },

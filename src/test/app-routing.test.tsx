@@ -28,6 +28,8 @@ describe("App routing", () => {
     ["/database", "/database"],
     ["/e-library", "/e-library"],
     ["/faculty", "/faculty"],
+    ["/faculty/day", "/faculty/day"],
+    ["/faculty/boarding", "/faculty/boarding"],
     ["/gallery", "/gallery"],
     ["/governance", "/governance"],
     ["/news", "/news"],

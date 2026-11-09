@@ -32,7 +32,11 @@ const pageDescriptions: Record<string, string> = {
   "/campuses":
     "This is the campus directory. Day Campus is on Plot 8–15 Nabuyonga Rise, Northern City Division, Mbale City. Mbale Progressive Annex is the boarding campus on Nyanza Road in Industrial City Division, Mbale City.",
   "/faculty":
-    "This is the Teaching Staff page under Academics. It introduces subject heads, teachers, academic support, and the staff responsible for learner guidance and activities.",
+    "This is the Teaching Staff overview under Academics. It introduces subject heads, teachers, academic support, and separate directory pages for the Day Campus and Boarding staff.",
+  "/faculty/day":
+    "This is the Day Campus Teaching Staff page. It lists the Day Campus Directors of Studies, department heads, and teachers supporting learners during the school day.",
+  "/faculty/boarding":
+    "This is the Boarding Campus Teaching Staff page. It lists the Boarding Directors of Studies, department heads, and teachers supporting boarding learners, including Madam Nabusayi Kanah Nangayo and Madam Abwoch Janet.",
   "/finance":
     "This is Fees & clearance. It is a preview portal for checking a learner statement, seeing an outstanding balance, and creating a payment request.",
   "/governance":
@@ -124,7 +128,7 @@ function answerFor(message: string, pathname: string) {
     return "The governance page lists the Board of Governors and campus leadership. Day Campus leaders include Mr. Ocukul Julius, Mr. Ssempala Nathan, Ms. Nabukwasi Patience, Mr. Sahamali Elias, and Mr. Gwire Muhammad. Boarding leaders include Mr. Mudebo Ali Masai, Mrs. Buyi Alice Lamwaka, Mr. Wamboga Asuman, and Mr. Wangota Joshua.";
   }
   if (query.includes("faculty") || query.includes("teacher") || query.includes("staff")) {
-    return "The Teaching Staff page under Academics lists subject heads, teachers, and activity leadership across O-Level and A-Level. For a named subject lead or teacher, open Teaching Staff and search the directory rather than relying on a general chat answer.";
+    return "The Teaching Staff area under Academics has a staff overview plus separate Day Campus and Boarding staff pages. The Boarding page includes Madam Nabusayi Kanah Nangayo and Madam Abwoch Janet. Open the relevant campus page for the full directory.";
   }
   if (query.includes("location") || query.includes("address") || query.includes("office")) {
     return "The Day Campus is on Plot 8–15 Nabuyonga Rise, Northern City Division, Mbale City. Mbale Progressive Annex is the boarding campus on Nyanza Road in Industrial City Division, Mbale City. Boarding-campus map: https://maps.app.goo.gl/MtCo3saXVfs4Lf698. The usual office window is Monday to Saturday, 08:00–17:00. Confirm term, holiday, and visitation arrangements before travelling.";
