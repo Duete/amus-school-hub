@@ -9,7 +9,7 @@ import {
 
 describe("e-Library Chemistry resources", () => {
   it.each(["S.5", "S.6"] as const)("lists both compendia in %s Chemistry", (className) => {
-    const resources = aLevelClassResources[className].Chemistry;
+    const resources = aLevelClassResources[className]["Chemistry"];
     expect(resources?.map((resource) => resource.href)).toEqual([
       chemistryCompendiumHref,
       chemistryJointMocksCompendiumHref,

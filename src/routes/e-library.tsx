@@ -210,7 +210,7 @@ function ClassCard({ shelf, index }: { shelf: ClassShelf; index: number }) {
                 <SubjectShelf
                   key={subject}
                   subject={subject}
-                  resources={shelf.resources?.[subject]}
+                  resources={shelf.resources?.[subject] ?? []}
                 />
               ))}
             </ul>
