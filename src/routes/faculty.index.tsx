@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Mail, Search, UsersRound } from "lucide-react";
 import { useMemo, useState } from "react";
 import { schoolHead } from "@/lib/school";
-import { directorsOfStudies, faculty, type FacultyMember } from "@/lib/faculty";
+import { directorsOfStudies, faculty, staffInitials, type FacultyMember } from "@/lib/faculty";
 
 export const Route = createFileRoute("/faculty/")({
   head: () =>
@@ -268,16 +268,12 @@ function StaffCard({ member, highlight = false }: { member: FacultyMember; highl
           />
         ) : (
           <div className="flex size-20 items-center justify-center border border-primary-foreground/40 bg-primary-foreground/10 text-2xl font-semibold">
-            {member.name
-              .split(" ")
-              .map((part) => part[0])
-              .slice(0, 2)
-              .join("")}
+            {staffInitials(member.name)}
           </div>
         )}
         {member.head && (
           <span className="relative bg-secondary px-3 py-1 text-[10px] font-bold tracking-[0.04em] text-secondary-foreground">
-            Subject head
+            Department head
           </span>
         )}
       </div>
@@ -288,12 +284,14 @@ function StaffCard({ member, highlight = false }: { member: FacultyMember; highl
       <div className="mt-6 space-y-2 border-t border-border pt-4 text-xs text-muted-foreground">
         <p>{member.department}</p>
         <p>{member.campus}</p>
-        <a
-          href={`mailto:${member.email}`}
-          className="inline-flex items-center gap-2 font-semibold text-primary hover:underline"
-        >
-          <Mail size={14} /> {member.email}
-        </a>
+        {member.email && (
+          <a
+            href={`mailto:${member.email}`}
+            className="inline-flex items-center gap-2 font-semibold text-primary hover:underline"
+          >
+            <Mail size={14} /> {member.email}
+          </a>
+        )}
       </div>
     </article>
   );
