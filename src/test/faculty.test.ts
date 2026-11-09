@@ -47,4 +47,24 @@ describe("Faculty directory", () => {
     expect(member?.campus).toBe("Boarding");
     expect(member?.photo).toBeTruthy();
   });
+
+  it("lists Kedi Yefusa as the Boarding A'Level Mathematics teacher", () => {
+    const member = faculty.find((person) => person.name === "Kedi Yefusa");
+    expect(member?.role).toBe("A'Level Mathematics Teacher");
+    expect(member?.subjects).toBe("Mathematics (A'Level)");
+    expect(member?.department).toBe("Mathematics & Sciences");
+    expect(member?.campus).toBe("Boarding");
+    expect(member?.photo).toBeTruthy();
+    expect(member?.email).toBeUndefined();
+  });
+
+  it("lists Mr. Katende Emmanuel as Boarding Science HoD with his photo", () => {
+    const member = faculty.find((person) => person.name === "Mr. Katende Emmanuel");
+    expect(member?.role).toBe("Head of Science Department");
+    expect(member?.subjects).toBe("Science");
+    expect(member?.department).toBe("Science Department");
+    expect(member?.campus).toBe("Boarding");
+    expect(member?.head).toBe(true);
+    expect(member?.photo).toBeTruthy();
+  });
 });

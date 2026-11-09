@@ -8,10 +8,11 @@ describe("Boarding Campus Heads of Department", () => {
     expect(heads).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
-          name: "Katende Emmanuel",
+          name: "Mr. Katende Emmanuel",
           department: "Science Department",
           campus: "Boarding",
           head: true,
+          photo: expect.any(String),
         }),
         expect.objectContaining({
           name: "Booza Azalia Ashraf",

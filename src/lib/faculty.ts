@@ -7,6 +7,8 @@ import kericheanEmmanuel from "@/assets/staff-kerichan-emmanuel.jpg.asset.json";
 import maaniAsinani from "@/assets/staff-maani-asinani.jpg.asset.json";
 import mukoyaFirdaus from "@/assets/staff-mukoya-firdaus.jpg.asset.json";
 import nabusayiKanah from "@/assets/staff-nabusayi-kanah.jpg.asset.json";
+import katendeEmmanuel from "@/assets/staff-katende-emmanuel.jpg";
+import kediYefusa from "@/assets/staff-kedi-yefusa.png";
 
 export type FacultyMember = {
   name: string;
@@ -67,12 +69,13 @@ export const faculty: FacultyMember[] = [
     head: true,
   },
   {
-    name: "Katende Emmanuel",
+    name: "Mr. Katende Emmanuel",
     role: "Head of Science Department",
     department: "Science Department",
     subjects: "Science",
     campus: "Boarding",
     bio: "Leads the Science Department at the Boarding Campus.",
+    photo: katendeEmmanuel,
     head: true,
   },
   {
@@ -224,5 +227,14 @@ export const faculty: FacultyMember[] = [
     campus: "Boarding",
     bio: "Teaches Physics at O'Level and A'Level at the Boarding Campus.",
     photo: mukoyaFirdaus.url,
+  },
+  {
+    name: "Kedi Yefusa",
+    role: "A'Level Mathematics Teacher",
+    department: "Mathematics & Sciences",
+    subjects: "Mathematics (A'Level)",
+    campus: "Boarding",
+    bio: "Teaches A'Level Mathematics at the Boarding Campus.",
+    photo: kediYefusa,
   },
 ];
