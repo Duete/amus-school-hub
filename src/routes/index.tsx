@@ -517,8 +517,35 @@ function Index() {
         </div>
       </section>
 
-      <section className="py-20 md:py-28" aria-label="Campus photographs">
+      <section className="py-20 md:py-28" aria-labelledby="campus-gallery-heading">
         <div className="site-width space-y-16">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <div>
+              <p className="text-sm font-semibold tracking-[0.04em] text-primary">CAMPUS GALLERY</p>
+              <h2
+                id="campus-gallery-heading"
+                className="mt-3 max-w-xl text-4xl leading-tight md:text-5xl"
+              >
+                See the campuses up close.
+              </h2>
+            </div>
+            <nav className="flex flex-wrap gap-3" aria-label="Campus gallery links">
+              <Link
+                to="/gallery"
+                className="inline-flex items-center gap-2 border border-primary px-4 py-3 text-sm font-bold text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+              >
+                View full gallery <ArrowRight size={16} />
+              </Link>
+              <Link
+                to="/gallery"
+                hash="a-level-arts-block"
+                aria-label="View the A’Level Arts Block in the gallery"
+                className="inline-flex items-center gap-2 bg-secondary px-4 py-3 text-sm font-bold text-secondary-foreground transition-colors hover:bg-secondary/90"
+              >
+                A’Level Arts Block <ArrowRight size={16} />
+              </Link>
+            </nav>
+          </div>
           <div>
             <div className="flex flex-wrap items-end justify-between gap-6">
               <div>

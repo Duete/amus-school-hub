@@ -9,6 +9,7 @@ import heroDriveway from "@/assets/hero-driveway.webp";
 import heroFrontage from "@/assets/hero-frontage.webp";
 
 export type CampusPhoto = {
+  id?: string;
   src: string;
   caption: string;
   alt: string;
@@ -108,6 +109,7 @@ export const campusPhotoGroups: Record<"dayCampus" | "annex", CampusPhoto[]> = {
     },
     {
       src: campusImages.annexAlevelArtsBlock,
+      id: "a-level-arts-block",
       caption: "A’Level Arts Block",
       alt: "A’Level Arts Block at Mbale Progressive Annex boarding campus",
     },

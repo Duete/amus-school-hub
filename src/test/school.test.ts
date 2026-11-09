@@ -71,6 +71,9 @@ describe("School campus structure", () => {
       campusPhotoGroups.annex.find((photo) => photo.caption === "A’Level Arts Block")?.src,
     ).toContain("annex-a-level-arts-block.png");
     expect(
+      campusPhotoGroups.annex.find((photo) => photo.caption === "A’Level Arts Block")?.id,
+    ).toBe("a-level-arts-block");
+    expect(
       campusPhotoGroups.annex.find((photo) => photo.caption === "Sick Bay and Library Block")?.src,
     ).toContain("hero-classrooms.webp");
     expect(
