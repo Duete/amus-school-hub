@@ -49,6 +49,12 @@ const sportsActivities = [
     text: "Research, rebuttal, and public speaking — with national knockout and First Runners-Up results in 2025/2026.",
     href: "#debate-story",
   },
+  {
+    label: "Student life",
+    title: "Houses",
+    text: "Four house communities, each with its own color, bringing learners together through sport, service, and school life.",
+    href: "#houses",
+  },
 ];
 
 const clubs = [
@@ -623,7 +629,11 @@ function Sports() {
           ))}
         </div>
 
-        <div className="mt-16 border-t border-border pt-10" aria-labelledby="houses-heading">
+        <div
+          className="mt-16 scroll-mt-28 border-t border-border pt-10"
+          id="houses"
+          aria-labelledby="houses-heading"
+        >
           <div className="max-w-2xl">
             <p className="eyebrow text-primary">HOUSE COMMUNITY</p>
             <h2 id="houses-heading" className="mt-2 text-3xl md:text-4xl">
