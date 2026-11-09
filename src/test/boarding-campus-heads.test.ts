@@ -15,10 +15,11 @@ describe("Boarding Campus Heads of Department", () => {
           photo: expect.any(String),
         }),
         expect.objectContaining({
-          name: "Booza Azalia Ashraf",
+          name: "Mr. Booza Azalia Ashraf",
           department: "History Department",
           campus: "Boarding",
           head: true,
+          photo: expect.any(String),
         }),
         expect.objectContaining({
           name: "Ms. Nambafu Aisha",

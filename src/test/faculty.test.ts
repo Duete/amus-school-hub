@@ -67,4 +67,13 @@ describe("Faculty directory", () => {
     expect(member?.head).toBe(true);
     expect(member?.photo).toBeTruthy();
   });
+
+  it("lists Mr. Booza Azalia Ashraf as Boarding History HoD with his photo", () => {
+    const member = faculty.find((person) => person.name === "Mr. Booza Azalia Ashraf");
+    expect(member?.role).toBe("Head of History Department");
+    expect(member?.department).toBe("History Department");
+    expect(member?.campus).toBe("Boarding");
+    expect(member?.head).toBe(true);
+    expect(member?.photo).toBeTruthy();
+  });
 });
