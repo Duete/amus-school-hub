@@ -167,11 +167,11 @@ function HodCard({ member }: { member: FacultyMember }) {
           width={800}
           height={800}
           loading="lazy"
-          className="size-32 object-cover"
+          className="size-32 rounded-full border-4 border-secondary bg-background object-cover object-top"
         />
       ) : (
         <div
-          className="flex size-32 items-center justify-center bg-primary text-3xl font-semibold text-primary-foreground"
+          className="flex size-32 items-center justify-center rounded-full border-4 border-secondary bg-primary text-3xl font-semibold text-primary-foreground"
           aria-hidden="true"
         >
           {staffInitials(member.name)}
@@ -189,7 +189,7 @@ function StaffCard({ member, highlight = false }: { member: FacultyMember; highl
     <article
       className={`flex h-full flex-col border border-border p-6 ${highlight ? "bg-muted" : "bg-background"}`}
     >
-      <div className="relative flex aspect-[4/3] items-end justify-between gap-4 bg-primary p-5 text-primary-foreground">
+      <div className="relative flex aspect-[4/3] items-center justify-center bg-muted/40 p-5">
         {member.photo ? (
           <img
             src={member.photo}
@@ -197,15 +197,15 @@ function StaffCard({ member, highlight = false }: { member: FacultyMember; highl
             width={800}
             height={800}
             loading="lazy"
-            className="absolute inset-0 size-full object-cover"
+            className="size-32 rounded-full border-4 border-secondary bg-background object-cover object-top sm:size-36"
           />
         ) : (
-          <div className="flex size-20 items-center justify-center border border-primary-foreground/40 bg-primary-foreground/10 text-2xl font-semibold">
+          <div className="flex size-32 items-center justify-center rounded-full border-4 border-secondary bg-primary text-2xl font-semibold text-primary-foreground sm:size-36">
             {staffInitials(member.name)}
           </div>
         )}
         {member.head && (
-          <span className="relative bg-secondary px-3 py-1 text-[10px] font-bold tracking-[0.04em] text-secondary-foreground">
+          <span className="absolute right-3 top-3 bg-secondary px-3 py-1 text-[10px] font-bold tracking-[0.04em] text-secondary-foreground">
             Department head
           </span>
         )}
