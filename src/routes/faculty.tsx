@@ -5,6 +5,8 @@ import gwireMuhammad from "@/assets/admin-gwire-muhammad-web.jpg";
 import sahamaliElias from "@/assets/admin-sahamali-elias-web.jpg";
 import wambogaAsuman from "@/assets/admin-wamboga-asuman-web.jpg";
 import wangotaJoshua from "@/assets/admin-wangota-joshua-web.jpg";
+import abwochJanet from "@/assets/staff-abwoch-janet.jpg.asset.json";
+import nabusayiKanah from "@/assets/staff-nabusayi-kanah.jpg.asset.json";
 import { schoolHead } from "@/lib/school";
 
 export const Route = createFileRoute("/faculty")({
@@ -26,6 +28,7 @@ type FacultyMember = {
   bio: string;
   email: string;
   head?: boolean;
+  photo?: string;
 };
 
 const directorsOfStudies = [
@@ -55,7 +58,7 @@ const directorsOfStudies = [
   },
 ];
 
-const faculty: FacultyMember[] = [
+export const faculty: FacultyMember[] = [
   {
     name: "Ms. Sarah Namukasa",
     role: "Head of Mathematics",
@@ -168,6 +171,26 @@ const faculty: FacultyMember[] = [
     campus: "Day Campus",
     bio: "Uses sport and co-curricular activities to grow teamwork, confidence, and belonging.",
     email: "m.okello@mbaleprogressive.sc.ug",
+  },
+  {
+    name: "Madam Nabusayi Kanah Nangayo",
+    role: "Teacher",
+    department: "Languages & Humanities",
+    subjects: "English · Literature in English",
+    campus: "Day Campus",
+    bio: "Builds reading, writing, and analytical confidence through close study of set texts.",
+    email: "n.nabusayi@mbaleprogressive.sc.ug",
+    photo: nabusayiKanah.url,
+  },
+  {
+    name: "Madam Abwoch Janet",
+    role: "Teacher",
+    department: "Languages & Humanities",
+    subjects: "English · Literature in English (A'Level)",
+    campus: "Day Campus",
+    bio: "Guides A'Level learners through critical reading, essay craft, and examination technique.",
+    email: "j.abwoch@mbaleprogressive.sc.ug",
+    photo: abwochJanet.url,
   },
 ];
 
@@ -364,16 +387,27 @@ function StaffCard({ member, highlight = false }: { member: FacultyMember; highl
     <article
       className={`flex h-full flex-col border border-border p-6 ${highlight ? "bg-muted" : "bg-background"}`}
     >
-      <div className="flex aspect-[4/3] items-end justify-between gap-4 bg-primary p-5 text-primary-foreground">
-        <div className="flex size-20 items-center justify-center border border-primary-foreground/40 bg-primary-foreground/10 text-2xl font-semibold">
-          {member.name
-            .split(" ")
-            .map((part) => part[0])
-            .slice(0, 2)
-            .join("")}
-        </div>
+      <div className="relative flex aspect-[4/3] items-end justify-between gap-4 bg-primary p-5 text-primary-foreground">
+        {member.photo ? (
+          <img
+            src={member.photo}
+            alt={`Portrait of ${member.name}`}
+            width={800}
+            height={800}
+            loading="lazy"
+            className="absolute inset-0 size-full object-cover"
+          />
+        ) : (
+          <div className="flex size-20 items-center justify-center border border-primary-foreground/40 bg-primary-foreground/10 text-2xl font-semibold">
+            {member.name
+              .split(" ")
+              .map((part) => part[0])
+              .slice(0, 2)
+              .join("")}
+          </div>
+        )}
         {member.head && (
-          <span className="bg-secondary px-3 py-1 text-[10px] font-bold tracking-[0.04em] text-secondary-foreground">
+          <span className="relative bg-secondary px-3 py-1 text-[10px] font-bold tracking-[0.04em] text-secondary-foreground">
             Subject head
           </span>
         )}
