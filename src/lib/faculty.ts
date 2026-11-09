@@ -12,9 +12,17 @@ export type FacultyMember = {
   subjects: string;
   campus: "Day Campus" | "Boarding";
   bio: string;
-  email: string;
+  email?: string;
   head?: boolean;
   photo?: string;
+};
+
+export const staffInitials = (name: string) => {
+  const parts = name
+    .replace(/^(Mr\.|Ms\.|Madam)\s+/, "")
+    .trim()
+    .split(/\s+/);
+  return `${parts[0]?.[0] ?? ""}${parts[parts.length - 1]?.[0] ?? ""}`;
 };
 
 export const directorsOfStudies = [
@@ -56,13 +64,12 @@ export const faculty: FacultyMember[] = [
     head: true,
   },
   {
-    name: "Mr. Isaac Waiswa",
-    role: "Head of Science",
-    department: "Mathematics & Sciences",
-    subjects: "Chemistry · Integrated Science",
+    name: "Katende Emmanuel",
+    role: "Head of Science Department",
+    department: "Science Department",
+    subjects: "Science",
     campus: "Boarding",
-    bio: "Coordinates practical learning, laboratory safety, and science enrichment activities.",
-    email: "i.waiswa@mbaleprogressive.sc.ug",
+    bio: "Leads the Science Department at the Boarding Campus.",
     head: true,
   },
   {
@@ -93,6 +100,24 @@ export const faculty: FacultyMember[] = [
     campus: "Boarding",
     bio: "Guides digital fluency, research skills, and enterprise projects for modern readiness.",
     email: "r.atim@mbaleprogressive.sc.ug",
+    head: true,
+  },
+  {
+    name: "Booza Azalia Ashraf",
+    role: "Head of History Department",
+    department: "History Department",
+    subjects: "History",
+    campus: "Boarding",
+    bio: "Leads the History Department at the Boarding Campus.",
+    head: true,
+  },
+  {
+    name: "Ms. Nambafu Aisha",
+    role: "Head of Divinity",
+    department: "Divinity",
+    subjects: "Divinity",
+    campus: "Boarding",
+    bio: "Leads Divinity at the Boarding Campus.",
     head: true,
   },
   {
@@ -159,14 +184,15 @@ export const faculty: FacultyMember[] = [
     email: "m.okello@mbaleprogressive.sc.ug",
   },
   {
-    name: "Madam Nabusayi Kanah Nangayo",
-    role: "Teacher",
-    department: "Languages & Humanities",
+    name: "Ms. Nabusayi Kanah Nangayo",
+    role: "Head of Language Department",
+    department: "Language Department",
     subjects: "English · Literature in English",
     campus: "Boarding",
     bio: "Builds reading, writing, and analytical confidence through close study of set texts.",
     email: "n.nabusayi@mbaleprogressive.sc.ug",
     photo: nabusayiKanah.url,
+    head: true,
   },
   {
     name: "Madam Abwoch Janet",

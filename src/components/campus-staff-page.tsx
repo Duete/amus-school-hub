@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, UsersRound } from "lucide-react";
-import { directorsOfStudies, faculty, type FacultyMember } from "@/lib/faculty";
+import { directorsOfStudies, faculty, staffInitials, type FacultyMember } from "@/lib/faculty";
 
 export type StaffCampus = "Day Campus" | "Boarding";
 
@@ -146,16 +146,12 @@ function StaffCard({ member, highlight = false }: { member: FacultyMember; highl
           />
         ) : (
           <div className="flex size-20 items-center justify-center border border-primary-foreground/40 bg-primary-foreground/10 text-2xl font-semibold">
-            {member.name
-              .split(" ")
-              .map((part) => part[0])
-              .slice(0, 2)
-              .join("")}
+            {staffInitials(member.name)}
           </div>
         )}
         {member.head && (
           <span className="relative bg-secondary px-3 py-1 text-[10px] font-bold tracking-[0.04em] text-secondary-foreground">
-            Subject head
+            Department head
           </span>
         )}
       </div>
