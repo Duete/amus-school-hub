@@ -46,49 +46,29 @@ export function CampusStaffPage({ campus }: { campus: StaffCampus }) {
         </nav>
       </div>
       <div className="site-width py-16 md:py-20">
-        <div className="grid gap-8 border-b border-border pb-12 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.08em] text-primary">
-              Campus academic office
-            </p>
-            <h2 className="mt-3 text-4xl leading-tight md:text-5xl">
-              A team close to each learner.
-            </h2>
-          </div>
-          <p className="max-w-2xl border-l-2 border-secondary pl-5 leading-7 text-muted-foreground">
-            The {campus} team brings subject expertise, assessment planning, and learner support
-            together for the school day and the wider academic journey.
-          </p>
-        </div>
-
-        {leaders.length > 0 && (
-          <section className="mt-12" aria-labelledby="campus-leadership-heading">
+        <div className="grid items-start gap-6 lg:grid-cols-[minmax(17rem,0.72fr)_minmax(0,1.28fr)]">
+          <DirectorsPanel campus={campus} leaders={leaders} />
+          <section aria-labelledby="campus-hods-heading">
             <p className="text-sm font-semibold uppercase tracking-[0.08em] text-primary">
               Academic leadership
             </p>
-            <h2 id="campus-leadership-heading" className="mt-3 text-3xl">
-              Directors of Studies
+            <h2 id="campus-hods-heading" className="mt-2 text-2xl font-semibold md:text-3xl">
+              Meet our Heads of Departments (HoDs)
             </h2>
-            <div className="mt-6 grid gap-5 sm:grid-cols-2">
-              {leaders.map((leader) => (
-                <article key={leader.name} className="bg-primary p-5 text-primary-foreground">
-                  <img
-                    src={leader.photo}
-                    alt={`Portrait of ${leader.name}`}
-                    width={800}
-                    height={800}
-                    loading="lazy"
-                    className="aspect-[4/3] w-full object-cover"
-                  />
-                  <h3 className="mt-4 text-xl">{leader.name}</h3>
-                  <p className="mt-1 text-sm font-semibold text-secondary">{leader.role}</p>
-                </article>
-              ))}
-            </div>
+            {heads.length > 0 ? (
+              <div className="mt-5 grid gap-4 sm:grid-cols-2">
+                {heads.map((member) => (
+                  <HodCard key={member.name} member={member} />
+                ))}
+              </div>
+            ) : (
+              <div className="mt-5 border border-dashed border-border p-6 text-sm text-muted-foreground">
+                Department heads will be listed here when details are available.
+              </div>
+            )}
           </section>
-        )}
+        </div>
 
-        <StaffGroup title="Heads of departments" members={heads} highlight />
         <StaffGroup title="Teaching staff" members={teachingStaff} />
 
         {campusMembers.length === 0 && (
@@ -99,6 +79,54 @@ export function CampusStaffPage({ campus }: { campus: StaffCampus }) {
         )}
       </div>
     </>
+  );
+}
+
+function DirectorsPanel({
+  campus,
+  leaders,
+}: {
+  campus: StaffCampus;
+  leaders: Array<{ name: string; role: string; campus: string; photo: string }>;
+}) {
+  return (
+    <aside
+      className="bg-primary p-5 text-primary-foreground md:p-6"
+      aria-label={`${campus} Directors of Studies`}
+    >
+      <p className="text-sm font-semibold uppercase tracking-[0.08em] text-secondary">
+        Campus academic office
+      </p>
+      <h2 className="mt-2 text-2xl font-semibold">Directors of Studies</h2>
+      <p className="mt-3 text-sm leading-6 text-primary-foreground/80">
+        Academic leadership supporting teaching, assessment, and learner progress at the {campus}.
+      </p>
+      {leaders.length > 0 ? (
+        <div className="mt-6 space-y-6">
+          {leaders.map((leader) => (
+            <article
+              key={leader.name}
+              className="border-t border-primary-foreground/25 pt-5 first:border-t-0 first:pt-0"
+            >
+              <img
+                src={leader.photo}
+                alt={`Portrait of ${leader.name}`}
+                width={800}
+                height={800}
+                loading="lazy"
+                className="mx-auto aspect-[4/3] w-full max-w-xs object-cover"
+              />
+              <h3 className="mt-4 text-xl font-semibold text-secondary">{leader.name}</h3>
+              <p className="mt-1 text-sm font-medium">{leader.role}</p>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <div className="mt-5 border border-primary-foreground/30 p-4 text-sm text-primary-foreground/80">
+          Director details will be listed here when available.
+        </div>
+      )}
+    </aside>
   );
 }
 
@@ -126,6 +154,33 @@ function StaffGroup({
         ))}
       </div>
     </section>
+  );
+}
+
+function HodCard({ member }: { member: FacultyMember }) {
+  return (
+    <article className="flex min-h-full flex-col items-center border border-border bg-muted/40 p-5 text-center">
+      {member.photo ? (
+        <img
+          src={member.photo}
+          alt={`Portrait of ${member.name}`}
+          width={800}
+          height={800}
+          loading="lazy"
+          className="size-32 object-cover"
+        />
+      ) : (
+        <div
+          className="flex size-32 items-center justify-center bg-primary text-3xl font-semibold text-primary-foreground"
+          aria-hidden="true"
+        >
+          {staffInitials(member.name)}
+        </div>
+      )}
+      <h3 className="mt-4 text-lg font-semibold text-primary">{member.name}</h3>
+      <p className="mt-1 text-sm font-medium text-secondary-foreground">{member.role}</p>
+      <p className="mt-3 text-sm text-muted-foreground">{member.subjects}</p>
+    </article>
   );
 }
 
