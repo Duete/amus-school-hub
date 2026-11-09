@@ -2,6 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Mail, Search, UsersRound } from "lucide-react";
 import { useMemo, useState } from "react";
 import { schoolHead } from "@/lib/school";
+import nabusayiKanahNangayo from "@/assets/staff-nabusayi-kanah-nangayo-web.jpg";
+import abwochJanet from "@/assets/staff-abwoch-janet-web.jpg";
 
 export const Route = createFileRoute("/faculty")({
   head: () =>
@@ -22,6 +24,7 @@ type FacultyMember = {
   bio: string;
   email: string;
   head?: boolean;
+  photo?: string;
 };
 
 const faculty: FacultyMember[] = [
@@ -101,6 +104,26 @@ const faculty: FacultyMember[] = [
     campus: "Day Campus",
     bio: "Builds language confidence and cultural curiosity through conversation-led learning.",
     email: "j.mugisha@mbaleprogressive.sc.ug",
+  },
+  {
+    name: "Madam Nabusayi Kanah Nangayo",
+    role: "Teacher",
+    department: "Languages & Humanities",
+    subjects: "English · Literature in English",
+    campus: "Day Campus",
+    bio: "Guides learners through reading, writing, and literary analysis in English and Literature in English.",
+    email: "n.nabusayi@mbaleprogressive.sc.ug",
+    photo: nabusayiKanahNangayo,
+  },
+  {
+    name: "Madam Abwoch Janet",
+    role: "Teacher",
+    department: "Languages & Humanities",
+    subjects: "English · Literature in English (A’Level)",
+    campus: "Mbale Progressive Annex",
+    bio: "Teaches English and Literature in English to A’Level learners, building close reading, critical response, and confident written argument.",
+    email: "a.janet@mbaleprogressive.sc.ug",
+    photo: abwochJanet,
   },
   {
     name: "Ms. Lydia Achieng",
@@ -293,13 +316,21 @@ function StaffCard({ member, highlight = false }: { member: FacultyMember; highl
       className={`flex h-full flex-col border border-border p-6 ${highlight ? "bg-muted" : "bg-background"}`}
     >
       <div className="flex items-start justify-between gap-4">
-        <div className="flex size-12 items-center justify-center rounded-full bg-primary text-lg font-semibold text-primary-foreground">
-          {member.name
-            .split(" ")
-            .map((part) => part[0])
-            .slice(0, 2)
-            .join("")}
-        </div>
+        {member.photo ? (
+          <img
+            src={member.photo}
+            alt={`Portrait of ${member.name}`}
+            className="size-12 rounded-full object-cover"
+          />
+        ) : (
+          <div className="flex size-12 items-center justify-center rounded-full bg-primary text-lg font-semibold text-primary-foreground">
+            {member.name
+              .split(" ")
+              .map((part) => part[0])
+              .slice(0, 2)
+              .join("")}
+          </div>
+        )}
         {member.head && (
           <span className="bg-secondary px-3 py-1 text-[10px] font-bold tracking-[0.04em] text-secondary-foreground">
             Subject head
