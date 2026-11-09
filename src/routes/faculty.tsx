@@ -1,6 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Mail, Search, UsersRound } from "lucide-react";
 import { useMemo, useState } from "react";
+import gwireMuhammad from "@/assets/admin-gwire-muhammad-web.jpg";
+import sahamaliElias from "@/assets/admin-sahamali-elias-web.jpg";
+import wambogaAsuman from "@/assets/admin-wamboga-asuman-web.jpg";
+import wangotaJoshua from "@/assets/admin-wangota-joshua-web.jpg";
 import { schoolHead } from "@/lib/school";
 
 export const Route = createFileRoute("/faculty")({
@@ -23,6 +27,33 @@ type FacultyMember = {
   email: string;
   head?: boolean;
 };
+
+const directorsOfStudies = [
+  {
+    name: "Mr. Sahamali Elias",
+    role: "Director of Studies I (DOS I)",
+    campus: "Day Campus",
+    photo: sahamaliElias,
+  },
+  {
+    name: "Mr. Gwire Muhammad",
+    role: "Assistant Director of Studies (DOS II)",
+    campus: "Day Campus",
+    photo: gwireMuhammad,
+  },
+  {
+    name: "Mr. Wamboga Asuman",
+    role: "Director of Studies I (DOS I)",
+    campus: "Boarding",
+    photo: wambogaAsuman,
+  },
+  {
+    name: "Mr. Wangota Joshua",
+    role: "Assistant Director of Studies (DOS II)",
+    campus: "Boarding",
+    photo: wangotaJoshua,
+  },
+];
 
 const faculty: FacultyMember[] = [
   {
@@ -217,6 +248,47 @@ function TeachingStaff() {
           </div>
         </section>
 
+        <section className="mt-20 border-t border-border pt-12" aria-labelledby="dos-heading">
+          <div className="flex flex-wrap items-end justify-between gap-5">
+            <div>
+              <p className="text-sm font-semibold tracking-[0.04em] text-primary">Studies office</p>
+              <h2 id="dos-heading" className="mt-3 text-3xl">
+                Directors of Studies
+              </h2>
+            </div>
+            <p className="max-w-md text-sm leading-6 text-muted-foreground">
+              The DOS team keeps academic planning, assessment, and day-to-day study support moving
+              across both settings.
+            </p>
+          </div>
+          <div className="mt-8 grid gap-5 sm:grid-cols-2">
+            {directorsOfStudies.map((leader) => (
+              <article
+                key={leader.name}
+                className="flex items-center gap-4 bg-primary p-4 text-left text-primary-foreground"
+              >
+                <img
+                  src={leader.photo}
+                  alt={`Portrait of ${leader.name}`}
+                  width={800}
+                  height={800}
+                  loading="lazy"
+                  className="size-24 shrink-0 object-cover sm:size-28"
+                />
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.08em] text-secondary">
+                    {leader.campus}
+                  </p>
+                  <h3 className="mt-2 text-lg">{leader.name}</h3>
+                  <p className="mt-1 text-sm font-semibold text-primary-foreground/80">
+                    {leader.role}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
         <section className="mt-20 border-t border-border pt-12" aria-labelledby="directory-heading">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div>
@@ -292,8 +364,8 @@ function StaffCard({ member, highlight = false }: { member: FacultyMember; highl
     <article
       className={`flex h-full flex-col border border-border p-6 ${highlight ? "bg-muted" : "bg-background"}`}
     >
-      <div className="flex items-start justify-between gap-4">
-        <div className="flex size-12 items-center justify-center rounded-full bg-primary text-lg font-semibold text-primary-foreground">
+      <div className="flex aspect-[4/3] items-end justify-between gap-4 bg-primary p-5 text-primary-foreground">
+        <div className="flex size-20 items-center justify-center border border-primary-foreground/40 bg-primary-foreground/10 text-2xl font-semibold">
           {member.name
             .split(" ")
             .map((part) => part[0])
@@ -306,7 +378,7 @@ function StaffCard({ member, highlight = false }: { member: FacultyMember; highl
           </span>
         )}
       </div>
-      <h3 className="mt-6 text-xl">{member.name}</h3>
+      <h3 className="mt-5 text-xl">{member.name}</h3>
       <p className="mt-1 text-sm font-semibold text-primary">{member.role}</p>
       <p className="mt-4 text-sm font-semibold">{member.subjects}</p>
       <p className="mt-3 flex-1 text-sm leading-6 text-muted-foreground">{member.bio}</p>
