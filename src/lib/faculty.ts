@@ -96,16 +96,6 @@ export const faculty: FacultyMember[] = [
     head: true,
   },
   {
-    name: "Ms. Ruth Atim",
-    role: "Head of ICT & Innovation",
-    department: "Technology & Enterprise",
-    subjects: "ICT · Computer Studies · Entrepreneurship",
-    campus: "Boarding",
-    bio: "Guides digital fluency, research skills, and enterprise projects for modern readiness.",
-    email: "r.atim@mbaleprogressive.sc.ug",
-    head: true,
-  },
-  {
     name: "Booza Azalia Ashraf",
     role: "Head of History Department",
     department: "History Department",

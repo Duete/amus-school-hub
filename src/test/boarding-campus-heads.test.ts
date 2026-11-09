@@ -39,4 +39,8 @@ describe("Boarding Campus Heads of Department", () => {
   it("replaces the conflicting placeholder Science Department head", () => {
     expect(heads.some((member) => member.name === "Mr. Isaac Waiswa")).toBe(false);
   });
+
+  it("does not list the removed Ruth Atim staff profile", () => {
+    expect(faculty.some((member) => member.name === "Ms. Ruth Atim")).toBe(false);
+  });
 });
