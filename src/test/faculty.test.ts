@@ -19,4 +19,32 @@ describe("Faculty directory", () => {
     expect(member?.campus).toBe("Boarding");
     expect(member?.photo).toBeTruthy();
   });
+
+  it("lists Mr. Kerichan Emmanuel as Boarding Head of ICT", () => {
+    const member = faculty.find((person) => person.name === "Mr. Kerichan Emmanuel");
+    expect(member?.role).toBe("Head of ICT");
+    expect(member?.subjects).toBe("ICT · Computer Studies");
+    expect(member?.department).toBe("Technology & Enterprise");
+    expect(member?.campus).toBe("Boarding");
+    expect(member?.head).toBe(true);
+    expect(member?.photo).toBeTruthy();
+  });
+
+  it("lists Mr. Maani Asinani teaching Islamic Religious Education at Boarding", () => {
+    const member = faculty.find((person) => person.name === "Mr. Maani Asinani");
+    expect(member?.role).toBe("Teacher");
+    expect(member?.subjects).toBe("Islamic Religious Education");
+    expect(member?.department).toBe("Divinity");
+    expect(member?.campus).toBe("Boarding");
+    expect(member?.photo).toBeTruthy();
+  });
+
+  it("lists Ms. Mukoya Firdaus teaching O and A'Level Physics at Boarding", () => {
+    const member = faculty.find((person) => person.name === "Ms. Mukoya Firdaus");
+    expect(member?.role).toBe("Teacher");
+    expect(member?.subjects).toBe("Physics (O & A'Level)");
+    expect(member?.department).toBe("Mathematics & Sciences");
+    expect(member?.campus).toBe("Boarding");
+    expect(member?.photo).toBeTruthy();
+  });
 });

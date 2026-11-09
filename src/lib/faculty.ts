@@ -3,6 +3,9 @@ import sahamaliElias from "@/assets/admin-sahamali-elias-web.jpg";
 import wambogaAsuman from "@/assets/admin-wamboga-asuman-web.jpg";
 import wangotaJoshua from "@/assets/admin-wangota-joshua-web.jpg";
 import abwochJanet from "@/assets/staff-abwoch-janet.jpg.asset.json";
+import kericheanEmmanuel from "@/assets/staff-kerichan-emmanuel.jpg.asset.json";
+import maaniAsinani from "@/assets/staff-maani-asinani.jpg.asset.json";
+import mukoyaFirdaus from "@/assets/staff-mukoya-firdaus.jpg.asset.json";
 import nabusayiKanah from "@/assets/staff-nabusayi-kanah.jpg.asset.json";
 
 export type FacultyMember = {
@@ -203,5 +206,33 @@ export const faculty: FacultyMember[] = [
     bio: "Guides A'Level learners through critical reading, essay craft, and examination technique.",
     email: "j.abwoch@mbaleprogressive.sc.ug",
     photo: abwochJanet.url,
+  },
+  {
+    name: "Mr. Kerichan Emmanuel",
+    role: "Head of ICT",
+    department: "Technology & Enterprise",
+    subjects: "ICT · Computer Studies",
+    campus: "Boarding",
+    bio: "Leads ICT teaching and practical computer work at the Boarding Campus.",
+    photo: kericheanEmmanuel.url,
+    head: true,
+  },
+  {
+    name: "Mr. Maani Asinani",
+    role: "Teacher",
+    department: "Divinity",
+    subjects: "Islamic Religious Education",
+    campus: "Boarding",
+    bio: "Teaches Islamic Religious Education at the Boarding Campus.",
+    photo: maaniAsinani.url,
+  },
+  {
+    name: "Ms. Mukoya Firdaus",
+    role: "Teacher",
+    department: "Mathematics & Sciences",
+    subjects: "Physics (O & A'Level)",
+    campus: "Boarding",
+    bio: "Teaches Physics at O'Level and A'Level at the Boarding Campus.",
+    photo: mukoyaFirdaus.url,
   },
 ];
