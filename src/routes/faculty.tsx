@@ -58,7 +58,7 @@ const directorsOfStudies = [
   },
 ];
 
-const faculty: FacultyMember[] = [
+export const faculty: FacultyMember[] = [
   {
     name: "Ms. Sarah Namukasa",
     role: "Head of Mathematics",
