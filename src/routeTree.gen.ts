@@ -31,6 +31,9 @@ import { Route as AdmissionsIndexRouteImport } from './routes/admissions.index'
 import { Route as AdmissionsApplyRouteImport } from './routes/admissions.apply'
 import { Route as CampusesIndexRouteImport } from './routes/campuses.index'
 import { Route as CampusesCampusRouteImport } from './routes/campuses.$campus'
+import { Route as FacultyIndexRouteImport } from './routes/faculty.index'
+import { Route as FacultyBoardingRouteImport } from './routes/faculty.boarding'
+import { Route as FacultyDayRouteImport } from './routes/faculty.day'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -142,6 +145,21 @@ const CampusesCampusRoute = CampusesCampusRouteImport.update({
   path: '/campuses/$campus',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FacultyIndexRoute = FacultyIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => FacultyRoute,
+} as any)
+const FacultyBoardingRoute = FacultyBoardingRouteImport.update({
+  id: '/boarding',
+  path: '/boarding',
+  getParentRoute: () => FacultyRoute,
+} as any)
+const FacultyDayRoute = FacultyDayRouteImport.update({
+  id: '/day',
+  path: '/day',
+  getParentRoute: () => FacultyRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -153,7 +171,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/database': typeof DatabaseRoute
   '/e-library': typeof ELibraryRoute
-  '/faculty': typeof FacultyRoute
+  '/faculty': typeof FacultyRouteWithChildren
   '/finance': typeof FinanceRoute
   '/gallery': typeof GalleryRoute
   '/governance': typeof GovernanceRoute
@@ -164,8 +182,11 @@ export interface FileRoutesByFullPath {
   '/sports': typeof SportsRoute
   '/admissions/apply': typeof AdmissionsApplyRoute
   '/campuses/$campus': typeof CampusesCampusRoute
+  '/faculty/boarding': typeof FacultyBoardingRoute
+  '/faculty/day': typeof FacultyDayRoute
   '/admissions/': typeof AdmissionsIndexRoute
   '/campuses/': typeof CampusesIndexRoute
+  '/faculty/': typeof FacultyIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -176,7 +197,6 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/database': typeof DatabaseRoute
   '/e-library': typeof ELibraryRoute
-  '/faculty': typeof FacultyRoute
   '/finance': typeof FinanceRoute
   '/gallery': typeof GalleryRoute
   '/governance': typeof GovernanceRoute
@@ -187,8 +207,11 @@ export interface FileRoutesByTo {
   '/sports': typeof SportsRoute
   '/admissions/apply': typeof AdmissionsApplyRoute
   '/campuses/$campus': typeof CampusesCampusRoute
+  '/faculty/boarding': typeof FacultyBoardingRoute
+  '/faculty/day': typeof FacultyDayRoute
   '/admissions': typeof AdmissionsIndexRoute
   '/campuses': typeof CampusesIndexRoute
+  '/faculty': typeof FacultyIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -201,7 +224,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/database': typeof DatabaseRoute
   '/e-library': typeof ELibraryRoute
-  '/faculty': typeof FacultyRoute
+  '/faculty': typeof FacultyRouteWithChildren
   '/finance': typeof FinanceRoute
   '/gallery': typeof GalleryRoute
   '/governance': typeof GovernanceRoute
@@ -212,8 +235,11 @@ export interface FileRoutesById {
   '/sports': typeof SportsRoute
   '/admissions/apply': typeof AdmissionsApplyRoute
   '/campuses/$campus': typeof CampusesCampusRoute
+  '/faculty/boarding': typeof FacultyBoardingRoute
+  '/faculty/day': typeof FacultyDayRoute
   '/admissions/': typeof AdmissionsIndexRoute
   '/campuses/': typeof CampusesIndexRoute
+  '/faculty/': typeof FacultyIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -238,8 +264,11 @@ export interface FileRouteTypes {
     | '/sports'
     | '/admissions/apply'
     | '/campuses/$campus'
+    | '/faculty/boarding'
+    | '/faculty/day'
     | '/admissions/'
     | '/campuses/'
+    | '/faculty/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -250,7 +279,6 @@ export interface FileRouteTypes {
     | '/contact'
     | '/database'
     | '/e-library'
-    | '/faculty'
     | '/finance'
     | '/gallery'
     | '/governance'
@@ -261,8 +289,11 @@ export interface FileRouteTypes {
     | '/sports'
     | '/admissions/apply'
     | '/campuses/$campus'
+    | '/faculty/boarding'
+    | '/faculty/day'
     | '/admissions'
     | '/campuses'
+    | '/faculty'
   id:
     | '__root__'
     | '/'
@@ -285,8 +316,11 @@ export interface FileRouteTypes {
     | '/sports'
     | '/admissions/apply'
     | '/campuses/$campus'
+    | '/faculty/boarding'
+    | '/faculty/day'
     | '/admissions/'
     | '/campuses/'
+    | '/faculty/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -299,7 +333,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   DatabaseRoute: typeof DatabaseRoute
   ELibraryRoute: typeof ELibraryRoute
-  FacultyRoute: typeof FacultyRoute
+  FacultyRoute: typeof FacultyRouteWithChildren
   FinanceRoute: typeof FinanceRoute
   GalleryRoute: typeof GalleryRoute
   GovernanceRoute: typeof GovernanceRoute
@@ -468,6 +502,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CampusesCampusRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/faculty/': {
+      id: '/faculty/'
+      path: '/'
+      fullPath: '/faculty/'
+      preLoaderRoute: typeof FacultyIndexRouteImport
+      parentRoute: typeof FacultyRoute
+    }
+    '/faculty/boarding': {
+      id: '/faculty/boarding'
+      path: '/boarding'
+      fullPath: '/faculty/boarding'
+      preLoaderRoute: typeof FacultyBoardingRouteImport
+      parentRoute: typeof FacultyRoute
+    }
+    '/faculty/day': {
+      id: '/faculty/day'
+      path: '/day'
+      fullPath: '/faculty/day'
+      preLoaderRoute: typeof FacultyDayRouteImport
+      parentRoute: typeof FacultyRoute
+    }
   }
 }
 
@@ -485,6 +540,21 @@ const AdmissionsRouteWithChildren = AdmissionsRoute._addFileChildren(
   AdmissionsRouteChildren,
 )
 
+interface FacultyRouteChildren {
+  FacultyBoardingRoute: typeof FacultyBoardingRoute
+  FacultyDayRoute: typeof FacultyDayRoute
+  FacultyIndexRoute: typeof FacultyIndexRoute
+}
+
+const FacultyRouteChildren: FacultyRouteChildren = {
+  FacultyBoardingRoute: FacultyBoardingRoute,
+  FacultyDayRoute: FacultyDayRoute,
+  FacultyIndexRoute: FacultyIndexRoute,
+}
+
+const FacultyRouteWithChildren =
+  FacultyRoute._addFileChildren(FacultyRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
@@ -495,7 +565,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   DatabaseRoute: DatabaseRoute,
   ELibraryRoute: ELibraryRoute,
-  FacultyRoute: FacultyRoute,
+  FacultyRoute: FacultyRouteWithChildren,
   FinanceRoute: FinanceRoute,
   GalleryRoute: GalleryRoute,
   GovernanceRoute: GovernanceRoute,

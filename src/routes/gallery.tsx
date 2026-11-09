@@ -56,8 +56,12 @@ function Gallery() {
               </Button>
             </div>
             <div className="grid gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
-              {section.photos.map(({ src, caption, alt }) => (
-                <figure key={caption} className="border border-border bg-background">
+              {section.photos.map(({ id, src, caption, alt }) => (
+                <figure
+                  key={caption}
+                  id={id}
+                  className="scroll-mt-24 border border-border bg-background"
+                >
                   <img
                     src={src}
                     alt={alt}
