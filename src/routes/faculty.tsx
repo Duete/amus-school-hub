@@ -74,7 +74,7 @@ export const faculty: FacultyMember[] = [
     role: "Head of Science",
     department: "Mathematics & Sciences",
     subjects: "Chemistry · Integrated Science",
-    campus: "Mbale Progressive Annex",
+    campus: "Boarding",
     bio: "Coordinates practical learning, laboratory safety, and science enrichment activities.",
     email: "i.waiswa@mbaleprogressive.sc.ug",
     head: true,
@@ -104,7 +104,7 @@ export const faculty: FacultyMember[] = [
     role: "Head of ICT & Innovation",
     department: "Technology & Enterprise",
     subjects: "ICT · Computer Studies · Entrepreneurship",
-    campus: "Mbale Progressive Annex",
+    campus: "Boarding",
     bio: "Guides digital fluency, research skills, and enterprise projects for modern readiness.",
     email: "r.atim@mbaleprogressive.sc.ug",
     head: true,
@@ -114,7 +114,7 @@ export const faculty: FacultyMember[] = [
     role: "Senior Teacher",
     department: "Mathematics & Sciences",
     subjects: "Physics · Mathematics",
-    campus: "Mbale Progressive Annex",
+    campus: "Boarding",
     bio: "Uses practical demonstrations to make abstract ideas visible and memorable.",
     email: "p.ssenyonjo@mbaleprogressive.sc.ug",
   },
@@ -141,7 +141,7 @@ export const faculty: FacultyMember[] = [
     role: "Teacher",
     department: "Languages & Humanities",
     subjects: "Christian Religious Education · General Paper",
-    campus: "Mbale Progressive Annex",
+    campus: "Boarding",
     bio: "Helps learners examine ideas, values, and contemporary issues with care and clarity.",
     email: "l.achieng@mbaleprogressive.sc.ug",
   },
@@ -150,7 +150,7 @@ export const faculty: FacultyMember[] = [
     role: "Teacher",
     department: "Technology & Enterprise",
     subjects: "Technology & Design · Technical Drawing",
-    campus: "Mbale Progressive Annex",
+    campus: "Boarding",
     bio: "Develops hands-on making, design thinking, and safe workshop practice.",
     email: "r.ouma@mbaleprogressive.sc.ug",
   },
@@ -249,68 +249,8 @@ function TeachingStaff() {
           </div>
         </section>
 
-        <section className="mt-16" aria-labelledby="subject-heads-heading">
-          <div className="flex flex-wrap items-end justify-between gap-5">
-            <div>
-              <p className="text-sm font-semibold tracking-[0.04em] text-primary">
-                Academic leadership
-              </p>
-              <h2 id="subject-heads-heading" className="mt-3 text-3xl">
-                Subject heads
-              </h2>
-            </div>
-            <p className="max-w-md text-sm leading-6 text-muted-foreground">
-              Subject heads coordinate planning, assessment quality, and teacher collaboration in
-              their learning areas.
-            </p>
-          </div>
-          <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {subjectHeads.map((member) => (
-              <StaffCard key={member.name} member={member} highlight />
-            ))}
-          </div>
-        </section>
-
-        <section className="mt-20 border-t border-border pt-12" aria-labelledby="dos-heading">
-          <div className="flex flex-wrap items-end justify-between gap-5">
-            <div>
-              <p className="text-sm font-semibold tracking-[0.04em] text-primary">Studies office</p>
-              <h2 id="dos-heading" className="mt-3 text-3xl">
-                Directors of Studies
-              </h2>
-            </div>
-            <p className="max-w-md text-sm leading-6 text-muted-foreground">
-              The DOS team keeps academic planning, assessment, and day-to-day study support moving
-              across both settings.
-            </p>
-          </div>
-          <div className="mt-8 grid gap-5 sm:grid-cols-2">
-            {directorsOfStudies.map((leader) => (
-              <article
-                key={leader.name}
-                className="flex items-center gap-4 bg-primary p-4 text-left text-primary-foreground"
-              >
-                <img
-                  src={leader.photo}
-                  alt={`Portrait of ${leader.name}`}
-                  width={800}
-                  height={800}
-                  loading="lazy"
-                  className="size-24 shrink-0 object-cover sm:size-28"
-                />
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.08em] text-secondary">
-                    {leader.campus}
-                  </p>
-                  <h3 className="mt-2 text-lg">{leader.name}</h3>
-                  <p className="mt-1 text-sm font-semibold text-primary-foreground/80">
-                    {leader.role}
-                  </p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
+        <CampusStaffSection campus="Day Campus" members={visibleFaculty} />
+        <CampusStaffSection campus="Boarding" members={visibleFaculty} />
 
         <section className="mt-20 border-t border-border pt-12" aria-labelledby="directory-heading">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
@@ -379,6 +319,101 @@ function StaffStat({ value, label }: { value: string; label: string }) {
       <p className="font-display text-3xl text-primary">{value}</p>
       <p className="mt-1 text-sm text-muted-foreground">{label}</p>
     </div>
+  );
+}
+
+function CampusStaffSection({ campus, members }: { campus: string; members: FacultyMember[] }) {
+  const campusMembers = members.filter((member) => member.campus === campus);
+  const heads = campusMembers.filter((member) => member.head);
+  const teachingStaff = campusMembers.filter((member) => !member.head);
+  const campusLeaders = directorsOfStudies.filter((leader) => leader.campus === campus);
+  const campusId = campus.toLowerCase().replaceAll(" ", "-");
+
+  return (
+    <section className="mt-20 border-t border-border pt-12" aria-labelledby={`${campusId}-heading`}>
+      <div className="mb-8">
+        <p className="text-sm font-semibold uppercase tracking-[0.08em] text-primary">
+          Campus teaching team
+        </p>
+        <h2 id={`${campusId}-heading`} className="mt-2 text-3xl md:text-4xl">
+          {campus}
+        </h2>
+      </div>
+
+      <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
+        <CampusLeadershipPanel campus={campus} leaders={campusLeaders} />
+        <div>
+          <div className="flex items-end justify-between gap-5">
+            <div>
+              <p className="text-sm font-semibold tracking-[0.04em] text-primary">
+                Academic leadership
+              </p>
+              <h3 className="mt-2 text-2xl">Heads of departments</h3>
+            </div>
+            <p className="hidden max-w-xs text-right text-sm leading-6 text-muted-foreground md:block">
+              Subject heads coordinate planning, assessment quality, and teacher collaboration.
+            </p>
+          </div>
+          <div className="mt-6 grid gap-5 sm:grid-cols-2">
+            {heads.map((member) => (
+              <StaffCard key={member.name} member={member} highlight />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-10 border-t border-border pt-8">
+        <p className="text-sm font-semibold tracking-[0.04em] text-primary">Teaching staff</p>
+        <div className="mt-5 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {teachingStaff.map((member) => (
+            <StaffCard key={member.name} member={member} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CampusLeadershipPanel({
+  campus,
+  leaders,
+}: {
+  campus: string;
+  leaders: Array<{ name: string; role: string; campus: string; photo: string }>;
+}) {
+  return (
+    <aside
+      className="bg-primary p-5 text-primary-foreground md:p-6"
+      aria-label={`${campus} academic leadership`}
+    >
+      <p className="text-sm font-semibold uppercase tracking-[0.08em] text-secondary">
+        Academic office
+      </p>
+      <h3 className="mt-3 text-2xl">Leadership for {campus}</h3>
+      <p className="mt-3 text-sm leading-6 text-primary-foreground/80">
+        The Directors of Studies keep teaching, assessment, and learner support coordinated across
+        this campus.
+      </p>
+      <div className="mt-6 space-y-5">
+        {leaders.map((leader) => (
+          <div
+            key={leader.name}
+            className="border-t border-primary-foreground/25 pt-5 first:border-t-0 first:pt-0"
+          >
+            <img
+              src={leader.photo}
+              alt={`Portrait of ${leader.name}`}
+              width={800}
+              height={800}
+              loading="lazy"
+              className="aspect-[4/3] w-full object-cover"
+            />
+            <h4 className="mt-4 text-xl">{leader.name}</h4>
+            <p className="mt-1 text-sm font-semibold text-secondary">{leader.role}</p>
+          </div>
+        ))}
+      </div>
+    </aside>
   );
 }
 
