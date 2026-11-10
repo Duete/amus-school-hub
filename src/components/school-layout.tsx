@@ -128,6 +128,7 @@ export function SchoolHeader() {
             aria-label="Mbale Progressive Secondary School home"
           >
             <img
+              decoding="async"
               src="/assets/mbale-progressive-crest.webp"
               alt=""
               width="56"

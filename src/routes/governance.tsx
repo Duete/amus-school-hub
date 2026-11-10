@@ -2,15 +2,15 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Building2, CheckCircle2, ShieldCheck, UsersRound } from "lucide-react";
 import { PageIntro } from "@/components/school-layout";
 import { schoolHead } from "@/lib/school";
-import buyiAliceLamwaka from "@/assets/admin-buyi-alice-lamwaka-web.jpg";
-import gwireMuhammad from "@/assets/admin-gwire-muhammad-web.jpg";
-import mudeboAliMasai from "@/assets/admin-mudebo-ali-masai-web.jpg";
-import nabukwasiPatience from "@/assets/admin-nabukwasi-patience-web.jpg";
-import ocukulJulius from "@/assets/admin-ocukul-julius-web.jpg";
-import sahamaliElias from "@/assets/admin-sahamali-elias-web.jpg";
-import ssempalaNathan from "@/assets/admin-ssempala-nathan-web.jpg";
-import wangotaJoshua from "@/assets/admin-wangota-joshua-web.jpg";
-import wambogaAsuman from "@/assets/admin-wamboga-asuman-web.jpg";
+import buyiAliceLamwaka from "@/assets/admin-buyi-alice-lamwaka-web.webp";
+import gwireMuhammad from "@/assets/admin-gwire-muhammad-web.webp";
+import mudeboAliMasai from "@/assets/admin-mudebo-ali-masai-web.webp";
+import nabukwasiPatience from "@/assets/admin-nabukwasi-patience-web.webp";
+import ocukulJulius from "@/assets/admin-ocukul-julius-web.webp";
+import sahamaliElias from "@/assets/admin-sahamali-elias-web.webp";
+import ssempalaNathan from "@/assets/admin-ssempala-nathan-web.webp";
+import wangotaJoshua from "@/assets/admin-wangota-joshua-web.webp";
+import wambogaAsuman from "@/assets/admin-wamboga-asuman-web.webp";
 
 export const Route = createFileRoute("/governance")({
   head: () =>
@@ -115,6 +115,7 @@ function Governance() {
                 className="overflow-hidden rounded-sm border border-border bg-background"
               >
                 <img
+                  decoding="async"
                   src={leader.photo}
                   alt={`Portrait of ${leader.name}`}
                   width={640}
@@ -190,6 +191,7 @@ function LeadershipGroup({
             className="overflow-hidden rounded-sm border border-border bg-background"
           >
             <img
+              decoding="async"
               src={photo}
               alt={`Representative portrait for ${name}`}
               width={640}

@@ -255,6 +255,7 @@ function CampusLeadershipPanel({
             className="border-t border-primary-foreground/25 pt-5 first:border-t-0 first:pt-0"
           >
             <img
+              decoding="async"
               src={leader.photo}
               alt={`Portrait of ${leader.name}`}
               width={800}
@@ -280,6 +281,7 @@ function StaffCard({ member, highlight = false }: { member: FacultyMember; highl
       <div className="relative flex aspect-[4/3] items-center justify-center bg-muted/40 p-5">
         {member.photo ? (
           <img
+            decoding="async"
             src={member.photo}
             alt={`Portrait of ${member.name}`}
             width={800}

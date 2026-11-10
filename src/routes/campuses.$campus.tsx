@@ -36,6 +36,7 @@ function Campus() {
         {campus.image && (
           <>
             <img
+              decoding="async"
               src={campus.image}
               width={1024}
               height={768}
@@ -106,6 +107,7 @@ function Campus() {
             {photos.map(({ src, caption, alt }) => (
               <figure key={caption}>
                 <img
+                  decoding="async"
                   src={src}
                   alt={alt}
                   loading="lazy"

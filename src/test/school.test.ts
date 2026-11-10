@@ -58,18 +58,18 @@ describe("School campus structure", () => {
     expect(annexBuildingPhotos.map((photo) => photo.caption)).toContain("A’Level Arts Block");
     expect(
       campusPhotoGroups.annex.find((photo) => photo.caption === "Administration block")?.src,
-    ).toContain("annex-administration-block.jpg");
+    ).toContain("annex-administration-block.webp");
     expect(
       campusPhotoGroups.annex.find(
         (photo) => photo.caption === "School buses at the Boarding Campus",
       )?.src,
-    ).toContain("annex-school-buses.png");
+    ).toContain("annex-school-buses.webp");
     expect(
       campusPhotoGroups.annex.find((photo) => photo.caption === "Main classroom block")?.src,
-    ).toContain("annex-main-classroom-block.png");
+    ).toContain("annex-main-classroom-block.webp");
     expect(
       campusPhotoGroups.annex.find((photo) => photo.caption === "A’Level Arts Block")?.src,
-    ).toContain("annex-a-level-arts-block.png");
+    ).toContain("annex-a-level-arts-block.webp");
     expect(
       campusPhotoGroups.annex.find((photo) => photo.caption === "A’Level Arts Block")?.id,
     ).toBe("a-level-arts-block");
@@ -78,7 +78,7 @@ describe("School campus structure", () => {
     ).toContain("hero-classrooms.webp");
     expect(
       campusPhotoGroups.annex.find((photo) => photo.caption === "Classrooms and Court Yard")?.src,
-    ).toContain("annex-classrooms-courtyard.png");
+    ).toContain("annex-classrooms-courtyard.webp");
     expect(
       campusPhotoGroups.annex.find((photo) => photo.caption === "Laboratory and Science Block")
         ?.src,

@@ -13,11 +13,11 @@ import {
   UsersRound,
 } from "lucide-react";
 import abduSwaibuKampanya from "@/assets/alumni-abdu-swaibu-kampanya.webp";
-import arikotRacheal from "@/assets/alumni-ariokot-racheal.jpg";
+import arikotRacheal from "@/assets/alumni-ariokot-racheal.webp";
 import chrisArikoObore from "@/assets/alumni-chris-ariko-obore.webp";
-import cindySanyu from "@/assets/alumni-cindy-sanyu.jpg";
+import cindySanyu from "@/assets/alumni-cindy-sanyu.webp";
 import fazilaIkwaput from "@/assets/alumni-fazila-ikwaput.webp";
-import reginaNakibuule from "@/assets/alumni-regina-nakibuule.jpg";
+import reginaNakibuule from "@/assets/alumni-regina-nakibuule.webp";
 import { schoolHead } from "@/lib/school";
 
 export const Route = createFileRoute("/alumni")({

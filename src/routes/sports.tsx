@@ -10,10 +10,10 @@ import teachersEleven from "@/assets/the-teacher-s-1st-eleven-before-a-game-with
 import teachersCaptain from "@/assets/the-teachers-captain-and-the-assistant.webp";
 import footballSquadCelebrationWide from "@/assets/football-squad-celebration-wide.webp";
 import footballTeamLineup from "@/assets/football-team-lineup.webp";
-import ttHalimaCommonwealth from "@/assets/tt-halima-commonwealth-2018.jpg";
-import ttHurseyNambozo from "@/assets/tt-hursey-nambozo-2018.jpg";
+import ttHalimaCommonwealth from "@/assets/tt-halima-commonwealth-2018.webp";
+import ttHurseyNambozo from "@/assets/tt-hursey-nambozo-2018.webp";
 import ttHalimaTrophy from "@/assets/tt-halima-trophy-2016.webp";
-import reginaNakibuule from "@/assets/alumni-regina-nakibuule.jpg";
+import reginaNakibuule from "@/assets/alumni-regina-nakibuule.webp";
 import redCrossCleaning from "@/assets/red-cross-cleaning-activity.webp";
 import redCrossMembers from "@/assets/red-cross-members.webp";
 import bugisuFinalsCelebration from "@/assets/bugisu-regionals-finals-2023-celebration.webp";
