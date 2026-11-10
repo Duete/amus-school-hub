@@ -1,4 +1,4 @@
-import gwireMuhammad from "@/assets/admin-gwire-muhammad-web.jpg";
+import gwireMuhammadPortrait from "@/assets/staff-gwire-muhammad.jpg.asset.json";
 import sahamaliElias from "@/assets/admin-sahamali-elias-web.jpg";
 import wambogaAsuman from "@/assets/admin-wamboga-asuman-web.jpg";
 import wangotaJoshua from "@/assets/admin-wangota-joshua-web.jpg";
@@ -62,7 +62,8 @@ export const directorsOfStudies = [
     name: "Mr. Gwire Muhammad",
     role: "Assistant Director of Studies (DOS II)",
     campus: "Day Campus",
-    photo: gwireMuhammad,
+    photo: gwireMuhammadPortrait.url,
+    photoPosition: "50% 6%",
   },
   {
     name: "Mr. Wamboga Asuman",
@@ -288,5 +289,15 @@ export const faculty: FacultyMember[] = [
     campus: "Boarding",
     bio: "Teaches A'Level Mathematics at the Boarding Campus.",
     photo: kediYefusa,
+  },
+  {
+    name: "Mr. Gwire Muhammad",
+    role: "Assistant Director of Studies (DOS II)",
+    department: "Administration",
+    subjects: "Academic Administration",
+    campus: "Day Campus",
+    bio: "Assistant Director of Studies (DOS II) at the Day Campus.",
+    photo: gwireMuhammadPortrait.url,
+    photoPosition: "50% 6%",
   },
 ];

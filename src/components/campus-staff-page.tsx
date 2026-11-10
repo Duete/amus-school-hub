@@ -94,7 +94,7 @@ function DirectorsPanel({
   leaders,
 }: {
   campus: StaffCampus;
-  leaders: Array<{ name: string; role: string; campus: string; photo: string }>;
+  leaders: Array<{ name: string; role: string; campus: string; photo: string; photoPosition?: string }>;
 }) {
   return (
     <aside
@@ -122,6 +122,7 @@ function DirectorsPanel({
                 height={800}
                 loading="lazy"
                 className="mx-auto aspect-[4/3] w-full max-w-xs object-cover"
+                style={leader.photoPosition ? { objectPosition: leader.photoPosition } : undefined}
               />
               <h3 className="mt-4 text-xl font-semibold text-secondary">{leader.name}</h3>
               <p className="mt-1 text-sm font-medium">{leader.role}</p>
