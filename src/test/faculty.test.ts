@@ -66,6 +66,8 @@ describe("Faculty directory", () => {
     expect(member?.campus).toBe("Boarding");
     expect(member?.head).toBe(true);
     expect(member?.photo).toBeTruthy();
+    expect(member?.photo).toMatch(/\.webp$/);
+    expect(member?.photoPosition).toBe("50% 11%");
   });
 
   it("lists Mr. Booza Azalia Ashraf as Boarding History HoD with his photo", () => {
