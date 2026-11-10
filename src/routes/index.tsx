@@ -14,10 +14,10 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { campuses, schoolHead } from "@/lib/school";
-import { campusImages, homepageCampusPhotos } from "@/lib/campus-photos";
+import { annexBuildingPhotos, campusImages, homepageCampusPhotos } from "@/lib/campus-photos";
 import headteacherPhoto from "@/assets/admin-ocukul-julius-web.jpg";
 
-const annexBuildingSlides = homepageCampusPhotos.annex.map(({ src, caption, alt }) => ({
+const annexBuildingSlides = annexBuildingPhotos.map(({ src, caption, alt }) => ({
   id: `annex-${caption}`,
   image: src,
   eyebrow: "BOARDING CAMPUS · MBALE PROGRESSIVE ANNEX",
@@ -44,6 +44,18 @@ const heroSlides = [
     secondaryTo: "/contact" as const,
   },
   ...annexBuildingSlides,
+  {
+    id: "day-campus-visits",
+    image: campusImages.dayCampusDriveway,
+    eyebrow: "DAY CAMPUS · VISITS",
+    title: "Come and see for yourself.",
+    subheading: "Visit the Day Campus.",
+    text: "Families are welcome to tour the Day Campus. Confirm the schedule with the office before travelling.",
+    primary: "Plan a visit",
+    to: "/contact" as const,
+    secondary: "Ask about admission",
+    secondaryTo: "/admissions" as const,
+  },
 ];
 
 const schoolFacts = [
