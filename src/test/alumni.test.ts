@@ -12,5 +12,8 @@ describe("Notable alumni", () => {
       "https://www.monitor.co.ug/uganda/magazines/score/ikwaput-the-making-of-women-football-legend-3392332",
     );
     expect(alumnus?.source).toBe("Daily Monitor profile");
+    expect(alumnus?.image).toMatch(/alumni-fazila-ikwaput\.webp$/);
+    expect(alumnus?.imageAlt).toContain("Fazila Ikwaput");
+    expect(alumnus?.imageCredit).toBe("Photo: Emami East Bengal via The Telegraph");
   });
 });

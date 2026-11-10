@@ -16,6 +16,7 @@ import abduSwaibuKampanya from "@/assets/alumni-abdu-swaibu-kampanya.webp";
 import arikotRacheal from "@/assets/alumni-ariokot-racheal.jpg";
 import chrisArikoObore from "@/assets/alumni-chris-ariko-obore.webp";
 import cindySanyu from "@/assets/alumni-cindy-sanyu.jpg";
+import fazilaIkwaput from "@/assets/alumni-fazila-ikwaput.webp";
 import reginaNakibuule from "@/assets/alumni-regina-nakibuule.jpg";
 import { schoolHead } from "@/lib/school";
 
@@ -146,8 +147,11 @@ export const notableAlumni: NotableAlumnus[] = [
     name: "Fazila Ikwaput",
     classYear: "Class year not listed",
     role: "Ugandan footballer and Uganda women's national team forward; attended Mbale Progressive Secondary School.",
+    image: fazilaIkwaput,
+    imageAlt: "Fazila Ikwaput celebrating with her SAFF Women's Club Championship trophies",
     source: "Daily Monitor profile",
     href: "https://www.monitor.co.ug/uganda/magazines/score/ikwaput-the-making-of-women-football-legend-3392332",
+    imageCredit: "Photo: Emami East Bengal via The Telegraph",
   },
 ];
 
