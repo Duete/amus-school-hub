@@ -227,7 +227,7 @@ function CampusLeadershipPanel({
   leaders,
 }: {
   campus: string;
-  leaders: Array<{ name: string; role: string; campus: string; photo: string }>;
+  leaders: Array<{ name: string; role: string; campus: string; photo: string; photoPosition?: string }>;
 }) {
   return (
     <aside
@@ -255,6 +255,7 @@ function CampusLeadershipPanel({
               height={800}
               loading="lazy"
               className="aspect-[4/3] w-full object-cover"
+              style={leader.photoPosition ? { objectPosition: leader.photoPosition } : undefined}
             />
             <h4 className="mt-4 text-xl">{leader.name}</h4>
             <p className="mt-1 text-sm font-semibold text-secondary">{leader.role}</p>

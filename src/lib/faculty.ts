@@ -1,4 +1,3 @@
-import gwireMuhammad from "@/assets/admin-gwire-muhammad-web.jpg";
 import gwireMuhammadPortrait from "@/assets/staff-gwire-muhammad.jpg.asset.json";
 import sahamaliElias from "@/assets/admin-sahamali-elias-web.jpg";
 import wambogaAsuman from "@/assets/admin-wamboga-asuman-web.jpg";
