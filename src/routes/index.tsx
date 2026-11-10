@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { campuses, schoolHead } from "@/lib/school";
-import { annexBuildingPhotos, campusImages, campusPhotoGroups } from "@/lib/campus-photos";
+import { annexBuildingPhotos, campusImages, homepageCampusPhotos } from "@/lib/campus-photos";
 import headteacherPhoto from "@/assets/admin-ocukul-julius-web.jpg";
 
 const annexBuildingSlides = annexBuildingPhotos.map(({ src, caption, alt }) => ({
@@ -567,13 +567,13 @@ function Index() {
                 Visit the Day Campus <ArrowRight size={16} />
               </Link>
             </div>
-            <div className="mt-10 grid gap-5 md:grid-cols-[1.25fr_0.75fr]">
-              {campusPhotoGroups.dayCampus.slice(0, 1).map(({ src, caption, alt }) => (
+            <div className="mt-10 grid gap-5">
+              {homepageCampusPhotos.dayCampus.map(({ src, caption, alt }) => (
                 <Link
                   key={caption}
                   to="/campuses/$campus"
                   params={{ campus: "day-campus" }}
-                  className="group relative min-h-80 overflow-hidden bg-primary"
+                  className="group relative min-h-80 overflow-hidden bg-primary md:min-h-[28rem]"
                 >
                   <img
                     src={src}
@@ -587,27 +587,6 @@ function Index() {
                   </p>
                 </Link>
               ))}
-              <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-1">
-                {campusPhotoGroups.dayCampus.slice(2, 4).map(({ src, caption, alt }) => (
-                  <Link
-                    key={caption}
-                    to="/campuses/$campus"
-                    params={{ campus: "day-campus" }}
-                    className="group relative min-h-40 overflow-hidden bg-primary"
-                  >
-                    <img
-                      src={src}
-                      loading="lazy"
-                      alt={alt}
-                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent" />
-                    <p className="absolute bottom-4 left-4 text-sm font-semibold text-white">
-                      {caption}
-                    </p>
-                  </Link>
-                ))}
-              </div>
             </div>
           </div>
 
@@ -633,7 +612,7 @@ function Index() {
               </Link>
             </div>
             <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {campusPhotoGroups.annex.map(({ src, caption, alt }) => (
+              {homepageCampusPhotos.annex.map(({ src, caption, alt }) => (
                 <Link
                   key={caption}
                   to="/campuses/$campus"

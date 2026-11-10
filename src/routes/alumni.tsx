@@ -88,6 +88,7 @@ type NotableAlumnus = {
   imageAlt?: string;
   source?: string;
   href?: string;
+  additionalSources?: { label: string; href: string }[];
   imageCredit?: string;
 };
 
@@ -145,12 +146,18 @@ export const notableAlumni: NotableAlumnus[] = [
   },
   {
     name: "Fazila Ikwaput",
-    classYear: "Class year not listed",
+    classYear: "Class of 2015",
     role: "Ugandan footballer and Uganda women's national team forward; attended Mbale Progressive Secondary School.",
     image: fazilaIkwaput,
     imageAlt: "Fazila Ikwaput celebrating with her SAFF Women's Club Championship trophies",
     source: "Daily Monitor profile",
     href: "https://www.monitor.co.ug/uganda/magazines/score/ikwaput-the-making-of-women-football-legend-3392332",
+    additionalSources: [
+      {
+        label: "Wikipedia biography",
+        href: "https://en.wikipedia.org/wiki/Fazila_Ikwaput",
+      },
+    ],
     imageCredit: "Photo: Emami East Bengal via The Telegraph",
   },
 ];
@@ -315,6 +322,17 @@ function Alumni() {
                         {alumnus.source} <ExternalLink size={12} />
                       </a>
                     ) : null}
+                    {alumnus.additionalSources?.map(({ label, href }) => (
+                      <a
+                        key={href}
+                        href={href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-2 ml-4 inline-flex items-center gap-1 text-xs font-bold text-primary underline underline-offset-4"
+                      >
+                        {label} <ExternalLink size={12} />
+                      </a>
+                    ))}
                     {alumnus.imageCredit ? (
                       <p className="mt-2 text-[11px] leading-4 text-muted-foreground">
                         {alumnus.imageCredit}
