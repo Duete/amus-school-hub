@@ -1,12 +1,19 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, UsersRound } from "lucide-react";
-import { directorsOfStudies, faculty, staffInitials, type FacultyMember } from "@/lib/faculty";
+import {
+  directorsOfStudies,
+  faculty,
+  facultyServesCampus,
+  sortFacultyAlphabetically,
+  staffInitials,
+  type FacultyMember,
+} from "@/lib/faculty";
 
 export type StaffCampus = "Day Campus" | "Boarding";
 
 export function CampusStaffPage({ campus }: { campus: StaffCampus }) {
-  const campusMembers = faculty.filter((member) => member.campus === campus);
-  const heads = campusMembers.filter((member) => member.head);
+  const campusMembers = faculty.filter((member) => facultyServesCampus(member, campus));
+  const heads = sortFacultyAlphabetically(campusMembers.filter((member) => member.head));
   const teachingStaff = campusMembers.filter((member) => !member.head);
   const leaders = directorsOfStudies.filter((leader) => leader.campus === campus);
   const isBoarding = campus === "Boarding";

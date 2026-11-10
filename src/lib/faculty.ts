@@ -14,18 +14,34 @@ import katendeEmmanuel from "@/assets/staff-katende-emmanuel.webp";
 import kediYefusa from "@/assets/staff-kedi-yefusa.png";
 import boozaAzaliaAshraf from "@/assets/staff-booza-azalia-ashraf.png";
 
+export type CampusLocation = "Day Campus" | "Boarding";
+export type FacultyCampus = CampusLocation | "Both Campuses";
+
 export type FacultyMember = {
   name: string;
   role: string;
   department: string;
   subjects: string;
-  campus: "Day Campus" | "Boarding";
+  campus: FacultyCampus;
   bio: string;
   email?: string;
   head?: boolean;
   photo?: string;
   photoPosition?: string;
 };
+
+export const facultyServesCampus = (member: FacultyMember, campus: CampusLocation) =>
+  member.campus === campus || member.campus === "Both Campuses";
+
+const facultyNameForSorting = (name: string) =>
+  name.replace(/^(?:Mr\.|Mrs\.|Ms\.|Madam)\s+/i, "").trim();
+
+export const sortFacultyAlphabetically = (members: FacultyMember[]) =>
+  [...members].sort((first, second) =>
+    facultyNameForSorting(first.name).localeCompare(facultyNameForSorting(second.name), "en", {
+      sensitivity: "base",
+    }),
+  );
 
 export const staffInitials = (name: string) => {
   const parts = name
@@ -240,8 +256,8 @@ export const faculty: FacultyMember[] = [
     role: "Head of Business Education",
     department: "Business Education",
     subjects: "Entrepreneurship",
-    campus: "Day Campus",
-    bio: "Heads Business Education at the Day Campus and teaches Entrepreneurship across both campuses.",
+    campus: "Both Campuses",
+    bio: "Heads Business Education at both campuses and teaches Entrepreneurship across the Day and Boarding Campuses.",
     photo: enguluDaniel.url,
     head: true,
   },
