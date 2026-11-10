@@ -99,7 +99,6 @@ describe("Faculty directory", () => {
     expect(heads.map((member) => member.name)).toEqual([
       "Ms. Agnes Nakitto",
       "Mr. Booza Azalia Ashraf",
-      "Mrs. Buyi Alice Lamwaka",
       "Mr. Daniel Kato",
       "Mr. Engulu Daniel",
       "Mr. Katende Emmanuel",
@@ -118,11 +117,14 @@ describe("Faculty directory", () => {
     expect(member?.photo).toBeTruthy();
   });
 
-  it("lists Mrs. Buyi Alice Lamwaka as Boarding Deputy Headteacher", () => {
+  it("lists Mrs. Buyi Alice Lamwaka as a Boarding History teacher", () => {
     const member = faculty.find((person) => person.name === "Mrs. Buyi Alice Lamwaka");
-    expect(member?.role).toBe("Deputy Headteacher");
+    expect(member?.role).toBe("Teacher");
+    expect(member?.department).toBe("Languages & Humanities");
+    expect(member?.subjects).toBe("History");
     expect(member?.campus).toBe("Boarding");
-    expect(member?.head).toBe(true);
+    expect(member?.bio).toBe("Teaches History at the Boarding Campus.");
+    expect(member?.head).toBeUndefined();
     expect(member?.photo).toBeTruthy();
   });
 
@@ -143,11 +145,13 @@ describe("Faculty directory", () => {
     expect(photoFor("Mr. Engulu Daniel")).toMatch(/staff-engulu-daniel\.jpg$/);
     expect(photoFor("Mr. Mugulo Joseph")).toMatch(/staff-mugulo-joseph\.jpg$/);
     expect(photoFor("Mrs. Buyi Alice Lamwaka")).toMatch(/staff-buyi-alice-lamwaka\.jpg$/);
-    expect(new Set([
-      photoFor("Mr. Gwire Muhammad"),
-      photoFor("Mr. Engulu Daniel"),
-      photoFor("Mr. Mugulo Joseph"),
-      photoFor("Mrs. Buyi Alice Lamwaka"),
-    ]).size).toBe(4);
+    expect(
+      new Set([
+        photoFor("Mr. Gwire Muhammad"),
+        photoFor("Mr. Engulu Daniel"),
+        photoFor("Mr. Mugulo Joseph"),
+        photoFor("Mrs. Buyi Alice Lamwaka"),
+      ]).size,
+    ).toBe(4);
   });
 });

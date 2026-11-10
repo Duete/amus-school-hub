@@ -36,7 +36,7 @@ const dayCampusLeaders = [
 
 const boardingLeaders = [
   { name: "Mr. Mudebo Ali Masai", role: "Head Teacher · Boarding", photo: mudeboAliMasai },
-  { name: "Mrs. Buyi Alice Lamwaka", role: "Deputy Head Teacher", photo: buyiAliceLamwaka },
+  { name: "Mrs. Buyi Alice Lamwaka", role: "Deputy Headteacher", photo: buyiAliceLamwaka },
   { name: "Mr. Wamboga Asuman", role: "Director of Studies I", photo: wambogaAsuman },
   { name: "Mr. Wangota Joshua", role: "Director of Studies II", photo: wangotaJoshua },
 ];
