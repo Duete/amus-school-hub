@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { boardingCampusMapUrl, campuses, schoolHead } from "@/lib/school";
-import { annexBuildingPhotos, campusPhotoGroups } from "@/lib/campus-photos";
+import { annexBuildingPhotos, campusPhotoGroups, homepageCampusPhotos } from "@/lib/campus-photos";
 describe("School campus structure", () => {
   it("features exactly two distinct campuses", () => {
     expect(campuses).toHaveLength(2);
@@ -83,6 +83,16 @@ describe("School campus structure", () => {
       campusPhotoGroups.annex.find((photo) => photo.caption === "Laboratory and Science Block")
         ?.src,
     ).toContain("hero-courtyard.webp");
+  });
+
+  it("limits homepage campus photos to the selected Day and Boarding buildings", () => {
+    expect(homepageCampusPhotos.dayCampus.map((photo) => photo.caption)).toEqual([
+      "Day Campus driveway",
+    ]);
+    expect(homepageCampusPhotos.annex.map((photo) => photo.caption)).toEqual([
+      "Annex entrance and grounds",
+      "Administration block",
+    ]);
   });
 });
 

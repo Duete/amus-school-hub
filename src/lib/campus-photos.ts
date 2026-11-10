@@ -134,3 +134,12 @@ export const campusPhotoGroups: Record<"dayCampus" | "annex", CampusPhoto[]> = {
 export const annexBuildingPhotos = campusPhotoGroups.annex.filter(
   ({ src }) => src !== campusImages.annexSchoolBuses,
 );
+
+export const homepageCampusPhotos = {
+  dayCampus: campusPhotoGroups.dayCampus.filter(
+    ({ src }) => src === campusImages.dayCampusDriveway,
+  ),
+  annex: campusPhotoGroups.annex.filter(
+    ({ src }) => src === campusImages.annexFrontage || src === campusImages.annexAdministration,
+  ),
+};
