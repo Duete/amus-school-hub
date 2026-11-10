@@ -7,6 +7,9 @@ import kericheanEmmanuel from "@/assets/staff-kerichan-emmanuel.jpg.asset.json";
 import maaniAsinani from "@/assets/staff-maani-asinani.jpg.asset.json";
 import mukoyaFirdaus from "@/assets/staff-mukoya-firdaus.jpg.asset.json";
 import nabusayiKanah from "@/assets/staff-nabusayi-kanah.jpg.asset.json";
+import enguluDaniel from "@/assets/staff-engulu-daniel.jpg.asset.json";
+import muguloJoseph from "@/assets/staff-mugulo-joseph.jpg.asset.json";
+import buyiAliceLamwaka from "@/assets/staff-buyi-alice-lamwaka.jpg.asset.json";
 import katendeEmmanuel from "@/assets/staff-katende-emmanuel.jpg";
 import kediYefusa from "@/assets/staff-kedi-yefusa.png";
 import boozaAzaliaAshraf from "@/assets/staff-booza-azalia-ashraf.png";
@@ -229,6 +232,35 @@ export const faculty: FacultyMember[] = [
     campus: "Boarding",
     bio: "Teaches Physics at O'Level and A'Level at the Boarding Campus.",
     photo: mukoyaFirdaus.url,
+  },
+  {
+    name: "Mr. Engulu Daniel",
+    role: "Assistant Director of Studies (DOS II) · Head of Business Education",
+    department: "Business Education",
+    subjects: "Business Education · Entrepreneurship",
+    campus: "Day Campus",
+    bio: "Leads Business Education and teaches Entrepreneurship across the Day and Boarding Campuses.",
+    photo: enguluDaniel.url,
+    head: true,
+  },
+  {
+    name: "Mr. Mugulo Joseph",
+    role: "Teacher",
+    department: "Languages & Humanities",
+    subjects: "History (O'Level)",
+    campus: "Boarding",
+    bio: "Teaches O'Level History at the Boarding Campus.",
+    photo: muguloJoseph.url,
+  },
+  {
+    name: "Mrs. Buyi Alice Lamwaka",
+    role: "Deputy Headteacher",
+    department: "Administration",
+    subjects: "School Administration",
+    campus: "Boarding",
+    bio: "Deputy Headteacher at the Boarding Campus.",
+    photo: buyiAliceLamwaka.url,
+    head: true,
   },
   {
     name: "Kedi Yefusa",
