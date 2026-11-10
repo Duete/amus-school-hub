@@ -21,6 +21,7 @@ function Campuses() {
             <div className="relative">
               {campus.image ? (
                 <img
+                  decoding="async"
                   src={campus.image}
                   width={1024}
                   height={768}

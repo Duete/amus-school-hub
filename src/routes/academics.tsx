@@ -20,7 +20,7 @@ import {
   Users,
 } from "lucide-react";
 import scienceLabPracticals from "@/assets/science-lab-practicals.webp";
-import studentsDoingExams from "@/assets/students-doing-exams.jpg";
+import studentsDoingExams from "@/assets/students-doing-exams.webp";
 import { PageIntro } from "@/components/school-layout";
 import { schoolHead } from "@/lib/school";
 

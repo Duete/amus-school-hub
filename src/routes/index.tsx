@@ -15,7 +15,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { campuses, schoolHead } from "@/lib/school";
 import { annexBuildingPhotos, campusImages, homepageCampusPhotos } from "@/lib/campus-photos";
-import headteacherPhoto from "@/assets/admin-ocukul-julius-web.jpg";
+import headteacherPhoto from "@/assets/admin-ocukul-julius-web.webp";
 
 const annexBuildingSlides = annexBuildingPhotos.map(({ src, caption, alt }) => ({
   id: `annex-${caption}`,
@@ -162,6 +162,7 @@ function Index() {
         aria-label="Mbale Progressive highlights"
       >
         <img
+          decoding="async"
           key={activeSlide.image}
           src={activeSlide.image}
           width={1920}
@@ -347,6 +348,7 @@ function Index() {
                 >
                   {campus.image ? (
                     <img
+                      decoding="async"
                       src={campus.image}
                       width={1024}
                       height={768}
@@ -395,6 +397,7 @@ function Index() {
         <div className="site-width grid gap-10 py-16 md:grid-cols-[0.7fr_1.3fr] md:items-center md:gap-16 md:py-20">
           <div className="relative">
             <img
+              decoding="async"
               src={headteacherPhoto}
               width={640}
               height={800}
@@ -576,6 +579,7 @@ function Index() {
                   className="group relative min-h-80 overflow-hidden bg-primary md:min-h-[28rem]"
                 >
                   <img
+                    decoding="async"
                     src={src}
                     loading="lazy"
                     alt={alt}
@@ -620,6 +624,7 @@ function Index() {
                   className="group relative min-h-64 overflow-hidden bg-primary"
                 >
                   <img
+                    decoding="async"
                     src={src}
                     loading="lazy"
                     alt={alt}

@@ -22,6 +22,7 @@ function About() {
       <section className="site-width grid items-center gap-12 py-16 md:grid-cols-2">
         <figure>
           <img
+            decoding="async"
             src={schoolCourtyard}
             alt="School courtyard and classroom buildings at Mbale Progressive"
             loading="lazy"
