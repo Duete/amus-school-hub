@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { faculty } from "@/lib/faculty";
+import { faculty, facultyServesCampus } from "@/lib/faculty";
 
 describe("Boarding Campus Heads of Department", () => {
-  const heads = faculty.filter((member) => member.campus === "Boarding" && member.head);
+  const heads = faculty.filter((member) => facultyServesCampus(member, "Boarding") && member.head);
 
   it("lists the supplied department heads under the Boarding Campus", () => {
     expect(heads).toEqual(
@@ -23,7 +23,7 @@ describe("Boarding Campus Heads of Department", () => {
         }),
         expect.objectContaining({
           name: "Ms. Nambafu Aisha",
-          department: "Divinity",
+          department: "Religious Studies",
           campus: "Boarding",
           head: true,
         }),

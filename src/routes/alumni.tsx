@@ -90,7 +90,7 @@ type NotableAlumnus = {
   imageCredit?: string;
 };
 
-const notableAlumni: NotableAlumnus[] = [
+export const notableAlumni: NotableAlumnus[] = [
   {
     name: "Chris Ariko Obore",
     classYear: "Class of 1998",
@@ -141,6 +141,13 @@ const notableAlumni: NotableAlumnus[] = [
     name: "Mukamba Robert",
     classYear: "Class year not listed",
     role: "Politician and Director of Cream Nursery & Primary School, Mbale",
+  },
+  {
+    name: "Fazila Ikwaput",
+    classYear: "Class year not listed",
+    role: "Ugandan footballer and Uganda women's national team forward; attended Mbale Progressive Secondary School.",
+    source: "Daily Monitor profile",
+    href: "https://www.monitor.co.ug/uganda/magazines/score/ikwaput-the-making-of-women-football-legend-3392332",
   },
 ];
 
@@ -279,7 +286,11 @@ function Alumni() {
                       className="flex h-20 w-20 items-center justify-center rounded-sm bg-primary text-xl font-bold text-primary-foreground"
                       aria-label={`Portrait unavailable for ${alumnus.name}`}
                     >
-                      MR
+                      {alumnus.name
+                        .split(/\s+/)
+                        .map((part) => part[0])
+                        .slice(0, 2)
+                        .join("")}
                     </div>
                   )}
                   <div>

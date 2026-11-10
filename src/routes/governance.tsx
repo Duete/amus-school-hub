@@ -94,12 +94,34 @@ function Governance() {
           </p>
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              { name: "Makwa Ibra", role: "Headboy · Boarding Campus", photo: "/images/people/makwa-ibra.jpg" },
-              { name: "Wandera Razak", role: "UNSA Chairperson · Boarding Campus", photo: "/images/people/wandera-razak.jpg" },
-              { name: "Nabalayo Catalina", role: "Head Girl", photo: "/images/people/nabalayo-catalina.png" },
+              {
+                name: "Makwa Ibra",
+                role: "Headboy · Boarding Campus",
+                photo: "/images/people/makwa-ibra.jpg",
+              },
+              {
+                name: "Wandera Razak",
+                role: "UNSA Chairperson · Boarding Campus",
+                photo: "/images/people/wandera-razak.jpg",
+              },
+              {
+                name: "Nabalayo Catalina",
+                role: "Head Girl",
+                photo: "/images/people/nabalayo-catalina.png",
+              },
             ].map((leader) => (
-              <article key={leader.name} className="overflow-hidden rounded-sm border border-border bg-background">
-                <img src={leader.photo} alt={`Portrait of ${leader.name}`} width={640} height={800} loading="lazy" className="aspect-[4/5] w-full object-cover object-top" />
+              <article
+                key={leader.name}
+                className="overflow-hidden rounded-sm border border-border bg-background"
+              >
+                <img
+                  src={leader.photo}
+                  alt={`Portrait of ${leader.name}`}
+                  width={640}
+                  height={800}
+                  loading="lazy"
+                  className="aspect-[4/5] w-full object-cover object-top"
+                />
                 <div className="border-t border-border p-4">
                   <p className="font-semibold text-primary">{leader.name}</p>
                   <p className="mt-1 text-sm text-muted-foreground">{leader.role}</p>
