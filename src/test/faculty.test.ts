@@ -125,4 +125,29 @@ describe("Faculty directory", () => {
     expect(member?.head).toBe(true);
     expect(member?.photo).toBeTruthy();
   });
+
+  it("lists Mr. Gwire Muhammad as Day Campus DOS II in the directory with his own portrait", () => {
+    const member = faculty.find((person) => person.name === "Mr. Gwire Muhammad");
+    expect(member?.role).toBe("Assistant Director of Studies (DOS II)");
+    expect(member?.campus).toBe("Day Campus");
+    expect(member?.department).toBe("Administration");
+    expect(member?.head).toBeFalsy();
+    expect(member?.photo).toMatch(/staff-gwire-muhammad\.jpg$/);
+    expect(member && facultyServesCampus(member, "Day Campus")).toBe(true);
+    expect(member && facultyServesCampus(member, "Boarding")).toBe(false);
+  });
+
+  it("keeps each of the four November portraits on its own staff card", () => {
+    const photoFor = (name: string) => faculty.find((person) => person.name === name)?.photo ?? "";
+    expect(photoFor("Mr. Gwire Muhammad")).toMatch(/staff-gwire-muhammad\.jpg$/);
+    expect(photoFor("Mr. Engulu Daniel")).toMatch(/staff-engulu-daniel\.jpg$/);
+    expect(photoFor("Mr. Mugulo Joseph")).toMatch(/staff-mugulo-joseph\.jpg$/);
+    expect(photoFor("Mrs. Buyi Alice Lamwaka")).toMatch(/staff-buyi-alice-lamwaka\.jpg$/);
+    expect(new Set([
+      photoFor("Mr. Gwire Muhammad"),
+      photoFor("Mr. Engulu Daniel"),
+      photoFor("Mr. Mugulo Joseph"),
+      photoFor("Mrs. Buyi Alice Lamwaka"),
+    ]).size).toBe(4);
+  });
 });
