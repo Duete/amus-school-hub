@@ -77,12 +77,15 @@ describe("Faculty directory", () => {
     expect(member?.photo).toBeTruthy();
   });
 
-  it("lists Mr. Engulu Daniel as DOS II and Head of Business Education at Day Campus", () => {
+  it("lists Mr. Engulu Daniel as Day Campus Head of Business Education", () => {
     const member = faculty.find((person) => person.name === "Mr. Engulu Daniel");
-    expect(member?.role).toBe("Assistant Director of Studies (DOS II) · Head of Business Education");
-    expect(member?.subjects).toBe("Business Education · Entrepreneurship");
+    expect(member?.role).toBe("Head of Business Education");
+    expect(member?.subjects).toBe("Entrepreneurship");
     expect(member?.department).toBe("Business Education");
     expect(member?.campus).toBe("Day Campus");
+    expect(member?.bio).toBe(
+      "Heads Business Education at the Day Campus and teaches Entrepreneurship across both campuses.",
+    );
     expect(member?.head).toBe(true);
     expect(member?.photo).toBeTruthy();
   });
