@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { faculty } from "@/lib/faculty";
+import { faculty, facultyServesCampus, sortFacultyAlphabetically } from "@/lib/faculty";
 
 describe("Faculty directory", () => {
   it("lists Ms. Nabusayi Kanah Nangayo as Boarding Language Department Head", () => {
@@ -77,17 +77,35 @@ describe("Faculty directory", () => {
     expect(member?.photo).toBeTruthy();
   });
 
-  it("lists Mr. Engulu Daniel as Day Campus Head of Business Education", () => {
+  it("lists Mr. Engulu Daniel as Head of Business Education at both campuses", () => {
     const member = faculty.find((person) => person.name === "Mr. Engulu Daniel");
     expect(member?.role).toBe("Head of Business Education");
     expect(member?.subjects).toBe("Entrepreneurship");
     expect(member?.department).toBe("Business Education");
-    expect(member?.campus).toBe("Day Campus");
+    expect(member?.campus).toBe("Both Campuses");
     expect(member?.bio).toBe(
-      "Heads Business Education at the Day Campus and teaches Entrepreneurship across both campuses.",
+      "Heads Business Education at both campuses and teaches Entrepreneurship across the Day and Boarding Campuses.",
     );
     expect(member?.head).toBe(true);
     expect(member?.photo).toBeTruthy();
+    expect(member && facultyServesCampus(member, "Day Campus")).toBe(true);
+    expect(member && facultyServesCampus(member, "Boarding")).toBe(true);
+  });
+
+  it("sorts campus department heads alphabetically by name, ignoring honorifics", () => {
+    const heads = sortFacultyAlphabetically(faculty.filter((person) => person.head));
+    expect(heads.map((member) => member.name)).toEqual([
+      "Ms. Agnes Nakitto",
+      "Mr. Booza Azalia Ashraf",
+      "Mrs. Buyi Alice Lamwaka",
+      "Mr. Daniel Kato",
+      "Mr. Engulu Daniel",
+      "Mr. Katende Emmanuel",
+      "Mr. Kerichan Emmanuel",
+      "Ms. Nabusayi Kanah Nangayo",
+      "Ms. Nambafu Aisha",
+      "Ms. Sarah Namukasa",
+    ]);
   });
 
   it("lists Mr. Mugulo Joseph teaching O'Level History at Boarding", () => {

@@ -2,7 +2,15 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Mail, Search, UsersRound } from "lucide-react";
 import { useMemo, useState } from "react";
 import { schoolHead } from "@/lib/school";
-import { directorsOfStudies, faculty, staffInitials, type FacultyMember } from "@/lib/faculty";
+import {
+  directorsOfStudies,
+  faculty,
+  facultyServesCampus,
+  sortFacultyAlphabetically,
+  staffInitials,
+  type CampusLocation,
+  type FacultyMember,
+} from "@/lib/faculty";
 
 export const Route = createFileRoute("/faculty/")({
   head: () =>
@@ -156,9 +164,15 @@ function StaffStat({ value, label }: { value: string; label: string }) {
   );
 }
 
-function CampusStaffSection({ campus, members }: { campus: string; members: FacultyMember[] }) {
-  const campusMembers = members.filter((member) => member.campus === campus);
-  const heads = campusMembers.filter((member) => member.head);
+function CampusStaffSection({
+  campus,
+  members,
+}: {
+  campus: CampusLocation;
+  members: FacultyMember[];
+}) {
+  const campusMembers = members.filter((member) => facultyServesCampus(member, campus));
+  const heads = sortFacultyAlphabetically(campusMembers.filter((member) => member.head));
   const teachingStaff = campusMembers.filter((member) => !member.head);
   const campusLeaders = directorsOfStudies.filter((leader) => leader.campus === campus);
   const campusId = campus.toLowerCase().replaceAll(" ", "-");
