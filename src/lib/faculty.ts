@@ -273,13 +273,12 @@ export const faculty: FacultyMember[] = [
   },
   {
     name: "Mrs. Buyi Alice Lamwaka",
-    role: "Deputy Headteacher",
-    department: "Administration",
-    subjects: "School Administration",
+    role: "Teacher",
+    department: "Languages & Humanities",
+    subjects: "History",
     campus: "Boarding",
-    bio: "Deputy Headteacher at the Boarding Campus.",
+    bio: "Teaches History at the Boarding Campus.",
     photo: buyiAliceLamwaka.url,
-    head: true,
   },
   {
     name: "Kedi Yefusa",

@@ -94,7 +94,13 @@ function DirectorsPanel({
   leaders,
 }: {
   campus: StaffCampus;
-  leaders: Array<{ name: string; role: string; campus: string; photo: string; photoPosition?: string }>;
+  leaders: Array<{
+    name: string;
+    role: string;
+    campus: string;
+    photo: string;
+    photoPosition?: string;
+  }>;
 }) {
   return (
     <aside
