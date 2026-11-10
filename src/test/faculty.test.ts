@@ -76,4 +76,30 @@ describe("Faculty directory", () => {
     expect(member?.head).toBe(true);
     expect(member?.photo).toBeTruthy();
   });
+
+  it("lists Mr. Engulu Daniel as DOS II and Head of Business Education at Day Campus", () => {
+    const member = faculty.find((person) => person.name === "Mr. Engulu Daniel");
+    expect(member?.role).toBe("Assistant Director of Studies (DOS II) · Head of Business Education");
+    expect(member?.subjects).toBe("Business Education · Entrepreneurship");
+    expect(member?.department).toBe("Business Education");
+    expect(member?.campus).toBe("Day Campus");
+    expect(member?.head).toBe(true);
+    expect(member?.photo).toBeTruthy();
+  });
+
+  it("lists Mr. Mugulo Joseph teaching O'Level History at Boarding", () => {
+    const member = faculty.find((person) => person.name === "Mr. Mugulo Joseph");
+    expect(member?.role).toBe("Teacher");
+    expect(member?.subjects).toBe("History (O'Level)");
+    expect(member?.campus).toBe("Boarding");
+    expect(member?.photo).toBeTruthy();
+  });
+
+  it("lists Mrs. Buyi Alice Lamwaka as Boarding Deputy Headteacher", () => {
+    const member = faculty.find((person) => person.name === "Mrs. Buyi Alice Lamwaka");
+    expect(member?.role).toBe("Deputy Headteacher");
+    expect(member?.campus).toBe("Boarding");
+    expect(member?.head).toBe(true);
+    expect(member?.photo).toBeTruthy();
+  });
 });
