@@ -313,7 +313,7 @@ function Sports() {
       >
         <div className="site-width grid gap-8 lg:grid-cols-[0.42fr_1fr]">
           <div>
-            <p className="eyebrow text-primary">FOOTBALL · HISTORY</p>
+            <p className="eyebrow text-primary">FOOTBALL · HISTORY & MAY 2026</p>
             <h2 id="football-heading" className="mt-3 text-3xl md:text-4xl">
               Pitch Perfect
             </h2>
@@ -344,6 +344,21 @@ function Sports() {
               of 14th.
             </p>
           </div>
+        </div>
+
+        <div className="site-width mt-10">
+          <figure className="border border-border bg-background">
+            <img
+              className="max-h-[32rem] w-full object-cover object-center"
+              src={teamArrivingForFinals}
+              alt="Mbale Progressive football team arriving together for the finals"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption className="px-4 py-3 text-sm leading-6 text-muted-foreground">
+              The team arrives together for a finals fixture during the May 2026 campaign.
+            </figcaption>
+          </figure>
         </div>
 
         <div className="site-width mt-12">
