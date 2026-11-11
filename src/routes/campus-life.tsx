@@ -47,31 +47,37 @@ const campusThreads = [
     House,
     "Houses",
     "The school houses are Galiwango House, Mukongoni House, Nantume House, and Kaggwa House. House identity creates friendly competition, belonging, and opportunities for students to work together.",
+    "/sports#houses-heading",
   ],
   [
     BookOpenCheck,
     "Clubs",
     "The Writers & Debating Club is under the patronage of Madam Abwoch Janet. Other clubs include the Red Cross Club, Science Club, and Interact Club. The Debate Society also leads a strong programme: a deep run at the 2025 NIRA National Schools Debate Championship against more than 20 schools, First Runners-Up at the fourth 93.1 IUIU FM Inter-School Debate Championship, and a standout performance at the Mbale District UNSA Debate Championship.",
+    "/sports#clubs-heading",
   ],
   [
     Trophy,
     "Sports",
     "Football, netball, basketball, athletics, and other games develop teamwork, discipline, fitness, and confidence.",
+    "/sports#sports-athletics-heading",
   ],
   [
     Music2,
     "Music, dance and drama",
     "Choir, instrumental music, traditional performance, and drama give learners a stage for expression.",
+    "/sports#debate-heading",
   ],
   [
     UsersRound,
     "Student leadership",
     "Student leaders and prefects help represent learner voices and support a positive school culture.",
+    "/governance#student-leadership-heading",
   ],
   [
     ShieldCheck,
     "Faith and reflection",
     "Faith life includes the Muslim Students Association, Young Catholics Association, and Scripture Union, supporting learners in observing their faith and developing values for community life.",
+    "/sports#clubs-heading",
   ],
 ];
 
@@ -117,10 +123,14 @@ function CampusLife() {
           <p className="eyebrow text-primary">SEVEN THREADS OF CAMPUS LIFE</p>
           <h2 className="mt-2 text-3xl md:text-4xl">Pick a thread to follow.</h2>
           <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {campusThreads.map(([Icon, title, text]) => {
+            {campusThreads.map(([Icon, title, text, href]) => {
               const ThreadIcon = Icon as typeof House;
               return (
-                <article key={title as string} className="bg-background p-6">
+                <a
+                  key={title as string}
+                  href={href as string}
+                  className="group bg-background p-6 transition-colors hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                >
                   <div className="flex items-start gap-3">
                     <ThreadIcon
                       className="mt-0.5 shrink-0 text-primary"
@@ -128,7 +138,9 @@ function CampusLife() {
                       strokeWidth={1.6}
                       aria-hidden="true"
                     />
-                    <h3 className="text-xl">{title as string}</h3>
+                    <h3 className="text-xl underline decoration-transparent underline-offset-4 transition group-hover:decoration-current">
+                      {title as string}
+                    </h3>
                   </div>
                   <p className="mt-2 text-sm leading-6 text-muted-foreground">{text as string}</p>
                   {title === "Houses" && (
@@ -151,7 +163,7 @@ function CampusLife() {
                       </span>
                     </div>
                   )}
-                </article>
+                </a>
               );
             })}
           </div>
