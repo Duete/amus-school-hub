@@ -131,26 +131,9 @@ function News() {
               Abwoch Janet.
             </p>
             <div
-              className="mt-8 grid gap-5 sm:grid-cols-2"
+              className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
               aria-label="Debate and Writers Club highlights"
             >
-              <figure className="border border-border bg-background">
-                <img
-                  className="aspect-[4/3] w-full object-cover"
-                  src="/images/people/One of the Debators receiving their Certificates.jpg"
-                  srcSet="/images/people/optimized/debate-certificate-presentation-480.webp 480w, /images/people/optimized/debate-certificate-presentation-800.webp 800w, /images/people/optimized/debate-certificate-presentation-960.webp 960w"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 32vw"
-                  width={960}
-                  height={540}
-                  alt="A student receives a certificate at an awards presentation as a presenter and classmates look on"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <figcaption className="px-4 py-3 text-sm leading-6 text-muted-foreground">
-                  A student debater receives a certificate during an awards presentation attended by
-                  fellow learners.
-                </figcaption>
-              </figure>
               <figure className="border border-border bg-background">
                 <img
                   className="aspect-[4/3] w-full object-cover"
@@ -159,12 +142,44 @@ function News() {
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 32vw"
                   width={2560}
                   height={1920}
-                  alt="Writers and Debating Club members pose with their patrons outside a school building"
+                  alt="Writers and Debating Club members pose with their patrons after winning at IUIU"
                   loading="lazy"
                   decoding="async"
                 />
                 <figcaption className="px-4 py-3 text-sm leading-6 text-muted-foreground">
-                  Writers &amp; Debating Club members gather with their patrons for a team photo.
+                  The Writers &amp; Debating Club team with their patrons after winning at IUIU.
+                </figcaption>
+              </figure>
+              <figure className="border border-border bg-background">
+                <img
+                  className="aspect-[4/3] w-full object-cover"
+                  src="/images/people/Winners of Writers and Debating Club.png"
+                  srcSet="/images/people/optimized/writers-debating-club-best-orator-480.webp 480w, /images/people/optimized/writers-debating-club-best-orator-800.webp 800w, /images/people/optimized/writers-debating-club-best-orator-941.webp 941w"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 32vw"
+                  width={941}
+                  height={1671}
+                  alt="Writers and Debating Club students display their accolade after the Best Orator win"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption className="px-4 py-3 text-sm leading-6 text-muted-foreground">
+                  Club members display their accolade after the Best Orator win.
+                </figcaption>
+              </figure>
+              <figure className="border border-border bg-background">
+                <img
+                  className="aspect-[4/3] w-full object-cover"
+                  src="/images/people/One of the Debators receiving their Certificates.jpg"
+                  srcSet="/images/people/optimized/debate-certificate-presentation-480.webp 480w, /images/people/optimized/debate-certificate-presentation-800.webp 800w, /images/people/optimized/debate-certificate-presentation-960.webp 960w"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 32vw"
+                  width={960}
+                  height={540}
+                  alt="A student debator receives a certificate during an awards presentation"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption className="px-4 py-3 text-sm leading-6 text-muted-foreground">
+                  A student debator receives a certificate during the awards presentation.
                 </figcaption>
               </figure>
             </div>
