@@ -3,7 +3,7 @@ import { Building2, CheckCircle2, ShieldCheck, UsersRound } from "lucide-react";
 import { PageIntro } from "@/components/school-layout";
 import { schoolHead } from "@/lib/school";
 import buyiAliceLamwaka from "@/assets/staff-buyi-alice-lamwaka.jpg.asset.json";
-import gwireMuhammad from "@/assets/admin-gwire-muhammad-web.webp";
+import gwireMuhammad from "@/assets/staff-gwire-muhammad.jpg.asset.json";
 import mudeboAliMasai from "@/assets/admin-mudebo-ali-masai-web.webp";
 import nabukwasiPatience from "@/assets/admin-nabukwasi-patience-web.webp";
 import ocukulJulius from "@/assets/admin-ocukul-julius-web.webp";
@@ -31,7 +31,11 @@ const dayCampusLeaders = [
     photo: nabukwasiPatience,
   },
   { name: "Mr. Sahamali Elias", role: "Director of Studies I", photo: sahamaliElias },
-  { name: "Mr. Gwire Muhammad", role: "Director of Studies II", photo: gwireMuhammad },
+  {
+    name: "Mr. Gwire Muhammad",
+    role: "Director of Studies II",
+    photo: gwireMuhammad.url,
+  },
 ];
 
 const boardingLeaders = [

@@ -6,6 +6,7 @@ import girlsWarmUp from "@/assets/girls-team-in-warm-up-before-the-match.webp";
 import girlsResting from "@/assets/girls-team-resting-before-another-match.webp";
 import districtLineUp from "@/assets/line-up-before-the-district-finals-2024.webp";
 import teamWarmUp from "@/assets/team-warm-up.webp";
+import teamArrivingForFinals from "@/assets/team-ariving-for-the-finals.webp";
 import teachersEleven from "@/assets/the-teacher-s-1st-eleven-before-a-game-with-prefects.webp";
 import teachersCaptain from "@/assets/the-teachers-captain-and-the-assistant.webp";
 import footballSquadCelebrationWide from "@/assets/football-squad-celebration-wide.webp";
@@ -17,7 +18,6 @@ import reginaNakibuule from "@/assets/alumni-regina-nakibuule.webp";
 import redCrossCleaning from "@/assets/red-cross-cleaning-activity.webp";
 import redCrossMembers from "@/assets/red-cross-members.webp";
 import bugisuFinalsCelebration from "@/assets/bugisu-regionals-finals-2023-celebration.webp";
-import bugisuRegionalChampions from "@/assets/bugisu-regionals-champions-2023.webp";
 import { PageIntro } from "@/components/school-layout";
 import { schoolHead } from "@/lib/school";
 
@@ -134,6 +134,12 @@ const footballPhotos = [
     alt: "Football starting eleven lined up on the pitch before kick-off",
   },
   {
+    image: teamArrivingForFinals,
+    title: "Arriving for the finals",
+    text: "The team arrives together for the finals.",
+    alt: "Mbale Progressive football team arriving for the finals",
+  },
+  {
     image: footballMatchAction,
     title: "In the contest",
     text: "Blue and white kits battle for the ball.",
@@ -174,10 +180,10 @@ const regionalChampionsPhotos = [
     alt: "Mbale Progressive football players celebrating on the pitch after the Bugisu Regionals Finals 2023",
   },
   {
-    image: bugisuRegionalChampions,
+    image: "/images/people/optimized/regional-champions-celebration-1280.webp",
     title: "Regional Champions 2023",
-    text: "Progressive emerged as the Bugisu Regional Champions.",
-    alt: "Mbale Progressive football team celebrating as Bugisu Regional Champions 2023",
+    text: "The team celebrates a regional title with its trophy and supporters.",
+    alt: "Mbale Progressive team members and supporters raising a trophy after the regional championship",
   },
 ];
 
