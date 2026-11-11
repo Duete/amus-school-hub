@@ -11,7 +11,6 @@ import {
   UsersRound,
 } from "lucide-react";
 import sendOff from "@/assets/boys-team-with-the-deputor-madam-alice-and-games-teacher-before-send-off-for-nationals-2024.webp";
-import arriving from "@/assets/team-ariving-for-the-finals.webp";
 import outreachNorthRoad from "@/assets/outreach-north-road-primary.webp";
 import karamojaSelfie from "@/assets/karamoja-association-selfie.webp";
 import colourStudent from "@/assets/colour-festival-student.webp";
@@ -132,62 +131,6 @@ function CampusLife() {
                     <h3 className="text-xl">{title as string}</h3>
                   </div>
                   <p className="mt-2 text-sm leading-6 text-muted-foreground">{text as string}</p>
-                  {title === "Clubs" && (
-                    <div className="mt-5" aria-label="Debating Club activities">
-                      <p className="eyebrow text-primary">DEBATING CLUB ACTIVITIES</p>
-                      <div className="mt-3 grid gap-4">
-                        <figure className="border border-border bg-muted p-3">
-                          <img
-                            className="mx-auto max-h-[24rem] w-full object-contain"
-                            src="/images/people/The Debating team and their patrons.jpg"
-                            srcSet="/images/people/optimized/debating-team-with-patrons-480.webp 480w, /images/people/optimized/debating-team-with-patrons-800.webp 800w, /images/people/optimized/debating-team-with-patrons-1280.webp 1280w"
-                            sizes="(max-width: 768px) 100vw, 33vw"
-                            width={2560}
-                            height={1920}
-                            alt="Writers and Debating Club members pose with their patrons after winning at IUIU"
-                            loading="lazy"
-                            decoding="async"
-                          />
-                          <figcaption className="pt-3 text-sm leading-6 text-muted-foreground">
-                            The Writers &amp; Debating Club team with their patrons after winning at
-                            IUIU.
-                          </figcaption>
-                        </figure>
-                        <figure className="border border-border bg-muted p-3">
-                          <img
-                            className="mx-auto max-h-[24rem] w-full object-contain"
-                            src="/images/people/Winners of Writers and Debating Club.png"
-                            srcSet="/images/people/optimized/writers-debating-club-best-orator-480.webp 480w, /images/people/optimized/writers-debating-club-best-orator-800.webp 800w, /images/people/optimized/writers-debating-club-best-orator-941.webp 941w"
-                            sizes="(max-width: 768px) 100vw, 33vw"
-                            width={941}
-                            height={1671}
-                            alt="Writers and Debating Club students display their accolade after the Best Orator win"
-                            loading="lazy"
-                            decoding="async"
-                          />
-                          <figcaption className="pt-3 text-sm leading-6 text-muted-foreground">
-                            Club members display their accolade after the Best Orator win.
-                          </figcaption>
-                        </figure>
-                        <figure className="border border-border bg-muted p-3">
-                          <img
-                            className="mx-auto max-h-[24rem] w-full object-contain"
-                            src="/images/people/One of the Debators receiving their Certificates.jpg"
-                            srcSet="/images/people/optimized/debate-certificate-presentation-480.webp 480w, /images/people/optimized/debate-certificate-presentation-800.webp 800w, /images/people/optimized/debate-certificate-presentation-960.webp 960w"
-                            sizes="(max-width: 768px) 100vw, 33vw"
-                            width={960}
-                            height={540}
-                            alt="A student debater receives a certificate during the club awards presentation"
-                            loading="lazy"
-                            decoding="async"
-                          />
-                          <figcaption className="pt-3 text-sm leading-6 text-muted-foreground">
-                            A student debater receives a certificate during the awards presentation.
-                          </figcaption>
-                        </figure>
-                      </div>
-                    </div>
-                  )}
                   {title === "Houses" && (
                     <div className="mt-5 flex flex-wrap gap-2" aria-label="House colours">
                       <span className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1 text-xs font-semibold">
@@ -318,15 +261,6 @@ function CampusLife() {
                 width: 4032,
                 height: 3024,
               },
-              {
-                src: "/images/people/Celebrations after winning the Regional Champion.png",
-                alt: "Team members and supporters raise a trophy together after the regional championship",
-                caption: "The team celebrates a regional title with its trophy and supporters.",
-                srcSet:
-                  "/images/people/optimized/regional-champions-celebration-480.webp 480w, /images/people/optimized/regional-champions-celebration-800.webp 800w, /images/people/optimized/regional-champions-celebration-1280.webp 1280w",
-                width: 1681,
-                height: 936,
-              },
             ].map(({ src, alt, caption, srcSet, width, height }) => (
               <figure key={caption} className="border border-border bg-background">
                 <img
@@ -360,7 +294,6 @@ function CampusLife() {
               sendOff,
               "The boys' team with Deputy Madam Alice and the Games Teacher before the send-off for Nationals 2024.",
             ],
-            [arriving, "The team arriving for the finals."],
           ].map(([src, caption]) => (
             <figure key={caption}>
               <img
