@@ -100,9 +100,9 @@ function News() {
               The Mighty Orators: Mbale Progressive Shines in the 2025/2026 Debating Arena!
             </h2>
             <p className="mt-5 leading-7 text-muted-foreground">
-              What a year it has been for our brilliant wordsmiths. The Mbale Progressive Secondary
-              School Debate Society has shown that critical thinking, sharp arguments, and eloquent
-              public speaking are central to the Progressive experience.
+              The Writers &amp; Debating Club nurtures critical thinking, research, clear writing,
+              and eloquent public speaking. This year, the school’s debaters have put those skills
+              to work in competitions across the region and country.
             </p>
             <p className="mt-4 leading-7 text-muted-foreground">
               The team made a deep national run at the 2025 NIRA National Schools Debate
@@ -126,6 +126,48 @@ function News() {
               Progressive flag high. Students who want to sharpen their minds, conquer stage fright,
               and join a winning team are invited to join the Debate Society. Progressive Oyee!
             </p>
+            <p className="mt-4 text-sm leading-6 text-muted-foreground">
+              <strong className="text-foreground">Writers &amp; Debating Club patron:</strong> Madam
+              Abwoch Janet.
+            </p>
+            <div
+              className="mt-8 grid gap-5 sm:grid-cols-2"
+              aria-label="Debate and Writers Club highlights"
+            >
+              <figure className="border border-border bg-background">
+                <img
+                  className="aspect-[4/3] w-full object-cover"
+                  src="/images/people/One of the Debators receiving their Certificates.jpg"
+                  srcSet="/images/people/optimized/debate-certificate-presentation-480.webp 480w, /images/people/optimized/debate-certificate-presentation-800.webp 800w, /images/people/optimized/debate-certificate-presentation-960.webp 960w"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 32vw"
+                  width={960}
+                  height={540}
+                  alt="A student receives a certificate at an awards presentation as a presenter and classmates look on"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption className="px-4 py-3 text-sm leading-6 text-muted-foreground">
+                  A student debater receives a certificate during an awards presentation attended by
+                  fellow learners.
+                </figcaption>
+              </figure>
+              <figure className="border border-border bg-background">
+                <img
+                  className="aspect-[4/3] w-full object-cover"
+                  src="/images/people/The Debating team and their patrons.jpg"
+                  srcSet="/images/people/optimized/debating-team-with-patrons-480.webp 480w, /images/people/optimized/debating-team-with-patrons-800.webp 800w, /images/people/optimized/debating-team-with-patrons-1280.webp 1280w"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 32vw"
+                  width={2560}
+                  height={1920}
+                  alt="Writers and Debating Club members pose with their patrons outside a school building"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption className="px-4 py-3 text-sm leading-6 text-muted-foreground">
+                  Writers &amp; Debating Club members gather with their patrons for a team photo.
+                </figcaption>
+              </figure>
+            </div>
             <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold">
               <a
                 href="https://www.youtube.com/watch?v=T-jv1_wk9Js"

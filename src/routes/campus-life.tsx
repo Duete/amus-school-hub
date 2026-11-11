@@ -52,7 +52,7 @@ const campusThreads = [
   [
     BookOpenCheck,
     "Clubs",
-    "Other clubs include the Red Cross Club, Writers' Club, Science Club, and Interact Club. The Debate Society also leads a strong programme: a deep run at the 2025 NIRA National Schools Debate Championship against more than 20 schools, First Runners-Up at the fourth 93.1 IUIU FM Inter-School Debate Championship, and a standout performance at the Mbale District UNSA Debate Championship.",
+    "The Writers & Debating Club is under the patronage of Madam Abwoch Janet. Other clubs include the Red Cross Club, Science Club, and Interact Club. The Debate Society also leads a strong programme: a deep run at the 2025 NIRA National Schools Debate Championship against more than 20 schools, First Runners-Up at the fourth 93.1 IUIU FM Inter-School Debate Championship, and a standout performance at the Mbale District UNSA Debate Championship.",
   ],
   [
     Trophy,
