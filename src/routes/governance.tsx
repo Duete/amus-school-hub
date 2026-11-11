@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Building2, CheckCircle2, ShieldCheck, UsersRound } from "lucide-react";
 import { PageIntro } from "@/components/school-layout";
 import { schoolHead } from "@/lib/school";
-import buyiAliceLamwaka from "@/assets/admin-buyi-alice-lamwaka-web.webp";
+import buyiAliceLamwaka from "@/assets/staff-buyi-alice-lamwaka.jpg.asset.json";
 import gwireMuhammad from "@/assets/admin-gwire-muhammad-web.webp";
 import mudeboAliMasai from "@/assets/admin-mudebo-ali-masai-web.webp";
 import nabukwasiPatience from "@/assets/admin-nabukwasi-patience-web.webp";
@@ -36,7 +36,11 @@ const dayCampusLeaders = [
 
 const boardingLeaders = [
   { name: "Mr. Mudebo Ali Masai", role: "Head Teacher · Boarding", photo: mudeboAliMasai },
-  { name: "Mrs. Buyi Alice Lamwaka", role: "Deputy Headteacher", photo: buyiAliceLamwaka },
+  {
+    name: "Mrs. Buyi Alice Lamwaka",
+    role: "Deputy Headteacher",
+    photo: buyiAliceLamwaka.url,
+  },
   { name: "Mr. Wamboga Asuman", role: "Director of Studies I", photo: wambogaAsuman },
   { name: "Mr. Wangota Joshua", role: "Director of Studies II", photo: wangotaJoshua },
 ];
