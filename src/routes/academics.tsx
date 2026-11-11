@@ -706,19 +706,34 @@ function Academics() {
             ))}
           </div>
 
-          <figure className="mt-12 border-t border-border pt-10">
-            <img
-              className="w-full border border-border"
-              src={scienceLabPracticals}
-              alt="Students carrying out practicals in the Day Campus science laboratory"
-              loading="lazy"
-              decoding="async"
-            />
-            <figcaption className="pt-3 text-sm leading-6 text-muted-foreground">
-              Students carrying out practicals in the Day Campus science laboratory — a testament to
-              the school's commitment to excellence.
-            </figcaption>
-          </figure>
+          <div className="mt-12 grid gap-8 border-t border-border pt-10 md:grid-cols-2">
+            <figure>
+              <img
+                className="w-full border border-border"
+                src="/images/people/Students at a historical site during a tour.JPG"
+                alt="Mbale Progressive students visiting a historical site during an educational tour"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption className="pt-3 text-sm leading-6 text-muted-foreground">
+                Learning extends beyond the classroom: students explore a historical site during an
+                educational tour.
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                className="w-full border border-border"
+                src={scienceLabPracticals}
+                alt="Students carrying out practicals in the Day Campus science laboratory"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption className="pt-3 text-sm leading-6 text-muted-foreground">
+                Students carrying out practicals in the Day Campus science laboratory — a testament
+                to the school's commitment to excellence.
+              </figcaption>
+            </figure>
+          </div>
           <figure className="mt-10 border-t border-border pt-10">
             <img
               className="mx-auto max-h-[40rem] w-full max-w-2xl border border-border object-contain"
@@ -763,6 +778,50 @@ function Academics() {
                   <p className="mt-3 text-sm leading-6 text-muted-foreground">{text}</p>
                 </article>
               ))}
+            </div>
+            <div
+              className="mt-12 grid gap-6 md:grid-cols-2"
+              aria-label="Practical agriculture projects"
+            >
+              <figure className="border border-border bg-background">
+                <img
+                  className="aspect-[16/9] w-full object-cover"
+                  src="/images/people/Agriculture at the School farm.jpg"
+                  alt="Students working the soil together at the school farm"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption className="px-4 py-3 text-sm leading-6 text-muted-foreground">
+                  Agriculture at the school farm gives learners practical experience preparing and
+                  caring for crops.
+                </figcaption>
+              </figure>
+              <figure className="border border-border bg-background">
+                <img
+                  className="aspect-[16/9] w-full object-cover"
+                  src="/images/people/Students Practicing Agriculture at the School farm.jpg"
+                  alt="Students practising agriculture together in a cultivated school plot"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption className="px-4 py-3 text-sm leading-6 text-muted-foreground">
+                  Learners practise agricultural skills through hands-on work in the school farm
+                  plot.
+                </figcaption>
+              </figure>
+              <figure className="border border-border bg-background md:col-span-2">
+                <img
+                  className="mx-auto max-h-[40rem] w-full border-b border-border object-contain"
+                  src="/images/people/Tree planting in the School Compound .png"
+                  alt="Students and a teacher planting young trees in the school compound"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption className="px-4 py-3 text-sm leading-6 text-muted-foreground">
+                  Students take part in tree planting, applying practical environmental stewardship
+                  on campus.
+                </figcaption>
+              </figure>
             </div>
           </div>
         </section>

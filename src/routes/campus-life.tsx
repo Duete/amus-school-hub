@@ -217,6 +217,59 @@ function CampusLife() {
           </div>
         </div>
       </section>
+      <section
+        className="border-t border-border bg-muted py-14 md:py-20"
+        aria-labelledby="community-moments-heading"
+      >
+        <div className="site-width">
+          <p className="eyebrow text-primary">CULTURE · STUDENT COMMUNITY · CELEBRATION</p>
+          <h2 id="community-moments-heading" className="mt-2 text-3xl md:text-4xl">
+            A school community to belong to.
+          </h2>
+          <p className="mt-4 max-w-2xl leading-7 text-muted-foreground">
+            Cultural performances, shared school moments, and celebrating achievement bring learners
+            together beyond lessons.
+          </p>
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              [
+                "/images/people/Cultural gala.png",
+                "A student presents a traditional performance at the school cultural gala, with classmates gathered to watch.",
+                "A cultural gala performance",
+              ],
+              [
+                "/images/people/The Karimojong showcasing at the cultural gala.png",
+                "Students showcase Karimojong cultural dress and performance at the school cultural gala.",
+                "Karimojong culture at the gala",
+              ],
+              [
+                "/images/people/IMG_0477.JPEG",
+                "Mbale Progressive students gather together in school uniform for a group photograph.",
+                "Students together as a school community",
+              ],
+              [
+                "/images/people/Celebrations after winning the Regional Champion.png",
+                "Players and supporters celebrate together while raising the regional championship trophy.",
+                "Celebrating a regional championship win",
+              ],
+            ].map(([src, alt, caption]) => (
+              <figure key={caption} className="border border-border bg-background">
+                <img
+                  className="aspect-[4/3] w-full object-cover"
+                  src={src}
+                  alt={alt}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption className="px-4 py-3 text-sm leading-6 text-muted-foreground">
+                  {caption}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="site-width py-14 md:py-20" aria-labelledby="moments-heading">
         <p className="eyebrow text-primary">MOMENTS TOGETHER</p>
         <h2 id="moments-heading" className="mt-2 text-3xl md:text-4xl">
