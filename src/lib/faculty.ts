@@ -26,6 +26,7 @@ export type FacultyMember = {
   email?: string;
   head?: boolean;
   photo?: string;
+  photoSrcSet?: string;
   photoPosition?: string;
 };
 
@@ -137,7 +138,9 @@ export const faculty: FacultyMember[] = [
     subjects: "Religious Studies",
     campus: "Boarding",
     bio: "Leads Religious Studies at the Boarding Campus.",
-    photo: "/images/people/optimized/nambafu-aisha-800.webp",
+    photo: "/images/people/optimized/nambafu-aisha-256.webp",
+    photoSrcSet:
+      "/images/people/optimized/nambafu-aisha-256.webp 256w, /images/people/optimized/nambafu-aisha-512.webp 512w",
     head: true,
   },
   {
@@ -249,7 +252,9 @@ export const faculty: FacultyMember[] = [
     subjects: "ICT · Computer Studies",
     campus: "Boarding",
     bio: "Leads ICT teaching and practical computer work at the Boarding Campus.",
-    photo: "/images/people/optimized/kerichan-emmanuel-800.webp",
+    photo: "/images/people/optimized/kerichan-emmanuel-256.webp",
+    photoSrcSet:
+      "/images/people/optimized/kerichan-emmanuel-256.webp 256w, /images/people/optimized/kerichan-emmanuel-512.webp 512w",
     head: true,
   },
   {
