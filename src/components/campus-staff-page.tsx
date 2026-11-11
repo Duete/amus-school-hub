@@ -179,6 +179,8 @@ function HodCard({ member }: { member: FacultyMember }) {
         <img
           decoding="async"
           src={member.photo}
+          srcSet={member.photoSrcSet}
+          sizes={member.photoSrcSet ? "144px" : undefined}
           alt={`Portrait of ${member.name}`}
           width={800}
           height={800}
@@ -211,6 +213,8 @@ function StaffCard({ member, highlight = false }: { member: FacultyMember; highl
           <img
             decoding="async"
             src={member.photo}
+            srcSet={member.photoSrcSet}
+            sizes={member.photoSrcSet ? "144px" : undefined}
             alt={`Portrait of ${member.name}`}
             width={800}
             height={800}
