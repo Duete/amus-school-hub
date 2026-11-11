@@ -43,18 +43,6 @@ const sportsActivities = [
     text: "A long-running talent pathway from Mbale Tigers links to the 2016 Thika Open and Kateregga Memorial title.",
     href: "#table-tennis-history",
   },
-  {
-    label: "Mind & voice",
-    title: "Debate Society",
-    text: "Research, rebuttal, and public speaking — with national knockout and First Runners-Up results in 2025/2026.",
-    href: "#debate-story",
-  },
-  {
-    label: "Student life",
-    title: "Houses",
-    text: "Four house communities, each with its own color, bringing learners together through sport, service, and school life.",
-    href: "#houses",
-  },
 ];
 
 const clubs = [
@@ -67,6 +55,11 @@ const clubs = [
     title: "Writers’ Club",
     text: "A home for poetry, essays, school journalism, creative writing, and confident expression.",
     meta: "Writing and communication",
+  },
+  {
+    title: "Debate Society",
+    text: "Learners research issues, build persuasive arguments, practise rebuttal, and speak with confidence.",
+    meta: "Research and public speaking",
   },
   {
     title: "Science Club",
