@@ -43,6 +43,18 @@ const heroSlides = [
     secondary: "Contact the school",
     secondaryTo: "/contact" as const,
   },
+  {
+    id: "day-campus-a-level-arts",
+    image: campusImages.dayCampusArts,
+    eyebrow: "DAY CAMPUS · A’LEVEL ARTS",
+    title: "A place for creative thinking.",
+    subheading: "A’Level Arts Block.",
+    text: "A dedicated learning space for A’Level Arts students at the Day Campus.",
+    primary: "Explore the Day Campus",
+    to: "/campuses" as const,
+    secondary: "Contact the school",
+    secondaryTo: "/contact" as const,
+  },
   ...annexBuildingSlides,
   {
     id: "day-campus-visits",
