@@ -3,7 +3,6 @@ import sahamaliElias from "@/assets/admin-sahamali-elias-web.webp";
 import wambogaAsuman from "@/assets/admin-wamboga-asuman-web.webp";
 import wangotaJoshua from "@/assets/admin-wangota-joshua-web.webp";
 import abwochJanet from "@/assets/staff-abwoch-janet.jpg.asset.json";
-import kericheanEmmanuel from "@/assets/staff-kerichan-emmanuel.jpg.asset.json";
 import maaniAsinani from "@/assets/staff-maani-asinani.jpg.asset.json";
 import mukoyaFirdaus from "@/assets/staff-mukoya-firdaus.jpg.asset.json";
 import nabusayiKanah from "@/assets/staff-nabusayi-kanah.jpg.asset.json";
@@ -138,7 +137,7 @@ export const faculty: FacultyMember[] = [
     subjects: "Religious Studies",
     campus: "Boarding",
     bio: "Leads Religious Studies at the Boarding Campus.",
-    photo: "/images/people/nambafu-aisha.jpg",
+    photo: "/images/people/optimized/nambafu-aisha-800.webp",
     head: true,
   },
   {
@@ -250,7 +249,7 @@ export const faculty: FacultyMember[] = [
     subjects: "ICT · Computer Studies",
     campus: "Boarding",
     bio: "Leads ICT teaching and practical computer work at the Boarding Campus.",
-    photo: kericheanEmmanuel.url,
+    photo: "/images/people/optimized/kerichan-emmanuel-800.webp",
     head: true,
   },
   {
