@@ -232,31 +232,54 @@ function CampusLife() {
           </p>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              [
-                "/images/people/Cultural gala.png",
-                "A student presents a traditional performance at the school cultural gala, with classmates gathered to watch.",
-                "A cultural gala performance",
-              ],
-              [
-                "/images/people/The Karimojong showcasing at the cultural gala.png",
-                "Students showcase Karimojong cultural dress and performance at the school cultural gala.",
-                "Karimojong culture at the gala",
-              ],
-              [
-                "/images/people/IMG_0477.JPEG",
-                "Mbale Progressive students gather together in school uniform for a group photograph.",
-                "Students together as a school community",
-              ],
-              [
-                "/images/people/Celebrations after winning the Regional Champion.png",
-                "Players and supporters celebrate together while raising the regional championship trophy.",
-                "Celebrating a regional championship win",
-              ],
-            ].map(([src, alt, caption]) => (
+              {
+                src: "/images/people/Cultural gala.png",
+                alt: "A student in colorful traditional attire performs with a staff at the cultural gala",
+                caption:
+                  "The school cultural gala brings learners together to share traditional dress, performance, and cultural expression.",
+                srcSet:
+                  "/images/people/optimized/cultural-gala-performance-480.webp 480w, /images/people/optimized/cultural-gala-performance-800.webp 800w, /images/people/optimized/cultural-gala-performance-1280.webp 1280w",
+                width: 1672,
+                height: 941,
+              },
+              {
+                src: "/images/people/The Karimojong showcasing at the cultural gala.png",
+                alt: "Learners in traditional Karimojong attire take part in a cultural gala performance",
+                caption:
+                  "Students showcase Karimojong cultural dress and performance at the school gala.",
+                srcSet:
+                  "/images/people/optimized/karimojong-cultural-gala-480.webp 480w, /images/people/optimized/karimojong-cultural-gala-800.webp 800w",
+                width: 1086,
+                height: 1448,
+              },
+              {
+                src: "/images/people/IMG_0477.JPEG",
+                alt: "Students in school uniform gather outside the school building for a group photo",
+                caption:
+                  "A group portrait of students at school shows the community beyond the classroom.",
+                srcSet:
+                  "/images/people/optimized/students-school-community-480.webp 480w, /images/people/optimized/students-school-community-800.webp 800w, /images/people/optimized/students-school-community-1280.webp 1280w",
+                width: 4032,
+                height: 3024,
+              },
+              {
+                src: "/images/people/Celebrations after winning the Regional Champion.png",
+                alt: "Team members and supporters raise a trophy together after the regional championship",
+                caption: "The team celebrates a regional title with its trophy and supporters.",
+                srcSet:
+                  "/images/people/optimized/regional-champions-celebration-480.webp 480w, /images/people/optimized/regional-champions-celebration-800.webp 800w, /images/people/optimized/regional-champions-celebration-1280.webp 1280w",
+                width: 1681,
+                height: 936,
+              },
+            ].map(({ src, alt, caption, srcSet, width, height }) => (
               <figure key={caption} className="border border-border bg-background">
                 <img
                   className="aspect-[4/3] w-full object-cover"
                   src={src}
+                  srcSet={srcSet}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  width={width}
+                  height={height}
                   alt={alt}
                   loading="lazy"
                   decoding="async"

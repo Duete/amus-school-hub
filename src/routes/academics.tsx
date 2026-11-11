@@ -711,13 +711,17 @@ function Academics() {
               <img
                 className="w-full border border-border"
                 src="/images/people/Students at a historical site during a tour.JPG"
-                alt="Mbale Progressive students visiting a historical site during an educational tour"
+                alt="Students stand beneath the name board at a historic site during a school tour"
+                srcSet="/images/people/optimized/history-tour-480.webp 480w, /images/people/optimized/history-tour-800.webp 800w, /images/people/optimized/history-tour-1280.webp 1280w"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                width={2880}
+                height={2160}
                 loading="lazy"
                 decoding="async"
               />
               <figcaption className="pt-3 text-sm leading-6 text-muted-foreground">
-                Learning extends beyond the classroom: students explore a historical site during an
-                educational tour.
+                Students visit a local heritage site on a school history tour, extending learning
+                beyond textbooks.
               </figcaption>
             </figure>
             <figure>
@@ -787,39 +791,49 @@ function Academics() {
                 <img
                   className="aspect-[16/9] w-full object-cover"
                   src="/images/people/Agriculture at the School farm.jpg"
-                  alt="Students working the soil together at the school farm"
+                  alt="Students prepare a cultivated plot at the school farm as peers work nearby"
+                  srcSet="/images/people/optimized/school-farm-agriculture-480.webp 480w, /images/people/optimized/school-farm-agriculture-800.webp 800w, /images/people/optimized/school-farm-agriculture-1280.webp 1280w"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  width={1280}
+                  height={576}
                   loading="lazy"
                   decoding="async"
                 />
                 <figcaption className="px-4 py-3 text-sm leading-6 text-muted-foreground">
-                  Agriculture at the school farm gives learners practical experience preparing and
-                  caring for crops.
+                  Hands-on agriculture project: students prepare soil and work together in the
+                  school farm.
                 </figcaption>
               </figure>
               <figure className="border border-border bg-background">
                 <img
                   className="aspect-[16/9] w-full object-cover"
                   src="/images/people/Students Practicing Agriculture at the School farm.jpg"
-                  alt="Students practising agriculture together in a cultivated school plot"
+                  alt="Students examine and work a prepared garden plot at the school farm"
+                  srcSet="/images/people/optimized/students-practising-agriculture-480.webp 480w, /images/people/optimized/students-practising-agriculture-800.webp 800w, /images/people/optimized/students-practising-agriculture-1280.webp 1280w"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  width={1280}
+                  height={576}
                   loading="lazy"
                   decoding="async"
                 />
                 <figcaption className="px-4 py-3 text-sm leading-6 text-muted-foreground">
-                  Learners practise agricultural skills through hands-on work in the school farm
-                  plot.
+                  Students practise agriculture through hands-on work in a cultivated school plot.
                 </figcaption>
               </figure>
               <figure className="border border-border bg-background md:col-span-2">
                 <img
                   className="mx-auto max-h-[40rem] w-full border-b border-border object-contain"
                   src="/images/people/Tree planting in the School Compound .png"
-                  alt="Students and a teacher planting young trees in the school compound"
+                  alt="Students and a teacher place young seedlings into soil during a campus tree-planting activity"
+                  srcSet="/images/people/optimized/school-tree-planting-480.webp 480w, /images/people/optimized/school-tree-planting-800.webp 800w"
+                  sizes="(max-width: 768px) 100vw, 100vw"
+                  width={1087}
+                  height={1447}
                   loading="lazy"
                   decoding="async"
                 />
                 <figcaption className="px-4 py-3 text-sm leading-6 text-muted-foreground">
-                  Students take part in tree planting, applying practical environmental stewardship
-                  on campus.
+                  Students learn environmental stewardship by planting trees in the school compound.
                 </figcaption>
               </figure>
             </div>
