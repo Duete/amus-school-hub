@@ -132,6 +132,25 @@ function CampusLife() {
                     <h3 className="text-xl">{title as string}</h3>
                   </div>
                   <p className="mt-2 text-sm leading-6 text-muted-foreground">{text as string}</p>
+                  {title === "Clubs" && (
+                    <figure className="mt-5 border border-border bg-muted p-3">
+                      <img
+                        className="mx-auto max-h-[28rem] w-full object-contain"
+                        src="/images/people/Winners of Writers and Debating Club.png"
+                        srcSet="/images/people/optimized/writers-debating-club-best-orator-480.webp 480w, /images/people/optimized/writers-debating-club-best-orator-800.webp 800w, /images/people/optimized/writers-debating-club-best-orator-941.webp 941w"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        width={941}
+                        height={1671}
+                        alt="Writers and Debating Club students display awards and certificates after the Mbale City Best Orator win"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption className="pt-3 text-sm leading-6 text-muted-foreground">
+                        The Writers &amp; Debating Club celebrates its Mbale City Best Orator win,
+                        holding certificates and an award.
+                      </figcaption>
+                    </figure>
+                  )}
                   {title === "Houses" && (
                     <div className="mt-5 flex flex-wrap gap-2" aria-label="House colours">
                       <span className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1 text-xs font-semibold">
