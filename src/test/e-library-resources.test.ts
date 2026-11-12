@@ -5,15 +5,29 @@ import {
   aLevelClassResources,
   chemistryCompendiumHref,
   chemistryJointMocksCompendiumHref,
+  chemistryMarkingGuideHref,
 } from "@/lib/learning-resources";
 
 describe("e-Library Chemistry resources", () => {
-  it.each(["S.5", "S.6"] as const)("lists both compendia in %s Chemistry", (className) => {
+  it.each(["S.5", "S.6"] as const)("lists all Chemistry resources in %s", (className) => {
     const resources = aLevelClassResources[className]["Chemistry"];
     expect(resources?.map((resource) => resource.href)).toEqual([
       chemistryCompendiumHref,
       chemistryJointMocksCompendiumHref,
+      chemistryMarkingGuideHref,
     ]);
+  });
+
+  it("links the uploaded Chemistry Answer Guide", () => {
+    const guidePath = resolve(
+      process.cwd(),
+      "public",
+      decodeURIComponent(chemistryMarkingGuideHref).slice(1),
+    );
+    expect(existsSync(guidePath)).toBe(true);
+    expect(readFileSync(guidePath, "utf8")).toContain(
+      "<title>Chemistry Answer Guide — Trinity College Nabbingo</title>",
+    );
   });
 
   it.each([
