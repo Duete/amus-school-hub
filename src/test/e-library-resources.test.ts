@@ -25,9 +25,8 @@ describe("e-Library Chemistry resources", () => {
       decodeURIComponent(chemistryMarkingGuideHref).slice(1),
     );
     expect(existsSync(guidePath)).toBe(true);
-    expect(readFileSync(guidePath, "utf8")).toContain(
-      "<title>Chemistry Answer Guide — Trinity College Nabbingo</title>",
-    );
+    const guide = readFileSync(guidePath, "utf8");
+    expect(guide).toContain("<title>Chemistry Answer Guide — Mbale Progressive Sec School</title>");
   });
 
   it.each([
