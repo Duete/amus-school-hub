@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chemistry Answer Guide — Trinity College Nabbingo</title>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+        font-family: 'Georgia', 'Cambria', 'Times New Roman', serif;
+        background: #e6e2db;
+        color: #1c1c1c;
+        line-height: 1.8;
+        font-size: 16px;
+        padding: 24px;
+    }
+
+    .book {
+        max-width: 1080px;
+        margin: 0 auto;
+        background: #fdfcf8;
+        border-radius: 6px;
+        box-shadow: 0 8px 50px rgba(0,0,0,0.18);
+        overflow: hidden;
+    }
+
+    /* ===== COVER ===== */
+    .cover {
+        background: linear-gradient(150deg, #16234f 0%, #24396e 55%, #16234f 100%);
+        color: #fff;
+        padding: 90px 60px 80px;
+        text-align: center;
+        position: relative;
+    }
+    .cover::after {
+        content: '';
+        position: absolute; inset: 0;
+        background: radial-gradient(circle at 50% 20%, rgba(201,168,76,0.16), transparent 55%);
+        pointer-events: none;
+    }
+    .cover h1 {
+        font-size: 2.9em;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        font-weight: 700;
+        margin-bottom: 14px;
+        position: relative;
+        text-shadow: 0 2px 12px rgba(0,0,0,0.35);
+    }
+    .cover .rule {
+        width: 130px; height: 3px; margin: 0 auto 26px;
+        background: linear-gradient(90deg, transparent, #c9a84c, transparent);
+        position: relative;
+    }
+    .cover .sub {
+        font-size: 1.25em; font-style: italic; opacity: .92;
+        margin-bottom: 34px; position: relative;
+    }
+    .cover .tag {
+        font-size: .9em; letter-spacing: 4px; text-transform: uppercase;
+        opacity: .78; position: relative;
+    }
+
+    /* ===== CONTENTS ===== */
+    .contents {
+        padding: 46px 60px;
+        background: #f4f1ea;
+        border-bottom: 3px solid #16234f;
+    }
+    .contents h2 {
+        text-align: center; font-size: 1.55em; letter-spacing: 3px;
+        text-transform: uppercase; color: #16234f; margin-bottom: 28px;
+    }
+    .toc-grid {
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 22px;
+    }
+    .toc-card {
+        background: #fff; border-left: 4px solid #c9a84c;
+        padding: 16px 20px; border-radius: 0 6px 6px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,.05);
+    }
+    .toc-card h3 {
+        font-size: .95em; text-transform: uppercase; letter-spacing: 1.5px;
+        color: #16234f; margin-bottom: 10px; padding-bottom: 7px;
+        border-bottom: 1px dashed #d5cfc2;
+    }
+    .toc-card ul { list-style: none; }
+    .toc-card li { font-size: .9em; padding: 3px 0; color: #333; }
+    .toc-card li::before { content: '· '; color: #c9a84c; font-weight: 700; }
+
+    /* ===== CONTENT ===== */
+    .content { padding: 52px 60px 60px; }
+
+    .part {
+        background: linear-gradient(90deg, #16234f, #2a4a8a);
+        color: #fff; padding: 16px 30px;
+        margin: 54px -60px 34px; font-size: 1.4em; font-weight: 700;
+        letter-spacing: 2.5px; text-transform: uppercase;
+        border-left: 8px solid #c9a84c;
+    }
+    .part:first-child { margin-top: 0; }
+
+    .item {
+        font-size: 1.15em; color: #7a1616; font-weight: 700;
+        margin: 38px 0 16px; padding: 11px 20px;
+        background: #fbf1f1; border-left: 5px solid #7a1616;
+        border-radius: 0 5px 5px 0; letter-spacing: .6px;
+    }
+    .item .n { color: #16234f; }
+
+    .sub-item {
+        font-size: 1.02em; color: #16234f; font-weight: 700;
+        margin: 26px 0 10px; padding-left: 14px;
+        border-left: 4px solid #c9a84c;
+    }
+
+    .content p { margin-bottom: 14px; text-align: justify; }
+
+    .lead {
+        font-size: 1.04em; color: #2b2b2b;
+        background: #faf8f2; border-left: 4px solid #d8d0be;
+        padding: 14px 20px; margin: 16px 0 20px; border-radius: 0 5px 5px 0;
+    }
+
+    /* ===== EQUATIONS ===== */
+    .eq {
+        font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, 'Cambria', Georgia, serif;
+        font-style: italic;
+        font-size: 1.12em;
+        background: #fbf9f3;
+        border-left: 4px solid #c9a84c;
+        border-radius: 0 7px 7px 0;
+        padding: 15px 22px;
+        margin: 14px 0;
+        text-align: center;
+        line-height: 2;
+        color: #141414;
+        letter-spacing: .3px;
+        box-shadow: inset 0 0 0 1px #f1ece0;
+        overflow-x: auto;
+    }
+    .eq.left { text-align: left; }
+    .eq sub, .eq sup { font-size: .68em; font-style: normal; }
+
+    /* Reaction arrows with conditions */
+    .ar {
+        display: inline-flex; flex-direction: column; align-items: center;
+        vertical-align: middle; margin: 0 8px; font-style: normal;
+    }
+    .ar .top {
+        font-size: .6em; color: #7a5a1a; line-height: 1.25;
+        white-space: nowrap; font-style: italic;
+    }
+    .ar .arrow { font-size: 1.2em; line-height: 1; color: #16234f; }
+
+    /* ===== ANNOTATION BADGES ===== */
+    .anno {
+        display: inline-block;
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+        font-size: .62em; font-weight: 700;
+        letter-spacing: .5px; color: #fff;
+        border-radius: 3px; padding: 1px 6px;
+        margin-left: 4px; vertical-align: super;
+        line-height: 1.5; white-space: nowrap;
+    }
+    .a-d  { background: #8b1a1a; }
+    .a-l  { background: #16234f; }
+    .a-f  { background: #7a5a1a; }
+    .a-ea { background: #1a6a3a; }
+    .a-ed { background: #b0470a; }
+    .a-em { background: #146a6a; }
+    .a-eq { background: #5a2a7a; }
+    .a-sm { background: #2a4a8a; }
+    .a-cr { background: #8a1a5a; }
+
+    /* ===== TABLES ===== */
+    .tw { margin: 22px 0; overflow-x: auto; border-radius: 7px; box-shadow: 0 3px 14px rgba(0,0,0,.08); }
+    table { width: 100%; border-collapse: collapse; font-size: .93em; background: #fff; }
+    thead { background: #16234f; color: #fff; }
+    thead th {
+        padding: 12px 14px; text-align: center; font-weight: 600;
+        letter-spacing: .4px; border-right: 1px solid rgba(255,255,255,.14);
+    }
+    thead th:last-child { border-right: none; }
+    tbody td {
+        padding: 11px 14px; text-align: center;
+        border-bottom: 1px solid #eee9df; border-right: 1px solid #f4f1ea;
+        vertical-align: top;
+    }
+    tbody td:last-child { border-right: none; }
+    tbody tr:nth-child(even) { background: #f9f7f2; }
+    tbody tr:hover { background: #f2eee4; transition: background .2s; }
+    tbody tr:last-child td { border-bottom: none; }
+
+    /* ===== LISTS ===== */
+    ul.clean { list-style: none; margin: 14px 0 18px 6px; }
+    ul.clean li {
+        position: relative; padding: 6px 0 6px 26px; font-size: .97em;
+        border-bottom: 1px dotted #e6e1d6;
+    }
+    ul.clean li:last-child { border-bottom: none; }
+    ul.clean li::before {
+        content: '▸'; position: absolute; left: 4px;
+        color: #c9a84c; font-weight: 700;
+    }
+    ul.clean li strong { color: #16234f; }
+
+    /* ===== NOTE BOX ===== */
+    .note {
+        background: #f2f6ff; border: 1.5px solid #16234f;
+        border-radius: 7px; padding: 18px 24px; margin: 24px 0;
+        position: relative;
+    }
+    .note::before {
+        content: 'RESULT'; position: absolute; top: -11px; left: 20px;
+        background: #16234f; color: #fff; font-family: 'Segoe UI', sans-serif;
+        font-size: .68em; font-weight: 700; letter-spacing: 3px;
+        padding: 2px 14px; border-radius: 3px;
+    }
+    .note p { margin-bottom: 8px; }
+    .note p:last-child { margin-bottom: 0; }
+
+    .warn {
+        background: #fff7ef; border-left: 5px solid #b0470a;
+        padding: 15px 20px; margin: 18px 0; border-radius: 0 5px 5px 0;
+    }
+    .warn strong { color: #8a3600; }
+
+    .boxed {
+        display: inline-block; background: #fff;
+        border: 2px solid #16234f; border-radius: 5px;
+        padding: 3px 14px; font-weight: 700; color: #16234f;
+    }
+
+    .footer {
+        background: #16234f; color: rgba(255,255,255,.72);
+        text-align: center; padding: 26px 40px;
+        font-size: .85em; letter-spacing: 1.2px;
+    }
+    .footer strong { color: #c9a84c; }
+
+    @media (max-width: 780px) {
+        body { padding: 10px; font-size: 14.5px; }
+        .cover { padding: 56px 26px; }
+        .cover h1 { font-size: 1.8em; }
+        .contents, .content { padding: 30px 24px; }
+        .part { margin: 40px -24px 26px; padding: 13px 18px; font-size: 1.15em; }
+        .item { font-size: 1.03em; padding: 9px 14px; }
+        .eq { font-size: 1.02em; padding: 12px 14px; }
+        table { font-size: .8em; }
+        thead th, tbody td { padding: 8px 8px; }
+    }
+
+    @media print {
+        body { background: #fff; padding: 0; }
+        .book { box-shadow: none; border-radius: 0; }
+        .cover, .part, thead { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        .anno { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+</style>
+</head>
+<body>
+
+<div class="book">
+
+<!-- ============ COVER ============ -->
+<div class="cover">
+    <h1>Chemistry Answer Guide</h1>
+    <div class="rule"></div>
+    <div class="sub">Trinity College Nabbingo A Level Chemistry Seminar</div>
+    <div class="tag">26th September, 2026 &nbsp;·&nbsp; Annotated Solutions</div>
+</div>
+
+<!-- ============ CONTENTS ============ -->
+<div class="contents">
+    <h2>Contents</h2>
+    <div class="toc-grid">
+        <div class="toc-card">
+            <h3>Number 1</h3>
+            <ul>
+                <li>Item 1 — Electrochemical Cell &amp; Copper Recovery</li>
+                <li>Item 2 — Battery Systems &amp; Heat Generation</li>
+            </ul>
+        </div>
+        <div class="toc-card">
+            <h3>Number 2 — Solutions</h3>
+            <ul>
+                <li>Item 1 — Organic Acid &amp; Buffer Formulation</li>
+                <li>Item 2 — Buffer Formulations &amp; K<sub>sp</sub></li>
+                <li>Item 3 — Ionic Product &amp; Solvent Extraction</li>
+            </ul>
+        </div>
+        <div class="toc-card">
+            <h3>Number 3/4 — Solutions</h3>
+            <ul>
+                <li>Item 4 — Graphite, SiO₂, Na₂O</li>
+                <li>Item 2 — Al₂O₃, Cl₂, CO₂</li>
+                <li>Item 3 — Halogens &amp; Group II Carbonates</li>
+                <li>Item 6 — Chlorine Compounds</li>
+                <li>Item 7 — Period 3 Oxides</li>
+            </ul>
+        </div>
+        <div class="toc-card">
+            <h3>Number 5/6 — Solutions</h3>
+            <ul>
+                <li>Item 1 — Organic Conversions</li>
+                <li>Item 5 — Propan-1-ol &amp; Ethyne</li>
+                <li>Item 6 — Enterprise Raw Materials</li>
+            </ul>
+        </div>
+        <div class="toc-card">
+            <h3>Practical Paper 2</h3>
+            <ul>
+                <li>Item 1 — Ammonia Ionisation</li>
+                <li>Item 2 — Qualitative Analysis</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============ CONTENT ============ -->
+<div class="content">
+
+<!-- ======================================================= -->
+<!-- NUMBER 1 -->
+<!-- ======================================================= -->
+<div class="part">Number 1</div>
+
+<div class="item"><span class="n">Item 1:</span> Electrochemical Cell &amp; Copper Recovery</div>
+
+<p class="lead"><strong>Given:</strong> E<sup>⊖</sup><sub>cathode</sub> = +0.34 V &nbsp;·&nbsp; E<sup>⊖</sup><sub>anode</sub> = −0.76 V</p>
+
+<p><strong>Cell potential:</strong></p>
+
+<div class="eq">E<sup>⊖</sup><sub>cell</sub> = E<sup>⊖</sup><sub>cathode</sub> − E<sup>⊖</sup><sub>anode</sub> <span class="anno a-d">✓ Da</span></div>
+<div class="eq">= (+0.34) − (−0.76)</div>
+<div class="eq">E<sup>⊖</sup><sub>cell</sub> = +1.10 V <span class="anno a-d">✓ Dc</span></div>
+
+<p>Since the monitoring equipment requires at least 1.00 V and the proposed cell provides 1.10 V under standard conditions. Therefore, based strictly on the stated standard-condition requirement, the cell provides a potential difference 0.10 V above the minimum requirement and is suitable for supplying the required potential difference.</p>
+
+<p><strong>Gibbs free energy change:</strong></p>
+
+<div class="eq">ΔG<sup>⊖</sup> = −nFE<sup>⊖</sup><sub>cell</sub> <span class="anno a-l">✓ L</span></div>
+<div class="eq">= −2 × 96500 × 1.10</div>
+<div class="eq">ΔG<sup>⊖</sup> = −212300 J mol<sup>−1</sup></div>
+<div class="eq">ΔG<sup>⊖</sup> = −212.3 kJ mol<sup>−1</sup> <span class="anno a-d">✓ Di</span></div>
+
+<div class="sub-item">(ii) Copper recovery by electrolysis</div>
+
+<div class="eq">t = 19.3 h</div>
+<div class="eq">t = 19.3 × 60 × 60 = 69480 s</div>
+<div class="eq">Q = It = 2.0 × 69480</div>
+<div class="eq">Q = 138960 C <span class="anno a-d">✓ Da</span></div>
+<div class="eq">n(e<sup>−</sup>) = Q/F = 138960/96500</div>
+<div class="eq">n(e<sup>−</sup>) = 1.44 moles <span class="anno a-d">✓ Dc</span></div>
+
+<p>Therefore, 1.44 moles of electrons passed through the electrolytic cell.</p>
+
+<p><strong>From:</strong> Cu<sup>2+</sup> + 2e<sup>−</sup> → Cu</p>
+<p>2 moles of electrons deposit 1 mole of Cu.</p>
+
+<div class="eq">n(Cu) = 1.44/2 = 0.720 mol</div>
+<div class="eq">m = nM = 0.720 × 63.5</div>
+<div class="eq">m = 45.7 g <span class="anno a-d">✓ Dc</span></div>
+
+<p>The company requires at least 22.0 g of copper per cycle, whereas the calculated deposition is approximately 45.7 g per cycle. The stated operating conditions provide more than twice the required copper output, assuming the process operates with 100% current efficiency.</p>
+
+<p><strong>Effect of the operating factors on copper recovery</strong></p>
+
+<ul class="clean">
+    <li><strong>Current supplied:</strong> Increasing the current increases the amount of copper deposited per unit time, provided other conditions remain suitable. A decrease in current reduces the deposition rate. <span class="anno a-f">✓ Fe</span></li>
+    <li><strong>Duration of electrolysis:</strong> Increasing the electrolysis time increases the quantity of copper deposited because more charge passes through the electrolyte.</li>
+    <li><strong>Concentration of Cu<sup>2+</sup> ions:</strong> Increasing the concentration of Cu<sup>2+</sup> provides more copper ions available for reduction at the cathode and can support efficient copper deposition. If the Cu<sup>2+</sup> concentration becomes too low, copper deposition can become less efficient, and other electrode processes may become significant.</li>
+</ul>
+
+<div class="sub-item">b) Thermochemical evaluation</div>
+
+<p><strong>Reaction:</strong></p>
+<div class="eq">CuO(s) + H<sub>2</sub>(g) → Cu(s) + H<sub>2</sub>O(l)</div>
+<div class="eq">ΔH = ΣΔH<sub>f</sub>(products) − ΣΔH<sub>f</sub>(reactants)</div>
+<div class="eq">= [0 + (−286)] − [(−155) + 0]</div>
+<div class="eq">= −286 − (−155)</div>
+<div class="eq">ΔH = −131 kJ mol<sup>−1</sup></div>
+
+<p>Since ΔH is negative, the reaction is exothermic. The heat released can help provide the heat required to sustain the reduction process, thereby reducing the amount of external energy required for heating.</p>
+
+<div class="note">
+    <p><strong>Recommendation:</strong> The company should consider adopting the hydrogen reduction process as an alternative for producing copper from CuO because it is exothermic and can reduce external heating requirements.</p>
+</div>
+
+<div class="item"><span class="n">Item 2:</span> Battery Systems &amp; Heat Generation</div>
+
+<p><strong>Battery system 1:</strong></p>
+<div class="eq">Zn(s) + Cu<sup>2+</sup>(aq) → Zn<sup>2+</sup>(aq) + Cu(s)</div>
+
+<p><strong>Given:</strong> E<sup>⊖</sup><sub>Cu²⁺/Cu</sub> = +0.34 V &nbsp;·&nbsp; E<sup>⊖</sup><sub>Zn²⁺/Zn</sub> = −0.76 V</p>
+
+<div class="eq">E<sup>⊖</sup><sub>cell</sub> = E<sup>⊖</sup><sub>cathode</sub> − E<sup>⊖</sup><sub>anode</sub> <span class="anno a-d">✓ Da</span></div>
+<div class="eq">= (+0.34) − (−0.76)</div>
+<div class="eq">E<sup>⊖</sup><sub>cell</sub> = +1.10 V <span class="anno a-d">✓ Dc</span></div>
+
+<p>The reaction involves the transfer of 2 electrons.</p>
+
+<div class="eq">ΔG<sup>⊖</sup> = −nFE<sup>⊖</sup><sub>cell</sub> <span class="anno a-l">✓ L</span></div>
+<div class="eq">= −2 × 96500 × 1.10</div>
+<div class="eq">ΔG<sup>⊖</sup> = −212.3 kJ mol<sup>−1</sup></div>
+
+<p>The battery is required to release a minimum of 300.0 kJ mol<sup>−1</sup> of electrical energy, but battery system 1 provides only 212.3 kJ mol<sup>−1</sup>. Therefore, battery system 1 is not suitable, because it does not provide the minimum electrical energy required to keep the radio transmitter operating.</p>
+
+<p><strong>Battery system 2</strong></p>
+<div class="eq">Zn(s) + 2Ag<sup>+</sup>(aq) → Zn<sup>2+</sup>(aq) + 2Ag(s)</div>
+<div class="eq">E<sup>⊖</sup><sub>cell</sub> = (+0.80) − (−0.76)</div>
+<div class="eq">E<sup>⊖</sup><sub>cell</sub> = +1.56 V <span class="anno a-d">✓ Di</span></div>
+
+<p>Two electrons are transferred (n = 2).</p>
+
+<div class="eq">ΔG<sup>⊖</sup> = −nFE<sup>⊖</sup><sub>cell</sub></div>
+<div class="eq">= −2 × 96500 × 1.56</div>
+<div class="eq">ΔG<sup>⊖</sup> = −301.1 kJ mol<sup>−1</sup></div>
+
+<p>The battery is required to release at least 300.0 kJ mol<sup>−1</sup> while battery system 2 releases 301.1 kJ mol<sup>−1</sup>. Therefore, battery system 2 is suitable, since it meets the minimum electrical energy requirement.</p>
+
+<div class="sub-item">Heater</div>
+
+<p><strong>Required reaction:</strong></p>
+<div class="eq">C(s) + 2H<sub>2</sub>(g) → CH<sub>4</sub>(g)</div>
+
+<p><strong>Step 1: Write and number the given equations</strong></p>
+
+<div class="eq left">(Eq 1) &nbsp; C(s) + O<sub>2</sub>(g) → CO<sub>2</sub>(g) &nbsp; ΔH<sub>1</sub> = −393.5 kJ mol<sup>−1</sup></div>
+<div class="eq left">(Eq 2) &nbsp; H<sub>2</sub>(g) + ½O<sub>2</sub>(g) → H<sub>2</sub>O(l) &nbsp; ΔH<sub>2</sub> = −285.8 kJ mol<sup>−1</sup></div>
+
+<p>Since the required reaction contains 2 mol of H<sub>2</sub>, multiply equation (2) by 2:</p>
+
+<div class="eq left">(Eq 3) = 2 × (Eq 2)</div>
+<div class="eq left">2H<sub>2</sub>(g) + O<sub>2</sub>(g) → 2H<sub>2</sub>O(l) &nbsp; ΔH<sub>3</sub> = 2(−285.8) = −571.6 kJ mol<sup>−1</sup></div>
+
+<div class="eq left">(Eq 4) &nbsp; CH<sub>4</sub>(g) + 2O<sub>2</sub>(g) → CO<sub>2</sub>(g) + 2H<sub>2</sub>O(l) &nbsp; ΔH<sub>4</sub> = −890.3 kJ mol<sup>−1</sup></div>
+
+<p>Reverse equation (4):</p>
+<div class="eq left">(Eq 5) = −(Eq 4)</div>
+<div class="eq left">CO<sub>2</sub>(g) + 2H<sub>2</sub>O(l) → CH<sub>4</sub>(g) + 2O<sub>2</sub>(g) &nbsp; ΔH<sub>5</sub> = +890.3 kJ mol<sup>−1</sup></div>
+
+<p><strong>Step 2: Add equations (1), (3) and (5)</strong></p>
+
+<div class="eq left">C + O<sub>2</sub> → CO<sub>2</sub></div>
+<div class="eq left">2H<sub>2</sub> + O<sub>2</sub> → 2H<sub>2</sub>O</div>
+<div class="eq left">CO<sub>2</sub> + 2H<sub>2</sub>O → CH<sub>4</sub> + 2O<sub>2</sub></div>
+
+<p>Cancel CO<sub>2</sub>, 2H<sub>2</sub>O and 2O<sub>2</sub>; remaining:</p>
+
+<div class="eq">C + 2H<sub>2</sub> → CH<sub>4</sub></div>
+
+<p><strong>Step 3: Add the enthalpy changes</strong></p>
+
+<div class="eq">ΔH = ΔH<sub>1</sub> + ΔH<sub>3</sub> + ΔH<sub>5</sub></div>
+<div class="eq">= (−393.5) + (−571.6) + (+890.3)</div>
+<div class="eq">ΔH = −74.8 kJ mol<sup>−1</sup></div>
+
+<p>For 2.0 mol of carbon:</p>
+
+<div class="eq">Q = 2.0 × (−74.8)</div>
+<div class="eq">Q = −149.6 kJ <span class="anno a-d">✓ Di</span></div>
+
+<p>The heater is required to release at least 140.0 kJ, while the reaction involving the supplied 2.0 mol of carbon releases 149.6 kJ. Therefore, the heater provides sufficient heat to melt the ice and restore the electrolyte to a functional state. <span class="anno a-d">✓ Dc</span></p>
+
+<div class="sub-item">(b) Factors favouring sufficient heat production</div>
+
+<ul class="clean">
+    <li><strong>Amount of carbon and hydrogen:</strong> Increasing the amount of reactants increases the total amount of heat released because more substance reacts.</li>
+    <li><strong>Suitable temperature and pressure:</strong> Maintaining appropriate conditions allows the reaction to proceed effectively and at a sufficient rate to generate heat when required. <span class="anno a-f">✓ Fe</span></li>
+</ul>
+
+<div class="sub-item">Other applications of the chemical systems</div>
+
+<ul class="clean">
+    <li><strong>Electrochemical cells / batteries:</strong> Electrochemical cells convert chemical energy into electrical energy through spontaneous redox reactions. They are therefore used in batteries to supply electrical power to devices such as radios, phones, vehicles and emergency equipment. <span class="anno a-ea">✓ Ea</span></li>
+    <li><strong>Electrolysis:</strong> Electrolysis uses electrical energy to drive a non-spontaneous chemical reaction. It is used in electroplating, where a thin layer of one metal is deposited on another object to improve its appearance or protect it from corrosion. <span class="anno a-ea">✓ Ea</span> It is also used in the extraction and purification of metals. For example, electrolysis can be used to obtain or purify copper for use in electrical wiring. <span class="anno a-ea">✓ Ea</span></li>
+    <li><strong>Methane combustion:</strong> Methane undergoes combustion and releases a large amount of heat. The heat released is used for cooking, heating buildings and industrial heating processes. <span class="anno a-ea">✓ Ea</span> Methane can also be used as a fuel in power generation, where its chemical energy is converted into electrical energy. <span class="anno a-ea">✓ Ea</span></li>
+</ul>
+
+<!-- ======================================================= -->
+<!-- NUMBER 2 -->
+<!-- ======================================================= -->
+<div class="part">Number 2 — Solutions</div>
+
+<div class="item"><span class="n">Item 1:</span> Organic Acid Identity &amp; Buffer Formulation</div>
+
+<p><strong>1. Determination of the molecular formula of HA</strong></p>
+
+<p>The general formula of a saturated monocarboxylic acid is C<sub>n</sub>H<sub>2n</sub>O<sub>2</sub>.</p>
+
+<p><strong>Given:</strong> Volume of HA vapour = 10.0 cm<sup>3</sup>; volume of oxygen initially = 70.0 cm<sup>3</sup>; volume after combustion and cooling = 50.0 cm<sup>3</sup>; volume after passing through aqueous KOH = 30.0 cm<sup>3</sup>.</p>
+
+<p><strong>Step 1: Determine the volume of carbon dioxide produced</strong></p>
+<p>Aqueous KOH absorbs carbon dioxide.</p>
+
+<div class="eq">V<sub>CO₂</sub> = 50.0 − 30.0</div>
+<div class="eq">V<sub>CO₂</sub> = 20.0 cm<sup>3</sup></div>
+
+<p>Since all gases are measured at the same temperature and pressure, their volumes are proportional to their number of moles.</p>
+
+<div class="eq">V<sub>CO₂</sub> / V<sub>HA</sub> = n / 1</div>
+<div class="eq">n = 20.0 / 10.0</div>
+<div class="eq">n = 2</div>
+
+<p>Therefore, the molecular formula of HA is C<sub>2</sub>H<sub>4</sub>O<sub>2</sub>. Hence, HA is ethanoic acid, CH<sub>3</sub>COOH.</p>
+
+<p><strong>2. Determination of the concentration of HA</strong></p>
+<p>The neutralisation reaction is:</p>
+
+<div class="eq">HA(aq) + NaOH(aq) → NaA(aq) + H<sub>2</sub>O(l)</div>
+
+<p>1000 cm<sup>3</sup> of solution contains 0.1 moles. 20.0 cm<sup>3</sup> of solution contains:</p>
+
+<div class="eq">(0.1 × 20.0)/1000 <span class="anno a-d">✓ Da</span> = 0.002 moles</div>
+
+<p><strong>Moles of HA:</strong> According to the mole ratio, 1 mole of HA reacts with 1 mole of NaOH.</p>
+
+<div class="eq">Moles of HA = 0.002 moles</div>
+
+<p>25.0 cm<sup>3</sup> of HA contains 0.002 moles. 1000 cm<sup>3</sup> of HA contains:</p>
+
+<div class="eq">(0.002 × 1000)/25 = 0.08 M <span class="anno a-d">✓ Dc</span></div>
+
+<p>1 dm<sup>3</sup> contains 0.08 moles. 500 dm<sup>3</sup> contains:</p>
+
+<div class="eq">(0.08 × 500)/1 <span class="anno a-d">✓ Da</span> = 40 moles</div>
+
+<p><strong>Molar mass of HA:</strong> The acid was C<sub>2</sub>H<sub>4</sub>O<sub>2</sub>.</p>
+
+<div class="eq">RMM = (12 × 2) + 4 + 32 = 60.0 g</div>
+<div class="eq">Moles = Mass/RMM</div>
+<div class="eq">Mass = Moles × RMM = 40 × 60 = 2400 g <span class="anno a-d">✓ Dc</span></div>
+
+<p>Therefore, the 500 dm<sup>3</sup> production batch contains 40.0 moles of ethanoic acid, corresponding to 2400 g of HA.</p>
+
+<div class="sub-item">b) Evaluate the proposed buffer formulation</div>
+
+<p><strong>Proposed buffer:</strong> [HA] = 0.100 mol dm<sup>−3</sup>; [NaA] = 0.080 mol dm<sup>−3</sup>; K<sub>a</sub> = 1.8 × 10<sup>−5</sup>; required pH = 4.60–4.80.</p>
+
+<p>The buffer consists of a weak acid, HA, and its conjugate base, A<sup>−</sup>. The ionisation equilibrium is:</p>
+
+<div class="eq">HA(aq) ⇌ H<sup>+</sup>(aq) + A<sup>−</sup>(aq)</div>
+
+<p>The acid dissociation constant is:</p>
+<div class="eq">K<sub>a</sub> = [H<sup>+</sup>][A<sup>−</sup>]/[HA]</div>
+<div class="eq">pK<sub>a</sub> = −log<sub>10</sub>K<sub>a</sub> <span class="anno a-l">✓ L</span></div>
+<div class="eq">pK<sub>a</sub> = 4.74</div>
+
+<p><strong>Calculate the pH of the proposed buffer</strong> using the Henderson–Hasselbalch equation:</p>
+
+<div class="eq">pH = pK<sub>a</sub> + log([A<sup>−</sup>]/[HA])</div>
+
+<p>Since NaA provides A<sup>−</sup>: [A<sup>−</sup>] = 0.080 mol dm<sup>−3</sup> and [HA] = 0.100 mol dm<sup>−3</sup>.</p>
+
+<div class="eq">pH = 4.74 + log(0.080/0.100) <span class="anno a-d">✓ Da</span></div>
+<div class="eq">pH = 4.74 + log(0.80)</div>
+<div class="eq">log(0.80) = −0.0969</div>
+<div class="eq">pH = 4.74 − 0.0969</div>
+<div class="eq">pH = 4.64 <span class="anno a-d">✓ Dc</span></div>
+
+<p><strong>Interpretation of the calculated pH:</strong> The company requires a pH range of 4.60–4.80. The calculated buffer pH is 4.64. Since 4.60 &lt; 4.64 &lt; 4.80, the calculated pH falls within the required range. The proposed buffer formulation is suitable with respect to pH.</p>
+
+<p><strong>How the buffer resists changes in pH:</strong> A buffer contains a weak acid (HA) and its conjugate base (A<sup>−</sup>). When acid (H<sup>+</sup>) is added, the conjugate base removes it:</p>
+
+<div class="eq">A<sup>−</sup> + H<sup>+</sup> → HA <span class="anno a-cr">✓ C&amp;R</span></div>
+
+<p>This prevents a large decrease in pH. When alkali (OH<sup>−</sup>) is added, the weak acid reacts with it:</p>
+
+<div class="eq">HA + OH<sup>−</sup> → A<sup>−</sup> + H<sub>2</sub>O <span class="anno a-cr">✓ C&amp;R</span></div>
+
+<p>This prevents a large increase in pH. Therefore, the presence of appreciable amounts of both HA and A<sup>−</sup> allows the buffer to resist sudden changes in pH.</p>
+
+<p><strong>Application in fruit processing:</strong> The buffer can be used to maintain the fruit product within the desired pH range of 4.60–4.80 despite small amounts of acid or alkali entering during processing or storage. <span class="anno a-ea">✓ Ea</span> This helps maintain consistent taste, product stability and shelf life.</p>
+
+<div class="item"><span class="n">Item 2:</span> Buffer Formulations &amp; Solubility Equilibria</div>
+
+<p>The buffer consists of a weak acid, CH<sub>3</sub>COOH, and its conjugate base, CH<sub>3</sub>COO<sup>−</sup>.</p>
+
+<p>Using the Henderson–Hasselbalch equation:</p>
+<div class="eq">pH = pK<sub>a</sub> + log([CH<sub>3</sub>COO<sup>−</sup>]/[CH<sub>3</sub>COOH])</div>
+
+<p><strong>First calculate the number of moles.</strong></p>
+<p>Molar mass of CH<sub>3</sub>COOH = 60 g mol<sup>−1</sup></p>
+<div class="eq">n(CH<sub>3</sub>COOH) = 4.50/60 = 0.0750 mol</div>
+
+<p>Molar mass of CH<sub>3</sub>COONa = 82 g mol<sup>−1</sup></p>
+<div class="eq">n(CH<sub>3</sub>COONa) = 2.05/82 = 0.0250 mol</div>
+
+<p>Since both are dissolved in the same volume, the volume cancels when calculating their concentration ratio:</p>
+
+<div class="eq">[CH<sub>3</sub>COO<sup>−</sup>]/[CH<sub>3</sub>COOH] = 0.0250/0.0750 = 1/3</div>
+
+<p><strong>Calculate pK<sub>a</sub>:</strong></p>
+<div class="eq">pK<sub>a</sub> = −log(1.8 × 10<sup>−5</sup>) = 4.74</div>
+
+<p>Therefore,</p>
+<div class="eq">pH = 4.74 + log(1/3) = 4.74 − 0.477</div>
+<div class="eq">pH = 4.26 <span class="anno a-d">✓ Dc</span></div>
+
+<p>This is below the required range of 4.8–5.3. Therefore formulation Q would not provide the required pH for maximum stability of the antibiotic.</p>
+
+<p><strong>Step 2: Calculate the pH of formulation R</strong></p>
+<p>Moles of CH<sub>3</sub>COOH:</p>
+<div class="eq">n = 1.50/60 = 0.0250 mol</div>
+
+<p>Moles of CH<sub>3</sub>COONa:</p>
+<div class="eq">n = 6.15/82 = 0.0750 mol</div>
+
+<p>Therefore,</p>
+<div class="eq">ratio = 0.0750/0.0250 = 3</div>
+
+<p>Using:</p>
+<div class="eq">pH = pK<sub>a</sub> + log([CH<sub>3</sub>COO<sup>−</sup>]/[CH<sub>3</sub>COOH])</div>
+<div class="eq">pH = 4.74 + log 3</div>
+<div class="eq">pH = 4.74 + 0.477</div>
+<div class="eq">pH = 5.22 <span class="anno a-d">✓ Dc</span></div>
+
+<p>The required pH range is 4.8–5.3. Since 4.8 &lt; 5.22 &lt; 5.3, formulation R lies within the required range.</p>
+
+<div class="note">
+    <p><strong>Recommendation:</strong> Formulation R is the more suitable formulation. <span class="anno a-cr">✓ C&amp;R</span> It provides a pH of approximately 5.22, which falls within the required range of 4.8–5.3. Therefore, it should better maintain the stability and therapeutic effectiveness of the antibiotic.</p>
+</div>
+
+<div class="sub-item">Analysis of precipitation in batches A, B and C</div>
+
+<p>Calcium ions react with carbonate ions according to:</p>
+<div class="eq">Ca<sup>2+</sup>(aq) + CO<sub>3</sub><sup>2−</sup>(aq) ⇌ CaCO<sub>3</sub>(s)</div>
+
+<p>The solubility product expression is:</p>
+<div class="eq">K<sub>sp</sub> = [Ca<sup>2+</sup>][CO<sub>3</sub><sup>2−</sup>] <span class="anno a-l">✓ L</span></div>
+<p><strong>Given:</strong> K<sub>sp</sub> = 4.8 × 10<sup>−9</sup>. We calculate the ionic product, Q<sub>sp</sub>, for each batch.</p>
+
+<p><strong>Batch A</strong> — Given [Ca<sup>2+</sup>] = 1.0 × 10<sup>−3</sup> M; [CO<sub>3</sub><sup>2−</sup>] = 2.0 × 10<sup>−7</sup> M.</p>
+<div class="eq">Q<sub>sp</sub> = (1.0 × 10<sup>−3</sup>)(2.0 × 10<sup>−7</sup>)</div>
+<div class="eq">Q<sub>sp</sub> = 2.0 × 10<sup>−10</sup></div>
+
+<p>Compare: Q<sub>sp</sub> &lt; K<sub>sp</sub> (2.0 × 10<sup>−10</sup> &lt; 4.8 × 10<sup>−9</sup>). Therefore, the solution is unsaturated with respect to CaCO<sub>3</sub>. <span class="anno a-d">✓ Dc</span> No CaCO<sub>3</sub> precipitate is expected in batch A.</p>
+
+<p><strong>Batch B</strong></p>
+<div class="eq">Q<sub>sp</sub> = (2.5 × 10<sup>−3</sup>)(3.0 × 10<sup>−6</sup>)</div>
+<div class="eq">Q<sub>sp</sub> = 7.5 × 10<sup>−9</sup> <span class="anno a-d">✓ Dc</span></div>
+
+<p>Compare: Q<sub>sp</sub> &gt; K<sub>sp</sub> (7.5 × 10<sup>−9</sup> &gt; 4.8 × 10<sup>−9</sup>). Therefore, the solution is supersaturated. CaCO<sub>3</sub> precipitation is expected in batch B.</p>
+
+<p><strong>Batch C</strong></p>
+<div class="eq">Q<sub>sp</sub> = (5.0 × 10<sup>−3</sup>)(2.0 × 10<sup>−5</sup>)</div>
+<div class="eq">Q<sub>sp</sub> = 1.0 × 10<sup>−7</sup> <span class="anno a-d">✓ Dc</span></div>
+
+<p>Compare: Q<sub>sp</sub> &gt; K<sub>sp</sub> (1.0 × 10<sup>−7</sup> &gt; 4.8 × 10<sup>−9</sup>). Therefore, batch C is highly supersaturated and substantial precipitation is expected.</p>
+
+<div class="sub-item">Quality assurance measures</div>
+
+<ul class="clean">
+    <li><strong>Maintains drug stability:</strong> The buffer keeps the antibiotic within the required pH range of 4.8–5.3, reducing decomposition of the active ingredient and preserving its therapeutic effectiveness.</li>
+    <li><strong>Resists sudden pH changes:</strong> The ethanoic acid/ethanoate buffer reacts with small amounts of added acid or alkali, preventing large changes in pH during manufacturing, storage and use.</li>
+    <li><strong>Ensures consistent drug effectiveness:</strong> Maintaining the correct pH ensures that each dose contains the antibiotic in a stable form and therefore provides a reliable therapeutic effect. <span class="anno a-f">✓ Fe</span></li>
+    <li><strong>Protects patient safety:</strong> A properly controlled formulation reduces the risk of degradation products or precipitates forming in an intravenous preparation, helping to ensure safe administration to patients. <span class="anno a-f">✓ Fe</span></li>
+    <li><strong>Improves shelf life:</strong> By controlling pH and preventing conditions that accelerate decomposition, the buffer helps the medicine remain effective for longer during storage.</li>
+</ul>
+
+<p>Precipitation can be minimised by reducing the concentrations of Ca<sup>2+</sup> and CO<sub>3</sub><sup>2−</sup> using purified materials, preventing carbonate contamination, controlling pH and monitoring the ionic product. The ionic product should be maintained below K<sub>sp</sub> while the buffer keeps the antibiotic within its optimum pH range of 4.8–5.3. This prevents CaCO<sub>3</sub> precipitation without compromising drug stability and effectiveness.</p>
+
+<div class="item"><span class="n">Item 3:</span> Solubility Equilibria &amp; Solvent Extraction</div>
+
+<div class="sub-item">(a) Ionic product and solubility product</div>
+
+<p>The dissolution equilibrium of calcium carbonate is:</p>
+<div class="eq">CaCO<sub>3</sub>(s) ⇌ Ca<sup>2+</sup>(aq) + CO<sub>3</sub><sup>2−</sup>(aq)</div>
+
+<p><strong>Sample A:</strong></p>
+<div class="eq">Ionic product = [Ca<sup>2+</sup>][CO<sub>3</sub><sup>2−</sup>]</div>
+<div class="eq">= (1.0 × 10<sup>−3</sup>)(2.0 × 10<sup>−7</sup>)</div>
+<div class="eq">= 2 × 10<sup>−10</sup> mol<sup>2</sup> dm<sup>−6</sup> <span class="anno a-d">✓ Dc</span></div>
+
+<p><strong>Sample B:</strong></p>
+<div class="eq">Ionic product = (2.5 × 10<sup>−3</sup>)(3.0 × 10<sup>−6</sup>)</div>
+<div class="eq">= 7.5 × 10<sup>−9</sup> mol<sup>2</sup> dm<sup>−6</sup></div>
+
+<p><strong>Sample C:</strong></p>
+<div class="eq">Ionic product = (4.0 × 10<sup>−3</sup>)(5.0 × 10<sup>−6</sup>)</div>
+<div class="eq">= 2 × 10<sup>−8</sup> mol<sup>2</sup> dm<sup>−6</sup></div>
+
+<p>Sample B and sample C are more likely to form visible deposits since their ionic product values are greater than the solubility product. This means that their solutions are supersaturated, and therefore the excess ions combine to precipitate calcium carbonate.</p>
+
+<div class="sub-item">(b) Solvent extraction</div>
+
+<p>Let the mass of Q extracted be <em>y</em>.</p>
+
+<div class="eq">K<sub>D</sub> = 4.0 = (y/25)/((0.8 − y)/100)</div>
+<div class="eq">4 = 100y/[25(0.8 − y)]</div>
+<div class="eq">4 = 4y/(0.8 − y)</div>
+<div class="eq">4(0.8 − y) = 4y</div>
+<div class="eq">3.2 − 4y = 4y</div>
+<div class="eq">8y = 3.2</div>
+<div class="eq">y = 0.4 g <span class="anno a-d">✓ Dc</span></div>
+
+<p>Mass remaining in the solution = 0.8 − 0.4 = 0.4 g <span class="anno a-d">✓ Dc</span></p>
+
+<p>For the second successive extraction:</p>
+<div class="eq">4 = (y/25)/((0.4 − y)/100)</div>
+<div class="eq">4 = 4y/(0.4 − y)</div>
+<div class="eq">4(0.4 − y) = 4y</div>
+<div class="eq">1.6 − 4y = 4y</div>
+<div class="eq">8y = 1.6</div>
+<div class="eq">y = 0.2 g <span class="anno a-d">✓ Dc</span></div>
+
+<p>Total mass extracted = 0.4 + 0.2 = 0.6 g. Percentage of Q extracted:</p>
+<div class="eq">Percentage extracted = (0.6 × 100)/0.8 = 75% <span class="anno a-d">✓ Dc</span></div>
+
+<p>The purification method used is effective because it extracts a higher percentage of the contaminant Q than what remains in the water.</p>
+
+<div class="sub-item">(c) Factors affecting precipitation of calcium carbonate</div>
+
+<ul class="clean">
+    <li>The water picked from underground may at times contain other dissolved salts having at least one ion similar to the ions from calcium carbonate. This would increase the concentration of the ions so that the ionic product of calcium and carbonate ions would exceed the solubility product of calcium carbonate. Hence, the excess ions would react to precipitate out calcium carbonate in such water samples so as to restore equilibrium and the solubility product value of calcium carbonate.</li>
+    <li>Some water samples picked from underground might contain compounds that form complexes with calcium ions (complexing agents). This would reduce the concentration of the calcium ions which are free in the water and therefore more of the calcium carbonate present in water would dissolve. No precipitation would therefore occur since the salt would be becoming more soluble.</li>
+    <li>In water samples stored under high temperatures, precipitation cannot easily occur. This is because the solubility product of calcium carbonate is high at high temperatures and equilibrium requires high concentrations of calcium and carbonate ions to be established, which are not present in the water sample. Therefore, the ionic product of calcium and carbonate ions will be less than the solubility product value of calcium carbonate, meaning the solution will be dilute at that temperature; hence, no precipitation occurs.</li>
+</ul>
+
+<div class="sub-item">Applications of ionic equilibria</div>
+
+<ul class="clean">
+    <li><strong>Manufacture of soap:</strong> Ionic equilibria can be applied in the manufacture of soap. A concentrated solution of sodium chloride is added to the soap solution and this greatly increases the concentration of sodium ions since soap also possesses sodium ions. The ionic product therefore exceeds the solubility product value of soap, so that the excess sodium ions combine with carboxylate ions to precipitate out soap from its solution. <span class="anno a-ea">✓ Ea</span></li>
+    <li><strong>Manufacture of steel:</strong> The knowledge of eutectic mixtures from physical equilibria can be used to make steel, an alloy of carbon and iron. A liquid mixture containing carbon and iron is cooled until the whole liquid mixture solidifies at a constant temperature to form solid carbon and solid iron, which is steel. <span class="anno a-ea">✓ Ea</span></li>
+</ul>
+
+<!-- ======================================================= -->
+<!-- NUMBER 3/4 -->
+<!-- ======================================================= -->
+<div class="part">Number 3/4 — Solutions</div>
+
+<div class="item"><span class="n">Item 4:</span> Graphite, Silicon Dioxide &amp; Sodium Oxide</div>
+
+<div class="sub-item">(a) Structure and properties</div>
+
+<p><strong>Graphite:</strong> Graphite has a giant covalent layered structure in which each carbon atom is strongly covalently bonded to three other carbon atoms. It has a very high sublimation temperature because a large amount of energy is required to overcome the strong covalent bonds. Graphite conducts electricity in the solid state because each carbon atom has one delocalised electron that is free to move through the layers and carry electrical charge.</p>
+
+<p><strong>Silicon dioxide:</strong> Silicon dioxide has a giant three-dimensional covalent structure in which silicon and oxygen atoms are joined by strong covalent bonds. It has a high melting point because considerable energy is required to break these strong bonds. It does not conduct electricity because there are no mobile ions or delocalised electrons available to carry electrical charge.</p>
+
+<p><strong>Sodium oxide:</strong> Sodium oxide has a giant ionic structure containing positively charged sodium ions and negatively charged oxide ions held together by strong electrostatic forces. It has a relatively high melting point because considerable energy is needed to overcome these attractions. It does not conduct electricity when solid because the ions are fixed in position, but it conducts when molten because the ions become free to move and carry charge.</p>
+
+<div class="sub-item">(b) Chemical behaviour during processing and cleaning</div>
+
+<p><strong>Graphite with dilute hydrochloric acid:</strong> Graphite does not react with dilute hydrochloric acid under ordinary conditions because graphite has a strong giant covalent structure and is relatively chemically unreactive. Graphite also does not react with water under ordinary conditions because its strong carbon–carbon covalent bonds are not readily broken by water.</p>
+
+<p><strong>Silicon dioxide with dilute hydrochloric acid:</strong> Silicon dioxide is an acidic oxide and therefore does not normally react with another acid. Silicon dioxide also does not react appreciably with water because its giant covalent structure is very stable and its silicon–oxygen bonds are not easily broken by water.</p>
+
+<p>However, silicon dioxide reacts with hot concentrated sodium hydroxide because silicon dioxide is an acidic oxide whereas sodium hydroxide is an alkali. They therefore undergo an acid–base reaction to form sodium silicate and water:</p>
+
+<div class="eq">SiO<sub>2</sub>(s) + 2NaOH(aq) → Na<sub>2</sub>SiO<sub>3</sub>(aq) + H<sub>2</sub>O(l) <span class="anno a-eq">✓ Eq</span></div>
+
+<p><strong>Sodium oxide with water:</strong> Sodium oxide reacts vigorously with water because it is a basic ionic oxide. The oxide ions react with hydrogen ions from water to produce hydroxide ions, forming sodium hydroxide:</p>
+
+<div class="eq">Na<sub>2</sub>O(s) + H<sub>2</sub>O(l) → 2NaOH(aq) <span class="anno a-eq">✓ Eq</span></div>
+
+<p><strong>Sodium oxide with dilute hydrochloric acid:</strong> Sodium oxide reacts with dilute hydrochloric acid because sodium oxide is a basic oxide while hydrochloric acid is an acid. The oxide ions react with hydrogen ions to form water, while sodium ions and chloride ions remain as sodium chloride. <span class="anno a-f">✓ Fe</span></p>
+
+<div class="eq">Na<sub>2</sub>O(s) + 2HCl(aq) → 2NaCl(aq) + H<sub>2</sub>O(l) <span class="anno a-eq">✓ Eq</span></div>
+
+<div class="sub-item">(c) Applications, health and environmental implications</div>
+
+<ul class="clean">
+    <li><strong>Graphite:</strong> Graphite is suitable for electrodes because it conducts electricity and for high-temperature equipment because of its very high sublimation temperature. <span class="anno a-ea">✓ Ea</span> Fine graphite dust may irritate the eyes and respiratory system when inhaled. The company should therefore control dust using good ventilation, dust extraction and appropriate protective equipment. <span class="anno a-em">✓ Em</span></li>
+    <li><strong>Silicon dioxide:</strong> Silicon dioxide is useful in the manufacture of glass, ceramics, concrete and refractory materials because of its high melting point and chemical stability. <span class="anno a-ea">✓ Ea</span> However, prolonged inhalation of fine crystalline silica dust can cause serious lung disease such as silicosis. <span class="anno a-ed">✓ Ed</span> The company should therefore use enclosed processes, effective ventilation, dust-suppression methods and appropriate respiratory protection. <span class="anno a-em">✓ Em</span></li>
+    <li><strong>Sodium oxide:</strong> Sodium oxide is mainly useful in the manufacture of glass and ceramics. <span class="anno a-ea">✓ Ea</span> It is hazardous because it reacts with moisture to form corrosive sodium hydroxide. <span class="anno a-ed">✓ Ed</span> If released into water or moist soil, it can raise the pH and harm aquatic organisms. It should therefore be stored in tightly sealed, moisture-proof containers and handled using suitable gloves, goggles and protective clothing. <span class="anno a-em">✓ Em</span></li>
+</ul>
+
+<div class="item"><span class="n">Item 2:</span> Aluminium Oxide, Chlorine &amp; Carbon Dioxide</div>
+
+<div class="sub-item">(a) Structure and physical properties</div>
+
+<p><strong>Aluminium oxide, Al<sub>2</sub>O<sub>3</sub>:</strong> Aluminium oxide has a giant ionic lattice containing aluminium ions and oxide ions held together by strong electrostatic attractions. It is a solid at room temperature and has a very high melting point of 2072 °C because a large amount of energy is required to overcome the strong attractions between the oppositely charged ions. In the solid state, the ions are fixed in position, so aluminium oxide does not conduct electricity as a solid, although it conducts when molten because the ions become mobile.</p>
+
+<p><strong>Chlorine, Cl<sub>2</sub>:</strong> Chlorine has a simple molecular structure in which two chlorine atoms are joined by a strong covalent bond. However, the chlorine molecules are held together by weak London dispersion forces. Therefore, only a small amount of energy is required to separate the molecules, giving chlorine a very low melting point of −101.5 °C. It is consequently a gas at room temperature. Chlorine does not conduct electricity because it has no mobile ions or delocalised electrons.</p>
+
+<p><strong>Carbon dioxide, CO<sub>2</sub>:</strong> Carbon dioxide has a simple molecular structure in which each carbon atom is covalently bonded to two oxygen atoms. The carbon dioxide molecules are held together by weak intermolecular forces. Therefore, little energy is required to separate the molecules, giving carbon dioxide a very low sublimation temperature of −78.5 °C. It is consequently a gas at room temperature and does not conduct electricity because it contains no mobile ions or delocalised electrons.</p>
+
+<div class="sub-item">(b) Chemical behaviour with water and sodium hydroxide</div>
+
+<p><strong>Aluminium oxide:</strong> Aluminium oxide does not react appreciably with water under ordinary conditions because it has a stable giant ionic structure and is essentially insoluble in water. Aluminium oxide reacts with sodium hydroxide because it is amphoteric, meaning that it can react with both acids and bases. In the presence of sodium hydroxide, aluminium oxide reacts with hydroxide ions to form a soluble hydroxoaluminate compound:</p>
+
+<div class="eq">Al<sub>2</sub>O<sub>3</sub>(s) + 2NaOH(aq) + 3H<sub>2</sub>O(l) → 2Na[Al(OH)<sub>4</sub>](aq) <span class="anno a-eq">✓ Eq</span></div>
+
+<p><strong>Chlorine:</strong> Chlorine reacts with water because it undergoes disproportionation, whereby some chlorine is reduced while some is oxidised. The reaction produces hydrochloric acid and hypochlorous acid:</p>
+
+<div class="eq">Cl<sub>2</sub>(g) + H<sub>2</sub>O(l) ⇌ HCl(aq) + HClO(aq) <span class="anno a-eq">✓ Eq</span></div>
+
+<p>With cold, dilute sodium hydroxide, chlorine undergoes disproportionation to form sodium chloride and sodium hypochlorite:</p>
+
+<div class="eq">Cl<sub>2</sub>(g) + 2NaOH(aq) → NaCl(aq) + NaClO(aq) + H<sub>2</sub>O(l) <span class="anno a-eq">✓ Eq</span></div>
+
+<p>With hot, concentrated sodium hydroxide, chlorine forms sodium chloride and sodium chlorate:</p>
+
+<div class="eq">3Cl<sub>2</sub>(g) + 6NaOH(aq) → 5NaCl(aq) + NaClO<sub>3</sub>(aq) + 3H<sub>2</sub>O(l) <span class="anno a-eq">✓ Eq</span></div>
+
+<p><strong>Carbon dioxide:</strong> Carbon dioxide reacts with water to form carbonic acid because carbon dioxide is an acidic oxide. The reaction is reversible because carbonic acid is a weak acid:</p>
+
+<div class="eq">CO<sub>2</sub>(g) + H<sub>2</sub>O(l) ⇌ H<sub>2</sub>CO<sub>3</sub>(aq) <span class="anno a-l">✓ L</span></div>
+
+<p>The carbonic acid formed partially ionises in water. This explains why water containing dissolved carbon dioxide becomes weakly acidic:</p>
+
+<div class="eq">H<sub>2</sub>CO<sub>3</sub>(aq) ⇌ H<sup>+</sup>(aq) + HCO<sub>3</sub><sup>−</sup>(aq) <span class="anno a-eq">✓ Eq</span></div>
+
+<p>Carbon dioxide reacts with sodium hydroxide because carbon dioxide is an acidic oxide while sodium hydroxide is an alkali. When sufficient sodium hydroxide is present, sodium carbonate and water are formed:</p>
+
+<div class="eq">CO<sub>2</sub>(g) + 2NaOH(aq) → Na<sub>2</sub>CO<sub>3</sub>(aq) + H<sub>2</sub>O(l) <span class="anno a-eq">✓ Eq</span></div>
+
+<p>When carbon dioxide is in excess or sodium hydroxide is limited, sodium hydrogen carbonate can be formed:</p>
+
+<div class="eq">CO<sub>2</sub>(g) + NaOH(aq) → NaHCO<sub>3</sub>(aq) <span class="anno a-eq">✓ Eq</span></div>
+
+<div class="sub-item">(c) Applications, health and environmental implications, and mitigation measures</div>
+
+<ul class="clean">
+    <li><strong>Aluminium oxide:</strong> Used in abrasives, ceramics, furnace linings and aluminium extraction because it is hard and has a very high melting point. <span class="anno a-ea">✓ Ea</span> Fine aluminium oxide dust can irritate the eyes and respiratory system. <span class="anno a-ed">✓ Ed</span> Workers should use dust masks or N95 respirators, safety goggles and gloves, while good ventilation and dust extraction should be provided. <span class="anno a-em">✓ Em</span> Waste should be collected in sealed containers to prevent dust pollution. <span class="anno a-em">✓ Em</span></li>
+    <li><strong>Chlorine:</strong> Used for water purification, swimming-pool disinfection and manufacture of bleach because it forms hypochlorous acid, which kills microorganisms. <span class="anno a-ea">✓ Ea</span> Chlorine gas is toxic when inhaled and can cause serious respiratory injury. <span class="anno a-ed">✓ Ed</span> It should therefore be stored in secure, cool and well-ventilated areas, with chlorine gas detectors, mechanical ventilation and leak-control systems. <span class="anno a-em">✓ Em</span> Workers should use suitable protective clothing and respiratory protection. <span class="anno a-em">✓ Em</span> Chlorinated wastewater should be dechlorinated before discharge to protect aquatic life. <span class="anno a-em">✓ Em</span></li>
+    <li><strong>Carbon dioxide:</strong> Used in carbonated drinks, fire extinguishers, food preservation and refrigeration. <span class="anno a-ea">✓ Ea</span> High concentrations can displace oxygen and cause suffocation, especially in enclosed spaces. <span class="anno a-ed">✓ Ed</span> Storage areas should have good ventilation and carbon dioxide detectors with alarms, while cylinders should be secured and kept away from excessive heat. <span class="anno a-em">✓ Em</span> Industries should reduce emissions through leak prevention, energy efficiency and carbon dioxide recovery or capture where practical. <span class="anno a-em">✓ Em</span></li>
+</ul>
+
+<div class="item"><span class="n">Item 3:</span> Halogens &amp; Group II Carbonates</div>
+
+<div class="sub-item">1. Physical properties of the halogens</div>
+
+<p>The halogens are non-metallic elements found in Group VII of the periodic table. Fluorine and chlorine are gases at room temperature, bromine is a reddish-brown liquid, while iodine is a dark grey solid. <span class="anno a-f">✓ Pe</span> Down the group, the atomic size and number of electrons increase, resulting in stronger London dispersion forces between the molecules. <span class="anno a-f">✓ Fe</span> Therefore, the melting and boiling points generally increase down the group.</p>
+
+<p>The halogens exist as diatomic molecules, for example fluorine exists as F<sub>2</sub> and chlorine as Cl<sub>2</sub>. They are poor conductors of electricity because they contain no mobile charged particles.</p>
+
+<p>The bond energy generally decreases from chlorine to iodine because the atoms become larger and the bonding electrons are further from the nuclei. <span class="anno a-f">✓ Pe</span> The fluorine–fluorine bond is unusually weak because the small fluorine atoms have strong electron–electron repulsion between their bonding electrons. <span class="anno a-f">✓ Pe</span> Therefore, the chlorine–chlorine bond has the highest bond energy among the four given halogens and requires more energy to break than the bromine–bromine and iodine–iodine bonds.</p>
+
+<div class="sub-item">2. Physical properties of Group II carbonates</div>
+
+<p>Group II carbonates are ionic compounds consisting of Group II metal ions and carbonate ions. They are generally white or coloured crystalline solids with high melting points because strong electrostatic attractions exist between the oppositely charged ions. <span class="anno a-f">✓ Pe</span></p>
+
+<p>Their solubility generally increases down Group II. Magnesium carbonate is sparingly soluble, while the carbonates of calcium, strontium and barium become progressively more soluble. The change in solubility occurs because, down the group, the attraction between the larger metal ions and carbonate ions becomes weaker, making it easier for the ionic lattice to separate and dissolve. <span class="anno a-f">✓ Fe</span></p>
+
+<div class="sub-item">Reactions of halogens with water</div>
+
+<p><strong>Chlorine and water:</strong> Chlorine reacts reversibly with water because it undergoes disproportionation, where some chlorine is reduced to chloride while some is oxidised to chlorine in hypochlorous acid. <span class="anno a-f">✓ Fe</span></p>
+
+<div class="eq">Cl<sub>2</sub>(g) + H<sub>2</sub>O(l) ⇌ HCl(aq) + HClO(aq) <span class="anno a-eq">✓ Eq</span></div>
+
+<p><strong>Bromine and water:</strong> Bromine also reacts reversibly with water by disproportionation, producing hydrobromic acid and hypobromous acid:</p>
+
+<div class="eq">Br<sub>2</sub>(l) + H<sub>2</sub>O(l) ⇌ HBr(aq) + HBrO(aq)</div>
+
+<p><strong>Iodine and water:</strong> Iodine reacts only very slightly with water because it is less reactive and its iodine–iodine bond is relatively weak but iodine has a lower tendency to undergo the reaction with water under these conditions. The equilibrium lies strongly towards iodine and water, so very little reaction occurs:</p>
+
+<div class="eq">I<sub>2</sub>(s) + H<sub>2</sub>O(l) ⇌ HI(aq) + HIO(aq)</div>
+
+<p><strong>Fluorine and water:</strong> Fluorine reacts very vigorously with water because fluorine is the most electronegative and strongest oxidising halogen. It oxidises water, producing hydrogen fluoride and oxygen:</p>
+
+<div class="eq">2F<sub>2</sub>(g) + 2H<sub>2</sub>O(l) → 4HF(aq) + O<sub>2</sub>(g) <span class="anno a-eq">✓ Eq</span></div>
+
+<div class="sub-item">Behaviour of halogens with alkalis</div>
+
+<p><strong>Chlorine with cold dilute sodium hydroxide:</strong> Chlorine reacts with cold dilute sodium hydroxide by disproportionation. Chlorine is simultaneously reduced to chloride and oxidised to hypochlorite:</p>
+
+<div class="eq">Cl<sub>2</sub>(g) + 2NaOH(aq) → NaCl(aq) + NaClO(aq) + H<sub>2</sub>O(l)</div>
+
+<p><strong>Chlorine with hot concentrated sodium hydroxide:</strong> When hot concentrated sodium hydroxide is used, chlorine undergoes further disproportionation to form sodium chloride and sodium chlorate:</p>
+
+<div class="eq">3Cl<sub>2</sub>(g) + 6NaOH(aq) → 5NaCl(aq) + NaClO<sub>3</sub>(aq) + 3H<sub>2</sub>O(l) <span class="anno a-eq">✓ Eq</span></div>
+
+<div class="sub-item">3. Solubility of Group II carbonates in hydrochloric acid</div>
+
+<p>Group II carbonates react with hydrochloric acid because carbonates contain carbonate ions, which react with hydrogen ions from the acid to form carbon dioxide and water. <span class="anno a-f">✓ Fe</span></p>
+
+<p>For example, magnesium carbonate reacts with hydrochloric acid as follows:</p>
+
+<div class="eq">MgCO<sub>3</sub>(s) + 2HCl(aq) → MgCl<sub>2</sub>(aq) + H<sub>2</sub>O(l) + CO<sub>2</sub>(g) <span class="anno a-eq">✓ Eq</span></div>
+
+<p>Calcium carbonate reacts similarly:</p>
+
+<div class="eq">CaCO<sub>3</sub>(s) + 2HCl(aq) → CaCl<sub>2</sub>(aq) + H<sub>2</sub>O(l) + CO<sub>2</sub>(g)</div>
+
+<p>The reaction occurs because hydrogen ions react with carbonate ions. Carbonic acid is initially formed but rapidly decomposes into carbon dioxide and water:</p>
+
+<div class="eq">CO<sub>3</sub><sup>2−</sup>(aq) + 2H<sup>+</sup>(aq) → H<sub>2</sub>O(l) + CO<sub>2</sub>(g)</div>
+
+<p>The visible effervescence observed is therefore due to the formation of carbon dioxide gas.</p>
+
+<div class="sub-item">(c) Application of chlorine as a cleaning agent</div>
+
+<p>Chlorine is used in water treatment, swimming pools and cleaning agents because it reacts with water to form hypochlorous acid, which is a strong oxidising agent that kills microorganisms. <span class="anno a-ea">✓ Ea</span></p>
+
+<p>However, chlorine is toxic and irritating when present in high concentrations, and excessive chlorine discharged into water can harm aquatic organisms. <span class="anno a-ed">✓ Ed</span> Therefore, chlorine products should be used at the recommended concentration, stored in closed containers and handled in well-ventilated areas. <span class="anno a-em">✓ Em</span> Workers should wear chemical-resistant gloves and safety goggles. <span class="anno a-em">✓ Em</span></p>
+
+<div class="item"><span class="n">Item 6:</span> Chlorine-Containing Compounds in Water Treatment</div>
+
+<div class="sub-item">(a) Physical properties and structures</div>
+
+<p><strong>Sodium chloride:</strong> Sodium chloride is a solid with high melting and boiling points. <span class="anno a-f">✓ Pe</span> Sodium chloride has a giant ionic structure with strong ionic bonds between the sodium and chloride ions in the lattice, making it a solid. The ionic bonds require a lot of heat energy to break and hence the high melting point.</p>
+
+<p><strong>Aluminium chloride:</strong> Aluminium chloride is a solid, however, with low melting and boiling points. <span class="anno a-f">✓ Pe</span> Aluminium chloride is supposed to be ionic, but due to the small ionic radius and high ionic charge, the aluminium ion has a high charge density and high polarising power and hence greatly polarises the chloride ions, making it covalent partly. Its molecules interact via weak van der Waals forces, which are, however, strong enough to make it a solid but can easily be broken under low amounts of heat.</p>
+
+<p><strong>Tin(IV) chloride:</strong> Tin(IV) chloride has a simple molecular structure, as well as chlorine. Their molecules interact via weak van der Waals forces of attraction and hence require less heat energy to break, hence low melting point.</p>
+
+<p>Tin(IV) chloride, however, has a higher molecular mass and hence stronger van der Waals forces of attraction. This makes it a liquid since its molecules are more closely and strongly attracted to each other and hence has a higher melting point/boiling point than chlorine.</p>
+
+<div class="sub-item">Reactions with water</div>
+
+<p>Sodium chloride dissociates in water to form sodium ions and chloride ions. This is because it is a salt formed from a strong acid and strong base and hence it does not undergo hydrolysis:</p>
+
+<div class="eq">NaCl(aq) → Na<sup>+</sup>(aq) + Cl<sup>−</sup>(aq) <span class="anno a-eq">✓ Eq</span></div>
+
+<p>Aluminium chloride undergoes hydrolysis in water to form aluminium hydroxide and hydrochloric acid. This is due to the small ionic radius and high charge, hence high charge density and high polarising power. It greatly polarises the water molecules to release hydrogen ions:</p>
+
+<div class="eq">Al<sup>3+</sup>(aq) + 3H<sub>2</sub>O(l) ⇌ Al(OH)<sub>3</sub>(s) + 3H<sup>+</sup>(aq) <span class="anno a-eq">✓ Eq</span></div>
+
+<p>Tin(IV) chloride undergoes hydrolysis to form tin(IV) oxide and hydrogen chloride. This is because tin has a vacant d-orbital which accommodates a lone pair of electrons from the oxygen atom of water to form coordinate bonds, and hence the reaction:</p>
+
+<div class="eq">SnCl<sub>4</sub>(l) + 2H<sub>2</sub>O(l) → SnO<sub>2</sub>(s) + 4HCl(aq) <span class="anno a-eq">✓ Eq</span></div>
+
+<p>Chlorine disproportionates in water to form hydrochloric acid and hypochlorous acid:</p>
+
+<div class="eq">Cl<sub>2</sub>(aq) + H<sub>2</sub>O(l) ⇌ HCl(aq) + HOCl(aq) <span class="anno a-eq">✓ Eq</span></div>
+
+<p>Aluminium chloride hydrolyses to form an acidic solution and hence reacts with cold dilute sodium hydroxide to form aluminium hydroxide and sodium chloride:</p>
+
+<div class="eq">AlCl<sub>3</sub>(aq) + 3NaOH(aq) → Al(OH)<sub>3</sub>(s) + 3NaCl(aq) <span class="anno a-eq">✓ Eq</span></div>
+
+<p>Chlorine disproportionates in cold dilute sodium hydroxide solution to form sodium chloride, sodium chlorate(I) and water:</p>
+
+<div class="eq">Cl<sub>2</sub>(aq) + 2OH<sup>−</sup>(aq) → Cl<sup>−</sup>(aq) + ClO<sup>−</sup>(aq) + H<sub>2</sub>O(l) <span class="anno a-eq">✓ Eq</span></div>
+
+<p>or</p>
+<div class="eq">Cl<sub>2</sub>(aq) + 2NaOH(aq) → NaCl(aq) + NaOCl(aq) + H<sub>2</sub>O(l)</div>
+
+<div class="sub-item">(b) Applications of chlorine in water treatment</div>
+
+<ul class="clean">
+    <li>Chlorine dissolves in water to form hypochlorous acid and hydrochloric acid. <span class="anno a-ea">✓ Ea</span> This lowers the pH, making it unfavourable for multiplication of microorganisms, and hypochlorous acid also destroys bacterial cell walls and oxidises their nucleic acids, preventing them from reproducing.</li>
+    <li>Chlorine, being a strong oxidising agent, oxidises compounds produced by algae and bacteria that would have caused unpleasant smell and taste.</li>
+    <li>Chlorine also oxidises dissolved substances such as iron(II) ions and manganese(II) ions, and these can hence be easily removed during filtration.</li>
+</ul>
+
+<div class="warn">
+    <p><strong>Danger:</strong></p>
+    <ul class="clean" style="margin-top:6px;">
+        <li>Long-term exposure to high concentrations of chlorine causes cancers like bladder cancer, liver damage and kidney damage. <span class="anno a-ed">✓ Ed</span></li>
+        <li>Too much chlorine used in water at times causes irritation of the eyes and the respiratory system, resulting in severe coughing and difficulty in breathing. <span class="anno a-ed">✓ Ed</span></li>
+        <li>High chlorine levels/concentrations corrode metal pipes, pumps and water tanks, and this shortens the equipment lifespan and releases metals into water, making it unsafe for human consumption/use. <span class="anno a-ed">✓ Ed</span></li>
+    </ul>
+</div>
+
+<div class="sub-item">Mitigation</div>
+
+<ul class="clean">
+    <li>Use alternative water treatment methods like coagulation, filtration or sedimentation, which do not use poisonous chemicals while greatly improving water quality and hence avoiding diseases associated with chlorine. <span class="anno a-em">✓ Em</span></li>
+    <li>The amount of chlorine must be checked and controlled regularly to ensure that the appropriate levels are used in water before its supply for human consumption, and pH must be maintained in the optimum range (6.5–7.5). <span class="anno a-em">✓ Em</span></li>
+</ul>
+
+<div class="item"><span class="n">Item 7:</span> Period 3 Oxides — Industrial &amp; Environmental Implications</div>
+
+<div class="sub-item">(a) Structures and trends</div>
+
+<p><strong>Sulphur trioxide</strong> has a simple molecular structure in which its molecules interact via weak van der Waals forces of attraction, which are easily broken under low heat energy, and hence it easily fumes since its particles are far apart, making it a gas. <span class="anno a-f">✓ Pe</span></p>
+
+<p><strong>Sodium oxide, magnesium oxide and aluminium oxide</strong> have giant ionic structures with strong ionic bonds between the metal ions and the oxide ions, which require high amounts of heat to break. <span class="anno a-f">✓ Pe</span> From sodium oxide to magnesium oxide, the heat required increases due to increase in magnitude of charge of the cation, hence forming stronger ionic bonds. <span class="anno a-f">✓ Fe</span></p>
+
+<p><strong>Aluminium oxide</strong> has relatively lower heat energy required/melting point due to the small ionic radius and high charge of the aluminium ion, which gives it a high charge density and high polarising power and hence greatly tends to polarise the oxide ion, reducing the ionic character. <span class="anno a-f">✓ Fe</span></p>
+
+<p><strong>Silicon(IV) oxide</strong> has a giant covalent/molecular structure with strong covalent bonds between the silicon and oxygen atoms, which are continuously bonded to each other. <span class="anno a-f">✓ Pe</span> The bonds hence require a lot of heat to break, giving it a high melting point.</p>
+
+<div class="sub-item">(b) Reactions</div>
+
+<p>Sodium oxide is highly ionic and hence reacts with cold water vigorously to form sodium hydroxide:</p>
+<div class="eq">Na<sub>2</sub>O(s) + H<sub>2</sub>O(l) → 2NaOH(aq) <span class="anno a-eq">✓ Eq</span></div>
+
+<p>Magnesium oxide is also ionic, but the magnesium ion has a higher charge density, giving it a high lattice energy, hence dissolves slowly in cold water to form magnesium hydroxide:</p>
+<div class="eq">MgO(s) + H<sub>2</sub>O(l) → Mg(OH)<sub>2</sub>(aq) <span class="anno a-eq">✓ Eq</span></div>
+
+<p>Sulphur trioxide is strongly acidic and polar, hence highly reactive with cold water to form sulphuric acid:</p>
+<div class="eq">SO<sub>3</sub>(g) + H<sub>2</sub>O(l) → H<sub>2</sub>SO<sub>4</sub>(aq) <span class="anno a-eq">✓ Eq</span></div>
+
+<p>Aluminium oxide, being amphoteric, reacts with hot concentrated sodium hydroxide to form sodium aluminate:</p>
+<div class="eq">Al<sub>2</sub>O<sub>3</sub>(s) + 2OH<sup>−</sup>(aq) + 3H<sub>2</sub>O(l) → 2Al(OH)<sub>4</sub><sup>−</sup>(aq) <span class="anno a-eq">✓ Eq</span></div>
+
+<p>Sulphur trioxide, being acidic in nature, reacts with cold dilute sodium hydroxide to form sodium sulphate and water. <span class="anno a-f">✓ Fe</span></p>
+<div class="eq">SO<sub>3</sub>(g) + 2NaOH(aq) → Na<sub>2</sub>SO<sub>4</sub>(aq) + H<sub>2</sub>O(l) <span class="anno a-eq">✓ Eq</span></div>
+
+<div class="sub-item">(c) Applications, dangers and mitigation</div>
+
+<div class="tw">
+<table>
+    <thead>
+        <tr><th>Oxide</th><th>Application(s)</th><th>Danger(s)</th><th>Mitigation</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Sodium oxide, Na<sub>2</sub>O</td>
+            <td>Used in the manufacture of soda lime glass since it lowers the melting point of silica. <span class="anno a-ea">✓ Ea</span></td>
+            <td>Reacts violently with moisture to form sodium hydroxide, which can cause skin and eye burns since it is strongly basic and corrosive. <span class="anno a-ed">✓ Ed</span></td>
+            <td>Store in tightly closed containers away from moisture to avoid reacting. Wear gloves, goggles and protective clothing to prevent contact with the body. <span class="anno a-em">✓ Em</span></td>
+        </tr>
+        <tr>
+            <td>Magnesium oxide, MgO</td>
+            <td>Used in furnace and kiln linings because it withstands high temperatures and is chemically stable. <span class="anno a-ea">✓ Ea</span> Used as an electrical insulator since it is a poor conductor of electricity. <span class="anno a-ea">✓ Ea</span></td>
+            <td>Dust particles cause irritation of the eyes and respiratory system, hence causing discomfort. <span class="anno a-ed">✓ Ed</span></td>
+            <td>Use dust masks or maintain good workplace ventilation to avoid over-accumulation/inhalation of dust. <span class="anno a-em">✓ Em</span></td>
+        </tr>
+        <tr>
+            <td>Aluminium oxide, Al<sub>2</sub>O<sub>3</sub></td>
+            <td>Used in making sandpaper or grinding wheels because of its chemical stability, hardness and high melting point that make it hard and stable. <span class="anno a-ea">✓ Ea</span> Used in extraction of aluminium since it is amphoteric and reacts with concentrated alkalis to form an aluminate, which when heated forms the pure ore. <span class="anno a-ea">✓ Ea</span></td>
+            <td>Dust particles irritate the eyes and respiratory system causing discomfort/coughing. <span class="anno a-ed">✓ Ed</span> Mining of Al<sub>2</sub>O<sub>3</sub> (bauxite) ore leads to habitat destruction and soil erosion since soils are left bare due to clearing of land/space for mining. <span class="anno a-ed">✓ Ed</span></td>
+            <td>Use dust masks to prevent inhalation of the dust particles. Restore vegetation and rehabilitate mining sites to avoid leaving soil bare. <span class="anno a-em">✓ Em</span></td>
+        </tr>
+        <tr>
+            <td>Silicon(IV) oxide, SiO<sub>2</sub></td>
+            <td>Used in the manufacture of glass due to its giant covalent structure, which gives it hardness and the chemical and heat resistance required for glass. <span class="anno a-ea">✓ Ea</span></td>
+            <td>Long-term inhalation of fine crystalline silica dust causes silicosis, a lung disease. <span class="anno a-ed">✓ Ed</span></td>
+            <td>Install dust-extraction systems to reduce dust inhalation. <span class="anno a-em">✓ Em</span></td>
+        </tr>
+        <tr>
+            <td>Sulphur trioxide, SO<sub>3</sub></td>
+            <td>Used in the production of sulphuric acid. This is because it dissolves readily in concentrated sulphuric acid, forming oleum which then dissolves in water to form sulphuric acid. <span class="anno a-ea">✓ Ea</span></td>
+            <td>The acid formed is highly corrosive and causes severe burns. <span class="anno a-ed">✓ Ed</span> It reacts with rainwater to form acidic rain due to formation of H<sub>2</sub>SO<sub>4</sub>. <span class="anno a-ed">✓ Ed</span></td>
+            <td>Wear chemical-resistant gloves to prevent body contact. <span class="anno a-em">✓ Em</span></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<!-- ======================================================= -->
+<!-- NUMBER 5/6 -->
+<!-- ======================================================= -->
+<div class="part">Number 5/6 — Solutions</div>
+
+<div class="item"><span class="n">Item 1:</span> Organic Conversions — Boiling Points, Mechanisms &amp; Synthesis</div>
+
+<p><strong>Ethene</strong> has the lowest boiling point because it is a small, non-polar molecule. <span class="anno a-f">✓ Pe</span> Its molecules are held together only by weak London dispersion forces. <span class="anno a-f">✓ Pe</span> Therefore, little energy is required to overcome the intermolecular forces and separate the molecules.</p>
+
+<p><strong>Ethanol</strong> has a much higher boiling point because it contains an –OH group. The OH groups of neighbouring ethanol molecules form hydrogen bonds, which are stronger than London forces. More energy is therefore required to separate the molecules.</p>
+
+<p><strong>Propan-2-ol</strong> also forms hydrogen bonds because it contains an –OH group. It has a slightly larger molecular size than ethanol, giving it stronger London dispersion forces in addition to hydrogen bonding. Consequently, its boiling point is slightly higher than that of ethanol.</p>
+
+<p><strong>Propanoic acid</strong> has the highest boiling point because its –COOH groups form strong hydrogen bonds. Two carboxylic acid molecules can form hydrogen-bonded dimers. A large amount of energy is therefore required to separate the molecules.</p>
+
+<p>Water is a polar solvent, and substances that can form strong interactions, especially hydrogen bonds, with water tend to be more soluble.</p>
+
+<ul class="clean">
+    <li><strong>Ethene</strong> is only slightly soluble in water because it is non-polar and cannot form hydrogen bonds with water.</li>
+    <li><strong>Ethanol</strong> is completely miscible with water because its polar –OH group forms hydrogen bonds with water molecules.</li>
+    <li><strong>Propan-2-ol</strong> is also highly soluble/miscible in water because its OH group forms hydrogen bonds with water. However, its larger hydrocarbon portion makes the molecule somewhat more non-polar than ethanol.</li>
+    <li><strong>Propanoic acid</strong> is highly soluble in water because its COOH group forms hydrogen bonds with water. It also partially ionises in water.</li>
+</ul>
+
+<div class="sub-item">(b) Organic reaction mechanisms</div>
+
+<p><strong>(i) Nitration of benzoic acid:</strong></p>
+
+<div class="eq">
+    Benzoic acid <span class="ar"><span class="top">conc. HNO<sub>3</sub>, conc. H<sub>2</sub>SO<sub>4</sub>, 60 °C</span><span class="arrow">→</span></span> 3-nitrobenzoic acid <span class="anno a-sm">✓ S</span>
+</div>
+
+<p><strong>Mechanism:</strong></p>
+
+<div class="eq">HNO<sub>3</sub> + 2H<sub>2</sub>SO<sub>4</sub> ⇌ NO<sub>2</sub><sup>+</sup> + H<sub>3</sub>O<sup>+</sup> + 2HSO<sub>4</sub><sup>−</sup> <span class="anno a-sm">✓ M</span></div>
+
+<p><strong>Electrophilic attack:</strong> The benzoic acid ring attacks NO<sub>2</sub><sup>+</sup> <span class="anno a-sm">✓ M</span> → Wheland intermediate with positive charge inside the ring <span class="anno a-sm">✓ M</span> → loss of H<sup>+</sup> → 3-nitrobenzoic acid.</p>
+
+<div class="sub-item">(ii) Synthesis routes</div>
+
+<p><strong>Propan-2-ol from ethanol:</strong></p>
+
+<div class="eq">
+    CH<sub>3</sub>CH<sub>2</sub>OH <span class="ar"><span class="top">MnO<sub>4</sub><sup>−</sup>/H<sup>+</sup>, heat</span><span class="arrow">→</span></span> CH<sub>3</sub>CHO <span class="ar"><span class="top">CH<sub>3</sub>MgBr, dry ether</span><span class="arrow">→</span></span> CH<sub>3</sub>CH(OMgBr)CH<sub>3</sub> <span class="ar"><span class="top">H<sub>2</sub>O/H<sup>+</sup></span><span class="arrow">→</span></span> CH<sub>3</sub>CH(OH)CH<sub>3</sub> <span class="anno a-sm">✓ S</span>
+</div>
+
+<p><strong>Propanoic acid from ethene:</strong></p>
+
+<div class="eq">
+    CH<sub>2</sub>=CH<sub>2</sub> <span class="ar"><span class="top">HBr, H<sub>2</sub>O</span><span class="arrow">→</span></span> CH<sub>3</sub>CH<sub>2</sub>Br <span class="ar"><span class="top">Mg, dry ether</span><span class="arrow">→</span></span> CH<sub>3</sub>CH<sub>2</sub>MgBr <span class="ar"><span class="top">CO<sub>2</sub>(g)</span><span class="arrow">→</span></span> <span class="ar"><span class="top">H<sub>2</sub>O/H<sup>+</sup></span><span class="arrow">→</span></span> CH<sub>3</sub>CH<sub>2</sub>COOH <span class="anno a-sm">✓ S</span>
+</div>
+
+<p><strong>Phenylethanone synthesis:</strong></p>
+
+<div class="eq">
+    Benzene + CH<sub>3</sub>COCl <span class="ar"><span class="top">AlCl<sub>3</sub>, 50%</span><span class="arrow">→</span></span> Phenylethanone <span class="anno a-sm">✓ S</span>
+</div>
+
+<p>Phenylethanone is used as a fragrance ingredient, solvent and intermediate in pharmaceutical and organic synthesis. <span class="anno a-ea">✓ Ea</span> Exposure can irritate the eyes, skin and respiratory system, while ethanoyl chloride and aluminium chloride used in the process are corrosive and reactive. <span class="anno a-ed">✓ Ed</span> Workers should therefore wear chemical-resistant gloves, safety goggles, laboratory coats and closed shoes, while the reaction should be carried out in a fume cupboard or sealed reactor with an extraction system. <span class="anno a-em">✓ Em</span> Reagents should be added slowly while controlling the temperature, and chemical residues should be collected and treated rather than released into drains or water bodies. <span class="anno a-em">✓ Em</span></p>
+
+<p>3-Nitrobenzoic acid is used mainly as an intermediate in pharmaceutical, dye and fine-chemical manufacture. <span class="anno a-ea">✓ Ea</span> The main danger during production is the use of concentrated nitric and sulfuric acids, which can cause severe chemical burns and release harmful fumes. <span class="anno a-ed">✓ Ed</span> Since nitration is also exothermic, excessive heating can make the reaction difficult to control. <span class="anno a-ed">✓ Ed</span> Workers should wear acid-resistant gloves, goggles, face shields, laboratory coats and closed footwear, and the reaction should be performed in a fume cupboard or closed reactor fitted with an exhaust system. <span class="anno a-em">✓ Em</span> The temperature should be monitored continuously and the acids added gradually. <span class="anno a-em">✓ Em</span> Acidic wastewater should be neutralised with a suitable alkali before disposal, and solid and organic chemical waste should be collected separately for controlled treatment. <span class="anno a-em">✓ Em</span></p>
+
+<div class="item"><span class="n">Item 5:</span> Propan-1-ol &amp; Ethyne to Industrial Products</div>
+
+<p><strong>Reactants/raw materials:</strong> propan-1-ol and ethanol, ethyne. <strong>Products:</strong> ethanal and benzoic acid.</p>
+
+<p><strong>Ethyne</strong> has the lowest boiling point because it is non-polar due to almost equal electronegativity between hydrogen and carbon. <span class="anno a-f">✓ Pe</span> Its molecules therefore interact via weak van der Waals forces which easily break when low heat energy is used. <span class="anno a-f">✓ Pe</span></p>
+
+<p><strong>Ethanol and propan-1-ol</strong> have high boiling points since they each possess a polar hydroxyl group and therefore their molecules interact via strong hydrogen bonds which require a lot of heat energy to break. <span class="anno a-f">✓ Pe</span></p>
+
+<p>The boiling point of <strong>propan-1-ol</strong> is higher than that of ethanol due to higher molecular weight and hence stronger van der Waals forces between the non-polar carbon chains, requiring higher amounts of heat energy to separate the molecules. <span class="anno a-f">✓ Pe</span></p>
+
+<p><strong>Benzoic acid</strong> has the highest boiling point due to formation of strong hydrogen bonds between the polar hydroxyl groups and each two molecules interact via two hydrogen bonds, making the bonds many compared to those in alcohols and hence require higher amounts of heat energy to break. <span class="anno a-f">✓ Pe</span></p>
+
+<div class="sub-item">Conversions</div>
+
+<div class="eq">
+    CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>OH <span class="ar"><span class="top">MnO<sub>4</sub><sup>−</sup>/H<sup>+</sup>, heat</span><span class="arrow">→</span></span> CH<sub>3</sub>CH<sub>2</sub>COOH <span class="ar"><span class="top">soda lime, heat</span><span class="arrow">→</span></span> CH<sub>3</sub>CH<sub>3</sub> <span class="anno a-sm">✓ S</span>
+</div>
+
+<div class="eq">
+    CH<sub>3</sub>CH<sub>2</sub>OH <span class="ar"><span class="top">H<sub>2</sub>SO<sub>4</sub>, 170 °C</span><span class="arrow">→</span></span> CH<sub>2</sub>=CH<sub>2</sub> <span class="ar"><span class="top">HBr, benzoyl peroxide</span><span class="arrow">→</span></span> CH<sub>3</sub>CH<sub>2</sub>Br <span class="ar"><span class="top">OH<sup>−</sup>(aq), heat</span><span class="arrow">→</span></span> CH<sub>3</sub>CH<sub>2</sub>OH <span class="anno a-sm">✓ S</span>
+</div>
+
+<div class="eq">
+    CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>OH <span class="ar"><span class="top">conc. H<sub>2</sub>SO<sub>4</sub>, 170 °C</span><span class="arrow">→</span></span> CH<sub>3</sub>CH=CH<sub>2</sub> <span class="ar"><span class="top">HBr</span><span class="arrow">→</span></span> CH<sub>3</sub>CH(Br)CH<sub>3</sub> <span class="anno a-sm">✓ S</span>
+</div>
+
+<p>or</p>
+
+<div class="eq">
+    CH<sub>3</sub>C≡CCH<sub>3</sub> <span class="ar"><span class="top">H<sub>2</sub>, Lindlar catalyst</span><span class="arrow">→</span></span> CH<sub>3</sub>CH=CHCH<sub>3</sub> <span class="ar"><span class="top">O<sub>3</sub>/CCl<sub>4</sub></span><span class="arrow">→</span></span> <span class="ar"><span class="top">H<sub>2</sub>O/Zn dust</span><span class="arrow">→</span></span> CH<sub>3</sub>CHO <span class="anno a-sm">✓ S</span>
+</div>
+
+<div class="eq">
+    CH≡CH <span class="ar"><span class="top">KOH/C<sub>2</sub>H<sub>5</sub>OH, heat</span><span class="arrow">→</span></span> <span class="ar"><span class="top">complex organo-nickel catalyst, 60–70 °C</span><span class="arrow">→</span></span> <span class="ar"><span class="top">CH<sub>3</sub>Cl/AlCl<sub>3</sub></span><span class="arrow">→</span></span> Toluene <span class="ar"><span class="top">MnO<sub>4</sub><sup>−</sup>/H<sup>+</sup>, heat</span><span class="arrow">→</span></span> Benzoic acid <span class="anno a-sm">✓ S</span>
+</div>
+
+<div class="eq">
+    Benzene <span class="ar"><span class="top">conc. fuming H<sub>2</sub>SO<sub>4</sub></span><span class="arrow">→</span></span> Benzenesulphonic acid <span class="anno a-sm">✓ S</span>
+</div>
+
+<div class="eq">H<sub>2</sub>SO<sub>4</sub> ⇌ SO<sub>3</sub> + HSO<sub>4</sub><sup>−</sup>(aq) + H<sub>3</sub>O<sup>+</sup>(aq) <span class="anno a-eq">✓ Eq</span></div>
+
+<div class="eq">
+    CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>OH <span class="ar"><span class="top">PCl<sub>5</sub></span><span class="arrow">→</span></span> CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>Cl <span class="ar"><span class="top">Mg, dry ether</span><span class="arrow">→</span></span> CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>MgCl <span class="ar"><span class="top">HCHO, dry ether</span><span class="arrow">→</span></span> CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>OMgCl <span class="ar"><span class="top">H<sub>2</sub>O/H<sup>+</sup></span><span class="arrow">→</span></span> CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>OH <span class="anno a-sm">✓ S</span>
+</div>
+
+<div class="eq">CH<sub>3</sub>CHO + NH<sub>2</sub>OH → CH<sub>3</sub>CH=NOH + H<sub>2</sub>O <span class="anno a-eq">✓ Eq</span></div>
+
+<p><strong>Esterification mechanism:</strong></p>
+
+<div class="eq">
+    CH<sub>3</sub>–C(=O)–OH + H<sup>+</sup> ⇌ CH<sub>3</sub>–C<sup>+</sup>(OH)<sub>2</sub> <span class="ar"><span class="top">CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>OH</span><span class="arrow">→</span></span> … <span class="ar"><span class="top">−H<sub>2</sub>O</span><span class="arrow">→</span></span> … → CH<sub>3</sub>COOCH<sub>2</sub>CH<sub>2</sub>CH<sub>3</sub> <span class="anno a-sm">✓ M</span>
+</div>
+
+<div class="sub-item">(c) Applications, dangers and mitigation</div>
+
+<p><strong>Propan-1-ol:</strong> Propan-1-ol is used as an industrial solvent. <span class="anno a-ea">✓ Ea</span> This is because it dissolves many organic substances due to the presence of the polar hydroxyl group and non-polar carbon chain, enabling it to dissolve both polar and non-polar compounds.</p>
+
+<div class="warn">
+    <p><strong>Danger:</strong> Highly flammable and can easily cause fire accidents resulting in loss of property and life. <span class="anno a-ed">✓ Ed</span></p>
+    <p><strong>Mitigation:</strong> Store away from heat and open flames to avoid catching fire and hence control any losses. <span class="anno a-em">✓ Em</span></p>
+    <p><strong>Danger 2:</strong> Prolonged inhalation causes dizziness, headaches and irritation of the eyes and respiratory system, making it poisonous to humans. <span class="anno a-ed">✓ Ed</span></p>
+    <p><strong>Mitigation 2:</strong> Wear personal protective gear like masks to control inhalation and reduce the poisonous effects of irritation. <span class="anno a-em">✓ Em</span></p>
+</div>
+
+<p><strong>Ethyne:</strong> It is used for welding and cutting steel and other metals. <span class="anno a-ea">✓ Ea</span> This is because it burns to produce one of the hottest flames.</p>
+
+<div class="warn">
+    <p><strong>Danger:</strong> Extremely flammable. <span class="anno a-ed">✓ Ed</span> Cylinders can explode if mishandled, resulting in accidents and hence loss of lives.</p>
+    <p><strong>Mitigation:</strong> Avoid any leaks and store away from heat and open fire. <span class="anno a-em">✓ Em</span> Store cylinders upright and tightly closed to control escape of any gases and hence avoid the likely dangers. <span class="anno a-em">✓ Em</span></p>
+</div>
+
+<div class="item"><span class="n">Item 6:</span> Enterprise Raw Materials — Volatility, Reactions &amp; Safety</div>
+
+<div class="sub-item">(a) Volatility and intermolecular forces</div>
+
+<p><strong>Ethene and ethylethanoate</strong> evaporate easily because they have low boiling points. <span class="anno a-f">✓ Pe</span> This is because they are largely non-polar and hence their molecules interact via weak van der Waals forces of attraction which easily break for the liquid molecules to go into the vapour phase. <span class="anno a-f">✓ Pe</span></p>
+
+<p>However, <strong>ethylethanoate</strong> requires a higher temperature than ethene due to a high molecular weight and hence stronger van der Waals forces which require higher amounts of heat energy to break than those in ethene. <span class="anno a-f">✓ Pe</span></p>
+
+<p><strong>Ethanol and propan-1-ol</strong> have higher boiling points and hence do not easily evaporate. <span class="anno a-f">✓ Pe</span> Their molecules have polar hydroxyl groups and hence interact via strong hydrogen bonds which require a lot of heat energy to break. <span class="anno a-f">✓ Pe</span></p>
+
+<p><strong>Propan-1-ol</strong> with a higher molecular weight requires more heat energy to separate its molecules than ethanol due to stronger van der Waals forces between the non-polar carbon chain which require more heat energy to break than in ethanol. <span class="anno a-f">✓ Pe</span></p>
+
+<p><strong>Ethanoic acid</strong> requires very high temperature to evaporate/boil than ethanol and propan-1-ol. <span class="anno a-f">✓ Pe</span> Its molecules interact via two hydrogen bonds for every two molecules yet those in alcohols only form one hydrogen bond. <span class="anno a-f">✓ Pe</span> The high number of hydrogen bonds requires a lot of heat energy to break and hence very high vaporisation temperature.</p>
+
+<div class="sub-item">(b) Reaction equations and mechanisms</div>
+
+<p><strong>(i)</strong></p>
+<div class="eq">
+    CH<sub>3</sub>CH<sub>2</sub>OH <span class="ar"><span class="top">conc. H<sub>2</sub>SO<sub>4</sub>, 170 °C</span><span class="arrow">→</span></span> H<sub>2</sub>C=CH<sub>2</sub> + H<sub>2</sub>O <span class="anno a-sm">✓ S</span>
+</div>
+<div class="eq">H<sub>2</sub>SO<sub>4</sub> ⇌ H<sup>+</sup> + HSO<sub>4</sub><sup>−</sup> <span class="anno a-eq">✓ Eq</span></div>
+
+<p><strong>(ii)</strong></p>
+<div class="eq">
+    CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>OH + CH<sub>3</sub>COOH <span class="ar"><span class="top">H<sup>+</sup>, heat</span><span class="arrow">→</span></span> CH<sub>3</sub>COOCH<sub>2</sub>CH<sub>2</sub>CH<sub>3</sub> + H<sub>2</sub>O <span class="anno a-sm">✓ S</span>
+</div>
+<p>Mechanism step annotated with <span class="anno a-sm">✓ M</span>.</p>
+
+<p><strong>(iii)</strong></p>
+<div class="eq">
+    H<sub>2</sub>C=CH<sub>2</sub> <span class="ar"><span class="top">H<sup>+</sup>/H<sub>2</sub>O, heat</span><span class="arrow">→</span></span> CH<sub>3</sub>CH<sub>2</sub>OH <span class="ar"><span class="top">CH<sub>3</sub>COOH/H<sup>+</sup>, heat</span><span class="arrow">→</span></span> CH<sub>3</sub>COOCH<sub>2</sub>CH<sub>3</sub> + H<sub>2</sub>O <span class="anno a-sm">✓ S</span>
+</div>
+
+<p><strong>(iv)</strong></p>
+<div class="eq">
+    H<sub>2</sub>C=CH<sub>2</sub> <span class="ar"><span class="top">Br<sub>2</sub>/CCl<sub>4</sub></span><span class="arrow">→</span></span> CH<sub>2</sub>BrCH<sub>2</sub>Br <span class="ar"><span class="top">alcoholic KOH, heat</span><span class="arrow">→</span></span> HC≡CH <span class="anno a-sm">✓ S</span> <span class="ar"><span class="top">NaNH<sub>2</sub></span><span class="arrow">→</span></span> HC≡CNa <span class="anno a-sm">✓ S</span> <span class="ar"><span class="top">CH<sub>3</sub>Br</span><span class="arrow">→</span></span> CH<sub>3</sub>C≡CH <span class="anno a-sm">✓ S</span> <span class="ar"><span class="top">H<sub>2</sub>O, conc. H<sub>2</sub>SO<sub>4</sub>/HgSO<sub>4</sub>, 60 °C</span><span class="arrow">→</span></span> CH<sub>3</sub>COCH<sub>3</sub> <span class="anno a-sm">✓ S</span>
+</div>
+
+<div class="sub-item">(c) Applications and safety</div>
+
+<p><strong>Ethylethanoate:</strong> Can be used as a fragrance additive for soaps and cosmetics because it is an ester with a sweet, fruity smell. <span class="anno a-ea">✓ Ea</span></p>
+
+<div class="warn">
+    <p><strong>Danger 1:</strong> Highly flammable and explosive since its vapours ignite easily when exposed to heat or sparks. <span class="anno a-ed">✓ Ed</span> <strong>Mitigation:</strong> Store in tightly closed containers away from heat and open flames, and keep functional fire extinguishers nearby. <span class="anno a-em">✓ Em</span></p>
+    <p><strong>Danger 2:</strong> Liquid or vapour irritates the eyes and skin, causing discomfort. <span class="anno a-ed">✓ Ed</span> <strong>Mitigation:</strong> Wear safety goggles, gloves and lab coats. <span class="anno a-em">✓ Em</span></p>
+</div>
+
+<p><strong>Ethanol &amp; propan-1-ol:</strong> Used as cleaning solvents in industrial and laboratory settings because they dissolve a range of polar and non-polar compounds. <span class="anno a-ea">✓ Ea</span></p>
+
+<div class="warn">
+    <p><strong>Danger:</strong> Excessive consumption of ethanol leads to dependence, impaired judgement and liver diseases. <span class="anno a-ed">✓ Ed</span> <strong>Mitigation:</strong> Promote responsible consumption and legal regulation. <span class="anno a-em">✓ Em</span></p>
+    <p><strong>Propan-1-ol toxicity:</strong> Highly toxic if ingested/inhaled in large amounts. <span class="anno a-ed">✓ Ed</span> <strong>Mitigation:</strong> Clear labelling and secure storage away from food/beverages. <span class="anno a-em">✓ Em</span></p>
+</div>
+
+<!-- ======================================================= -->
+<!-- PRACTICAL PAPER 2 -->
+<!-- ======================================================= -->
+<div class="part">Practical Paper 2</div>
+
+<div class="item"><span class="n">Item 1:</span> Ammonia Ionisation — Enthalpy Determination</div>
+
+<p>Ammonia solution is used in the manufacture of household and industrial cleaning products. <span class="anno a-ea">✓ Ea</span> Its ionisation in water affects the concentration of hydroxide ions produced.</p>
+
+<p><strong>Provided reagents:</strong></p>
+<ul class="clean">
+    <li><strong>FA1:</strong> 30 cm<sup>3</sup> of 2.0 M ammonia solution</li>
+    <li><strong>FA2:</strong> 30 cm<sup>3</sup> of 2.0 M sodium hydroxide solution</li>
+    <li><strong>FA3:</strong> 100 cm<sup>3</sup> of 2.0 M hydrochloric acid</li>
+</ul>
+<p>Specific heat capacity = 4.2 J g<sup>−1</sup> K<sup>−1</sup>; density of solutions = 1.0 g cm<sup>−3</sup>.</p>
+
+<div class="sub-item">Aim</div>
+<p>An investigation to determine the enthalpy of ionisation of ammonia by adding increasing volumes of hydrochloric acid to fixed volumes of ammonia solution and sodium hydroxide solution separately and measuring the maximum temperature attained after each addition in order to assess the quality and suitability of the ammonia sample for use in cleaning products.</p>
+
+<div class="sub-item">Hypothesis</div>
+<p>The enthalpy of ionisation of the ammonia sample obtained by adding increasing volumes of hydrochloric acid to fixed volumes of ammonia solution and sodium hydroxide solution separately and measuring the maximum temperature attained after each addition will lie within the reference range of +4.5 to +8.0 kJ mol<sup>−1</sup>, indicating that the sample is suitable for use in cleaning products.</p>
+
+<div class="sub-item">Variables</div>
+<ul class="clean">
+    <li><strong>Independent variable:</strong> Volume of FA3 added / nature of alkali used</li>
+    <li><strong>Dependent variable:</strong> Maximum temperature attained by the reaction mixture</li>
+    <li><strong>Controlled variables:</strong> Volume of the alkalis used was fixed at 25.0 cm<sup>3</sup> for each</li>
+</ul>
+
+<div class="sub-item">Procedure</div>
+<ul class="clean">
+    <li>(a) 25.0 cm<sup>3</sup> of FA1 was measured using a pipette/measuring cylinder and transferred into a clean polystyrene cup.</li>
+    <li>(b) The initial temperature of FA1 was measured using a thermometer and recorded.</li>
+    <li>(c) 5.0 cm<sup>3</sup> portions of FA3 were measured and added to FA1. The mixture was stirred and the maximum temperature attained was recorded after every addition.</li>
+    <li>(d) Procedures (a) to (c) were repeated using fresh 25.0 cm<sup>3</sup> portions of FA2 instead of FA1 under identical conditions.</li>
+    <li>(e) The results were tabulated.</li>
+</ul>
+
+<div class="sub-item">Mitigated risks</div>
+<ul class="clean">
+    <li>Skin and eye irritation from hydrochloric acid and sodium hydroxide since they are corrosive. <span class="anno a-ed">✓ Ed</span> Mitigated by wearing protective gloves, laboratory coat and safety goggles. <span class="anno a-em">✓ Em</span></li>
+    <li>Irritation of the respiratory system from ammonia fumes. <span class="anno a-ed">✓ Ed</span> Mitigated by wearing gas masks or working in a well-ventilated space. <span class="anno a-em">✓ Em</span></li>
+    <li>Cuts and injuries from broken glass apparatus. <span class="anno a-ed">✓ Ed</span> Mitigated by wearing closed shoes, protective gloves and lab coat. <span class="anno a-em">✓ Em</span></li>
+</ul>
+
+<div class="sub-item">Data presentation</div>
+<p>Initial temperature of FA1 = 25.5 °C &nbsp;·&nbsp; Initial temperature of FA2 = 25.5 °C &nbsp;·&nbsp; Volume of FA1/FA2 used in each experiment = 25.0 cm<sup>3</sup></p>
+
+<div class="tw">
+<table>
+    <thead>
+        <tr>
+            <th>Volume of FA3 added (cm<sup>3</sup>)</th>
+            <th>0.0</th><th>5.0</th><th>10.0</th><th>15.0</th><th>20.0</th><th>25.0</th><th>30.0</th><th>35.0</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Max temp of FA1 (NH<sub>3</sub>) + FA3 (HCl) / °C</td>
+            <td>25.5</td><td>27.5</td><td>29.0</td><td>31.0</td><td>33.0</td><td>35.0</td><td>34.0</td><td>33.0</td>
+        </tr>
+        <tr>
+            <td>Max temp of FA2 (NaOH) + FA3 (HCl) / °C</td>
+            <td>25.5</td><td>28.0</td><td>31.0</td><td>33.0</td><td>35.0</td><td>36.5</td><td>36.0</td><td>34.0</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<div class="sub-item">Graphical analysis (annotated markings)</div>
+<ul class="clean">
+    <li>Correctly used scale <span class="anno a-d">✓ Da</span></li>
+    <li>Correct plots <span class="anno a-d">✓ Da</span></li>
+    <li>Extrapolation <span class="anno a-d">✓ Di</span></li>
+    <li>Labelled axes with units <span class="anno a-d">✓ Da</span></li>
+    <li>Shapes of graphs <span class="anno a-d">✓ Di</span></li>
+</ul>
+
+<p><strong>Intersection points from graph:</strong></p>
+<ul class="clean">
+    <li>For FA1 (NH<sub>3</sub>) + FA3 (HCl): peak at (25.2 cm<sup>3</sup>, 35.0 °C) ⇒ ΔT<sub>1</sub> = 35.0 − 25.5 = 9.5 °C <span class="anno a-d">✓ Da</span></li>
+    <li>For FA2 (NaOH) + FA3 (HCl): peak at (24.5 cm<sup>3</sup>, 36.9 °C) ⇒ ΔT<sub>2</sub> = 36.9 − 25.5 = 11.4 °C <span class="anno a-d">✓ Da</span></li>
+</ul>
+<p>Total volume FA1 + FA3 = 25.0 + 25.2 = 50.2 cm<sup>3</sup> &nbsp;·&nbsp; Total volume FA2 + FA3 = 25.0 + 24.5 = 49.5 cm<sup>3</sup></p>
+
+<div class="sub-item">Calculations</div>
+
+<p><strong>1. Enthalpy change for FA1 + FA3 (NH<sub>3</sub> + HCl):</strong></p>
+<div class="eq">Q<sub>1</sub> = mcΔT<sub>1</sub> = 50.2 × 4.2 × 9.5 = 2002.98 J <span class="anno a-d">✓ Da</span></div>
+<div class="eq">Moles of NH<sub>3</sub> = (2.0 × 25.0)/1000 = 0.050 moles <span class="anno a-d">✓ Da</span></div>
+<div class="eq">ΔH<sub>1</sub> = −2.00298/0.050 = −40.1 kJ mol<sup>−1</sup> <span class="anno a-d">✓ Dc</span> (exothermic)</div>
+
+<p><strong>2. Enthalpy change for FA2 + FA3 (NaOH + HCl):</strong></p>
+<div class="eq">Q<sub>2</sub> = mcΔT<sub>2</sub> = 49.5 × 4.2 × 11.4 = 2370.06 J <span class="anno a-d">✓ Da</span></div>
+<div class="eq">Moles of NaOH = (2.0 × 25.0)/1000 = 0.050 moles <span class="anno a-d">✓ Da</span></div>
+<div class="eq">ΔH<sub>2</sub> = −2.37006/0.050 = −47.4 kJ mol<sup>−1</sup> <span class="anno a-d">✓ Dc</span> (exothermic)</div>
+
+<p><strong>3. Determination of enthalpy of ionisation of ammonia:</strong></p>
+<div class="eq">Reaction I: NH<sub>3</sub>(aq) + H<sup>+</sup>(aq) → NH<sub>4</sub><sup>+</sup>(aq) &nbsp;&nbsp; ΔH<sub>1</sub> = −40.1 kJ mol<sup>−1</sup> <span class="anno a-eq">✓ Eq</span></div>
+<div class="eq">Reaction II: H<sup>+</sup>(aq) + OH<sup>−</sup>(aq) → H<sub>2</sub>O(l) &nbsp;&nbsp; ΔH<sub>2</sub> = −47.4 kJ mol<sup>−1</sup> <span class="anno a-eq">✓ Eq</span></div>
+<div class="eq">Reversing Reaction II: H<sub>2</sub>O(l) → H<sup>+</sup>(aq) + OH<sup>−</sup>(aq) &nbsp;&nbsp; ΔH = +47.4 kJ mol<sup>−1</sup> <span class="anno a-eq">✓ Eq</span></div>
+
+<p>By Hess's Law (<span class="anno a-l">✓ L</span>):</p>
+<div class="eq">ΔH<sub>ionisation</sub> = −40.1 + 47.4 = +7.3 kJ mol<sup>−1</sup> <span class="anno a-d">✓ Dc</span></div>
+
+<div class="note">
+    <p><strong>Conclusion &amp; recommendation:</strong> The positive value confirms that ionisation of ammonia in water is endothermic. Since +7.3 kJ mol<sup>−1</sup> lies within the company's acceptable range of +4.5 to +8.0 kJ mol<sup>−1</sup>, the experimental results support the hypothesis, and the sample meets quality requirements. <span class="anno a-cr">✓ C&amp;R</span> The ammonia sample should be approved for use in manufacturing cleaning products. <span class="anno a-cr">✓ C&amp;R</span></p>
+</div>
+
+<div class="item"><span class="n">Item 2:</span> Qualitative Analysis of Inorganic Ions in Substance R</div>
+
+<div class="tw">
+<table>
+    <thead>
+        <tr><th style="width:30%;">Test</th><th style="width:35%;">Observation</th><th style="width:35%;">Deduction</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>(a) Heating strongly:</strong> A small amount of substance R was heated strongly in a dry test tube until no further change.</td>
+            <td>The white solid decomposes to form a residue which is yellow when hot and white when cold. <span class="anno a-d">✓ Di</span><br><br>Colourless condensate turns anhydrous copper(II) sulphate blue. <span class="anno a-d">✓ Di</span><br><br>White fumes turn blue litmus paper red. <span class="anno a-d">✓ Di</span><br><br>Gas turns lime water milky. <span class="anno a-d">✓ Di</span></td>
+            <td>Non-transition metal cations present or Zn<sup>2+</sup>, Mg<sup>2+</sup>, Al<sup>3+</sup> present. <span class="anno a-d">✓ Dc</span><br><br>Water of crystallisation / hydrated salt. <span class="anno a-d">✓ Dc</span><br><br>Acidic gas. <span class="anno a-d">✓ Dc</span><br><br>CO<sub>3</sub><sup>2−</sup>/HCO<sub>3</sub><sup>−</sup> present. <span class="anno a-d">✓ Dc</span><br><br>SO<sub>4</sub><sup>2−</sup>/SO<sub>3</sub><sup>2−</sup> present. <span class="anno a-d">✓ Dc</span></td>
+        </tr>
+        <tr>
+            <td><strong>(b) Dissolving in water:</strong> Two spatula endfuls of Z were shaken with distilled water and filtered. Both residue and filtrate were kept.</td>
+            <td>Partially soluble to form a white suspension. <span class="anno a-d">✓ Di</span><br><br>A colourless filtrate formed; white residue was obtained. <span class="anno a-d">✓ Di</span></td>
+            <td>Non-transition metal cation in both filtrate and residue. <span class="anno a-d">✓ Dc</span></td>
+        </tr>
+        <tr>
+            <td><strong>(i) Filtrate + NaOH dropwise to excess</strong></td>
+            <td>A white precipitate formed, insoluble in excess sodium hydroxide. <span class="anno a-d">✓ Di</span></td>
+            <td>Ba<sup>2+</sup>, Ca<sup>2+</sup>, Mg<sup>2+</sup> suspected present. <span class="anno a-d">✓ Dc</span></td>
+        </tr>
+        <tr>
+            <td><strong>(ii) Filtrate + ammonia dropwise to excess</strong></td>
+            <td>White precipitate insoluble in excess. <span class="anno a-d">✓ Di</span></td>
+            <td>Ba<sup>2+</sup>, Mg<sup>2+</sup> suspected present. <span class="anno a-d">✓ Dc</span></td>
+        </tr>
+        <tr>
+            <td><strong>(iii) Filtrate + dilute H<sub>2</sub>SO<sub>4</sub> or Na<sub>2</sub>SO<sub>4</sub></strong></td>
+            <td>No observable change. <span class="anno a-d">✓ Di</span></td>
+            <td>Ba<sup>2+</sup> absent; Mg<sup>2+</sup> suspected present. <span class="anno a-d">✓ Dc</span></td>
+        </tr>
+        <tr>
+            <td><strong>(iv) Filtrate + solid NH<sub>4</sub>Cl + Na<sub>2</sub>HPO<sub>4</sub> + excess NH<sub>3</sub></strong></td>
+            <td>White precipitate insoluble in excess ammonia. <span class="anno a-d">✓ Di</span><br><br><em>OR</em> no observable change.</td>
+            <td>Mg<sup>2+</sup> confirmed present. <span class="anno a-d">✓ Dc</span></td>
+        </tr>
+        <tr>
+            <td><strong>(v) Filtrate + Pb(NO<sub>3</sub>)<sub>2</sub> + dilute HNO<sub>3</sub></strong></td>
+            <td>White precipitate formed, insoluble in the acid. <span class="anno a-d">✓ Di</span></td>
+            <td>SO<sub>4</sub><sup>2−</sup>, Br<sup>−</sup>, I<sup>−</sup> present. <span class="anno a-d">✓ Dc</span></td>
+        </tr>
+        <tr>
+            <td><strong>(vi) Filtrate + Ba(NO<sub>3</sub>)<sub>2</sub> + dilute HNO<sub>3</sub></strong></td>
+            <td>A white precipitate formed, insoluble in excess. <span class="anno a-d">✓ Di</span></td>
+            <td>SO<sub>4</sub><sup>2−</sup> present. <span class="anno a-d">✓ Dc</span></td>
+        </tr>
+        <tr>
+            <td><strong>(c) Residue + dilute HNO<sub>3</sub></strong></td>
+            <td>Bubbles of a colourless gas which turns blue litmus paper red and limewater milky. <span class="anno a-d">✓ Di</span> Colourless solution formed. <span class="anno a-d">✓ Di</span></td>
+            <td>CO<sub>3</sub><sup>2−</sup>/HCO<sub>3</sub><sup>−</sup> confirmed present. <span class="anno a-d">✓ Dc</span><br><br>Zn<sup>2+</sup>, Al<sup>3+</sup>, Pb<sup>2+</sup>, Sn<sup>2+</sup> present. <span class="anno a-d">✓ Dc</span></td>
+        </tr>
+        <tr>
+            <td><strong>(i) Residue solution + NaOH dropwise to excess</strong></td>
+            <td>A white precipitate formed, soluble in excess to form a colourless solution. <span class="anno a-d">✓ Di</span></td>
+            <td>Zn<sup>2+</sup>, Al<sup>3+</sup>, Pb<sup>2+</sup>, Sn<sup>2+</sup> present. <span class="anno a-d">✓ Dc</span></td>
+        </tr>
+        <tr>
+            <td><strong>(ii) Residue solution + ammonia dropwise to excess</strong></td>
+            <td>A white precipitate formed, soluble in excess to form a colourless solution. <span class="anno a-d">✓ Di</span></td>
+            <td>Zn<sup>2+</sup> present. <span class="anno a-d">✓ Dc</span></td>
+        </tr>
+        <tr>
+            <td><strong>(iii) Residue solution + NH<sub>4</sub>Cl + Na<sub>2</sub>HPO<sub>4</sub> + excess NH<sub>3</sub></strong></td>
+            <td>White precipitate soluble in excess ammonia to form a colourless solution. <span class="anno a-d">✓ Di</span></td>
+            <td>Zn<sup>2+</sup> present. <span class="anno a-d">✓ Dc</span></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<div class="sub-item">(b) Conclusion on the identity of the ions present and advice to the community</div>
+
+<p><strong>Identified ions:</strong></p>
+<ul class="clean">
+    <li><strong>Cations:</strong> Mg<sup>2+</sup> and Zn<sup>2+</sup> <span class="anno a-d">✓ Dc</span></li>
+    <li><strong>Anions:</strong> SO<sub>4</sub><sup>2−</sup> and CO<sub>3</sub><sup>2−</sup> <span class="anno a-d">✓ Dc</span></li>
+</ul>
+
+<p><strong>Advice to the community:</strong></p>
+
+<ul class="clean">
+    <li><strong>Magnesium ions (Mg<sup>2+</sup>):</strong> Contribute to temporary or permanent water hardness, causing poor soap lathering, increased soap consumption and stains on cooking utensils. <span class="anno a-ed">✓ Ed</span></li>
+    <li><strong>Carbonate ions (CO<sub>3</sub><sup>2−</sup>):</strong> React with hardness ions to form insoluble carbonates that produce gritty deposits and scale in storage containers, kettles and water pipes. <span class="anno a-ed">✓ Ed</span></li>
+    <li><strong>Sulphate ions (SO<sub>4</sub><sup>2−</sup>):</strong> Generally safe at low concentrations but excessive amounts may affect the taste of water and can have a mild laxative effect. <span class="anno a-ed">✓ Ed</span></li>
+    <li><strong>Zinc ions (Zn<sup>2+</sup>):</strong> Essential in trace amounts but elevated concentrations may impart an undesirable metallic taste and reduce the suitability of water for domestic use. <span class="anno a-ed">✓ Ed</span></li>
+</ul>
+
+<div class="warn">
+    <p><strong>Community action / mitigation:</strong> The community should reduce runoff from the nearby construction site by improving drainage and erosion control measures, protect water sources from contamination, and treat the water through sedimentation, filtration and, where necessary, water softening before domestic use. <span class="anno a-em">✓ Em</span></p>
+</div>
+
+</div>
+<!-- ============ END CONTENT ============ -->
+
+<div class="footer">
+    <strong>Trinity College Nabbingo</strong> &nbsp;·&nbsp; A Level Chemistry Seminar &nbsp;·&nbsp; 26<sup>th</sup> September, 2026<br>
+    Annotated Answer Guide — L · Fe · Da · Di · Dc · C&amp;R · Pe · Ea · Ed · Em · Eq · S · M
+</div>
+
+</div>
+</body>
+</html>
