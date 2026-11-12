@@ -116,7 +116,7 @@ function Portal() {
 
         {isApiConfigured() && (dashboardLoading || dashboardError) && (
           <p
-            className={`mt-6 rounded-sm p-4 text-sm ${dashboardError ? "bg-destructive/10 text-destructive" : "bg-muted text-muted-foreground"}`}
+            className={`mt-6 rounded-sm p-4 text-sm ${dashboardError ? "bg-destructive text-destructive-foreground dark:bg-red-900 dark:text-white" : "bg-muted text-muted-foreground"}`}
           >
             {dashboardLoading
               ? "Loading live PostgreSQL dashboard records…"

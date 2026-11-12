@@ -255,7 +255,10 @@ export function FinancePortal() {
                     </Button>
                   </div>
                   {paymentError && (
-                    <p role="alert" className="mt-4 text-sm text-destructive">
+                    <p
+                      role="alert"
+                      className="mt-4 rounded-sm bg-destructive p-3 text-sm text-destructive-foreground dark:bg-red-900 dark:text-white"
+                    >
                       {paymentError}
                     </p>
                   )}

@@ -137,7 +137,7 @@ function Login() {
             {error && (
               <p
                 role="alert"
-                className="rounded-sm border border-destructive/40 bg-destructive/10 p-3 text-sm text-destructive"
+                className="rounded-sm border border-destructive/40 bg-destructive p-3 text-sm text-destructive-foreground dark:border-red-900 dark:bg-red-900 dark:text-white"
               >
                 {error}
               </p>
