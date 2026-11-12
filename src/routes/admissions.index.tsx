@@ -37,7 +37,7 @@ function AdmissionsOverview() {
             },
           ].map((step, i) => (
             <div key={step.title}>
-              <p className="font-display text-4xl text-secondary">0{i + 1}</p>
+              <p className="font-display text-4xl text-primary">0{i + 1}</p>
               <h2 className="mt-5 text-xl">{step.title}</h2>
               <p className="mt-4 text-sm leading-7 text-muted-foreground">{step.text}</p>
             </div>
