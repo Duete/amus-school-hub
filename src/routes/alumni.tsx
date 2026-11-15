@@ -168,7 +168,7 @@ function Alumni() {
       <section className="bg-primary py-8 text-primary-foreground md:py-12">
         <div className="site-width">
           <p className="text-sm font-semibold tracking-[0.04em] text-secondary">Alumni</p>
-          <h1 className="mt-2 max-w-none whitespace-nowrap text-xl leading-tight sm:text-3xl md:text-5xl">
+          <h1 className="mt-2 max-w-none text-xl leading-tight sm:text-3xl md:text-5xl">
             Once with Us, Always with Us
           </h1>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-primary-foreground/80 md:text-base md:leading-8">

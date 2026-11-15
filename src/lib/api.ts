@@ -64,7 +64,6 @@ async function post<T>(path: string, body: unknown): Promise<T> {
   const response = await fetch(`${apiBaseUrl}${path}`, {
     method: "POST",
     headers: { "content-type": "application/json" },
-    credentials: "include",
     body: JSON.stringify(body),
   });
   const payload = (await response.json()) as T & { error?: string };
@@ -74,7 +73,7 @@ async function post<T>(path: string, body: unknown): Promise<T> {
 
 async function get<T>(path: string): Promise<T> {
   if (!apiBaseUrl) throw new Error("API base URL is not configured");
-  const response = await fetch(`${apiBaseUrl}${path}`, { credentials: "include" });
+  const response = await fetch(`${apiBaseUrl}${path}`);
   const payload = (await response.json()) as T & { error?: string };
   if (!response.ok) throw new Error(payload.error ?? "Request failed");
   return payload;

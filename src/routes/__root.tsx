@@ -8,11 +8,12 @@ import {
   Scripts,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
-import { type ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 
 import { SchoolHeader, SchoolFooter } from "@/components/school-layout";
 import { GaliwangoChatbot } from "@/components/galiwango-chatbot";
 import { AuthProvider } from "@/lib/auth";
+import { migrateStoredNotificationLog } from "@/lib/notifications";
 
 import appCss from "../styles.css?url";
 
@@ -78,6 +79,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "text-scale", content: "scale" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -116,12 +118,19 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  useEffect(() => {
+    migrateStoredNotificationLog();
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         <SchoolHeader />
-        <main>
+        <main id="main-content">
           <Outlet />
         </main>
         <GaliwangoChatbot />

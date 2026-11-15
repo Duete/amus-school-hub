@@ -2,6 +2,7 @@
   "name": "Mbale Progressive Secondary School",
   "short_name": "Mbale Progressive",
   "description": "Mbale Progressive Secondary School — The Love of Education Brought Us Here.",
+  "id": "/",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

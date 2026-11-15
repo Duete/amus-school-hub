@@ -1,6 +1,6 @@
 import { Link, useLocation } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ArrowRight, ChevronDown, LogIn, Menu, UserCircle, X } from "lucide-react";
+import { ArrowRight, ChevronDown, LogIn, Menu, Pause, Play, UserCircle, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/lib/auth";
 
@@ -61,12 +61,25 @@ const schoolHighlights = [
 
 function SchoolHighlightsMarquee() {
   const items = [...schoolHighlights, ...schoolHighlights];
+  const [paused, setPaused] = useState(true);
+
+  useEffect(() => {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const syncPreference = () => setPaused(reducedMotion.matches);
+    syncPreference();
+    reducedMotion.addEventListener("change", syncPreference);
+    return () => reducedMotion.removeEventListener("change", syncPreference);
+  }, []);
+
   return (
     <aside
-      className="overflow-hidden border-b border-primary-foreground/15 bg-primary text-primary-foreground"
+      className="relative overflow-hidden border-b border-primary-foreground/15 bg-primary text-primary-foreground"
       aria-label="School information"
     >
-      <div className="marquee-track flex min-w-max gap-10 whitespace-nowrap py-2 text-xs">
+      <div
+        className={`marquee-track flex min-w-max gap-10 whitespace-nowrap py-2 pr-36 text-xs ${paused ? "marquee-track-paused" : "marquee-track-playing"}`}
+        aria-live="off"
+      >
         {items.map((item, index) => (
           <span
             key={`${item.label}-${index}`}
@@ -93,6 +106,15 @@ function SchoolHighlightsMarquee() {
           </span>
         ))}
       </div>
+      <button
+        type="button"
+        onClick={() => setPaused((current) => !current)}
+        aria-label={paused ? "Play moving school information" : "Pause moving school information"}
+        className="absolute right-3 top-1/2 z-10 flex min-h-11 items-center gap-2 rounded-md border border-primary-foreground/40 bg-primary px-3 text-xs font-semibold shadow"
+      >
+        {paused ? <Play size={14} aria-hidden="true" /> : <Pause size={14} aria-hidden="true" />}
+        {paused ? "Play" : "Pause"}
+      </button>
     </aside>
   );
 }
@@ -154,6 +176,7 @@ export function SchoolHeader() {
                 <Link
                   key={item.to}
                   to={item.to}
+                  aria-current={location.pathname === item.to ? "page" : undefined}
                   className={`border-b-2 py-3 text-sm font-semibold transition-colors ${isActive(item.to) ? "border-primary text-primary" : "border-transparent text-muted-foreground hover:text-primary"}`}
                 >
                   {item.name}
@@ -164,18 +187,27 @@ export function SchoolHeader() {
                   className="relative"
                   onMouseEnter={() => setActiveMenu(item.name)}
                   onMouseLeave={() => setActiveMenu(null)}
+                  onBlur={(event) => {
+                    if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+                      setActiveMenu(null);
+                    }
+                  }}
                 >
                   <button
                     type="button"
                     className={`flex items-center gap-1 border-b-2 py-3 text-sm font-semibold transition-colors ${item.children.some((child) => isActive(child.to)) ? "border-primary text-primary" : "border-transparent text-muted-foreground hover:text-primary"}`}
                     aria-expanded={activeMenu === item.name}
+                    aria-controls={`menu-${item.name.toLowerCase().replace(/\s+/g, "-")}`}
                     onClick={() => setActiveMenu(activeMenu === item.name ? null : item.name)}
                   >
                     {item.name}
                     <ChevronDown size={15} />
                   </button>
                   {activeMenu === item.name && (
-                    <div className="absolute left-0 top-full z-40 min-w-56 border border-border bg-background p-2 shadow-xl">
+                    <div
+                      id={`menu-${item.name.toLowerCase().replace(/\s+/g, "-")}`}
+                      className="absolute left-0 top-full z-40 min-w-56 border border-border bg-background p-2 shadow-xl"
+                    >
                       <p className="px-3 pb-2 pt-1 text-xs font-semibold tracking-[0.04em] text-muted-foreground">
                         Pages in {item.name}
                       </p>
@@ -183,6 +215,7 @@ export function SchoolHeader() {
                         <Link
                           key={child.to}
                           to={child.to}
+                          aria-current={location.pathname === child.to ? "page" : undefined}
                           onClick={() => setActiveMenu(null)}
                           className={`block px-3 py-2 text-sm font-semibold ${isActive(child.to) ? "bg-muted text-primary" : "text-foreground hover:bg-muted hover:text-primary"}`}
                         >
@@ -221,7 +254,7 @@ export function SchoolHeader() {
             </Button>
           </div>
           <Button
-            className="xl:hidden"
+            className="min-h-11 min-w-11 xl:hidden"
             variant="ghost"
             size="icon"
             aria-label={open ? "Close menu" : "Open menu"}
@@ -246,8 +279,9 @@ export function SchoolHeader() {
                 <Link
                   key={item.to}
                   to={item.to}
+                  aria-current={location.pathname === item.to ? "page" : undefined}
                   onClick={() => setOpen(false)}
-                  className="border-b border-border py-3 text-sm font-semibold"
+                  className="flex min-h-11 items-center border-b border-border py-3 text-sm font-semibold"
                 >
                   {item.name}
                 </Link>
@@ -260,8 +294,9 @@ export function SchoolHeader() {
                     <Link
                       key={child.to}
                       to={child.to}
+                      aria-current={location.pathname === child.to ? "page" : undefined}
                       onClick={() => setOpen(false)}
-                      className="block py-2 pl-3 text-sm font-semibold text-muted-foreground"
+                      className="flex min-h-11 items-center py-2 pl-3 text-sm font-semibold text-muted-foreground"
                     >
                       {child.name}
                     </Link>

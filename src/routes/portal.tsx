@@ -100,7 +100,7 @@ function Portal() {
         You are signed in as a {roleLabels[user.role].toLowerCase()}. This workspace only shows the
         areas enabled for your role.
       </PageIntro>
-      <main className="site-width py-12 md:py-16">
+      <section className="site-width py-12 md:py-16">
         <div className="flex flex-col justify-between gap-5 border-b border-border pb-8 md:flex-row md:items-end">
           <div>
             <p className="eyebrow text-primary">ACCOUNT OVERVIEW</p>
@@ -116,6 +116,7 @@ function Portal() {
 
         {isApiConfigured() && (dashboardLoading || dashboardError) && (
           <p
+            role="status"
             className={`mt-6 rounded-sm p-4 text-sm ${dashboardError ? "bg-destructive text-destructive-foreground dark:bg-red-900 dark:text-white" : "bg-muted text-muted-foreground"}`}
           >
             {dashboardLoading
@@ -133,7 +134,7 @@ function Portal() {
         {user.role === "administrator" && (
           <AdministratorPortal hasPermission={hasPermission} notifications={notifications} />
         )}
-      </main>
+      </section>
     </>
   );
 }
@@ -406,7 +407,7 @@ function AdministratorPortal({
                 <div>
                   <p className="font-semibold">{item.subject}</p>
                   <p className="mt-1 text-xs text-muted-foreground">
-                    {item.recipient} · {new Date(item.createdAt).toLocaleString()}
+                    Private details omitted · {new Date(item.createdAt).toLocaleString()}
                   </p>
                 </div>
                 <span className="text-xs font-bold uppercase text-primary">{item.status}</span>

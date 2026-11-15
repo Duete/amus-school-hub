@@ -55,6 +55,10 @@ describe("Faculty directory", () => {
     expect(member?.department).toBe("Mathematics & Sciences");
     expect(member?.campus).toBe("Boarding");
     expect(member?.photo).toBeTruthy();
+    expect(member?.photoSrcSet).toContain("256w");
+    expect(member?.photoSrcSet).toContain("512w");
+    expect(member?.photoWidth).toBe(512);
+    expect(member?.photoHeight).toBe(640);
     expect(member?.email).toBeUndefined();
   });
 
@@ -77,6 +81,8 @@ describe("Faculty directory", () => {
     expect(member?.campus).toBe("Boarding");
     expect(member?.head).toBe(true);
     expect(member?.photo).toBeTruthy();
+    expect(member?.photoSrcSet).toContain("256w");
+    expect(member?.photoSrcSet).toContain("512w");
   });
 
   it("lists Mr. Engulu Daniel as Head of Business Education at both campuses", () => {
