@@ -218,7 +218,7 @@ function Index() {
                 type="button"
                 onClick={() => selectSlide(activeIndex - 1)}
                 aria-label="Previous highlight"
-                className="rounded-full border border-white/40 p-2 text-white hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-secondary"
+                className="rounded-full border border-white/40 p-2 text-white hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
               >
                 <ChevronLeft size={18} />
               </button>
@@ -236,7 +236,7 @@ function Index() {
                 type="button"
                 onClick={() => selectSlide(activeIndex + 1)}
                 aria-label="Next highlight"
-                className="rounded-full border border-white/40 p-2 text-white hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-secondary"
+                className="rounded-full border border-white/40 p-2 text-white hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
               >
                 <ChevronRight size={18} />
               </button>
@@ -244,8 +244,7 @@ function Index() {
                 type="button"
                 onClick={() => setPaused((value) => !value)}
                 aria-label={paused ? "Play automatic highlights" : "Pause automatic highlights"}
-                aria-pressed={paused}
-                className="rounded-full border border-white/40 p-2 text-white hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-secondary"
+                className="rounded-full border border-white/40 p-2 text-white hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
               >
                 {paused ? <Play size={16} /> : <Pause size={16} />}
               </button>

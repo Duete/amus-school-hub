@@ -11,29 +11,33 @@ export type AuthUser = {
 
 type DemoAccount = AuthUser & { password: string };
 
-const demoAccounts: DemoAccount[] = [
-  {
-    id: "student-001",
-    name: "Amina Nankunda",
-    email: "student@mbaleprogressive.sc.ug",
-    password: "student2026",
-    role: "student",
-  },
-  {
-    id: "teacher-001",
-    name: "Sarah Namukasa",
-    email: "teacher@mbaleprogressive.sc.ug",
-    password: "teacher2026",
-    role: "teacher",
-  },
-  {
-    id: "admin-001",
-    name: "Daniel Kato",
-    email: "admin@mbaleprogressive.sc.ug",
-    password: "admin2026",
-    role: "administrator",
-  },
-];
+export const previewAuthEnabled = import.meta.env.DEV;
+
+const demoAccounts: DemoAccount[] = previewAuthEnabled
+  ? [
+      {
+        id: "student-001",
+        name: "Amina Nankunda",
+        email: "student@mbaleprogressive.sc.ug",
+        password: "student2026",
+        role: "student",
+      },
+      {
+        id: "teacher-001",
+        name: "Sarah Namukasa",
+        email: "teacher@mbaleprogressive.sc.ug",
+        password: "teacher2026",
+        role: "teacher",
+      },
+      {
+        id: "admin-001",
+        name: "Daniel Kato",
+        email: "admin@mbaleprogressive.sc.ug",
+        password: "admin2026",
+        role: "administrator",
+      },
+    ]
+  : [];
 
 export const roleLabels: Record<UserRole, string> = {
   student: "Student",
@@ -56,6 +60,7 @@ export const rolePermissions: Record<UserRole, string[]> = {
 type AuthContextValue = {
   user: AuthUser | null;
   isReady: boolean;
+  previewAuthEnabled: boolean;
   signIn: (email: string, password: string, role: UserRole) => { ok: boolean; message?: string };
   signOut: () => void;
   hasPermission: (permission: string) => boolean;
@@ -66,6 +71,7 @@ const AuthContext = createContext<AuthContextValue | null>(null);
 const STORAGE_KEY = "mbale-progressive-demo-session";
 
 function readStoredUser(): AuthUser | null {
+  if (!previewAuthEnabled) return null;
   if (typeof window === "undefined") return null;
   try {
     const stored = window.localStorage.getItem(STORAGE_KEY);
@@ -80,10 +86,24 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
+    if (!previewAuthEnabled) {
+      try {
+        window.localStorage.removeItem(STORAGE_KEY);
+      } catch {
+        // Production reads never trust this preview-only session storage.
+      }
+    }
     setIsReady(true);
   }, []);
 
   function signIn(email: string, password: string, role: UserRole) {
+    if (!previewAuthEnabled) {
+      return {
+        ok: false,
+        message:
+          "Secure sign-in is unavailable until a server-side identity provider is connected.",
+      };
+    }
     const account = demoAccounts.find(
       (candidate) =>
         candidate.email.toLowerCase() === email.trim().toLowerCase() && candidate.role === role,
@@ -114,6 +134,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     () => ({
       user,
       isReady,
+      previewAuthEnabled,
       signIn,
       signOut,
       hasPermission: (permission: string) =>

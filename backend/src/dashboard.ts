@@ -1,7 +1,19 @@
 import { Router } from "express";
 import { pool } from "./db.js";
+import { isDashboardPreviewEnabled } from "./dashboard-preview.js";
 
 export const dashboardRouter = Router();
+
+dashboardRouter.use((_request, response, next) => {
+  if (!isDashboardPreviewEnabled(process.env.NODE_ENV, process.env.DASHBOARD_PREVIEW_MODE)) {
+    response.status(503).json({
+      error:
+        "Dashboard sign-in is unavailable until a server-verified identity provider is configured.",
+    });
+    return;
+  }
+  next();
+});
 
 type UserRow = {
   id: string;

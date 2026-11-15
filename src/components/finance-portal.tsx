@@ -112,9 +112,11 @@ export function FinancePortal() {
           </span>
         </div>
         <form onSubmit={handleLookup} className="mt-6 flex flex-col gap-3 sm:flex-row">
-          <label className="flex-1">
+          <label htmlFor="finance-student-id" className="flex-1">
             <span className="sr-only">Student ID</span>
             <input
+              id="finance-student-id"
+              name="studentId"
               required
               value={studentId}
               onChange={(event) => setStudentId(event.target.value)}
@@ -256,7 +258,7 @@ export function FinancePortal() {
                   </div>
                   {paymentError && (
                     <p
-                      role="alert"
+                      role="status"
                       className="mt-4 rounded-sm bg-destructive p-3 text-sm text-destructive-foreground dark:bg-red-900 dark:text-white"
                     >
                       {paymentError}
@@ -265,9 +267,11 @@ export function FinancePortal() {
                 </div>
               ) : (
                 <form onSubmit={handlePayment} className="mt-6 space-y-5">
-                  <label className="block space-y-2 text-sm font-semibold">
+                  <label htmlFor="finance-amount" className="block space-y-2 text-sm font-semibold">
                     Amount to pay
                     <input
+                      id="finance-amount"
+                      name="amount"
                       required
                       min="1"
                       type="number"

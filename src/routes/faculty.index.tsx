@@ -104,23 +104,32 @@ function TeachingStaff() {
                 Find a teacher or learning area
               </h2>
             </div>
-            <div className="flex w-full flex-col gap-3 sm:flex-row md:w-auto">
-              <label className="relative block sm:min-w-64">
+            <search
+              aria-label="Teaching staff directory"
+              className="flex w-full flex-col gap-3 sm:flex-row md:w-auto"
+            >
+              <label htmlFor="faculty-search" className="relative block sm:min-w-64">
                 <span className="sr-only">Search teaching staff</span>
                 <Search
                   className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
                   size={17}
+                  aria-hidden="true"
                 />
                 <input
+                  id="faculty-search"
+                  name="staff-search"
+                  type="search"
                   value={query}
                   onChange={(event) => setQuery(event.target.value)}
                   className="form-input pl-10"
                   placeholder="Search by name or subject"
                 />
               </label>
-              <label>
+              <label htmlFor="faculty-department">
                 <span className="sr-only">Filter by department</span>
                 <select
+                  id="faculty-department"
+                  name="department"
                   value={department}
                   onChange={(event) => setDepartment(event.target.value)}
                   className="form-input min-w-52"
@@ -130,7 +139,7 @@ function TeachingStaff() {
                   ))}
                 </select>
               </label>
-            </div>
+            </search>
           </div>
           <p className="mt-4 text-sm text-muted-foreground">
             Showing {visibleFaculty.length} of {faculty.length} directory entries.
@@ -283,9 +292,11 @@ function StaffCard({ member, highlight = false }: { member: FacultyMember; highl
           <img
             decoding="async"
             src={member.photo}
+            srcSet={member.photoSrcSet}
+            sizes={member.photoSrcSet ? "144px" : undefined}
             alt={`Portrait of ${member.name}`}
-            width={800}
-            height={800}
+            width={member.photoWidth ?? 800}
+            height={member.photoHeight ?? 800}
             loading="lazy"
             className="size-32 rounded-full border-4 border-secondary bg-background object-cover object-top sm:size-36"
             style={member.photoPosition ? { objectPosition: member.photoPosition } : undefined}

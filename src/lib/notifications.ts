@@ -19,18 +19,63 @@ type NotificationPayload = {
 
 const STORAGE_KEY = "mbale-progressive-notification-log";
 
+function clearStoredLog() {
+  try {
+    window.localStorage.removeItem(STORAGE_KEY);
+  } catch {
+    // Storage can be unavailable in privacy-restricted browser contexts.
+  }
+}
+
+function isNotificationRecord(value: unknown): value is NotificationRecord {
+  if (!value || typeof value !== "object") return false;
+  const record = value as Record<string, unknown>;
+  return (
+    typeof record.id === "string" &&
+    (record.event === "admissions.application_submitted" ||
+      record.event === "finance.payment_submitted") &&
+    typeof record.recipient === "string" &&
+    typeof record.subject === "string" &&
+    typeof record.body === "string" &&
+    typeof record.createdAt === "string" &&
+    (record.status === "queued" || record.status === "sent" || record.status === "preview")
+  );
+}
+
+function redactRecord(record: NotificationRecord): NotificationRecord {
+  return {
+    ...record,
+    recipient: record.recipient ? "[redacted]" : "",
+    body: record.body ? "[redacted]" : "",
+  };
+}
+
 function getStoredLog(): NotificationRecord[] {
   if (typeof window === "undefined") return [];
   try {
-    return JSON.parse(window.localStorage.getItem(STORAGE_KEY) ?? "[]") as NotificationRecord[];
+    const stored = JSON.parse(window.localStorage.getItem(STORAGE_KEY) ?? "[]") as unknown;
+    if (!Array.isArray(stored)) {
+      clearStoredLog();
+      return [];
+    }
+    const safeRecords = stored.filter(isNotificationRecord).map(redactRecord);
+    if (JSON.stringify(stored) !== JSON.stringify(safeRecords)) {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(safeRecords));
+    }
+    return safeRecords;
   } catch {
+    clearStoredLog();
     return [];
   }
 }
 
+export function migrateStoredNotificationLog() {
+  getStoredLog();
+}
+
 function saveRecord(record: NotificationRecord) {
   if (typeof window === "undefined") return;
-  const next = [record, ...getStoredLog()].slice(0, 40);
+  const next = [redactRecord(record), ...getStoredLog()].slice(0, 40);
   window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
   window.dispatchEvent(new CustomEvent("notification-log-updated"));
 }

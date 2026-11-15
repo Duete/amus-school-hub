@@ -139,7 +139,7 @@ function ApplyForAdmission() {
                   : "saved for follow-up in this preview environment"}
             </p>
             {submissionError && (
-              <p role="alert" className="mt-4 text-sm text-destructive">
+              <p role="status" className="mt-4 text-sm text-destructive">
                 {submissionError}
               </p>
             )}
@@ -226,9 +226,15 @@ function ApplyForAdmission() {
                     label="Full name"
                     name="studentName"
                     placeholder="Enter the learner’s full name"
+                    autoComplete="section-student name"
                   />
                   <Field label="UNEB index number" name="unebIndex" placeholder="e.g. U1234/567" />
-                  <Field label="Date of birth" name="dateOfBirth" type="date" />
+                  <Field
+                    label="Date of birth"
+                    name="dateOfBirth"
+                    type="date"
+                    autoComplete="section-student bday"
+                  />
                   <SelectField label="Sex" name="sex" options={["Male", "Female"]} />
                   <SelectField
                     label="Religion"
@@ -291,14 +297,22 @@ function ApplyForAdmission() {
                     label="Parent or guardian name"
                     name="guardianName"
                     placeholder="Enter full name"
+                    autoComplete="section-guardian name"
                   />
-                  <Field label="Phone number" name="phone" type="tel" placeholder="+256 ..." />
+                  <Field
+                    label="Phone number"
+                    name="phone"
+                    type="tel"
+                    placeholder="+256 ..."
+                    autoComplete="section-guardian tel"
+                  />
                   <Field
                     label="Email address"
                     name="email"
                     type="email"
                     placeholder="you@example.com"
                     className="sm:col-span-2"
+                    autoComplete="section-guardian email"
                   />
                 </div>
               </fieldset>
@@ -331,17 +345,22 @@ function ApplyForAdmission() {
                     </div>
                   </div>
                 </div>
-                <label className="block space-y-2 text-sm font-semibold">
+                <label htmlFor="notes" className="block space-y-2 text-sm font-semibold">
                   Anything you would like admissions to know?
                   <textarea
+                    id="notes"
                     name="notes"
                     rows={5}
                     className="form-input resize-y"
                     placeholder="Subjects, boarding questions, or support needs"
                   />
                 </label>
-                <label className="flex items-start gap-3 text-sm leading-6 text-muted-foreground">
+                <label
+                  htmlFor="consent"
+                  className="flex items-start gap-3 text-sm leading-6 text-muted-foreground"
+                >
                   <input
+                    id="consent"
                     required
                     type="checkbox"
                     name="consent"
@@ -356,7 +375,7 @@ function ApplyForAdmission() {
             )}
 
             {submissionError && (
-              <p role="alert" className="mt-6 text-sm text-destructive">
+              <p role="status" className="mt-6 text-sm text-destructive">
                 {submissionError}
               </p>
             )}
@@ -405,17 +424,27 @@ function Field({
   placeholder,
   type = "text",
   className = "",
+  autoComplete,
 }: {
   label: string;
   name: string;
   placeholder?: string;
   type?: string;
   className?: string;
+  autoComplete?: string;
 }) {
   return (
-    <label className={`space-y-2 text-sm font-semibold ${className}`}>
+    <label htmlFor={name} className={`space-y-2 text-sm font-semibold ${className}`}>
       {label}
-      <input required name={name} type={type} className="form-input" placeholder={placeholder} />
+      <input
+        id={name}
+        required
+        name={name}
+        type={type}
+        autoComplete={autoComplete}
+        className="form-input"
+        placeholder={placeholder}
+      />
     </label>
   );
 }
@@ -432,9 +461,9 @@ function SelectField({
   required?: boolean;
 }) {
   return (
-    <label className="space-y-2 text-sm font-semibold">
+    <label htmlFor={name} className="space-y-2 text-sm font-semibold">
       {label}
-      <select required={required} name={name} className="form-input">
+      <select id={name} required={required} name={name} className="form-input">
         <option value="">Select {label.toLowerCase()}</option>
         {options.map((option) => (
           <option key={option}>{option}</option>

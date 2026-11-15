@@ -21,8 +21,8 @@ The API listens on `http://localhost:8787` by default.
 - `GET /health` — database health check
 - `POST /api/admissions/applications` — validates and stores an application, guardian, audit row, and queued email notification in one transaction
 - `POST /api/payments` — validates the learner account, creates an idempotent pending payment, audit row, and queued notification
-- `GET /api/dashboard/student?externalAuthId=...` — returns the authenticated student profile, admissions applications, fee accounts, and payment records
-- `GET /api/dashboard/teacher?externalAuthId=...` — returns teacher-scoped admissions applications and fee-payment records for review
+- `GET /api/dashboard/student?externalAuthId=...` — local seeded-data preview only; disabled by default
+- `GET /api/dashboard/teacher?externalAuthId=...` — local seeded-data preview only; disabled by default
 
 Set the frontend variable below to connect the forms:
 
@@ -32,7 +32,9 @@ VITE_API_BASE_URL=http://localhost:8787
 
 When this variable is absent, the frontend retains its explicit preview fallback. The API does not mark payments as settled; a provider-specific, signature-verified webhook must be added before treating a payment as confirmed.
 
-Dashboard routes resolve `externalAuthId` against the seeded identity mapping and enforce the requested role in PostgreSQL. In production, replace the query identity with a verified server-side session or token from the selected identity provider; do not expose raw identity IDs as a substitute for authentication.
+Set `CORS_ORIGIN` to the exact frontend origin or comma-separated origins allowed to call the API from a browser (for example, `https://school.example`). Wildcards, paths, and implicit production origins are rejected. CORS only controls browser access; it is not authentication.
+
+Dashboard routes are disabled unless `DASHBOARD_PREVIEW_MODE=true` and `NODE_ENV` is not `production`. This opt-in exposes seeded records using a query-supplied `externalAuthId`, which is not verified identity. Use it only with local development data. Do not enable it in production; the dashboard must remain unavailable until a selected identity provider supplies a server-verified session or token and the API authorizes that principal. The frontend's local demo accounts are also development-only.
 
 ## Seed data
 

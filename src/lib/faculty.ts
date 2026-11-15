@@ -10,8 +10,10 @@ import enguluDaniel from "@/assets/staff-engulu-daniel.jpg.asset.json";
 import muguloJoseph from "@/assets/staff-mugulo-joseph.jpg.asset.json";
 import buyiAliceLamwaka from "@/assets/staff-buyi-alice-lamwaka.jpg.asset.json";
 import katendeEmmanuel from "@/assets/staff-katende-emmanuel.webp";
-import kediYefusa from "@/assets/staff-kedi-yefusa.png";
-import boozaAzaliaAshraf from "@/assets/staff-booza-azalia-ashraf.png";
+import kediYefusa256 from "@/assets/staff-kedi-yefusa-256.webp";
+import kediYefusa512 from "@/assets/staff-kedi-yefusa-512.webp";
+import boozaAzaliaAshraf256 from "@/assets/staff-booza-azalia-ashraf-256.webp";
+import boozaAzaliaAshraf512 from "@/assets/staff-booza-azalia-ashraf-512.webp";
 
 export type CampusLocation = "Day Campus" | "Boarding";
 export type FacultyCampus = CampusLocation | "Both Campuses";
@@ -28,6 +30,8 @@ export type FacultyMember = {
   photo?: string;
   photoSrcSet?: string;
   photoPosition?: string;
+  photoWidth?: number;
+  photoHeight?: number;
 };
 
 export const facultyServesCampus = (member: FacultyMember, campus: CampusLocation) =>
@@ -128,7 +132,10 @@ export const faculty: FacultyMember[] = [
     subjects: "History",
     campus: "Boarding",
     bio: "Leads the History Department at the Boarding Campus.",
-    photo: boozaAzaliaAshraf,
+    photo: boozaAzaliaAshraf256,
+    photoSrcSet: `${boozaAzaliaAshraf256} 256w, ${boozaAzaliaAshraf512} 512w`,
+    photoWidth: 512,
+    photoHeight: 640,
     head: true,
   },
   {
@@ -310,7 +317,10 @@ export const faculty: FacultyMember[] = [
     subjects: "Mathematics (A'Level)",
     campus: "Boarding",
     bio: "Teaches A'Level Mathematics at the Boarding Campus.",
-    photo: kediYefusa,
+    photo: kediYefusa256,
+    photoSrcSet: `${kediYefusa256} 256w, ${kediYefusa512} 512w`,
+    photoWidth: 512,
+    photoHeight: 640,
   },
   {
     name: "Mr. Gwire Muhammad",
